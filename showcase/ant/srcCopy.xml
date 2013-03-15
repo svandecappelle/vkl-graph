@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<project default="main" basedir="..">
+	<taskdef name="java2html" classname="com.java2html.Java2HTMLTask" classpath="ant/j2h.jar" />
+
+	<echo message="calling the sources copy method" />
+	<target name="main">
+		<copy todir="war/WEB-INF/classes/fr/vekia/gquery/client/" overwrite="true">
+			<fileset dir="src/main/java/fr/vekia/gquery/client" id="id">
+				<include name="**/*.java" />
+				<exclude name="**/*.xml" />
+			</fileset>
+		</copy>
+		<copy todir="war/WEB-INF/classes/fr/vekia/gquery/shared" overwrite="true">
+			<fileset dir="src/main/java/fr/vekia/gquery/shared" id="id">
+				<include name="**/*.java" />
+				<exclude name="**/*.xml" />
+			</fileset>
+		</copy>
+		<java2html title="Example" simple="no" tabsize="4" marginsize="2" header="true" footer="false" destination="war/WEB-INF/classes/">
+			<fileset dir="war/WEB-INF/classes/fr/vekia/gquery/client/">
+				<include name="**/*.java" />
+			</fileset>
+		</java2html>
+		<copy todir="war/doc" overwrite="true">
+			<fileset dir="war/WEB-INF/classes/fr/vekia/gquery/client/" id="id">
+				<include name="**/*.html" />
+			</fileset>
+		</copy>
+
+	</target>
+</project>

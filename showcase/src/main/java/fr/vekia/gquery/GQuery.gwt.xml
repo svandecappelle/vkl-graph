@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to='gquery'>
+	<!-- Inherit the core Web Toolkit stuff. -->
+	<inherits name='com.google.gwt.user.User' />
+	<inherits name='com.google.gwt.user.theme.clean.Clean' />
+	<!-- Other module inherits -->
+	<inherits name='net.customware.gwt.presenter.Presenter' />
+	<inherits name="com.google.gwt.inject.Inject" />
+	<inherits name="com.google.gwt.resources.Resources" />
+
+	<inherits name='fr.vekia.VkGraph.VkGraph' />
+
+<inherits name="com.google.gwt.activity.Activity"/>
+  <inherits name="com.google.gwt.place.Place"/>
+
+	<!-- Specify the app entry point class. -->
+	<entry-point class='fr.vekia.gquery.client.GQuery' />
+
+	<!-- Specify the paths for translatable code -->
+	<source path='client' />
+	<source path='shared' />
+</module>
