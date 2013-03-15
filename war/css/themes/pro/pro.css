@@ -1,0 +1,233 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+body {
+	color: black !important;
+}
+
+.gwt-MenuBar {
+	color: black;
+}
+
+.gwt-Tree .gwt-TreeItem:hover {
+	background: url('../../../img/themes/pro/menu/menuHover.png') !important;
+	/*margin-left:16px;
+	padding-left:-16px;*/
+	border:1px solid black;
+	cursor:pointer;
+}
+
+.gwt-Tree .gwt-TreeItem-selected {
+	background: url('../../../img/themes/pro/menu/selectMenu.png') !important;
+	color: red;
+	border:1px solid black !important;
+	cursor:pointer;
+    /*margin-left:16px;
+	padding-left:-16px;*/
+}
+
+.gwt-Tree [role=treeitem] {
+	display: block !important;
+	/*border:1px solid transparent;*/
+		border:1px solid transparent;
+}
+
+.folder-tree {
+	background-repeat: no-repeat;
+	background-position: 20px 2px;
+	background-image: url('../../../img/themes/pro/tree/folder-icon-16.png');
+}
+
+.folder-tree .gwt-TreeItem .gwt-TreeItem-selected {
+	color: black;
+}
+
+.folder-tree .gwt-TreeItem {
+/*	padding-left: 15px !important;*/
+}
+
+/* ScrollBar webkit */
+::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.8);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(0, 0, 0, 0.4);
+}
+
+.chart-item {
+	background-repeat: no-repeat;
+	background-image: url('../../../img/tree/plot-icon-16.png');
+	/*padding-left: 5px !important;
+	margin-left: 25px !important;
+	margin-right: 5px;*/
+}
+.chart-item:hover{
+    /*background: url('../../../img/themes/pro/menu/menuHover.png') !important;*/
+}
+.chart-item .gwt-TreeItem-selected {
+
+}
+
+.vkl-RightClicSelectionMenu {
+	border: 1px solid #BCBCBC;
+}
+
+.vkl-ExportPopup {
+	border: 2px solid transparent !important;
+}
+
+.gwt-StackLayoutPanel {
+
+	box-shadow: 0px 0px 10px lime, 0px 0px 20px lime;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader {
+	background: url('../../../img/themes/pro/menu/header.png') !important;
+	border: 1px solid grey;
+	text-align: left;
+	cursor: pointer;
+	height: 18px;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelContent {
+	background: none !important;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContentContainer {
+	background: rgba(0, 0, 0, 0.6) !important;
+	border-radius: 15px;
+	border-width: 1px 1px 1px !important;
+	margin-left: 10px;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTabs {
+	background: none !important;
+	/*border-radius: 15px !important;
+	margin-left: 15px;*/
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
+	/*border-radius: 15px 15px 0px 0px !important;*/
+	/*margin-left: 4px !important;*/
+}
+
+.gwt-MenuBar .gwt-MenuItem {
+	cursor: pointer;
+}
+
+.gwt-DialogBox {
+	color: black;
+}
+
+.gwt-DialogBox .dialogMiddleCenter {
+	
+}
+
+.gwt-DataTable {
+	
+}
+
+.gwt-DataTableTitle {
+	font-weight: bold;
+}
+
+.gwt-ImportantLabel {
+	color: yellow;
+}
+
+.gwt-TabLayoutPanel .gwt-TabLayoutPanelContent {
+	overflow: auto !important;
+}
+
+.gwt-TabLayoutPanelCustomDivContainer {
+	overflow: auto !important;
+}
+
+.gwt-ResizableChart {
+	border: 1px solid #AAA;
+	padding: 18px;
+}
+
+.AutomatedDemo-Focus {
+	border: 3px solid red !important;
+	border-radius: 5px;
+}
+
+.MessagePopup {
+	border: 1px solid black;
+}
+
+.buttonsWrap {
+	float: right;
+	margin: 11px 19px 0px 0px;
+}
+
+#sliderMain {
+	width: 650px;
+	padding: 10px;
+	border: 5px solid black;
+	margin: 0px auto;
+	border-image: initial;
+}
+/** CSS is optional, but can be used for button styling. The above preview uses this CSS **/
+.buttons,.control {
+	background: #000000;
+	padding: 3px 10px;
+	margin: 5px;
+	line-height: 0px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.active {
+	background: #00CC66;
+	color: #00FF00;
+}
+
+.buttons:hover,.control:hover {
+	background: #0099FF;
+}
+
+.consoleCode {
+	background: white;
+	overflow: auto;
+	color: black;
+}
+
+.ui-effects-wrapper {
+	z-index: -1;
+}
+
+.vkl-Anchor {
+	color: red;
+}
+
+.vkl-Anchor:HOVER {
+	color: white;
+	cursor: pointer;
+}
+
+.vkl-Anchor:ACTIVE {
+	color: lime;
+}
+
+.vkl-CenterPanel {
+	
+}
