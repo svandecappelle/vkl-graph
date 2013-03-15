@@ -6,7 +6,7 @@
 	<packaging>jar</packaging>
 	<name>Vkl-Graph</name>
 	<description>GWT Based graphics librairy</description>
-	<url>https://github.com/svandecappelle/vkl-graph/library</url>
+	<url>https://github.com/svandecappelle/vkl-graph</url>
 	<properties>
 		<!-- convenience to define GWT version in one place -->
 		<gwt.version>2.5.0</gwt.version>
@@ -22,8 +22,8 @@
 		</license>
 	</licenses>
 	<scm>
-		<url>https://github.com/svandecappelle/vkl-graph/library</url>
-		<connection>https://github.com/svandecappelle/vkl-graph/library</connection>
+		<url>https://github.com/svandecappelle/vkl-graph</url>
+		<connection>https://github.com/svandecappelle/vkl-graph</connection>
 	</scm>
 	<developers>
 		<developer>
