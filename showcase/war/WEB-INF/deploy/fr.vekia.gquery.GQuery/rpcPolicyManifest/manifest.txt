@@ -1,2 +1,0 @@
-# Module fr.vekia.gquery.GQuery
-# RPC service class, partial path of RPC policy file
