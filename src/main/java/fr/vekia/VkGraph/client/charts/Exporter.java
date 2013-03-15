@@ -29,6 +29,9 @@ public class Exporter {
 
     private UIObject relativeTo;
 
+    // positionate the popup at 20 pixel from the chart position
+    private static final int ABS_POSITION_POPUP_ALEA=20;
+
     /**
      * Default constructor
      * 
@@ -60,9 +63,9 @@ public class Exporter {
 	    @Override
 	    public void setPosition(int offsetWidth, int offsetHeight) {
 		if (relativeTo != null) {
-		    exportContainer.setPopupPosition(relativeTo.getAbsoluteLeft() + 20, relativeTo.getAbsoluteTop() + 20);
+		    exportContainer.setPopupPosition(relativeTo.getAbsoluteLeft() + ABS_POSITION_POPUP_ALEA, relativeTo.getAbsoluteTop() + ABS_POSITION_POPUP_ALEA);
 		} else {
-		    exportContainer.setPopupPosition(chart.getAbsoluteLeft() + 20, chart.getAbsoluteTop() + 20);
+		    exportContainer.setPopupPosition(chart.getAbsoluteLeft() + ABS_POSITION_POPUP_ALEA, chart.getAbsoluteTop() + ABS_POSITION_POPUP_ALEA);
 		}
 	    }
 	});

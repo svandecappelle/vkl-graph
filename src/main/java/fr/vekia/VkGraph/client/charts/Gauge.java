@@ -24,7 +24,7 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Gauge implements IsWidget {
 
-    AbstractChart<Number> gauge;
+    private AbstractChart<Number> gauge;
 
     /**
      * Default constructor

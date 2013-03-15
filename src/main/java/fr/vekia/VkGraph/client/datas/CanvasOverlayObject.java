@@ -28,7 +28,7 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class CanvasOverlayObject {
 
-    List<Line> lines;
+    private List<Line> lines;
 
     /**
      * Default constructor

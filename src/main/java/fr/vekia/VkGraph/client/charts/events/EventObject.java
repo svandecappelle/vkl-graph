@@ -21,7 +21,7 @@ public class EventObject {
     private int pointIndex;
     private Object value;
 
-    private boolean isNative;
+    private boolean nativeE;
 
     /**
      * Default constructor.
@@ -35,7 +35,7 @@ public class EventObject {
      * 
      */
     public EventObject(boolean isNative) {
-	this.isNative = isNative;
+	this.nativeE = isNative;
     }
 
     /**
@@ -43,14 +43,14 @@ public class EventObject {
      *            the isNative to set
      */
     public void setNative(boolean isNative) {
-	this.isNative = isNative;
+	this.nativeE = isNative;
     }
 
     /**
      * @return the isNative
      */
     public boolean isNative() {
-	return isNative;
+	return nativeE;
     }
 
     /**

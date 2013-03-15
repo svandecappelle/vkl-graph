@@ -56,7 +56,7 @@ public class OhlcData implements GraphDataI {
     /**
      * @return the data
      */
-    public Object[] getData() {
+    public final Object[] getData() {
 	return data;
     }
 

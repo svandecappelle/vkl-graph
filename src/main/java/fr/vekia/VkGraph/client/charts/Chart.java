@@ -48,6 +48,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 
     private static final String DEFAULT_HEIGHT = "600px";
     private static final String DEFAULT_WIDTH = "800px";
+    private static final int DESIGNER_PANEL_POSITION = -10000;
+
 
     // Injection flag
     private boolean injected = false;
@@ -404,7 +406,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 
 	// The designer panel should not be visible for the user, and be removed after the chart generation.
 	RootPanel.get().add(designerPanel);
-	RootPanel.get().setWidgetPosition(designerPanel, -10000, 10000);
+	RootPanel.get().setWidgetPosition(designerPanel, DESIGNER_PANEL_POSITION, DESIGNER_PANEL_POSITION);
 
 	boolean visible = isVisible();
 	boolean isNotInjected = !this.injected;

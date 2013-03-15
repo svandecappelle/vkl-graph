@@ -79,7 +79,7 @@ public abstract class MenuCommands implements Command {
      * 
      * @return the subCommands the sub menu containing.
      */
-    public MenuCommands[] getSubCommands() {
+    public final MenuCommands[] getSubCommands() {
 	return subCommands;
     }
 }

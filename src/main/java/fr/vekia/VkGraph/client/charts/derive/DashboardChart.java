@@ -31,6 +31,11 @@ import fr.vekia.VkGraph.client.options.SubOption;
 public class DashboardChart<T> extends Composite {
 
     private AbstractChart<T> chart;
+    private static final int TOOLTIP_OFFSET_HIGHLIGHTER = 9;
+    private static final int TOOLTIP_SIZE_ADJUST = 1;
+    private static final int GRIDLINE_WIDTH = 2;
+	    
+
 
     /**
      * Default constructor.
@@ -51,15 +56,15 @@ public class DashboardChart<T> extends Composite {
 	// ### Highlighter ###
 	// ###################
 	chart.setBooleanOption(ChartOption.highlighter, SubOption.show, true);
-	chart.setNumberOption(ChartOption.highlighter, SubOption.sizeAdjust, 1);
-	chart.setNumberOption(ChartOption.highlighter, SubOption.tooltipOffset, 9);
+	chart.setNumberOption(ChartOption.highlighter, SubOption.sizeAdjust, TOOLTIP_SIZE_ADJUST);
+	chart.setNumberOption(ChartOption.highlighter, SubOption.tooltipOffset, TOOLTIP_OFFSET_HIGHLIGHTER);
 
 	// ############
 	// ### Grid ###
 	// ############
 
 	chart.setTextOption(ChartOption.grid, SubOption.gridLineColor, "#666666");
-	chart.setNumberOption(ChartOption.grid, SubOption.gridLineWidth, 2);
+	chart.setNumberOption(ChartOption.grid, SubOption.gridLineWidth, GRIDLINE_WIDTH);
 
 	chart.setBooleanOption(ChartOption.grid, SubOption.drawBorder, false);
 	chart.setBooleanOption(ChartOption.grid, SubOption.shadow, false);

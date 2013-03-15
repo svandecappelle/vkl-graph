@@ -35,8 +35,8 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class CalendarChart extends Composite {
 
-    LineChart<DualValue> chart;
-    CanvasOverlayObject canvasDrawOption;
+    private LineChart<DualValue> chart;
+    private CanvasOverlayObject canvasDrawOption;
 
     /**
      * Default constructor

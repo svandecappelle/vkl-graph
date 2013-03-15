@@ -44,7 +44,6 @@ public enum ChartOption implements IsOption, HasType {
      * 
      */
     private ChartOption() {
-	// TODO Auto-generated constructor stub
     }
 
     /**

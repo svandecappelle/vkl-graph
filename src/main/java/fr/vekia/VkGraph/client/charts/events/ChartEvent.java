@@ -21,7 +21,7 @@ public abstract class ChartEvent implements JqPlotEvent {
     private static final Integer DEFAULT_BINDING_PARAMS_VALUE = 5;
     private int eventBindingParams;
 
-    private boolean isNative;
+    private boolean nativeE;
 
     /**
      * Default constructor
@@ -37,7 +37,7 @@ public abstract class ChartEvent implements JqPlotEvent {
      */
     public ChartEvent(Integer eventBindingParams, boolean isNative) {
 	this.eventBindingParams = eventBindingParams;
-	this.isNative = isNative;
+	this.nativeE = isNative;
     }
 
     /**
@@ -45,12 +45,12 @@ public abstract class ChartEvent implements JqPlotEvent {
      * 
      */
     public ChartEvent(boolean isNative) {
-	this.isNative = isNative;
+	this.nativeE = isNative;
     }
 
     @Override
     public boolean isNative() {
-	return isNative;
+	return nativeE;
     }
 
     /**

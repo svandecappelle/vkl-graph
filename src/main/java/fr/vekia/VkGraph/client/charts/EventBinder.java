@@ -23,6 +23,8 @@ import fr.vekia.VkGraph.client.charts.events.JqPlotEvent;
 public class EventBinder {
 
     private Chart<?> chart;
+    private static final int FOUR_PARAMS_EVENT = 4;
+    private static final int FIVE_PARAMS_EVENT = 5;
 
     /**
      * Default constructor
@@ -42,14 +44,14 @@ public class EventBinder {
 	for (JqPlotEvent event : bindedEvents) {
 	    if (event.getEventBindingParams() == 1) {
 		this.bindSimple(event, event.getEventType().getName(), "#" + chart.getId());
-	    } else if (event.getEventBindingParams() == 4) {
+	    } else if (event.getEventBindingParams() == FOUR_PARAMS_EVENT) {
 		if(event.isNative()){
 		    this.bind4Native(event, event.getEventType().getName(), "#" + chart.getId());		    
 		}else{
 		    this.bind4(event, event.getEventType().getName(), "#" + chart.getId());
 		}
 		
-	    } else if (event.getEventBindingParams() == 5) {
+	    } else if (event.getEventBindingParams() == FIVE_PARAMS_EVENT) {
 		this.bind5(event, event.getEventType().getName(), "#" + chart.getId());
 	    } else if (event.getEventBindingParams() == 0) {
 		this.bindWithNoArg(event, event.getEventType().getName(), "#" + chart.getId());
