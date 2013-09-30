@@ -102,8 +102,14 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     public Chart() {
 	this.chartLayout = new SimplePanel();
 	this.chartContainer = new SimplePanel();
+	
+	
+	
+	this.chartLayout.setSize("100%","100%");
+	this.chartContainer.setSize("100%","100%");
+	
 	this.resizableContainer = new SimplePanel(this.chartContainer);
-
+	super.setSize("100%", "100%");
 	// charts controllers
 
 	// option controller
@@ -131,6 +137,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	// attach UI
 	this.chartLayout.setWidget(this.resizableContainer);
 	this.setWidget(this.chartLayout);
+	
+	this.addStyleName("Vkl-Graph");
     }
 
     private native void activateTheme(JavaScriptObject chart, String themeName)
