@@ -39,7 +39,6 @@ public class DualValuesPlotExempleScreen extends SimplePanel {
      * 
      */
     public DualValuesPlotExempleScreen() {
-    	Window.alert("haha");
 	first = new LineChart<List<DualValue>>();
 
 	ArrayList<DualValue> valuesLineOne = new ArrayList<DualValue>();
@@ -53,11 +52,15 @@ public class DualValuesPlotExempleScreen extends SimplePanel {
 
 	 // Ticks x axis
     final List<String> ticks = new ArrayList<String>();
-    ticks.add("XS");
-    ticks.add("S");
-    ticks.add("M");
-    ticks.add("L");
-    ticks.add("XL");
+    ticks.add("1F");
+    ticks.add("2");
+    ticks.add("3");
+    ticks.add("4");
+    ticks.add("5");
+    ticks.add("6");
+    ticks.add("7");
+    ticks.add("8");
+    ticks.add("9L");
     
 
     first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, RenderersEnum.CategoryAxis.getValueRenderer());
@@ -73,7 +76,6 @@ public class DualValuesPlotExempleScreen extends SimplePanel {
     first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.labelsOptions, "{fontSize: '11pt'}");
     first.setTextOption(ChartOption.axes, SubOption.xaxis, SubOption.label, "Tailles");
     first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.ticks, ticks);
-	
 	
 	first.setDatas(values);
 
