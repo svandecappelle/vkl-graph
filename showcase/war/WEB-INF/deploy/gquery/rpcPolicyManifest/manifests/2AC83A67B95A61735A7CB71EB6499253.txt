@@ -1,2 +1,0 @@
-serviceClass: fr.vekia.gquery.client.showcase.application.services.CodeService
-path: 83DD0B7DCDAE0F6A2694F618CD0D438C.gwt.rpc
