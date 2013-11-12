@@ -22,6 +22,6 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.places.MenuPla
  *          {@inheritDoc}
  */
 @WithTokenizers(MenuPlace.Tokenizer.class)
-public interface MyPlaceHistoryMapper extends PlaceHistoryMapper{
+public interface MyPlaceHistoryMapper extends PlaceHistoryMapper {
 
 }

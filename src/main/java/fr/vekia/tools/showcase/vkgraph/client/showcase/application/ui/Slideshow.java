@@ -28,111 +28,111 @@ import com.google.gwt.user.client.ui.Widget;
  *          {@inheritDoc}
  */
 public class Slideshow extends Composite {
-    private FlowPanel sliderContainersWidgets;
-    private FlowPanel sliderButtons;
-    private int width = 800;
-    private int height = 600;
+	private FlowPanel sliderContainersWidgets;
+	private FlowPanel sliderButtons;
+	private int width = 800;
+	private int height = 600;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public Slideshow(int width, int height) {
-	this();
-	this.width = width;
-	this.height = height;
-	setSize(width + "px", height + "px");
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Slideshow(int width, int height) {
+		this();
+		this.width = width;
+		this.height = height;
+		setSize(width + "px", height + "px");
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public Slideshow() {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Slideshow() {
 
-	FlowPanel sliderAll = new FlowPanel();
-	FlowPanel sliderContentWrap = new FlowPanel();
-	sliderContainersWidgets = new FlowPanel();
-	sliderButtons = new FlowPanel();
+		FlowPanel sliderAll = new FlowPanel();
+		FlowPanel sliderContentWrap = new FlowPanel();
+		sliderContainersWidgets = new FlowPanel();
+		sliderButtons = new FlowPanel();
 
-	sliderAll.getElement().setId("sliderMain");
+		sliderAll.getElement().setId("sliderMain");
 
-	sliderAll.addStyleName("bottomShadow");
-	sliderContentWrap.addStyleName("sliderContentWrap");
-	sliderContainersWidgets.addStyleName("contentWrap");
-	sliderButtons.addStyleName("buttonsWrap");
+		sliderAll.addStyleName("bottomShadow");
+		sliderContentWrap.addStyleName("sliderContentWrap");
+		sliderContainersWidgets.addStyleName("contentWrap");
+		sliderButtons.addStyleName("buttonsWrap");
 
-	sliderContentWrap.add(sliderContainersWidgets);
-	sliderAll.add(sliderContentWrap);
-	sliderAll.add(sliderButtons);
+		sliderContentWrap.add(sliderContainersWidgets);
+		sliderAll.add(sliderContentWrap);
+		sliderAll.add(sliderButtons);
 
-	final Image anchor = new Image("img/pause.png");
-	anchor.setSize("16px", "16px");
-	anchor.getElement().getStyle().setPadding(0, Unit.PX);
-	anchor.getElement().getStyle().setMargin(0, Unit.PX);
-	anchor.getElement().getStyle().setMarginTop(5, Unit.PX);
-	anchor.getElement().getStyle().setBackgroundColor("transparent");
-	anchor.addClickHandler(new ClickHandler() {
+		final Image anchor = new Image("img/pause.png");
+		anchor.setSize("16px", "16px");
+		anchor.getElement().getStyle().setPadding(0, Unit.PX);
+		anchor.getElement().getStyle().setMargin(0, Unit.PX);
+		anchor.getElement().getStyle().setMarginTop(5, Unit.PX);
+		anchor.getElement().getStyle().setBackgroundColor("transparent");
+		anchor.addClickHandler(new ClickHandler() {
 
-	    @Override
-	    public void onClick(ClickEvent event) {
-		if (anchor.getUrl().contains("play")) {
-		    anchor.setUrl("img/pause.png");
-		} else {
-		    anchor.setUrl("img/play.png");
-		}
-	    }
-	});
+			@Override
+			public void onClick(ClickEvent event) {
+				if (anchor.getUrl().contains("play")) {
+					anchor.setUrl("img/pause.png");
+				} else {
+					anchor.setUrl("img/play.png");
+				}
+			}
+		});
 
-	anchor.addStyleName("control");
-	sliderButtons.add(anchor);
+		anchor.addStyleName("control");
+		sliderButtons.add(anchor);
 
-	initWidget(sliderAll);
-	sliderContentWrap.setSize("100%", "100%");
-	setSize(width + "px", height + "px");
-    }
+		initWidget(sliderAll);
+		sliderContentWrap.setSize("100%", "100%");
+		setSize(width + "px", height + "px");
+	}
 
-    public void setSizeContainerPx(int width, int height) {
-	this.width = width;
-	this.height = height;
-    }
+	public void setSizeContainerPx(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
 
-    public void add(Widget widget) {
-	widget.addStyleName("content");
-	sliderContainersWidgets.add(widget);
-	Anchor anchor = new Anchor();
-	anchor.addStyleName("buttons");
-	sliderButtons.add(anchor);
-    }
+	public void add(Widget widget) {
+		widget.addStyleName("content");
+		sliderContainersWidgets.add(widget);
+		Anchor anchor = new Anchor();
+		anchor.addStyleName("buttons");
+		sliderButtons.add(anchor);
+	}
 
-    @Override
-    protected void onAttach() {
-	super.onAttach();
-	Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
-	    @Override
-	    public void execute() {
+			@Override
+			public void execute() {
+				render(width, height);
+			}
+		});
+	}
+
+	public void redraw() {
 		render(width, height);
-	    }
-	});
-    }
+	}
 
-    public void redraw() {
-	render(width, height);
-    }
-
-    private native void render(int width, int height)/*-{
-	$wnd.jQuery('.contentWrap').liteSlider({
-	    content : '.content', // The panel selector. Can be a list also. eg:li
-	    autoplay : true, // Autoplay the slider. Values, true & false
-	    width : width,
-	    height : height,
-	    delay : 5, // Transition Delay. Default 3s
-	    buttonsClass : 'buttons', // Button's class
-	    activeClass : 'active', // Active class
-	    controlBt : '.control', // Control button selector
-	    playText : 'Play', // Play text
-	    pauseText : 'Stop' // Stop text
-	});
-    }-*/;
+	private native void render(int width, int height)/*-{
+														$wnd.jQuery('.contentWrap').liteSlider({
+														content : '.content', // The panel selector. Can be a list also. eg:li
+														autoplay : true, // Autoplay the slider. Values, true & false
+														width : width,
+														height : height,
+														delay : 5, // Transition Delay. Default 3s
+														buttonsClass : 'buttons', // Button's class
+														activeClass : 'active', // Active class
+														controlBt : '.control', // Control button selector
+														playText : 'Play', // Play text
+														pauseText : 'Stop' // Stop text
+														});
+														}-*/;
 }

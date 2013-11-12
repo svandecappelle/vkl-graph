@@ -23,45 +23,45 @@ import com.google.gwt.user.client.Timer;
  *          {@inheritDoc}
  */
 public class TimerStack extends Timer {
-    private Timer currentTimer;
-    private Map<Timer, Integer> timerDuration;
-    private LinkedList<Timer> timers;
+	private Timer currentTimer;
+	private Map<Timer, Integer> timerDuration;
+	private LinkedList<Timer> timers;
 
-    /**
-     * Default constructor
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public TimerStack() {
+		timerDuration = new HashMap<Timer, Integer>();
+		timers = new LinkedList<Timer>();
+	}
+
+	/**
+	 * @param timer
+	 * @param durationBetweenNext
+	 */
+	public void addToStack(Timer timer, int durationBetweenNext) {
+		timers.add(timer);
+		timerDuration.put(timer, durationBetweenNext);
+	}
+
+	/**
      * 
      */
-    public TimerStack() {
-	timerDuration = new HashMap<Timer, Integer>();
-	timers = new LinkedList<Timer>();
-    }
-
-    /**
-     * @param timer
-     * @param durationBetweenNext
-     */
-    public void addToStack(Timer timer, int durationBetweenNext) {
-	timers.add(timer);
-	timerDuration.put(timer, durationBetweenNext);
-    }
-
-    /**
-     * 
-     */
-    private void callToNextElement() {
-	currentTimer = timers.poll();
-	if (currentTimer != null) {
-	    schedule(timerDuration.get(currentTimer));
+	private void callToNextElement() {
+		currentTimer = timers.poll();
+		if (currentTimer != null) {
+			schedule(timerDuration.get(currentTimer));
+		}
 	}
-    }
 
-    @Override
-    public void run() {
-	if (currentTimer == null && !timers.isEmpty()) {
-	    callToNextElement();
-	} else if (currentTimer != null) {
-	    currentTimer.run();
-	    callToNextElement();
+	@Override
+	public void run() {
+		if (currentTimer == null && !timers.isEmpty()) {
+			callToNextElement();
+		} else if (currentTimer != null) {
+			currentTimer.run();
+			callToNextElement();
+		}
 	}
-    }
 }

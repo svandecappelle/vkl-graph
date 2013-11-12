@@ -25,21 +25,21 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.Pr
  */
 public class PresentationActivity extends AbstractActivity {
 
-    private Place place;
+	private Place place;
 
-    /**
-     * Default constructor
-     * 
-     * @param place
-     */
-    public PresentationActivity(Place place) {
-	this.place = place;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param place
+	 */
+	public PresentationActivity(Place place) {
+		this.place = place;
+	}
 
-    @Override
-    public void start(AcceptsOneWidget panel, EventBus eventBus) {
-	PresentationDemoPanel widget = new PresentationDemoPanel();
-	panel.setWidget(widget);
-    }
+	@Override
+	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		PresentationDemoPanel widget = new PresentationDemoPanel();
+		panel.setWidget(widget);
+	}
 
 }

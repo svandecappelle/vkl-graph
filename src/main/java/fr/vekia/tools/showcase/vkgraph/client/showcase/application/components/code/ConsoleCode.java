@@ -32,110 +32,116 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConso
  */
 public class ConsoleCode implements Display {
 
-    private Button buttonShow;
-    private ConsoleWindow box;
-    private ScrollPanel panel;
-    private String codeUrl;
-    private String className;
-    private Button showOtherWindow;
+	private Button buttonShow;
+	private ConsoleWindow box;
+	private ScrollPanel panel;
+	private String codeUrl;
+	private String className;
+	private Button showOtherWindow;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ConsoleCode() {
-	panel = new ScrollPanel();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ConsoleCode() {
+		panel = new ScrollPanel();
 
-	panel.setHeight((Window.getClientHeight() / 3) + "px");
-	panel.setWidth((Window.getClientWidth() / 3) + "px");
+		panel.setHeight((Window.getClientHeight() / 3) + "px");
+		panel.setWidth((Window.getClientWidth() / 3) + "px");
 
-	VerticalPanel container = new VerticalPanel();
-	buttonShow = new Button("ShowCode");
-	buttonShow.getElement().setId("idOpener");
-	box = new ConsoleWindow();
+		VerticalPanel container = new VerticalPanel();
+		buttonShow = new Button("ShowCode");
+		buttonShow.getElement().setId("idOpener");
+		box = new ConsoleWindow();
 
-	container.add(panel);
+		container.add(panel);
 
-	showOtherWindow = new Button("Show in other window");
-	showOtherWindow.addClickHandler(new ClickHandler() {
+		showOtherWindow = new Button("Show in other window");
+		showOtherWindow.addClickHandler(new ClickHandler() {
 
-	    @Override
-	    public void onClick(ClickEvent event) {
-		Window.open(GWT.getHostPageBaseURL() + "doc/" + getCodeUrl(), "Code for " + getClassName(), "_new");
-	    }
-	});
-    }
-
-    /**
-     * @return
-     */
-    protected String getCodeUrl() {
-	return this.codeUrl;
-    }
-
-    /**
-     * @return
-     */
-    @Override
-    public void setCodeUrl(String className, String codeUrl) {
-	this.codeUrl = codeUrl;
-	this.className = className;
-    }
-
-    /**
-     * @return the className
-     */
-    public String getClassName() {
-	return className;
-    }
-
-    @Override
-    public Widget asWidget() {
-	return buttonShow;
-    }
-
-    @Override
-    public void show() {
-	box.show();
-    }
-
-    @Override
-    public void hide() {
-	// box.hide();
-    }
-
-    @Override
-    public HasClickHandlers getAddShowHandler() {
-	return buttonShow;
-    }
-
-    @Override
-    public HasClickHandlers getAddHideHandler() {
-	return null;
-    }
-
-    @Override
-    public void setCode(String code) {
-	box.setCode(code);
-    }
-
-    @Override
-    public void insert() {
-	if (buttonShow != null) {
-	    RootLayoutPanel.get().add(buttonShow);
-	    buttonShow.getElement().getStyle().setZIndex(1);
-	    RootLayoutPanel.get().setWidgetTopHeight(buttonShow, 0, Unit.PX, 25, Unit.PX);
-	    RootLayoutPanel.get().setWidgetRightWidth(buttonShow, 0, Unit.PX, 150, Unit.PX);
-
-	    RootLayoutPanel.get().add(showOtherWindow);
-	    showOtherWindow.getElement().getStyle().setZIndex(1);
-	    RootLayoutPanel.get().setWidgetTopHeight(showOtherWindow, 0, Unit.PX, 25, Unit.PX);
-	    RootLayoutPanel.get().setWidgetRightWidth(showOtherWindow, 200, Unit.PX, 150, Unit.PX);
+			@Override
+			public void onClick(ClickEvent event) {
+				Window.open(GWT.getHostPageBaseURL() + getCodeUrl(),
+						"Code for " + getClassName(), "_new");
+			}
+		});
 	}
-    }
 
-    @Override
-    public void showOutBrowser() {
-	Window.open(GWT.getHostPageBaseURL() + "doc/" + getCodeUrl(), "Code for " + getClassName(), "_new");
-    }
+	/**
+	 * @return
+	 */
+	protected String getCodeUrl() {
+		return this.codeUrl;
+	}
+
+	/**
+	 * @return
+	 */
+	@Override
+	public void setCodeUrl(String className, String codeUrl) {
+		this.codeUrl = codeUrl;
+		this.className = className;
+	}
+
+	/**
+	 * @return the className
+	 */
+	public String getClassName() {
+		return className;
+	}
+
+	@Override
+	public Widget asWidget() {
+		return buttonShow;
+	}
+
+	@Override
+	public void show() {
+		box.show();
+	}
+
+	@Override
+	public void hide() {
+		// box.hide();
+	}
+
+	@Override
+	public HasClickHandlers getAddShowHandler() {
+		return buttonShow;
+	}
+
+	@Override
+	public HasClickHandlers getAddHideHandler() {
+		return null;
+	}
+
+	@Override
+	public void setCode(String code) {
+		box.setCode(code);
+	}
+
+	@Override
+	public void insert() {
+		if (buttonShow != null) {
+			RootLayoutPanel.get().add(buttonShow);
+			buttonShow.getElement().getStyle().setZIndex(1);
+			RootLayoutPanel.get().setWidgetTopHeight(buttonShow, 0, Unit.PX,
+					25, Unit.PX);
+			RootLayoutPanel.get().setWidgetRightWidth(buttonShow, 0, Unit.PX,
+					150, Unit.PX);
+
+			RootLayoutPanel.get().add(showOtherWindow);
+			showOtherWindow.getElement().getStyle().setZIndex(1);
+			RootLayoutPanel.get().setWidgetTopHeight(showOtherWindow, 0,
+					Unit.PX, 25, Unit.PX);
+			RootLayoutPanel.get().setWidgetRightWidth(showOtherWindow, 200,
+					Unit.PX, 150, Unit.PX);
+		}
+	}
+
+	@Override
+	public void showOutBrowser() {
+		Window.open(GWT.getHostPageBaseURL() + getCodeUrl(), "Code for "
+				+ getClassName(), "_new");
+	}
 }

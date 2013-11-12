@@ -15,11 +15,13 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class Contributors extends SimplePanel {
 
-    public Contributors() {
+	public Contributors() {
 
-	VerticalPanel contributors = new VerticalPanel();
-	contributors.add(new Label("Particular thank to Vekia's company for it's participation, on working out this project. Web site here"));
+		VerticalPanel contributors = new VerticalPanel();
+		contributors
+				.add(new Label(
+						"Particular thank to Vekia's company for it's participation, on working out this project. Web site here"));
 
-	setWidget(contributors);
-    }
+		setWidget(contributors);
+	}
 }

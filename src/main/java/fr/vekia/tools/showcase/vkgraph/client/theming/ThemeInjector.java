@@ -26,26 +26,26 @@ import fr.vekia.tools.showcase.vkgraph.client.theming.presenter.ThemePresenter;
  */
 @GinModules(ThemeModule.class)
 public interface ThemeInjector extends Ginjector {
-    final class Util {
+	final class Util {
 
-	private static ThemeInjector injector = null;
+		private static ThemeInjector injector = null;
 
-	private Util() {
+		private Util() {
+		}
+
+		/**
+		 * @return the injector
+		 */
+		public static ThemeInjector getInstance() {
+			if (injector == null) {
+				injector = GWT.create(ThemeInjector.class);
+			}
+
+			return injector;
+		}
 	}
 
-	/**
-	 * @return the injector
-	 */
-	public static ThemeInjector getInstance() {
-	    if (injector == null) {
-		injector = GWT.create(ThemeInjector.class);
-	    }
+	EventBus getEventBus();
 
-	    return injector;
-	}
-    }
-
-    EventBus getEventBus();
-
-    ThemePresenter getPresenter();
+	ThemePresenter getPresenter();
 }

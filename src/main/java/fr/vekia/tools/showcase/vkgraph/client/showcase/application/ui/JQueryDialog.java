@@ -26,88 +26,92 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  *          {@inheritDoc}
  */
-public class JQueryDialog extends Widget implements ResizeHandler, HasResizeHandlers {
+public class JQueryDialog extends Widget implements ResizeHandler,
+		HasResizeHandlers {
 
-    private SimplePanel p;
-    private String id;
-    private String idContent;
+	private SimplePanel p;
+	private String id;
+	private String idContent;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public JQueryDialog(boolean isResizable, boolean isDraggable) {
-	this.p = new SimplePanel();
-	this.p.getElement().setId(DOM.createUniqueId());
-	this.id = this.p.getElement().getId();
-	int height = Window.getClientHeight() / 2;
-	int width = Window.getClientWidth() / 3;
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public JQueryDialog(boolean isResizable, boolean isDraggable) {
+		this.p = new SimplePanel();
+		this.p.getElement().setId(DOM.createUniqueId());
+		this.id = this.p.getElement().getId();
+		int height = Window.getClientHeight() / 2;
+		int width = Window.getClientWidth() / 3;
 
-	int x = 0;
-	int y = Window.getClientWidth() - width;
-	super.setElement(p.getElement());
-	super.setTitle("The Dialog");
+		int x = 0;
+		int y = Window.getClientWidth() - width;
+		super.setElement(p.getElement());
+		super.setTitle("The Dialog");
 
-	RootLayoutPanel.get().add(p);
+		RootLayoutPanel.get().add(p);
 
-	this.create(id, height, width, x, y, isResizable, isDraggable);
+		this.create(id, height, width, x, y, isResizable, isDraggable);
 
-	this.addResizeHandler(this);
-    }
+		this.addResizeHandler(this);
+	}
 
-    /**
+	/**
  * 
  */
-    private native void create(String id, int height, int width, int x, int y, boolean isResizable, boolean isDraggable) /*-{
-		$wnd.jQuery("#" + id).dialog({
-			autoOpen : false,
-			show : "blind",
-			hide : "explode",
-			height : height,
-			width : width,
-			draggable : isDraggable,
-			resizable : isResizable,
-			position : [ x, y ]
-		});
-    }-*/;
+	private native void create(String id, int height, int width, int x, int y,
+			boolean isResizable, boolean isDraggable) /*-{
+														$wnd.jQuery("#" + id).dialog({
+														autoOpen : false,
+														show : "blind",
+														hide : "explode",
+														height : height,
+														width : width,
+														draggable : isDraggable,
+														resizable : isResizable,
+														position : [ x, y ]
+														});
+														}-*/;
 
-    /**
+	/**
      * 
      */
-    public void show() {
-	this.open(id);
-    };
+	public void show() {
+		this.open(id);
+	};
 
-    /**
+	/**
      * 
      */
-    private native void open(String id) /*-{
-		$wnd.jQuery("#" + id).dialog("open");
-    }-*/;
+	private native void open(String id) /*-{
+										$wnd.jQuery("#" + id).dialog("open");
+										}-*/;
 
-    @Override
-    public void onResize(ResizeEvent event) {
-	int height = DOM.getElementById(id).getOffsetHeight();
-	int width = DOM.getElementById(id).getOffsetWidth();
+	@Override
+	public void onResize(ResizeEvent event) {
+		int height = DOM.getElementById(id).getOffsetHeight();
+		int width = DOM.getElementById(id).getOffsetWidth();
 
-	DOM.getElementById(idContent).getStyle().setPropertyPx("maxHeight", height);
-	DOM.getElementById(idContent).getStyle().setPropertyPx("maxWidth", width);
-    }
-
-    @Override
-    public HandlerRegistration addResizeHandler(ResizeHandler handler) {
-	return addHandler(handler, ResizeEvent.getType());
-    }
-
-    /**
-     * @param bar
-     */
-    public void setWidget(Widget widget) {
-	if (widget.getElement().getId() == null) {
-	    widget.getElement().setId(DOM.createUniqueId());
+		DOM.getElementById(idContent).getStyle()
+				.setPropertyPx("maxHeight", height);
+		DOM.getElementById(idContent).getStyle()
+				.setPropertyPx("maxWidth", width);
 	}
-	idContent = widget.getElement().getId();
-	p.setWidget(widget);
-    }
+
+	@Override
+	public HandlerRegistration addResizeHandler(ResizeHandler handler) {
+		return addHandler(handler, ResizeEvent.getType());
+	}
+
+	/**
+	 * @param bar
+	 */
+	public void setWidget(Widget widget) {
+		if (widget.getElement().getId() == null) {
+			widget.getElement().setId(DOM.createUniqueId());
+		}
+		idContent = widget.getElement().getId();
+		p.setWidget(widget);
+	}
 
 }

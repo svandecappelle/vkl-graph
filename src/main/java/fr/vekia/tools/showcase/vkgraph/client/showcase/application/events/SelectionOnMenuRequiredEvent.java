@@ -18,69 +18,70 @@ import com.google.gwt.event.shared.GwtEvent;
  * 
  *          {@inheritDoc}
  */
-public class SelectionOnMenuRequiredEvent extends GwtEvent<SelectionOnMenuRequiredHandler> {
+public class SelectionOnMenuRequiredEvent extends
+		GwtEvent<SelectionOnMenuRequiredHandler> {
 
-    private String menuToShow;
-    private String plotToShow;
-    private int duration;
+	private String menuToShow;
+	private String plotToShow;
+	private int duration;
 
-    /**
-     * Default constructor
-     * 
-     * @param selectedItem
-     */
-    public SelectionOnMenuRequiredEvent(String menuToShow, String plotToShow) {
-	this.menuToShow = menuToShow;
-	this.plotToShow = plotToShow;
-    }
-
-    /**
-     * Default constructor
-     * 
-     * @param selectedItem
-     */
-    public SelectionOnMenuRequiredEvent(String menuToShow) {
-	this.menuToShow = menuToShow;
-	this.plotToShow = null;
-    }
-
-    private static Type<SelectionOnMenuRequiredHandler> type;
-
-    public static Type<SelectionOnMenuRequiredHandler> getType() {
-	if (type == null) {
-	    type = new Type<SelectionOnMenuRequiredHandler>();
+	/**
+	 * Default constructor
+	 * 
+	 * @param selectedItem
+	 */
+	public SelectionOnMenuRequiredEvent(String menuToShow, String plotToShow) {
+		this.menuToShow = menuToShow;
+		this.plotToShow = plotToShow;
 	}
-	return type;
-    }
 
-    @Override
-    protected void dispatch(SelectionOnMenuRequiredHandler handler) {
-	handler.onSelection(this);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param selectedItem
+	 */
+	public SelectionOnMenuRequiredEvent(String menuToShow) {
+		this.menuToShow = menuToShow;
+		this.plotToShow = null;
+	}
 
-    @Override
-    public GwtEvent.Type<SelectionOnMenuRequiredHandler> getAssociatedType() {
-	return getType();
-    }
+	private static Type<SelectionOnMenuRequiredHandler> type;
 
-    /**
-     * @return the menuToShow
-     */
-    public String getMenuToShow() {
-	return menuToShow;
-    }
+	public static Type<SelectionOnMenuRequiredHandler> getType() {
+		if (type == null) {
+			type = new Type<SelectionOnMenuRequiredHandler>();
+		}
+		return type;
+	}
 
-    /**
-     * @return the plotToShow
-     */
-    public String getPlotToShow() {
-	return plotToShow;
-    }
+	@Override
+	protected void dispatch(SelectionOnMenuRequiredHandler handler) {
+		handler.onSelection(this);
+	}
 
-    /**
-     * @return the duration
-     */
-    public int getDuration() {
-	return duration;
-    }
+	@Override
+	public GwtEvent.Type<SelectionOnMenuRequiredHandler> getAssociatedType() {
+		return getType();
+	}
+
+	/**
+	 * @return the menuToShow
+	 */
+	public String getMenuToShow() {
+		return menuToShow;
+	}
+
+	/**
+	 * @return the plotToShow
+	 */
+	public String getPlotToShow() {
+		return plotToShow;
+	}
+
+	/**
+	 * @return the duration
+	 */
+	public int getDuration() {
+		return duration;
+	}
 }

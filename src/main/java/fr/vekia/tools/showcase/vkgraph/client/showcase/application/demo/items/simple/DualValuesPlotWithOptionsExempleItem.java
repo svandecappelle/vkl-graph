@@ -23,35 +23,36 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.
  * 
  *          {@inheritDoc}
  */
-public class DualValuesPlotWithOptionsExempleItem extends AbstractShowcaseTreeMenuItem {
+public class DualValuesPlotWithOptionsExempleItem extends
+		AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     * @param text
-     */
-    public DualValuesPlotWithOptionsExempleItem(String text) {
-	super(text);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param text
+	 */
+	public DualValuesPlotWithOptionsExempleItem(String text) {
+		super(text);
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return false;
-    }
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	return null;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		return null;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return true;
-    }
+	@Override
+	public boolean hasScreen() {
+		return true;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return new DualValuesPlotWithOptionsExempleScreen();
-    }
+	@Override
+	public IsWidget getScreen() {
+		return new DualValuesPlotWithOptionsExempleScreen();
+	}
 
 }

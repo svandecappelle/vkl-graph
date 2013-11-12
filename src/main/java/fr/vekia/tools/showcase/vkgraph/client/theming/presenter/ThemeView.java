@@ -22,7 +22,7 @@ import net.customware.gwt.presenter.client.widget.WidgetDisplay;
  */
 public interface ThemeView extends WidgetDisplay {
 
-    HasChangeHandlers getChangeThemeHandler();
+	HasChangeHandlers getChangeThemeHandler();
 
-    String getValue();
+	String getValue();
 }

@@ -31,62 +31,75 @@ import fr.vekia.VkGraph.client.options.SubOption;
  *          {@inheritDoc}
  */
 public class DualValuesPlotExempleScreen extends SimplePanel {
-    private AbstractChart<List<DualValue>> first;
-    private DualValuesPlotWithOptionsExempleScreen other;
+	private AbstractChart<List<DualValue>> first;
+	private DualValuesPlotWithOptionsExempleScreen other;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public DualValuesPlotExempleScreen() {
-	first = new LineChart<List<DualValue>>();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public DualValuesPlotExempleScreen() {
+		first = new LineChart<List<DualValue>>();
 
-	ArrayList<DualValue> valuesLineOne = new ArrayList<DualValue>();
-	valuesLineOne.add(new DualValue(1, 2));
-	valuesLineOne.add(new DualValue(3, 5.12));
-	valuesLineOne.add(new DualValue(5, 13.1));
-	valuesLineOne.add(new DualValue(7, 33.6));
-	valuesLineOne.add(new DualValue(9, 85.9));
-	List<List<DualValue>> values = new ArrayList<List<DualValue>>();
-	values.add(valuesLineOne);
+		ArrayList<DualValue> valuesLineOne = new ArrayList<DualValue>();
+		valuesLineOne.add(new DualValue(1, 2));
+		valuesLineOne.add(new DualValue(3, 5.12));
+		valuesLineOne.add(new DualValue(5, 13.1));
+		valuesLineOne.add(new DualValue(7, 33.6));
+		valuesLineOne.add(new DualValue(9, 85.9));
+		List<List<DualValue>> values = new ArrayList<List<DualValue>>();
+		values.add(valuesLineOne);
 
-	 // Ticks x axis
-    final List<String> ticks = new ArrayList<String>();
-    ticks.add("1F");
-    ticks.add("2");
-    ticks.add("3");
-    ticks.add("4");
-    ticks.add("5");
-    ticks.add("6");
-    ticks.add("7");
-    ticks.add("8");
-    ticks.add("9L");
-    
+		// Ticks x axis
+		final List<String> ticks = new ArrayList<String>();
+		ticks.add("'1/2'");
+		ticks.add("'2/3'");
+		ticks.add("'3/3'");
+		ticks.add("'4/7'");
+		ticks.add("'5'");
+		ticks.add("'6'");
+		ticks.add("'7'");
+		ticks.add("'8'");
+		ticks.add("'9'");
 
-    first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, RenderersEnum.CategoryAxis.getValueRenderer());
+		first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer,
+				RenderersEnum.CategoryAxis.getValueRenderer());
 
-    first.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.tickInterval, 1);
-    first.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.min, 0f);
-    first.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.max, 5);
-    first.setOption(ChartOption.axes, SubOption.yaxis, SubOption.tickOptions, "{formatString:'%i piece'}");
+		first.setNumberOption(ChartOption.axes, SubOption.yaxis,
+				SubOption.tickInterval, 1);
+		first.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.min,
+				0f);
+		first.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.max,
+				5);
+		first.setOption(ChartOption.axes, SubOption.yaxis,
+				SubOption.tickOptions, "{formatString:'%i piece'}");
 
-    first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
-    first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickOptions, "fontSize: '11pt',showMark: false,showGridline: false}");
-    first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
-    first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.labelsOptions, "{fontSize: '11pt'}");
-    first.setTextOption(ChartOption.axes, SubOption.xaxis, SubOption.label, "Tailles");
-    first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.ticks, ticks);
-	
-	first.setDatas(values);
+		first.setOption(ChartOption.axes, SubOption.xaxis,
+				SubOption.tickRenderer,
+				RenderersEnum.CanvasAxisTick.getValueRenderer());
+		first.setOption(ChartOption.axes, SubOption.xaxis,
+				SubOption.tickOptions,
+				"fontSize: '11pt',showMark: false,showGridline: false}");
+		first.setOption(ChartOption.axes, SubOption.xaxis,
+				SubOption.labelRenderer,
+				RenderersEnum.CanvasAxisLabel.getValueRenderer());
+		first.setOption(ChartOption.axes, SubOption.xaxis,
+				SubOption.labelsOptions, "{fontSize: '11pt'}");
+		first.setTextOption(ChartOption.axes, SubOption.xaxis, SubOption.label,
+				"Tailles");
+		first.setOption(ChartOption.axes, SubOption.xaxis, SubOption.ticks,
+				ticks);
 
-	other = new DualValuesPlotWithOptionsExempleScreen();
-	other.asWidget();
+		first.setDatas(values);
 
-	VerticalPanel container = new VerticalPanel();
-	container.add(first);
-	container.add(other);
+		other = new DualValuesPlotWithOptionsExempleScreen();
+		other.asWidget();
 
-	setWidget(container);
-    }
+		VerticalPanel container = new VerticalPanel();
+		container.add(first);
+		container.add(other);
+
+		setWidget(container);
+	}
 
 }

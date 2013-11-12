@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.EventHandler;
  *          {@inheritDoc}
  */
 public interface SelectionOnMenuRequiredHandler extends EventHandler {
-    /**
-     * @param itemTabSelectionEvent
-     */
-    void onSelection(SelectionOnMenuRequiredEvent event);
+	/**
+	 * @param itemTabSelectionEvent
+	 */
+	void onSelection(SelectionOnMenuRequiredEvent event);
 
 }

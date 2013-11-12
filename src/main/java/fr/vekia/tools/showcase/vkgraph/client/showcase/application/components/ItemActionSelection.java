@@ -18,5 +18,5 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components;
  */
 public enum ItemActionSelection {
 
-    DELETE, DELETE_OTHERS, DELETE_ONRIGHT;
+	DELETE, DELETE_OTHERS, DELETE_ONRIGHT;
 }

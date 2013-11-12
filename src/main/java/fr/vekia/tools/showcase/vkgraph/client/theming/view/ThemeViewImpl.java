@@ -27,35 +27,34 @@ import fr.vekia.tools.showcase.vkgraph.client.theming.presenter.ThemeView;
  */
 public class ThemeViewImpl extends Composite implements ThemeView {
 
-    private ListBox b;
+	private ListBox b;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ThemeViewImpl() {
-	HorizontalPanel panel = new HorizontalPanel();
-	b = new ListBox();
-	b.addItem("Dark", Theme.DARK.name());
-	b.addItem("Clear", Theme.CLEAR.name());
-	b.addItem("Professionnal", Theme.PRO.name());
-	
-	
-	panel.add(new Label("Theme"));
-	panel.add(b);
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ThemeViewImpl() {
+		HorizontalPanel panel = new HorizontalPanel();
+		b = new ListBox();
+		b.addItem("Dark", Theme.DARK.name());
+		b.addItem("Clear", Theme.CLEAR.name());
+		b.addItem("Professionnal", Theme.PRO.name());
 
-	initWidget(panel);
-	panel.getElement().getStyle().setZIndex(1);
-    }
+		panel.add(new Label("Theme"));
+		panel.add(b);
 
-    @Override
-    public HasChangeHandlers getChangeThemeHandler() {
-	return b;
-    }
+		initWidget(panel);
+		panel.getElement().getStyle().setZIndex(1);
+	}
 
-    @Override
-    public String getValue() {
-	return b.getValue(b.getSelectedIndex());
-    }
+	@Override
+	public HasChangeHandlers getChangeThemeHandler() {
+		return b;
+	}
+
+	@Override
+	public String getValue() {
+		return b.getValue(b.getSelectedIndex());
+	}
 
 }

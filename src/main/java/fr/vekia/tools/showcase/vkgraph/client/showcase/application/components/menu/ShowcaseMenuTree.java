@@ -18,28 +18,28 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.m
  */
 public class ShowcaseMenuTree extends TreeMenu<AbstractShowcaseTreeMenuItem> {
 
-    private AbstractShowcaseTreeMenuItem item;
+	private AbstractShowcaseTreeMenuItem item;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ShowcaseMenuTree(AbstractShowcaseTreeMenuItem itemBean) {
-	super(itemBean);
-	super.getTreeWidget().setAnimationEnabled(true);
-	this.item = itemBean;
-	if (this.item.hasChildren()) {
-	    this.item.addStyleName("folder-tree");
-	} else if (this.item.hasScreen()) {
-	    this.item.addStyleName("chart-item");
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ShowcaseMenuTree(AbstractShowcaseTreeMenuItem itemBean) {
+		super(itemBean);
+		super.getTreeWidget().setAnimationEnabled(true);
+		this.item = itemBean;
+		if (this.item.hasChildren()) {
+			this.item.addStyleName("folder-tree");
+		} else if (this.item.hasScreen()) {
+			this.item.addStyleName("chart-item");
+		}
 	}
-    }
 
-    /**
-     * @return the item
-     */
-    public AbstractShowcaseTreeMenuItem getItem() {
-	return item;
-    }
+	/**
+	 * @return the item
+	 */
+	public AbstractShowcaseTreeMenuItem getItem() {
+		return item;
+	}
 
 }

@@ -21,28 +21,28 @@ import com.google.gwt.place.shared.PlaceTokenizer;
  */
 public class PresentationPlace extends Place {
 
-    private String token;
+	private String token;
 
-    /**
-     * Default constructor
-     * 
-     * @param token
-     * 
-     */
-    public PresentationPlace(String token) {
-	this.token = token;
-    }
-
-    public static class Tokenizer implements PlaceTokenizer<PresentationPlace> {
-	@Override
-	public String getToken(PresentationPlace place) {
-	    return "Presentation";
+	/**
+	 * Default constructor
+	 * 
+	 * @param token
+	 * 
+	 */
+	public PresentationPlace(String token) {
+		this.token = token;
 	}
 
-	@Override
-	public PresentationPlace getPlace(String token) {
-	    return new PresentationPlace(token);
+	public static class Tokenizer implements PlaceTokenizer<PresentationPlace> {
+		@Override
+		public String getToken(PresentationPlace place) {
+			return "Presentation";
+		}
+
+		@Override
+		public PresentationPlace getPlace(String token) {
+			return new PresentationPlace(token);
+		}
 	}
-    }
 
 }

@@ -20,9 +20,9 @@ import com.google.gwt.event.shared.EventHandler;
  */
 public interface ItemTabSelectionHandler extends EventHandler {
 
-    /**
-     * @param itemTabSelectionEvent
-     */
-    void onSelection(ItemTabSelectionEvent itemTabSelectionEvent);
+	/**
+	 * @param itemTabSelectionEvent
+	 */
+	void onSelection(ItemTabSelectionEvent itemTabSelectionEvent);
 
 }

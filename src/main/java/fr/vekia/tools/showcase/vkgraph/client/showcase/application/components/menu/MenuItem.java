@@ -22,23 +22,23 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class MenuItem extends Composite {
 
-    private SimplePanel layout;
+	private SimplePanel layout;
 
-    /**
-     * Default constructor
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public MenuItem() {
+		layout = new SimplePanel();
+		layout.setWidth("100%");
+		initWidget(layout);
+	}
+
+	/**
      * 
      */
-    public MenuItem() {
-	layout = new SimplePanel();
-	layout.setWidth("100%");
-	initWidget(layout);
-    }
-
-    /**
-     * 
-     */
-    public void set(Widget widget) {
-	layout.setWidget(widget);
-    }
+	public void set(Widget widget) {
+		layout.setWidget(widget);
+	}
 
 }

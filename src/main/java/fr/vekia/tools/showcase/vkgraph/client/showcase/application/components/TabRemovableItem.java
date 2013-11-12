@@ -34,81 +34,86 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.ev
  */
 public class TabRemovableItem implements IsWidget, HasItemTabSelectionHandlers {
 
-    private Label label;
-    private MenuTabRightClick menu;
+	private Label label;
+	private MenuTabRightClick menu;
 
-    private class MenuTabRightClick extends PopupPanel {
+	private class MenuTabRightClick extends PopupPanel {
 
-	private MenuBar bar;
+		private MenuBar bar;
+
+		/**
+		 * Default constructor
+		 * 
+		 */
+		public MenuTabRightClick() {
+			super(true, false);
+			bar = new MenuBar(true);
+			this.add(bar);
+			this.bar.addItem(new MenuItem("Remove", new Command() {
+
+				@Override
+				public void execute() {
+					label.fireEvent(new ItemTabSelectionEvent(
+							ItemActionSelection.DELETE));
+					hide();
+				}
+			}));
+			this.bar.addItem(new MenuItem("Remove other items", new Command() {
+
+				@Override
+				public void execute() {
+					label.fireEvent(new ItemTabSelectionEvent(
+							ItemActionSelection.DELETE_OTHERS));
+					hide();
+				}
+			}));
+			this.bar.addItem(new MenuItem("Remove items on the right",
+					new Command() {
+
+						@Override
+						public void execute() {
+							label.fireEvent(new ItemTabSelectionEvent(
+									ItemActionSelection.DELETE_ONRIGHT));
+							hide();
+						}
+					}));
+			this.setAnimationEnabled(true);
+		}
+	}
 
 	/**
 	 * Default constructor
 	 * 
+	 * @param indexTab
+	 * 
 	 */
-	public MenuTabRightClick() {
-	    super(true, false);
-	    bar = new MenuBar(true);
-	    this.add(bar);
-	    this.bar.addItem(new MenuItem("Remove", new Command() {
+	public TabRemovableItem(String itemText) {
+		label = new Label(itemText);
+		menu = new MenuTabRightClick();
+		label.addDomHandler(new ContextMenuHandler() {
 
-		@Override
-		public void execute() {
-		    label.fireEvent(new ItemTabSelectionEvent(ItemActionSelection.DELETE));
-		    hide();
-		}
-	    }));
-	    this.bar.addItem(new MenuItem("Remove other items", new Command() {
+			@Override
+			public void onContextMenu(ContextMenuEvent event) {
+				event.preventDefault();
 
-		@Override
-		public void execute() {
-		    label.fireEvent(new ItemTabSelectionEvent(ItemActionSelection.DELETE_OTHERS));
-		    hide();
-		}
-	    }));
-	    this.bar.addItem(new MenuItem("Remove items on the right", new Command() {
-
-		@Override
-		public void execute() {
-		    label.fireEvent(new ItemTabSelectionEvent(ItemActionSelection.DELETE_ONRIGHT));
-		    hide();
-		}
-	    }));
-	    this.setAnimationEnabled(true);
+				menu.showRelativeTo(label);
+			}
+		}, ContextMenuEvent.getType());
 	}
-    }
 
-    /**
-     * Default constructor
-     * 
-     * @param indexTab
-     * 
-     */
-    public TabRemovableItem(String itemText) {
-	label = new Label(itemText);
-	menu = new MenuTabRightClick();
-	label.addDomHandler(new ContextMenuHandler() {
+	@Override
+	public Widget asWidget() {
+		return label;
+	}
 
-	    @Override
-	    public void onContextMenu(ContextMenuEvent event) {
-		event.preventDefault();
+	@Override
+	public void fireEvent(GwtEvent<?> event) {
+		this.label.fireEvent(event);
+	}
 
-		menu.showRelativeTo(label);
-	    }
-	}, ContextMenuEvent.getType());
-    }
-
-    @Override
-    public Widget asWidget() {
-	return label;
-    }
-
-    @Override
-    public void fireEvent(GwtEvent<?> event) {
-	this.label.fireEvent(event);
-    }
-
-    @Override
-    public HandlerRegistration addSelectionHandler(ItemTabSelectionHandler handler) {
-	return label.addHandler(handler, ItemTabSelectionEvent.getType());
-    }
+	@Override
+	public HandlerRegistration addSelectionHandler(
+			ItemTabSelectionHandler handler) {
+		return label.addHandler(handler, ItemTabSelectionEvent.getType());
+	}
 }

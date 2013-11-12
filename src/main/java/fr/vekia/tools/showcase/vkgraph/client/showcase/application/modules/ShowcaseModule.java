@@ -32,18 +32,18 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.displays.Show
  */
 public class ShowcaseModule extends AbstractGinModule {
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see com.google.gwt.inject.client.AbstractGinModule#configure()
-     */
-    @Override
-    protected void configure() {
-	bind(ShowcasePresenter.Display.class).to(ShowcaseDisplay.class);
-	bind(ShowcaseMenuPresenter.Display.class).to(Menu.class);
-	bind(ShowcaseGlobalPanelPresenter.Display.class).to(GlobalPanel.class);
-	bind(ShowcaseConsoleCodePresenter.Display.class).to(ConsoleCode.class);
-	bind(EventBus.class).to(DefaultEventBus.class);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.google.gwt.inject.client.AbstractGinModule#configure()
+	 */
+	@Override
+	protected void configure() {
+		bind(ShowcasePresenter.Display.class).to(ShowcaseDisplay.class);
+		bind(ShowcaseMenuPresenter.Display.class).to(Menu.class);
+		bind(ShowcaseGlobalPanelPresenter.Display.class).to(GlobalPanel.class);
+		bind(ShowcaseConsoleCodePresenter.Display.class).to(ConsoleCode.class);
+		bind(EventBus.class).to(DefaultEventBus.class);
+	}
 
 }

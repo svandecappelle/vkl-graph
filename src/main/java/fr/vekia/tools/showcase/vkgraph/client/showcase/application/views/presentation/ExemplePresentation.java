@@ -32,93 +32,110 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.Slideshow;
 
 public class ExemplePresentation extends SimplePanel {
 
-    interface ImgRessource extends ClientBundle {
-	@ImageOptions(width = 1000, height = 650)
-	ImageResource screenshotOne();
+	interface ImgRessource extends ClientBundle {
+		@ImageOptions(width = 1000, height = 650)
+		ImageResource screenshotOne();
 
-	@ImageOptions(width = 1000, height = 650)
-	ImageResource screenshotTwo();
+		@ImageOptions(width = 1000, height = 650)
+		ImageResource screenshotTwo();
 
-	final static class Util {
-	    private static ImgRessource instance;
+		final static class Util {
+			private static ImgRessource instance;
 
-	    /**
-	     * Default constructor
-	     * 
-	     */
-	    private Util() {
-	    }
+			/**
+			 * Default constructor
+			 * 
+			 */
+			private Util() {
+			}
 
-	    static final ImgRessource getInstance() {
-		if (instance == null) {
-		    instance = GWT.create(ImgRessource.class);
+			static final ImgRessource getInstance() {
+				if (instance == null) {
+					instance = GWT.create(ImgRessource.class);
+				}
+				return instance;
+			}
 		}
-		return instance;
-	    }
 	}
-    }
 
-    public ExemplePresentation() {
+	public ExemplePresentation() {
 
-	CallbackEventController<ConsoleSlideshowCallBack, IsWidget> callBackEventController = new CallbackEventController<ConsoleSlideshowCallBack, IsWidget>() {
+		CallbackEventController<ConsoleSlideshowCallBack, IsWidget> callBackEventController = new CallbackEventController<ConsoleSlideshowCallBack, IsWidget>() {
 
-	    @Override
-	    public void onSuccess(List<IsWidget> result) {
-		final Slideshow slideshow = new Slideshow(Window.getClientWidth() / 2, Window.getClientHeight() / 2);
-		Image screenshotOne = new Image(ImgRessource.Util.getInstance().screenshotOne());
-		Image screenshotTwo = new Image(ImgRessource.Util.getInstance().screenshotTwo());
-		Window.addResizeHandler(new ResizeHandler() {
+			@Override
+			public void onSuccess(List<IsWidget> result) {
+				final Slideshow slideshow = new Slideshow(
+						Window.getClientWidth() / 2,
+						Window.getClientHeight() / 2);
+				Image screenshotOne = new Image(ImgRessource.Util.getInstance()
+						.screenshotOne());
+				Image screenshotTwo = new Image(ImgRessource.Util.getInstance()
+						.screenshotTwo());
+				Window.addResizeHandler(new ResizeHandler() {
 
-		    @Override
-		    public void onResize(ResizeEvent event) {
-			slideshow.setSize(Window.getClientWidth() / 2 + "px", Window.getClientHeight() / 2 + "px");
-			slideshow.setSizeContainerPx(Window.getClientWidth() / 2, Window.getClientHeight() / 2);
-			slideshow.redraw();
-		    }
-		});
-		slideshow.add(screenshotOne);
-		slideshow.add(screenshotTwo);
+					@Override
+					public void onResize(ResizeEvent event) {
+						slideshow.setSize(Window.getClientWidth() / 2 + "px",
+								Window.getClientHeight() / 2 + "px");
+						slideshow.setSizeContainerPx(
+								Window.getClientWidth() / 2,
+								Window.getClientHeight() / 2);
+						slideshow.redraw();
+					}
+				});
+				slideshow.add(screenshotOne);
+				slideshow.add(screenshotTwo);
 
-		for (IsWidget isWidget : result) {
-		    slideshow.add((Widget) isWidget);
+				for (IsWidget isWidget : result) {
+					slideshow.add((Widget) isWidget);
+				}
+
+				setWidget(slideshow);
+			}
+
+			@Override
+			public void onFailure(Throwable caught) {
+				GWT.log("not able to retreive code due to: ", caught);
+			}
+		};
+		final ConsoleSlideshowCallBack generalPlot = new ConsoleSlideshowCallBack(
+				callBackEventController);
+		final ConsoleSlideshowCallBack areaPlot = new ConsoleSlideshowCallBack(
+				callBackEventController);
+		final ConsoleSlideshowCallBack pyramidPlot = new ConsoleSlideshowCallBack(
+				callBackEventController);
+		callBackEventController
+				.addTraitment(new CodingGetShowcaseSlideshowCommand(
+						generalPlot, SimplePlotScreen.class));
+		callBackEventController
+				.addTraitment(new CodingGetShowcaseSlideshowCommand(areaPlot,
+						AreaChartInteractiveWidgetScreen.class));
+		callBackEventController
+				.addTraitment(new CodingGetShowcaseSlideshowCommand(
+						pyramidPlot, PyramidChartInteractiveWidget.class));
+
+		callBackEventController.execute();
+	}
+
+	static class CodingGetShowcaseSlideshowCommand implements Command {
+
+		private Class<?> classBinded;
+		private ConsoleSlideshowCallBack callBack;
+
+		/**
+		 * Default constructor
+		 * 
+		 */
+		public CodingGetShowcaseSlideshowCommand(
+				ConsoleSlideshowCallBack callBack, Class<?> classBinded) {
+			this.classBinded = classBinded;
+			this.callBack = callBack;
 		}
 
-		setWidget(slideshow);
-	    }
+		@Override
+		public void execute() {
+			CodeServiceUtil.getCode(this.classBinded.getName(), callBack);
+		}
 
-	    @Override
-	    public void onFailure(Throwable caught) {
-		GWT.log("not able to retreive code due to: ", caught);
-	    }
-	};
-	final ConsoleSlideshowCallBack generalPlot = new ConsoleSlideshowCallBack(callBackEventController);
-	final ConsoleSlideshowCallBack areaPlot = new ConsoleSlideshowCallBack(callBackEventController);
-	final ConsoleSlideshowCallBack pyramidPlot = new ConsoleSlideshowCallBack(callBackEventController);
-	callBackEventController.addTraitment(new CodingGetShowcaseSlideshowCommand(generalPlot, SimplePlotScreen.class));
-	callBackEventController.addTraitment(new CodingGetShowcaseSlideshowCommand(areaPlot, AreaChartInteractiveWidgetScreen.class));
-	callBackEventController.addTraitment(new CodingGetShowcaseSlideshowCommand(pyramidPlot, PyramidChartInteractiveWidget.class));
-
-	callBackEventController.execute();
-    }
-
-    static class CodingGetShowcaseSlideshowCommand implements Command {
-
-	private Class<?> classBinded;
-	private ConsoleSlideshowCallBack callBack;
-
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public CodingGetShowcaseSlideshowCommand(ConsoleSlideshowCallBack callBack, Class<?> classBinded) {
-	    this.classBinded = classBinded;
-	    this.callBack = callBack;
 	}
-
-	@Override
-	public void execute() {
-	    CodeServiceUtil.getCode(this.classBinded.getName(), callBack);
-	}
-
-    }
 }

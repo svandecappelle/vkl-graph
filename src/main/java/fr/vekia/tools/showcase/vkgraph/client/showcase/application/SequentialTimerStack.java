@@ -23,35 +23,35 @@ import com.google.gwt.user.client.Timer;
  */
 public class SequentialTimerStack extends Timer {
 
-    private LinkedList<SequentialTimer> timers;
+	private LinkedList<SequentialTimer> timers;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public SequentialTimerStack() {
-	timers = new LinkedList<SequentialTimer>();
-    }
-
-    /**
-     * @param timer
-     * @param durationBetweenNext
-     */
-    public void addToStack(SequentialTimer timer) {
-	timers.add(timer);
-    }
-
-    @Override
-    public void run() {
-	if (!timers.isEmpty()) {
-	    SequentialTimer timer = timers.poll();
-	    timer.start(new Command() {
-
-		@Override
-		public void execute() {
-		    SequentialTimerStack.this.run();
-		}
-	    });
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public SequentialTimerStack() {
+		timers = new LinkedList<SequentialTimer>();
 	}
-    }
+
+	/**
+	 * @param timer
+	 * @param durationBetweenNext
+	 */
+	public void addToStack(SequentialTimer timer) {
+		timers.add(timer);
+	}
+
+	@Override
+	public void run() {
+		if (!timers.isEmpty()) {
+			SequentialTimer timer = timers.poll();
+			timer.start(new Command() {
+
+				@Override
+				public void execute() {
+					SequentialTimerStack.this.run();
+				}
+			});
+		}
+	}
 }

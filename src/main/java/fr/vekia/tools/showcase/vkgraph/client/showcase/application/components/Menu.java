@@ -32,89 +32,93 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.me
  */
 public class Menu implements Display {
 
-    private StackLayoutPanel stackLayoutPanel;
-    private Map<String, ShowcaseMenuTree> menuTrees;
+	private StackLayoutPanel stackLayoutPanel;
+	private Map<String, ShowcaseMenuTree> menuTrees;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public Menu() {
-	stackLayoutPanel = new StackLayoutPanel(Unit.PX);
-	stackLayoutPanel.addStyleName("Showcase-Menu");
-	menuTrees = new HashMap<String, ShowcaseMenuTree>();
-	stackLayoutPanel.setHeight("100%");
-    }
-
-    @Override
-    public int addElementWithHeader(AbstractShowcaseTreeMenuItem items, SafeHtml header, int headerSize) {
-	ShowcaseMenuTree menuTree = new ShowcaseMenuTree(items);
-	stackLayoutPanel.add(menuTree, header, headerSize);
-	menuTrees.put(header.asString(), menuTree);
-	return stackLayoutPanel.getWidgetIndex(menuTree);
-    }
-
-    @Override
-    public Widget asWidget() {
-	return stackLayoutPanel;
-    }
-
-    @Override
-    public ShowcaseMenuTree getSelectionHandler(String headerText) {
-	return menuTrees.get(headerText);
-    }
-
-    @Override
-    public void showWidget(int index) {
-	stackLayoutPanel.showWidget(index);
-    }
-
-    @Override
-    public void selectTreeItem(String menuTitle, AbstractShowcaseTreeMenuItem item) {
-	ShowcaseMenuTree menuTree = menuTrees.get(menuTitle);
-	menuTree.getTreeWidget().setSelectedItem(item);
-    }
-
-    @Override
-    public void addHeaderStyleName(String style, Integer index) {
-	stackLayoutPanel.getHeaderWidget(index).addStyleName(style);
-    }
-
-    @Override
-    public void removeHeaderStyleName(String style, Integer index) {
-	stackLayoutPanel.getHeaderWidget(index).removeStyleName(style);
-    }
-
-    @Override
-    public void addItemStyleName(String menuTitle, String itemText, String style) {
-	getTreeItem(menuTitle, itemText).addStyleName(style);
-    }
-
-    @Override
-    public UIObject getHeaderWidget(int index) {
-	return stackLayoutPanel.getHeaderWidget(index);
-    }
-
-    @Override
-    public UIObject getTreeItem(String menuTitle, String itemText) {
-	ShowcaseMenuTree menuTree = menuTrees.get(menuTitle);
-	return getTreeItem(menuTree.getItem(), menuTitle, itemText);
-    }
-
-    private UIObject getTreeItem(TreeItem treeItem, String menuTitle, String itemText) {
-	for (int i = 0; i < treeItem.getChildCount(); i++) {
-	    TreeItem treeItemChild = treeItem.getChild(i);
-	    if (treeItemChild.getText().equals(itemText)) {
-		return treeItemChild;
-	    } else if (treeItemChild.getChildCount() > 0) {
-		return getTreeItem(treeItemChild, menuTitle, itemText);
-	    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Menu() {
+		stackLayoutPanel = new StackLayoutPanel(Unit.PX);
+		stackLayoutPanel.addStyleName("Showcase-Menu");
+		menuTrees = new HashMap<String, ShowcaseMenuTree>();
+		stackLayoutPanel.setHeight("100%");
 	}
-	return treeItem;
-    }
 
-    @Override
-    public void removeItemStyleName(String menuTitle, String itemText, String style) {
-	getTreeItem(menuTitle, itemText).removeStyleName(style);
-    }
+	@Override
+	public int addElementWithHeader(AbstractShowcaseTreeMenuItem items,
+			SafeHtml header, int headerSize) {
+		ShowcaseMenuTree menuTree = new ShowcaseMenuTree(items);
+		stackLayoutPanel.add(menuTree, header, headerSize);
+		menuTrees.put(header.asString(), menuTree);
+		return stackLayoutPanel.getWidgetIndex(menuTree);
+	}
+
+	@Override
+	public Widget asWidget() {
+		return stackLayoutPanel;
+	}
+
+	@Override
+	public ShowcaseMenuTree getSelectionHandler(String headerText) {
+		return menuTrees.get(headerText);
+	}
+
+	@Override
+	public void showWidget(int index) {
+		stackLayoutPanel.showWidget(index);
+	}
+
+	@Override
+	public void selectTreeItem(String menuTitle,
+			AbstractShowcaseTreeMenuItem item) {
+		ShowcaseMenuTree menuTree = menuTrees.get(menuTitle);
+		menuTree.getTreeWidget().setSelectedItem(item);
+	}
+
+	@Override
+	public void addHeaderStyleName(String style, Integer index) {
+		stackLayoutPanel.getHeaderWidget(index).addStyleName(style);
+	}
+
+	@Override
+	public void removeHeaderStyleName(String style, Integer index) {
+		stackLayoutPanel.getHeaderWidget(index).removeStyleName(style);
+	}
+
+	@Override
+	public void addItemStyleName(String menuTitle, String itemText, String style) {
+		getTreeItem(menuTitle, itemText).addStyleName(style);
+	}
+
+	@Override
+	public UIObject getHeaderWidget(int index) {
+		return stackLayoutPanel.getHeaderWidget(index);
+	}
+
+	@Override
+	public UIObject getTreeItem(String menuTitle, String itemText) {
+		ShowcaseMenuTree menuTree = menuTrees.get(menuTitle);
+		return getTreeItem(menuTree.getItem(), menuTitle, itemText);
+	}
+
+	private UIObject getTreeItem(TreeItem treeItem, String menuTitle,
+			String itemText) {
+		for (int i = 0; i < treeItem.getChildCount(); i++) {
+			TreeItem treeItemChild = treeItem.getChild(i);
+			if (treeItemChild.getText().equals(itemText)) {
+				return treeItemChild;
+			} else if (treeItemChild.getChildCount() > 0) {
+				return getTreeItem(treeItemChild, menuTitle, itemText);
+			}
+		}
+		return treeItem;
+	}
+
+	@Override
+	public void removeItemStyleName(String menuTitle, String itemText,
+			String style) {
+		getTreeItem(menuTitle, itemText).removeStyleName(style);
+	}
 }

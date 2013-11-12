@@ -25,33 +25,33 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.
  */
 public class LineChartInteractiveItem extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     * @param string
-     */
-    public LineChartInteractiveItem(String text) {
-	super(text);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param string
+	 */
+	public LineChartInteractiveItem(String text) {
+		super(text);
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return false;
-    }
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	return null;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		return null;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return true;
-    }
+	@Override
+	public boolean hasScreen() {
+		return true;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return new LineInteractiveWidgetScreen();
-    }
+	@Override
+	public IsWidget getScreen() {
+		return new LineInteractiveWidgetScreen();
+	}
 
 }

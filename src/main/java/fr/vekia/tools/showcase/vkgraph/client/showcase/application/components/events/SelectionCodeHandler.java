@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.EventHandler;
  *          {@inheritDoc}
  */
 public interface SelectionCodeHandler extends EventHandler {
-    /**
-     * @param itemTabSelectionEvent
-     */
-    void onSelection(SelectionCodeEvent event);
+	/**
+	 * @param itemTabSelectionEvent
+	 */
+	void onSelection(SelectionCodeEvent event);
 
 }

@@ -18,32 +18,33 @@ import com.google.gwt.event.shared.GwtEvent;
  * 
  *          {@inheritDoc}
  */
-public class StartAutomatedDemoEvent extends GwtEvent<StartAutomatedDemoHandler> {
+public class StartAutomatedDemoEvent extends
+		GwtEvent<StartAutomatedDemoHandler> {
 
-    /**
-     * Default constructor
-     * 
-     * @param selectedItem
-     */
-    public StartAutomatedDemoEvent() {
-    }
-
-    private static Type<StartAutomatedDemoHandler> type;
-
-    public static Type<StartAutomatedDemoHandler> getType() {
-	if (type == null) {
-	    type = new Type<StartAutomatedDemoHandler>();
+	/**
+	 * Default constructor
+	 * 
+	 * @param selectedItem
+	 */
+	public StartAutomatedDemoEvent() {
 	}
-	return type;
-    }
 
-    @Override
-    protected void dispatch(StartAutomatedDemoHandler handler) {
-	handler.onStart(this);
-    }
+	private static Type<StartAutomatedDemoHandler> type;
 
-    @Override
-    public GwtEvent.Type<StartAutomatedDemoHandler> getAssociatedType() {
-	return getType();
-    }
+	public static Type<StartAutomatedDemoHandler> getType() {
+		if (type == null) {
+			type = new Type<StartAutomatedDemoHandler>();
+		}
+		return type;
+	}
+
+	@Override
+	protected void dispatch(StartAutomatedDemoHandler handler) {
+		handler.onStart(this);
+	}
+
+	@Override
+	public GwtEvent.Type<StartAutomatedDemoHandler> getAssociatedType() {
+		return getType();
+	}
 }

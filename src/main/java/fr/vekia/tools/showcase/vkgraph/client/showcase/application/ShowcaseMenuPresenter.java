@@ -47,240 +47,282 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.Show
 @Singleton
 public class ShowcaseMenuPresenter extends WidgetPresenter<WidgetDisplay> {
 
-    public interface Display extends WidgetDisplay {
+	public interface Display extends WidgetDisplay {
 
-	/**
-	 * @param widget
-	 * @param header
-	 * @param headerSize
-	 */
-	int addElementWithHeader(AbstractShowcaseTreeMenuItem widget, SafeHtml header, int headerSize);
+		/**
+		 * @param widget
+		 * @param header
+		 * @param headerSize
+		 */
+		int addElementWithHeader(AbstractShowcaseTreeMenuItem widget,
+				SafeHtml header, int headerSize);
 
-	/**
-	 * @param headerText
-	 * @return
-	 */
-	ShowcaseMenuTree getSelectionHandler(String headerText);
+		/**
+		 * @param headerText
+		 * @return
+		 */
+		ShowcaseMenuTree getSelectionHandler(String headerText);
 
-	void showWidget(int index);
+		void showWidget(int index);
 
-	void selectTreeItem(String menuTitle, AbstractShowcaseTreeMenuItem item);
+		void selectTreeItem(String menuTitle, AbstractShowcaseTreeMenuItem item);
 
-	/**
-	 * @param string
-	 * @param integer
-	 */
-	void addHeaderStyleName(String string, Integer integer);
+		/**
+		 * @param string
+		 * @param integer
+		 */
+		void addHeaderStyleName(String string, Integer integer);
 
-	/**
-	 * @param string
-	 * @param integer
-	 */
-	void removeHeaderStyleName(String string, Integer integer);
+		/**
+		 * @param string
+		 * @param integer
+		 */
+		void removeHeaderStyleName(String string, Integer integer);
 
-	/**
-	 * @param menuTitle
-	 * @param itemText
-	 * @param style
-	 */
-	void addItemStyleName(String menuTitle, String itemText, String style);
+		/**
+		 * @param menuTitle
+		 * @param itemText
+		 * @param style
+		 */
+		void addItemStyleName(String menuTitle, String itemText, String style);
 
-	UIObject getHeaderWidget(int index);
+		UIObject getHeaderWidget(int index);
 
-	UIObject getTreeItem(String menuTitle, String itemText);
+		UIObject getTreeItem(String menuTitle, String itemText);
 
-	/**
-	 * @param menuToShow
-	 * @param plotToShow
-	 * @param string
-	 */
-	void removeItemStyleName(String menuToShow, String plotToShow, String string);
+		/**
+		 * @param menuToShow
+		 * @param plotToShow
+		 * @param string
+		 */
+		void removeItemStyleName(String menuToShow, String plotToShow,
+				String string);
 
-    }
-
-    private Map<String, Integer> categories;
-    private Map<String, AbstractShowcaseTreeMenuItem> plotsScreens;
-
-    /**
-     * @return the categories
-     */
-    public Map<String, Integer> getCategories() {
-	return categories;
-    }
-
-    /**
-     * @return the plotsScreens
-     */
-    public Map<String, AbstractShowcaseTreeMenuItem> getPlotsScreens() {
-	return plotsScreens;
-    }
-
-    /**
-     * Default constructor
-     * 
-     * @param display
-     * @param eventBus
-     */
-    @Inject
-    public ShowcaseMenuPresenter(Display display, EventBus eventBus) {
-	super(display, eventBus);
-
-	categories = new HashMap<String, Integer>();
-	plotsScreens = new HashMap<String, AbstractShowcaseTreeMenuItem>();
-
-	AbstractShowcaseTreeMenuItem plots = new GeneralPlotTree();
-	
-	int headerSize = ThemeFactory.getHeaderSizes();
-	
-	categories.put("Plots", display.addElementWithHeader(plots, SafeHtmlUtils.fromString("Plots"), headerSize));
-	display.getSelectionHandler("Plots").addSelectionHandler(new SelectionHandler<TreeItem>() {
-
-	    @Override
-	    public void onSelection(SelectionEvent<TreeItem> event) {
-		AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event.getSelectedItem();
-		if (item.hasScreen()) {
-		    ShowcaseMenuPresenter.this.eventBus.fireEvent(event);
-		}
-	    }
-	});
-
-	AbstractShowcaseTreeMenuItem pieCharts = new PieTree();
-	categories.put("PieChart", display.addElementWithHeader(pieCharts, SafeHtmlUtils.fromString("PieChart"), headerSize));
-	display.getSelectionHandler("PieChart").addSelectionHandler(new SelectionHandler<TreeItem>() {
-
-	    @Override
-	    public void onSelection(SelectionEvent<TreeItem> event) {
-		AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event.getSelectedItem();
-		if (item.hasScreen()) {
-		    ShowcaseMenuPresenter.this.eventBus.fireEvent(event);
-		}
-	    }
-	});
-
-	AbstractShowcaseTreeMenuItem interactiveCharts = new InteractiveChart();
-	categories.put("Interactive Charts", display.addElementWithHeader(interactiveCharts, SafeHtmlUtils.fromString("Interactive Charts"), headerSize));
-	display.getSelectionHandler("Interactive Charts").addSelectionHandler(new SelectionHandler<TreeItem>() {
-
-	    @Override
-	    public void onSelection(SelectionEvent<TreeItem> event) {
-		AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event.getSelectedItem();
-		if (item.hasScreen()) {
-		    ShowcaseMenuPresenter.this.eventBus.fireEvent(event);
-		}
-	    }
-	});
-
-	AbstractShowcaseTreeMenuItem complexCharts = new ComplexeTree();
-	categories.put("Complex Charts", display.addElementWithHeader(complexCharts, SafeHtmlUtils.fromString("Complex Charts"), headerSize));
-	display.getSelectionHandler("Complex Charts").addSelectionHandler(new SelectionHandler<TreeItem>() {
-
-	    @Override
-	    public void onSelection(SelectionEvent<TreeItem> event) {
-		AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event.getSelectedItem();
-		if (item.hasScreen()) {
-		    ShowcaseMenuPresenter.this.eventBus.fireEvent(event);
-		}
-	    }
-	});
-	putChildrens(plots);
-	putChildrens(pieCharts);
-	putChildrens(interactiveCharts);
-	putChildrens(complexCharts);
-    }
-
-    /**
-     * @param plots
-     */
-    private void putChildrens(AbstractShowcaseTreeMenuItem plotItem) {
-	for (AbstractShowcaseTreeMenuItem treeItem : plotItem.getChildrenItems()) {
-	    plotsScreens.put(treeItem.getText(), treeItem);
-	    if (treeItem.hasChildren()) {
-		putChildrens(treeItem);
-	    }
 	}
-    }
 
-    @Override
-    protected void onBind() {
-	eventBus.addHandler(SelectionOnMenuRequiredEvent.getType(), new SelectionOnMenuRequiredHandler() {
+	private Map<String, Integer> categories;
+	private Map<String, AbstractShowcaseTreeMenuItem> plotsScreens;
 
-	    @Override
-	    public void onSelection(SelectionOnMenuRequiredEvent event) {
-		Window.alert("menu view");
-		selectCategoryAnimation(event);
-	    }
-	});
-    }
+	/**
+	 * @return the categories
+	 */
+	public Map<String, Integer> getCategories() {
+		return categories;
+	}
 
-    private void selectCategoryAnimation(final SelectionOnMenuRequiredEvent event) {
-	Timer mouseCategorySelection = new Timer() {
+	/**
+	 * @return the plotsScreens
+	 */
+	public Map<String, AbstractShowcaseTreeMenuItem> getPlotsScreens() {
+		return plotsScreens;
+	}
 
-	    @Override
-	    public void run() {
-		((Display) display).showWidget(categories.get(event.getMenuToShow()));
-		((Display) display).addHeaderStyleName("AutomatedDemo-Focus", categories.get(event.getMenuToShow()));
-		if (event.getPlotToShow() != null) {
-		    selectOnTreeAnimation(event);
+	/**
+	 * Default constructor
+	 * 
+	 * @param display
+	 * @param eventBus
+	 */
+	@Inject
+	public ShowcaseMenuPresenter(Display display, EventBus eventBus) {
+		super(display, eventBus);
+
+		categories = new HashMap<String, Integer>();
+		plotsScreens = new HashMap<String, AbstractShowcaseTreeMenuItem>();
+
+		AbstractShowcaseTreeMenuItem plots = new GeneralPlotTree();
+
+		int headerSize = ThemeFactory.getHeaderSizes();
+
+		categories.put(
+				"Plots",
+				display.addElementWithHeader(plots,
+						SafeHtmlUtils.fromString("Plots"), headerSize));
+		display.getSelectionHandler("Plots").addSelectionHandler(
+				new SelectionHandler<TreeItem>() {
+
+					@Override
+					public void onSelection(SelectionEvent<TreeItem> event) {
+						AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event
+								.getSelectedItem();
+						if (item.hasScreen()) {
+							ShowcaseMenuPresenter.this.eventBus
+									.fireEvent(event);
+						}
+					}
+				});
+
+		AbstractShowcaseTreeMenuItem pieCharts = new PieTree();
+		categories.put(
+				"PieChart",
+				display.addElementWithHeader(pieCharts,
+						SafeHtmlUtils.fromString("PieChart"), headerSize));
+		display.getSelectionHandler("PieChart").addSelectionHandler(
+				new SelectionHandler<TreeItem>() {
+
+					@Override
+					public void onSelection(SelectionEvent<TreeItem> event) {
+						AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event
+								.getSelectedItem();
+						if (item.hasScreen()) {
+							ShowcaseMenuPresenter.this.eventBus
+									.fireEvent(event);
+						}
+					}
+				});
+
+		AbstractShowcaseTreeMenuItem interactiveCharts = new InteractiveChart();
+		categories.put("Interactive Charts", display.addElementWithHeader(
+				interactiveCharts,
+				SafeHtmlUtils.fromString("Interactive Charts"), headerSize));
+		display.getSelectionHandler("Interactive Charts").addSelectionHandler(
+				new SelectionHandler<TreeItem>() {
+
+					@Override
+					public void onSelection(SelectionEvent<TreeItem> event) {
+						AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event
+								.getSelectedItem();
+						if (item.hasScreen()) {
+							ShowcaseMenuPresenter.this.eventBus
+									.fireEvent(event);
+						}
+					}
+				});
+
+		AbstractShowcaseTreeMenuItem complexCharts = new ComplexeTree();
+		categories
+				.put("Complex Charts", display.addElementWithHeader(
+						complexCharts,
+						SafeHtmlUtils.fromString("Complex Charts"), headerSize));
+		display.getSelectionHandler("Complex Charts").addSelectionHandler(
+				new SelectionHandler<TreeItem>() {
+
+					@Override
+					public void onSelection(SelectionEvent<TreeItem> event) {
+						AbstractShowcaseTreeMenuItem item = (AbstractShowcaseTreeMenuItem) event
+								.getSelectedItem();
+						if (item.hasScreen()) {
+							ShowcaseMenuPresenter.this.eventBus
+									.fireEvent(event);
+						}
+					}
+				});
+		putChildrens(plots);
+		putChildrens(pieCharts);
+		putChildrens(interactiveCharts);
+		putChildrens(complexCharts);
+	}
+
+	/**
+	 * @param plots
+	 */
+	private void putChildrens(AbstractShowcaseTreeMenuItem plotItem) {
+		for (AbstractShowcaseTreeMenuItem treeItem : plotItem
+				.getChildrenItems()) {
+			plotsScreens.put(treeItem.getText(), treeItem);
+			if (treeItem.hasChildren()) {
+				putChildrens(treeItem);
+			}
 		}
-	    }
-	};
-	UIObject headerWidget = ((Display) display).getHeaderWidget(categories.get(event.getMenuToShow()));
-	MouseDemoWidget mouse = MouseDemoWidget.getInstance();
-	mouse.scrollTo(headerWidget, 1000);
-	mouseCategorySelection.schedule(1300);
-    }
+	}
 
-    public void selectCategory(String categName) {
-	((Display) display).showWidget(categories.get(categName));
-	((Display) display).addHeaderStyleName("AutomatedDemo-Focus", categories.get(categName));
+	@Override
+	protected void onBind() {
+		eventBus.addHandler(SelectionOnMenuRequiredEvent.getType(),
+				new SelectionOnMenuRequiredHandler() {
 
-    }
+					@Override
+					public void onSelection(SelectionOnMenuRequiredEvent event) {
+						Window.alert("menu view");
+						selectCategoryAnimation(event);
+					}
+				});
+	}
 
-    public void selectItemOnShowingCategory(String itemName) {
-	((Display) display).selectTreeItem(itemName, plotsScreens.get(itemName));
-	ShowcaseInjector.Util.getInstance().getConsoleCodePresenter().showConsole();
-	// ((Display) display).addItemStyleName(event.getMenuToShow(), itemName, "AutomatedDemo-Focus");
-    }
+	private void selectCategoryAnimation(
+			final SelectionOnMenuRequiredEvent event) {
+		Timer mouseCategorySelection = new Timer() {
 
-    private void selectOnTreeAnimation(final SelectionOnMenuRequiredEvent event) {
-	final MouseDemoWidget mouse = MouseDemoWidget.getInstance();
-	final Timer hideSelectionTree = new Timer() {
+			@Override
+			public void run() {
+				((Display) display).showWidget(categories.get(event
+						.getMenuToShow()));
+				((Display) display).addHeaderStyleName("AutomatedDemo-Focus",
+						categories.get(event.getMenuToShow()));
+				if (event.getPlotToShow() != null) {
+					selectOnTreeAnimation(event);
+				}
+			}
+		};
+		UIObject headerWidget = ((Display) display).getHeaderWidget(categories
+				.get(event.getMenuToShow()));
+		MouseDemoWidget mouse = MouseDemoWidget.getInstance();
+		mouse.scrollTo(headerWidget, 1000);
+		mouseCategorySelection.schedule(1300);
+	}
 
-	    @Override
-	    public void run() {
-		((Display) display).removeItemStyleName(event.getMenuToShow(), event.getPlotToShow(), "AutomatedDemo-Focus");
-	    }
-	};
+	public void selectCategory(String categName) {
+		((Display) display).showWidget(categories.get(categName));
+		((Display) display).addHeaderStyleName("AutomatedDemo-Focus",
+				categories.get(categName));
 
-	final Timer selectionTree = new Timer() {
+	}
 
-	    @Override
-	    public void run() {
-		((Display) display).selectTreeItem(event.getMenuToShow(), plotsScreens.get(event.getPlotToShow()));
-		ShowcaseInjector.Util.getInstance().getConsoleCodePresenter().showConsole();
-		((Display) display).removeHeaderStyleName("AutomatedDemo-Focus", categories.get(event.getMenuToShow()));
-		((Display) display).addItemStyleName(event.getMenuToShow(), event.getPlotToShow(), "AutomatedDemo-Focus");
-		hideSelectionTree.schedule(3500);
-	    }
-	};
+	public void selectItemOnShowingCategory(String itemName) {
+		((Display) display)
+				.selectTreeItem(itemName, plotsScreens.get(itemName));
+		ShowcaseInjector.Util.getInstance().getConsoleCodePresenter()
+				.showConsole();
+		// ((Display) display).addItemStyleName(event.getMenuToShow(), itemName,
+		// "AutomatedDemo-Focus");
+	}
 
-	Timer selectiontreeMouse = new Timer() {
+	private void selectOnTreeAnimation(final SelectionOnMenuRequiredEvent event) {
+		final MouseDemoWidget mouse = MouseDemoWidget.getInstance();
+		final Timer hideSelectionTree = new Timer() {
 
-	    @Override
-	    public void run() {
-		UIObject treeItem = ((Display) display).getTreeItem(event.getMenuToShow(), event.getPlotToShow());
-		mouse.scrollTo(treeItem, 1000);
-		selectionTree.schedule(1300);
-	    }
-	};
-	selectiontreeMouse.schedule(500);
-    }
+			@Override
+			public void run() {
+				((Display) display).removeItemStyleName(event.getMenuToShow(),
+						event.getPlotToShow(), "AutomatedDemo-Focus");
+			}
+		};
 
-    @Override
-    protected void onUnbind() {
-    }
+		final Timer selectionTree = new Timer() {
 
-    @Override
-    protected void onRevealDisplay() {
-    }
+			@Override
+			public void run() {
+				((Display) display).selectTreeItem(event.getMenuToShow(),
+						plotsScreens.get(event.getPlotToShow()));
+				ShowcaseInjector.Util.getInstance().getConsoleCodePresenter()
+						.showConsole();
+				((Display) display).removeHeaderStyleName(
+						"AutomatedDemo-Focus",
+						categories.get(event.getMenuToShow()));
+				((Display) display).addItemStyleName(event.getMenuToShow(),
+						event.getPlotToShow(), "AutomatedDemo-Focus");
+				hideSelectionTree.schedule(3500);
+			}
+		};
+
+		Timer selectiontreeMouse = new Timer() {
+
+			@Override
+			public void run() {
+				UIObject treeItem = ((Display) display).getTreeItem(
+						event.getMenuToShow(), event.getPlotToShow());
+				mouse.scrollTo(treeItem, 1000);
+				selectionTree.schedule(1300);
+			}
+		};
+		selectiontreeMouse.schedule(500);
+	}
+
+	@Override
+	protected void onUnbind() {
+	}
+
+	@Override
+	protected void onRevealDisplay() {
+	}
 }

@@ -21,34 +21,38 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.An
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.JqueryAnimation;
 
 public class Presentation extends SimplePanel {
-    private Button startDemoButton;
+	private Button startDemoButton;
 
-    public Presentation() {
-	VerticalPanel introduction = new VerticalPanel();
-	introduction.setWidth("100%");
-	startDemoButton = new Button("Start automated presentation...");
-	startDemoButton.getElement().setId("StartDemo-Button");
-	introduction.getElement().getStyle().setPaddingRight(30, Unit.PX);
-	startDemoButton.setWidth("100%");
-	introduction.add(startDemoButton);
-	introduction.add(new HTML("<h1>Introduction</h1>"));
-	introduction.add(new HTML("<h2>Requirements</h2>"));
-	introduction.add(new HTML("<dd>- A Google Web Toolkit project."));
-	introduction.add(new HTML("<h2>Presentation</h2>"));
-	introduction.add(new HTML("<dd>vklgraph is a GWT-based framework that integrate the JqPlot? JavaScript? Chart UI library."));
-	Anchor googleCodeAhref = new Anchor("The google code project here", "http://code.google.com/p/vklgraph/");
-	googleCodeAhref.setTarget("_new");
-	introduction.add(googleCodeAhref);
-	setWidget(introduction);
-    }
+	public Presentation() {
+		VerticalPanel introduction = new VerticalPanel();
+		introduction.setWidth("100%");
+		startDemoButton = new Button("Start automated presentation...");
+		startDemoButton.getElement().setId("StartDemo-Button");
+		introduction.getElement().getStyle().setPaddingRight(30, Unit.PX);
+		startDemoButton.setWidth("100%");
+		introduction.add(startDemoButton);
+		introduction.add(new HTML("<h1>Introduction</h1>"));
+		introduction.add(new HTML("<h2>Requirements</h2>"));
+		introduction.add(new HTML("<dd>- A Google Web Toolkit project."));
+		introduction.add(new HTML("<h2>Presentation</h2>"));
+		introduction
+				.add(new HTML(
+						"<dd>vklgraph is a GWT-based framework that integrate the JqPlot? JavaScript? Chart UI library."));
+		Anchor googleCodeAhref = new Anchor("The google code project here",
+				"http://code.google.com/p/vklgraph/");
+		googleCodeAhref.setTarget("_new");
+		introduction.add(googleCodeAhref);
+		setWidget(introduction);
+	}
 
-    public HasClickHandlers getStartAutomatedDemoHandler() {
-	return startDemoButton;
-    }
+	public HasClickHandlers getStartAutomatedDemoHandler() {
+		return startDemoButton;
+	}
 
-    @Override
-    protected void onAttach() {
-	super.onAttach();
-	JqueryAnimation.animate(AnimationEnum.PULSATE, startDemoButton.getElement(), 150, 2000);
-    }
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		JqueryAnimation.animate(AnimationEnum.PULSATE,
+				startDemoButton.getElement(), 150, 2000);
+	}
 }

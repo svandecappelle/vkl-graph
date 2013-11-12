@@ -22,50 +22,57 @@ import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class Releases extends SimplePanel {
 
-    private static final List<String> RELEASELABEL;
+	private static final List<String> RELEASELABEL;
 
-    static {
-	RELEASELABEL = new ArrayList<String>();
-	RELEASELABEL.add("Aug 16th 2012: First stable version of VklGraph on google code. New version of Showcase. See changeslogs.");
-	RELEASELABEL.add("Jul 26th 2012: Adding refresh fonction. (With replot)");
-	RELEASELABEL.add("Jun 28th 2012: First project initialisation.");
-    }
-
-    public Releases() {
-
-	VerticalPanel releasesContainer = new VerticalPanel();
-	HTML releaseTitle = new HTML("<h1>Releases: </h1>");
-
-	VerticalPanel releases = new VerticalPanel();
-
-	releasesContainer.add(releaseTitle);
-
-	int i = 0;
-	for (String labelTxt : RELEASELABEL) {
-	    Label latest = new Label(labelTxt);
-	    if (i == 0) {
-		latest.getElement().getStyle().setFontWeight(FontWeight.BOLD);
-		latest.getElement().getStyle().setBackgroundColor("rgba(255, 0, 0,0.4)");
-	    } else if (i % 2 == 0) {
-		latest.getElement().getStyle().setBackgroundColor("rgba(80, 80, 80,0.4)");
-	    } else {
-		latest.getElement().getStyle().setBackgroundColor("rgba(150, 150, 150,0.4)");
-	    }
-	    releases.add(latest);
-	    i += 1;
+	static {
+		RELEASELABEL = new ArrayList<String>();
+		RELEASELABEL
+				.add("Aug 16th 2012: First stable version of VklGraph on google code. New version of Showcase. See changeslogs.");
+		RELEASELABEL
+				.add("Jul 26th 2012: Adding refresh fonction. (With replot)");
+		RELEASELABEL.add("Jun 28th 2012: First project initialisation.");
 	}
 
-	releases.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+	public Releases() {
 
-	releasesContainer.setCellHeight(releaseTitle, "10px");
+		VerticalPanel releasesContainer = new VerticalPanel();
+		HTML releaseTitle = new HTML("<h1>Releases: </h1>");
 
-	releasesContainer.add(releases);
-	releasesContainer.getElement().getStyle().setBackgroundColor("rgba(78, 135, 194, 0.2)");
-	releasesContainer.getElement().getStyle().setPropertyPx("borderRadius", 15);
-	releasesContainer.getElement().getStyle().setMarginRight(5, Unit.PX);
-	releasesContainer.setHeight("100%");
+		VerticalPanel releases = new VerticalPanel();
 
-	setWidget(releasesContainer);
+		releasesContainer.add(releaseTitle);
 
-    }
+		int i = 0;
+		for (String labelTxt : RELEASELABEL) {
+			Label latest = new Label(labelTxt);
+			if (i == 0) {
+				latest.getElement().getStyle().setFontWeight(FontWeight.BOLD);
+				latest.getElement().getStyle()
+						.setBackgroundColor("rgba(255, 0, 0,0.4)");
+			} else if (i % 2 == 0) {
+				latest.getElement().getStyle()
+						.setBackgroundColor("rgba(80, 80, 80,0.4)");
+			} else {
+				latest.getElement().getStyle()
+						.setBackgroundColor("rgba(150, 150, 150,0.4)");
+			}
+			releases.add(latest);
+			i += 1;
+		}
+
+		releases.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
+
+		releasesContainer.setCellHeight(releaseTitle, "10px");
+
+		releasesContainer.add(releases);
+		releasesContainer.getElement().getStyle()
+				.setBackgroundColor("rgba(78, 135, 194, 0.2)");
+		releasesContainer.getElement().getStyle()
+				.setPropertyPx("borderRadius", 15);
+		releasesContainer.getElement().getStyle().setMarginRight(5, Unit.PX);
+		releasesContainer.setHeight("100%");
+
+		setWidget(releasesContainer);
+
+	}
 }

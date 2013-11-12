@@ -23,33 +23,33 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcasePrese
  *          {@inheritDoc}
  */
 public class ShowcaseDisplay implements Display {
-    private SplitLayoutPanel layout;
+	private SplitLayoutPanel layout;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ShowcaseDisplay() {
-	layout = new SplitLayoutPanel();
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ShowcaseDisplay() {
+		layout = new SplitLayoutPanel();
+	}
 
-    @Override
-    public void addWest(IsWidget widget, int size) {
-	layout.addWest(widget, size);
-    }
+	@Override
+	public void addWest(IsWidget widget, int size) {
+		layout.addWest(widget, size);
+	}
 
-    @Override
-    public void addNorth(IsWidget widget, int size) {
-	layout.addNorth(widget, size);
-    }
+	@Override
+	public void addNorth(IsWidget widget, int size) {
+		layout.addNorth(widget, size);
+	}
 
-    @Override
-    public void addCenter(IsWidget widget) {
-	layout.add(widget);
-    }
+	@Override
+	public void addCenter(IsWidget widget) {
+		layout.add(widget);
+	}
 
-    @Override
-    public Widget asWidget() {
-	return layout;
-    }
+	@Override
+	public Widget asWidget() {
+		return layout;
+	}
 }

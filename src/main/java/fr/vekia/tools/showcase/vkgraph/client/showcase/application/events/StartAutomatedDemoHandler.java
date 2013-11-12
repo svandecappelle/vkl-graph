@@ -19,9 +19,9 @@ import com.google.gwt.event.shared.EventHandler;
  *          {@inheritDoc}
  */
 public interface StartAutomatedDemoHandler extends EventHandler {
-    /**
-     * @param itemTabSelectionEvent
-     */
-    void onStart(StartAutomatedDemoEvent event);
+	/**
+	 * @param itemTabSelectionEvent
+	 */
+	void onStart(StartAutomatedDemoEvent event);
 
 }

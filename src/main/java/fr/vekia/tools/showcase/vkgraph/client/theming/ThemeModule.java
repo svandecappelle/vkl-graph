@@ -26,10 +26,10 @@ import fr.vekia.tools.showcase.vkgraph.client.theming.view.ThemeViewImpl;
  */
 public class ThemeModule extends AbstractGinModule {
 
-    @Override
-    protected void configure() {
-	bind(ThemeView.class).to(ThemeViewImpl.class);
-	bind(EventBus.class).to(DefaultEventBus.class);
-    }
+	@Override
+	protected void configure() {
+		bind(ThemeView.class).to(ThemeViewImpl.class);
+		bind(EventBus.class).to(DefaultEventBus.class);
+	}
 
 }

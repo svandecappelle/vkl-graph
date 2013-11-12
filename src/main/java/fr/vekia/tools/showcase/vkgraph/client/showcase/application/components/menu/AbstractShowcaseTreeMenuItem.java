@@ -23,30 +23,30 @@ import com.google.gwt.user.client.ui.TreeItem;
  */
 public abstract class AbstractShowcaseTreeMenuItem extends TreeItem {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public AbstractShowcaseTreeMenuItem(String text) {
-	if (hasChildren()) {
-	    for (AbstractShowcaseTreeMenuItem child : getChildrenItems()) {
-		super.addItem(child);
-		if (child.hasScreen()) {
-		    child.addStyleName("chart-item");
-		}else if(child.hasChildren()){
-		    child.addStyleName("folder-tree");
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public AbstractShowcaseTreeMenuItem(String text) {
+		if (hasChildren()) {
+			for (AbstractShowcaseTreeMenuItem child : getChildrenItems()) {
+				super.addItem(child);
+				if (child.hasScreen()) {
+					child.addStyleName("chart-item");
+				} else if (child.hasChildren()) {
+					child.addStyleName("folder-tree");
+				}
+			}
 		}
-	    }
+		super.setText(text);
+		this.setState(true);
 	}
-	super.setText(text);
-	this.setState(true);
-    }
 
-    public abstract boolean hasChildren();
+	public abstract boolean hasChildren();
 
-    public abstract List<AbstractShowcaseTreeMenuItem> getChildrenItems();
+	public abstract List<AbstractShowcaseTreeMenuItem> getChildrenItems();
 
-    public abstract boolean hasScreen();
+	public abstract boolean hasScreen();
 
-    public abstract IsWidget getScreen();
+	public abstract IsWidget getScreen();
 }

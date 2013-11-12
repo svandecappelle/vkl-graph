@@ -3,11 +3,11 @@
 	<!-- Servlets -->
 	<servlet-mapping>
 		<servlet-name>codingServlet</servlet-name>
-		<url-pattern>/gquery/codingServlet</url-pattern>
+		<url-pattern>/showcase/codingServlet</url-pattern>
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>codingServlet</servlet-name>
-		<servlet-class>fr.vekia.gquery.server.ClassReaderServlet</servlet-class>
+		<servlet-class>fr.vekia.tools.showcase.vkgraph.server.ClassReaderServlet</servlet-class>
 	</servlet>
 
 	<!-- Default page to serve -->

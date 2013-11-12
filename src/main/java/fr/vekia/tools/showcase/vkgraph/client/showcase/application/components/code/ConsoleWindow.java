@@ -24,71 +24,73 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  *          {@inheritDoc}
  */
-public class ConsoleWindow extends Widget implements ResizeHandler, HasResizeHandlers {
+public class ConsoleWindow extends Widget implements ResizeHandler,
+		HasResizeHandlers {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ConsoleWindow() {
-	int height = Window.getClientHeight() / 2;
-	int width = Window.getClientWidth() / 3;
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ConsoleWindow() {
+		int height = Window.getClientHeight() / 2;
+		int width = Window.getClientWidth() / 3;
 
-	int x = 0;
-	int y = Window.getClientWidth() - width;
-	super.setElement(DOM.getElementById("consoleCode"));
-	super.setTitle("The concole code");
+		int x = 0;
+		int y = Window.getClientWidth() - width;
+		super.setElement(DOM.getElementById("consoleCode"));
+		super.setTitle("The concole code");
 
-	super.setSize("450px", "250px");
-	this.create(height, width, x, y);
+		super.setSize("450px", "250px");
+		this.create(height, width, x, y);
 
-	this.addResizeHandler(this);
-    }
+		this.addResizeHandler(this);
+	}
 
-    /**
+	/**
  * 
  */
-    private native void create(int height, int width, int x, int y) /*-{
-		$wnd.jQuery("#consoleCode").dialog({
-			autoOpen : false,
-			show : "blind",
-			hide : "explode",
-			height : height,
-			width : width,
-			position : [ x, y ]
-		});
-    }-*/;
+	private native void create(int height, int width, int x, int y) /*-{
+																	$wnd.jQuery("#consoleCode").dialog({
+																	autoOpen : false,
+																	show : "blind",
+																	hide : "explode",
+																	height : height,
+																	width : width,
+																	position : [ x, y ]
+																	});
+																	}-*/;
 
-    /**
+	/**
      * 
      */
-    public void show() {
-	this.open();
-    };
+	public void show() {
+		this.open();
+	};
 
-    public void setCode(String code) {
-	DOM.getElementById("code").setInnerHTML(code);
-    }
+	public void setCode(String code) {
+		DOM.getElementById("code").setInnerHTML(code);
+	}
 
-    /**
+	/**
      * 
      */
-    private native void open() /*-{
-		$wnd.jQuery("#consoleCode").dialog("open");
-    }-*/;
+	private native void open() /*-{
+								$wnd.jQuery("#consoleCode").dialog("open");
+								}-*/;
 
-    @Override
-    public void onResize(ResizeEvent event) {
-	int height = DOM.getElementById("consoleCode").getOffsetHeight();
-	int width = DOM.getElementById("consoleCode").getOffsetWidth();
+	@Override
+	public void onResize(ResizeEvent event) {
+		int height = DOM.getElementById("consoleCode").getOffsetHeight();
+		int width = DOM.getElementById("consoleCode").getOffsetWidth();
 
-	DOM.getElementById("code").getStyle().setPropertyPx("maxHeight", height);
-	DOM.getElementById("code").getStyle().setPropertyPx("maxWidth", width);
-    }
+		DOM.getElementById("code").getStyle()
+				.setPropertyPx("maxHeight", height);
+		DOM.getElementById("code").getStyle().setPropertyPx("maxWidth", width);
+	}
 
-    @Override
-    public HandlerRegistration addResizeHandler(ResizeHandler handler) {
-	return addHandler(handler, ResizeEvent.getType());
-    }
+	@Override
+	public HandlerRegistration addResizeHandler(ResizeHandler handler) {
+		return addHandler(handler, ResizeEvent.getType());
+	}
 
 }

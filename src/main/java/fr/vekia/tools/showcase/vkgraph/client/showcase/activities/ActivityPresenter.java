@@ -19,5 +19,5 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.places.MenuPla
  *          {@inheritDoc}
  */
 public interface ActivityPresenter {
-    public void gotTo(MenuPlace menuPlace);
+	public void gotTo(MenuPlace menuPlace);
 }

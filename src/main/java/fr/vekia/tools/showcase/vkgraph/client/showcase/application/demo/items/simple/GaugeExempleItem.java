@@ -25,33 +25,33 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.
  */
 public class GaugeExempleItem extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     * @param text
-     */
-    public GaugeExempleItem(String text) {
-	super(text);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param text
+	 */
+	public GaugeExempleItem(String text) {
+		super(text);
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return false;
-    }
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	return null;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		return null;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return true;
-    }
+	@Override
+	public boolean hasScreen() {
+		return true;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return new GaugePlotScreen();
-    }
+	@Override
+	public IsWidget getScreen() {
+		return new GaugePlotScreen();
+	}
 
 }

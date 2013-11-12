@@ -26,40 +26,40 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class BlockPlotExempleScreen extends BlockChart {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public BlockPlotExempleScreen() {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public BlockPlotExempleScreen() {
 
-	List<List<SquareValue>> datas = new ArrayList<List<SquareValue>>();
+		List<List<SquareValue>> datas = new ArrayList<List<SquareValue>>();
 
-	List<SquareValue> datasL1 = new ArrayList<SquareValue>();
-	datasL1.add(new SquareValue("toto", 7, 10));
-	datasL1.add(new SquareValue("titi", 4, 17));
-	datasL1.add(new SquareValue("tutu", 3, 7));
-	datasL1.add(new SquareValue("tata", 2, 4));
+		List<SquareValue> datasL1 = new ArrayList<SquareValue>();
+		datasL1.add(new SquareValue("toto", 7, 10));
+		datasL1.add(new SquareValue("titi", 4, 17));
+		datasL1.add(new SquareValue("tutu", 3, 7));
+		datasL1.add(new SquareValue("tata", 2, 4));
 
-	List<SquareValue> datasL2 = new ArrayList<SquareValue>();
-	datasL2.add(new SquareValue("bobo", 7, 10));
-	datasL2.add(new SquareValue("bibi", 6, 6));
-	datasL2.add(new SquareValue("bubu", 2, 9));
-	datasL2.add(new SquareValue("baba", 2, 3));
+		List<SquareValue> datasL2 = new ArrayList<SquareValue>();
+		datasL2.add(new SquareValue("bobo", 7, 10));
+		datasL2.add(new SquareValue("bibi", 6, 6));
+		datasL2.add(new SquareValue("bubu", 2, 9));
+		datasL2.add(new SquareValue("baba", 2, 3));
 
-	List<SquareValue> datasL3 = new ArrayList<SquareValue>();
-	datasL3.add(new SquareValue("roro", 12, 10));
-	datasL3.add(new SquareValue("riri", 4, 10));
-	datasL3.add(new SquareValue("ruru", 5, 7));
-	datasL3.add(new SquareValue("rara", 9, 4));
+		List<SquareValue> datasL3 = new ArrayList<SquareValue>();
+		datasL3.add(new SquareValue("roro", 12, 10));
+		datasL3.add(new SquareValue("riri", 4, 10));
+		datasL3.add(new SquareValue("ruru", 5, 7));
+		datasL3.add(new SquareValue("rara", 9, 4));
 
-	datas.add(datasL1);
-	datas.add(datasL2);
-	datas.add(datasL3);
+		datas.add(datasL1);
+		datas.add(datasL2);
+		datas.add(datasL3);
 
-	setListData(datas);
+		setListData(datas);
 
-	setNumberOption(ChartOption.axes, SubOption.xaxis, SubOption.min, 0);
+		setNumberOption(ChartOption.axes, SubOption.xaxis, SubOption.min, 0);
 
-    }
+	}
 
 }

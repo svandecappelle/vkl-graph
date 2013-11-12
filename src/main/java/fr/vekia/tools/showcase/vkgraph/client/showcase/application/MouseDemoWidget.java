@@ -24,69 +24,70 @@ import com.google.gwt.user.client.ui.UIObject;
  *          {@inheritDoc}
  */
 public final class MouseDemoWidget extends Animation {
-    private static MouseDemoWidget instance = null;
-    private static final Image img = new Image("img/mouse.png");
+	private static MouseDemoWidget instance = null;
+	private static final Image img = new Image("img/mouse.png");
 
-    private final Element element;
-    private int startX;
-    private int startY;
-    private int finalX;
-    private int finalY;
+	private final Element element;
+	private int startX;
+	private int startY;
+	private int finalX;
+	private int finalY;
 
-    /**
-     * Default constructor
-     * 
-     */
-    private MouseDemoWidget() {
-	element = img.getElement();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private MouseDemoWidget() {
+		element = img.getElement();
 
-    }
-
-    public static MouseDemoWidget getInstance() {
-	if (instance == null) {
-	    instance = new MouseDemoWidget();
 	}
-	return instance;
-    }
 
-    public void scrollTo(int x, int y, int milliseconds) {
-	this.finalX = x;
-	this.finalY = y;
-
-	startX = element.getOffsetLeft();
-	startY = element.getOffsetTop();
-
-	run(milliseconds);
-    }
-
-    public void scrollTo(UIObject object, int milliseconds) {
-	if (object.isVisible()) {
-	    scrollTo(object.getAbsoluteLeft() + 10, object.getAbsoluteTop() + 5, milliseconds);
+	public static MouseDemoWidget getInstance() {
+		if (instance == null) {
+			instance = new MouseDemoWidget();
+		}
+		return instance;
 	}
-    }
 
-    @Override
-    protected void onUpdate(double progress) {
-	double positionX = startX + (progress * (this.finalX - startX));
-	double positionY = startY + (progress * (this.finalY - startY));
+	public void scrollTo(int x, int y, int milliseconds) {
+		this.finalX = x;
+		this.finalY = y;
 
-	this.element.getStyle().setLeft(positionX, Style.Unit.PX);
-	this.element.getStyle().setTop(positionY, Style.Unit.PX);
-    }
+		startX = element.getOffsetLeft();
+		startY = element.getOffsetTop();
 
-    @Override
-    protected void onComplete() {
-	super.onComplete();
-	this.element.getStyle().setLeft(this.finalX, Style.Unit.PX);
-	this.element.getStyle().setTop(this.finalY, Style.Unit.PX);
-    }
+		run(milliseconds);
+	}
 
-    public void activate() {
-	RootLayoutPanel.get().add(img);
-    }
+	public void scrollTo(UIObject object, int milliseconds) {
+		if (object.isVisible()) {
+			scrollTo(object.getAbsoluteLeft() + 10,
+					object.getAbsoluteTop() + 5, milliseconds);
+		}
+	}
 
-    public void desactivate() {
-	RootLayoutPanel.get().remove(img);
+	@Override
+	protected void onUpdate(double progress) {
+		double positionX = startX + (progress * (this.finalX - startX));
+		double positionY = startY + (progress * (this.finalY - startY));
 
-    }
+		this.element.getStyle().setLeft(positionX, Style.Unit.PX);
+		this.element.getStyle().setTop(positionY, Style.Unit.PX);
+	}
+
+	@Override
+	protected void onComplete() {
+		super.onComplete();
+		this.element.getStyle().setLeft(this.finalX, Style.Unit.PX);
+		this.element.getStyle().setTop(this.finalY, Style.Unit.PX);
+	}
+
+	public void activate() {
+		RootLayoutPanel.get().add(img);
+	}
+
+	public void desactivate() {
+		RootLayoutPanel.get().remove(img);
+
+	}
 }

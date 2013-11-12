@@ -28,37 +28,39 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.co
  */
 public class ComplexeTree extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     * @param text
-     */
-    public ComplexeTree() {
-	super("Complex charts");
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param text
+	 */
+	public ComplexeTree() {
+		super("Complex charts");
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return true;
-    }
+	@Override
+	public boolean hasChildren() {
+		return true;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
-	childrens.add(new AnimatedComplexChartItem("Zoom Proxy - Control one plot from another"));
-	childrens.add(new AreaChartItem("Mixed Chart - Mix the renderers to build a plot"));
-	childrens.add(new DashBoardItem("Dashboard Chart"));
-	return childrens;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
+		childrens.add(new AnimatedComplexChartItem(
+				"Zoom Proxy - Control one plot from another"));
+		childrens.add(new AreaChartItem(
+				"Mixed Chart - Mix the renderers to build a plot"));
+		childrens.add(new DashBoardItem("Dashboard Chart"));
+		return childrens;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return false;
-    }
+	@Override
+	public boolean hasScreen() {
+		return false;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return null;
-    }
+	@Override
+	public IsWidget getScreen() {
+		return null;
+	}
 
 }

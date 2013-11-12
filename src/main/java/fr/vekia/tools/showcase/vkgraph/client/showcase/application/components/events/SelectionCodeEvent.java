@@ -21,40 +21,40 @@ import com.google.gwt.user.client.ui.IsWidget;
  */
 public class SelectionCodeEvent extends GwtEvent<SelectionCodeHandler> {
 
-    private IsWidget selectedItem;
+	private IsWidget selectedItem;
 
-    /**
-     * Default constructor
-     * 
-     * @param selectedItem
-     */
-    public SelectionCodeEvent(IsWidget selectedItem) {
-	this.selectedItem = selectedItem;
-    }
-
-    /**
-     * @return the selectedItem
-     */
-    public IsWidget getSelectedItem() {
-	return selectedItem;
-    }
-
-    private static Type<SelectionCodeHandler> type;
-
-    public static Type<SelectionCodeHandler> getType() {
-	if (type == null) {
-	    type = new Type<SelectionCodeHandler>();
+	/**
+	 * Default constructor
+	 * 
+	 * @param selectedItem
+	 */
+	public SelectionCodeEvent(IsWidget selectedItem) {
+		this.selectedItem = selectedItem;
 	}
-	return type;
-    }
 
-    @Override
-    protected void dispatch(SelectionCodeHandler handler) {
-	handler.onSelection(this);
-    }
+	/**
+	 * @return the selectedItem
+	 */
+	public IsWidget getSelectedItem() {
+		return selectedItem;
+	}
 
-    @Override
-    public GwtEvent.Type<SelectionCodeHandler> getAssociatedType() {
-	return getType();
-    }
+	private static Type<SelectionCodeHandler> type;
+
+	public static Type<SelectionCodeHandler> getType() {
+		if (type == null) {
+			type = new Type<SelectionCodeHandler>();
+		}
+		return type;
+	}
+
+	@Override
+	protected void dispatch(SelectionCodeHandler handler) {
+		handler.onSelection(this);
+	}
+
+	@Override
+	public GwtEvent.Type<SelectionCodeHandler> getAssociatedType() {
+		return getType();
+	}
 }

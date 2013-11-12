@@ -14,7 +14,7 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.i
  * @since 23 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
  * 
- *	{@inheritDoc}				
+ *          {@inheritDoc}
  */
 public class ShowcaseDemoElement {
 

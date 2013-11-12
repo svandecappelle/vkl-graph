@@ -20,26 +20,27 @@ import com.google.gwt.user.client.ui.UIObject;
  *          {@inheritDoc}
  */
 public class ProgressAnimation extends Animation {
-    private UIObject composite;
+	private UIObject composite;
 
-    /**
-     * Default constructor
-     * 
-     * @param progress
-     * 
-     */
-    public ProgressAnimation(UIObject composite) {
-	this.composite = composite;
-    }
-
-    @Override
-    protected void onUpdate(double progress) {
-	double size = (int) (progress * this.composite.getElement().getParentElement().getOffsetWidth());
-	if (size == 0) {
-	    size = 1;
+	/**
+	 * Default constructor
+	 * 
+	 * @param progress
+	 * 
+	 */
+	public ProgressAnimation(UIObject composite) {
+		this.composite = composite;
 	}
-	this.composite.setWidth(size + "px");
 
-    }
+	@Override
+	protected void onUpdate(double progress) {
+		double size = (int) (progress * this.composite.getElement()
+				.getParentElement().getOffsetWidth());
+		if (size == 0) {
+			size = 1;
+		}
+		this.composite.setWidth(size + "px");
+
+	}
 
 }

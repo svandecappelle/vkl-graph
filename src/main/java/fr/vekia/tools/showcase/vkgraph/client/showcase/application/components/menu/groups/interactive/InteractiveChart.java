@@ -32,41 +32,46 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.in
  */
 public class InteractiveChart extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     * @param text
-     */
-    public InteractiveChart() {
-	super("Interactive Charts");
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param text
+	 */
+	public InteractiveChart() {
+		super("Interactive Charts");
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return true;
-    }
+	@Override
+	public boolean hasChildren() {
+		return true;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
-	childrens.add(new LineChartInteractiveItem("Line Charts and drag Options"));
-	childrens.add(new BarChartInteractiveItem("Bar chart and drag Options"));
-	childrens.add(new PieChartInteractiveItem("Pie  chart with events"));
-	childrens.add(new DonutChartInteractiveItem("Donut chart with events"));
-	childrens.add(new AreaChartInteractiveItem("Filled (Area) Charts with drag"));
-	childrens.add(new BubbleChartInteractiveItem("Bubble chart with events and drag Options"));
-	childrens.add(new PyramidChartInteractiveItem("Pyramid chart with events"));
-	return childrens;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
+		childrens.add(new LineChartInteractiveItem(
+				"Line Charts and drag Options"));
+		childrens
+				.add(new BarChartInteractiveItem("Bar chart and drag Options"));
+		childrens.add(new PieChartInteractiveItem("Pie  chart with events"));
+		childrens.add(new DonutChartInteractiveItem("Donut chart with events"));
+		childrens.add(new AreaChartInteractiveItem(
+				"Filled (Area) Charts with drag"));
+		childrens.add(new BubbleChartInteractiveItem(
+				"Bubble chart with events and drag Options"));
+		childrens.add(new PyramidChartInteractiveItem(
+				"Pyramid chart with events"));
+		return childrens;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return false;
-    }
+	@Override
+	public boolean hasScreen() {
+		return false;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return null;
-    }
+	@Override
+	public IsWidget getScreen() {
+		return null;
+	}
 
 }

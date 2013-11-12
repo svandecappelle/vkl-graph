@@ -22,57 +22,60 @@ import com.google.gwt.user.client.ui.TreeItem;
  * 
  *          {@inheritDoc}
  */
-public abstract class TreeMenu<T extends TreeItem> extends MenuItem implements HasSelectionHandlers<TreeItem> {
+public abstract class TreeMenu<T extends TreeItem> extends MenuItem implements
+		HasSelectionHandlers<TreeItem> {
 
-    private Tree treeWidget;
+	private Tree treeWidget;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public TreeMenu() {
-	super();
-	treeWidget = new Tree();
-	treeWidget.setWidth("100%");
-	set(treeWidget);
-    }
-
-    /**
-     * Default constructor
-     * 
-     */
-    public TreeMenu(TreeItem treeItem) {
-	this();
-	addSection(treeItem);
-    }
-
-    /**
-     * 
-     */
-    public final void addSection(TreeItem treeItem) {
-	treeWidget.addItem(treeItem);
-    }
-
-    public static final TreeItem buildTreeItem(String titleGroup, String... items) {
-	TreeItem treeGroup = new TreeItem(titleGroup);
-	treeGroup.setWidth("100%");
-	for (String itemsLabel : items) {
-	    TreeItem item = treeGroup.addItem(itemsLabel);
-	    item.setWidth("100%");
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public TreeMenu() {
+		super();
+		treeWidget = new Tree();
+		treeWidget.setWidth("100%");
+		set(treeWidget);
 	}
-	return treeGroup;
 
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public TreeMenu(TreeItem treeItem) {
+		this();
+		addSection(treeItem);
+	}
 
-    /**
-     * @return the treeWidget
+	/**
+     * 
      */
-    public Tree getTreeWidget() {
-	return treeWidget;
-    }
+	public final void addSection(TreeItem treeItem) {
+		treeWidget.addItem(treeItem);
+	}
 
-    @Override
-    public HandlerRegistration addSelectionHandler(SelectionHandler<TreeItem> handler) {
-	return treeWidget.addSelectionHandler(handler);
-    }
+	public static final TreeItem buildTreeItem(String titleGroup,
+			String... items) {
+		TreeItem treeGroup = new TreeItem(titleGroup);
+		treeGroup.setWidth("100%");
+		for (String itemsLabel : items) {
+			TreeItem item = treeGroup.addItem(itemsLabel);
+			item.setWidth("100%");
+		}
+		return treeGroup;
+
+	}
+
+	/**
+	 * @return the treeWidget
+	 */
+	public Tree getTreeWidget() {
+		return treeWidget;
+	}
+
+	@Override
+	public HandlerRegistration addSelectionHandler(
+			SelectionHandler<TreeItem> handler) {
+		return treeWidget.addSelectionHandler(handler);
+	}
 }

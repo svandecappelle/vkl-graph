@@ -28,35 +28,37 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.Show
  */
 public class MenuActivity extends AbstractActivity implements ActivityPresenter {
 
-    private MenuPlace place;
+	private MenuPlace place;
 
-    /**
-     * Default constructor
-     * 
-     * @param place
-     * 
-     */
-    public MenuActivity(MenuPlace place) {
-	this.place = place;
-    }
-
-    @Override
-    public void start(AcceptsOneWidget panel, EventBus eventBus) {
-	try {
-	    // add a widget to panel
-	    ShowcaseMenuPresenter menuPresenter = ShowcaseInjector.Util.getInstance().getMenuPresenter();
-
-	    menuPresenter.getCategories().get(place.getMenu());
-	    AbstractShowcaseTreeMenuItem item = menuPresenter.getPlotsScreens().get(place.getItem());
-	    panel.setWidget(item.getScreen());
-	} catch (Exception e) {
-	    GWT.log(e.getMessage(), e);
+	/**
+	 * Default constructor
+	 * 
+	 * @param place
+	 * 
+	 */
+	public MenuActivity(MenuPlace place) {
+		this.place = place;
 	}
-    }
 
-    @Override
-    public void gotTo(MenuPlace menuPlace) {
-	ShowcaseInjector.Util.getInstance().getPresenter().gotTo(menuPlace);
-    }
+	@Override
+	public void start(AcceptsOneWidget panel, EventBus eventBus) {
+		try {
+			// add a widget to panel
+			ShowcaseMenuPresenter menuPresenter = ShowcaseInjector.Util
+					.getInstance().getMenuPresenter();
+
+			menuPresenter.getCategories().get(place.getMenu());
+			AbstractShowcaseTreeMenuItem item = menuPresenter.getPlotsScreens()
+					.get(place.getItem());
+			panel.setWidget(item.getScreen());
+		} catch (Exception e) {
+			GWT.log(e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public void gotTo(MenuPlace menuPlace) {
+		ShowcaseInjector.Util.getInstance().getPresenter().gotTo(menuPlace);
+	}
 
 }

@@ -27,28 +27,28 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.present
  *          {@inheritDoc}
  */
 public class PresentationDemoPanel extends Composite {
-    private Presentation presentation;
+	private Presentation presentation;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public PresentationDemoPanel() {
-	LayoutPanel layout = new LayoutPanel();
-	SplitLayoutPanel dock = new SplitLayoutPanel();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public PresentationDemoPanel() {
+		LayoutPanel layout = new LayoutPanel();
+		SplitLayoutPanel dock = new SplitLayoutPanel();
 
-	dock.addWest(new Releases(), 230);
-	dock.addSouth(new Contributors(), 15);
-	presentation = new Presentation();
-	dock.addNorth(presentation, 230);
-	dock.add(new ExemplePresentation());
+		dock.addWest(new Releases(), 230);
+		dock.addSouth(new Contributors(), 15);
+		presentation = new Presentation();
+		dock.addNorth(presentation, 230);
+		dock.add(new ExemplePresentation());
 
-	layout.add(dock);
-	initWidget(layout);
-	setSize("100%", "100%");
-    }
+		layout.add(dock);
+		initWidget(layout);
+		setSize("100%", "100%");
+	}
 
-    public HasClickHandlers getStartAutomatedDemoHandler() {
-	return presentation.getStartAutomatedDemoHandler();
-    }
+	public HasClickHandlers getStartAutomatedDemoHandler() {
+		return presentation.getStartAutomatedDemoHandler();
+	}
 }

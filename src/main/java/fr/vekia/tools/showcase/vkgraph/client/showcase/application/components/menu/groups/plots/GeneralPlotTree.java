@@ -25,35 +25,35 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.me
  */
 public class GeneralPlotTree extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public GeneralPlotTree() {
-	super("Plots");
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public GeneralPlotTree() {
+		super("Plots");
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return true;
-    }
+	@Override
+	public boolean hasChildren() {
+		return true;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
-	childrens.add(new AllPlotsTree());
-	childrens.add(new AdvancedOptionsPlotTree());
-	return childrens;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
+		childrens.add(new AllPlotsTree());
+		childrens.add(new AdvancedOptionsPlotTree());
+		return childrens;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return false;
-    }
+	@Override
+	public boolean hasScreen() {
+		return false;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return null;
-    }
+	@Override
+	public IsWidget getScreen() {
+		return null;
+	}
 
 }

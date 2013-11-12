@@ -21,36 +21,37 @@ import com.google.gwt.user.client.ui.IsWidget;
  *          {@inheritDoc}
  */
 public class ConsoleSlideshowCallBack implements AsyncCallback<String> {
-    private HTML codingWidget;
+	private HTML codingWidget;
 
-    private CallbackEventController<ConsoleSlideshowCallBack, IsWidget> controller;
+	private CallbackEventController<ConsoleSlideshowCallBack, IsWidget> controller;
 
-    /**
-     * Default constructor
-     * 
-     * @param callBackEventController
-     */
-    public ConsoleSlideshowCallBack(CallbackEventController<ConsoleSlideshowCallBack, IsWidget> callBackEventController) {
-	this.controller = callBackEventController;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param callBackEventController
+	 */
+	public ConsoleSlideshowCallBack(
+			CallbackEventController<ConsoleSlideshowCallBack, IsWidget> callBackEventController) {
+		this.controller = callBackEventController;
+	}
 
-    @Override
-    public void onFailure(Throwable caught) {
-	this.controller.onError(caught);
-    }
+	@Override
+	public void onFailure(Throwable caught) {
+		this.controller.onError(caught);
+	}
 
-    @Override
-    public void onSuccess(String code) {
-	HTML codeHTML = new HTML(code);
-	codeHTML.addStyleName("consoleCode");
-	this.controller.pop(codeHTML);
-    }
+	@Override
+	public void onSuccess(String code) {
+		HTML codeHTML = new HTML(code);
+		codeHTML.addStyleName("consoleCode");
+		this.controller.pop(codeHTML);
+	}
 
-    /**
-     * @return the codingWidget
-     */
-    public HTML getCodingWidget() {
-	return codingWidget;
-    }
+	/**
+	 * @return the codingWidget
+	 */
+	public HTML getCodingWidget() {
+		return codingWidget;
+	}
 
 }

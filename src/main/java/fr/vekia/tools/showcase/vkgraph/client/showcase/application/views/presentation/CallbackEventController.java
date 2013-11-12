@@ -23,51 +23,53 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
  *          {@inheritDoc}
  * @param <B>
  */
-public abstract class CallbackEventController<T extends AsyncCallback<?>, B> implements AsyncCallback<List<B>>, Command {
+public abstract class CallbackEventController<T extends AsyncCallback<?>, B>
+		implements AsyncCallback<List<B>>, Command {
 
-    private LinkedList<Command> traitment;
-    private List<B> callBacksReturns;
+	private LinkedList<Command> traitment;
+	private List<B> callBacksReturns;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public CallbackEventController() {
-	this.traitment = new LinkedList<Command>();
-	this.callBacksReturns = new LinkedList<B>();
-    }
-
-    /**
-     * @param callBackPop
-     * 
-     */
-    public void pop(B callBackPop) {
-	this.traitment.poll();
-	this.callBacksReturns.add(callBackPop);
-	if (this.traitment.isEmpty()) {
-	    onSuccess(this.callBacksReturns);
-	} else {
-	    this.execute();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public CallbackEventController() {
+		this.traitment = new LinkedList<Command>();
+		this.callBacksReturns = new LinkedList<B>();
 	}
-    }
 
-    public void onError(Throwable exception) {
-	onFailure(exception);
-    }
-
-    /**
-     * @param command
-     */
-    public void addTraitment(Command command) {
-	this.traitment.add(command);
-    }
-
-    @Override
-    public void execute() {
-	if (!this.traitment.isEmpty()) {
-	    this.traitment.getFirst().execute();
-	} else {
-	    throw new IllegalArgumentException("Your runable stack is empty you should add some commands to run and asyncallback linked run.");
+	/**
+	 * @param callBackPop
+	 * 
+	 */
+	public void pop(B callBackPop) {
+		this.traitment.poll();
+		this.callBacksReturns.add(callBackPop);
+		if (this.traitment.isEmpty()) {
+			onSuccess(this.callBacksReturns);
+		} else {
+			this.execute();
+		}
 	}
-    }
+
+	public void onError(Throwable exception) {
+		onFailure(exception);
+	}
+
+	/**
+	 * @param command
+	 */
+	public void addTraitment(Command command) {
+		this.traitment.add(command);
+	}
+
+	@Override
+	public void execute() {
+		if (!this.traitment.isEmpty()) {
+			this.traitment.getFirst().execute();
+		} else {
+			throw new IllegalArgumentException(
+					"Your runable stack is empty you should add some commands to run and asyncallback linked run.");
+		}
+	}
 }

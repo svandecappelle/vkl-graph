@@ -26,20 +26,21 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class SimplePlotScreen extends LineChart<Number> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public SimplePlotScreen() {
-	ArrayList<Number> data = new ArrayList<Number>();
-	for (int i = 0; i < 120; i++) {
-	    data.add(Random.nextInt(250));
-	}
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public SimplePlotScreen() {
+		ArrayList<Number> data = new ArrayList<Number>();
+		for (int i = 0; i < 120; i++) {
+			data.add(Random.nextInt(250));
+		}
 
-	setSize("1400px", "660px");
-	setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker, false);
-	super.setDatas(data);
-	super.setExportEnable(true);
-	setListView(true);
-    }
+		setSize("1400px", "660px");
+		setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker,
+				false);
+		super.setDatas(data);
+		super.setExportEnable(true);
+		setListView(true);
+	}
 }

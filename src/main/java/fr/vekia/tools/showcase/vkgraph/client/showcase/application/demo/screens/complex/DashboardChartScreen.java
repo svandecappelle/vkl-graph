@@ -32,74 +32,75 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class DashboardChartScreen extends DashboardChart<List<DualValue>> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public DashboardChartScreen() {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public DashboardChartScreen() {
 
-	// Datas chart
-	List<List<DualValue>> dataLines = new ArrayList<List<DualValue>>();
+		// Datas chart
+		List<List<DualValue>> dataLines = new ArrayList<List<DualValue>>();
 
-	// Date xaxis
-	List<Date> dates = new ArrayList<Date>();
-	for (int i = 0; i < 50; i++) {
-	    Date date = new Date();
-	    CalendarUtil.addDaysToDate(date, i);
-	    dates.add(date);
+		// Date xaxis
+		List<Date> dates = new ArrayList<Date>();
+		for (int i = 0; i < 50; i++) {
+			Date date = new Date();
+			CalendarUtil.addDaysToDate(date, i);
+			dates.add(date);
+		}
+
+		// #############
+		// ### Datas ###
+		// #############
+
+		List<DualValue> data1 = new ArrayList<DualValue>();
+
+		// line 1
+		for (Date dateXaxis : dates) {
+			data1.add(new DualValue(dateXaxis.getTime(), Random.nextInt(10) + 1));
+		}
+		// line 2
+		List<DualValue> data2 = new ArrayList<DualValue>();
+		for (DualValue dualValue : data1) {
+			data2.add(new DualValue(dualValue.getKeyNumber(), dualValue
+					.getValue().intValue() + 1 + Random.nextInt(10)));
+		}
+
+		dataLines.add(data1);
+		dataLines.add(data2);
+
+		// Graph instances
+		super.setData(dataLines);
+		super.setTitle("Exemple of dashboard");
+		super.setBackgroundColor("rgba(57,57,57,1.0)");
+
+		// ##############
+		// ### series ###
+		// ##############
+		SeriesData series = new SeriesData();
+
+		OptionSerie serie1 = new OptionSerie();
+		serie1.setBooleanOption(SubOption.fill, true);
+		serie1.setTextOption(SubOption.label, "Serie 1");
+
+		OptionSerie serie2 = new OptionSerie();
+		serie2.setTextOption(SubOption.label, "Serie 2");
+
+		series.set(0, serie1);
+		series.set(1, serie2);
+		super.setSeries(series);
+
+		super.setXFormat("%b %e");
+		super.setYFormat("$%'d");
+
+		// xaxis
+		super.setXaxisRenderer(RenderersEnum.DateAxis);
+		// yaxis
+		super.setYaxisRenderer(RenderersEnum.LogAxis);
+
+		super.drawXGrid(true);
+		super.drawYGrid(true);
+		super.setExportEnable(true);
 	}
-
-	// #############
-	// ### Datas ###
-	// #############
-
-	List<DualValue> data1 = new ArrayList<DualValue>();
-
-	// line 1
-	for (Date dateXaxis : dates) {
-	    data1.add(new DualValue(dateXaxis.getTime(), Random.nextInt(10) + 1));
-	}
-	// line 2
-	List<DualValue> data2 = new ArrayList<DualValue>();
-	for (DualValue dualValue : data1) {
-	    data2.add(new DualValue(dualValue.getKeyNumber(), dualValue.getValue().intValue() + 1 + Random.nextInt(10)));
-	}
-
-	dataLines.add(data1);
-	dataLines.add(data2);
-
-	// Graph instances
-	super.setData(dataLines);
-	super.setTitle("Exemple of dashboard");
-	super.setBackgroundColor("rgba(57,57,57,1.0)");
-
-	// ##############
-	// ### series ###
-	// ##############
-	SeriesData series = new SeriesData();
-
-	OptionSerie serie1 = new OptionSerie();
-	serie1.setBooleanOption(SubOption.fill, true);
-	serie1.setTextOption(SubOption.label, "Serie 1");
-
-	OptionSerie serie2 = new OptionSerie();
-	serie2.setTextOption(SubOption.label, "Serie 2");
-
-	series.set(0, serie1);
-	series.set(1, serie2);
-	super.setSeries(series);
-
-	super.setXFormat("%b %e");
-	super.setYFormat("$%'d");
-
-	// xaxis
-	super.setXaxisRenderer(RenderersEnum.DateAxis);
-	// yaxis
-	super.setYaxisRenderer(RenderersEnum.LogAxis);
-
-	super.drawXGrid(true);
-	super.drawYGrid(true);
-	super.setExportEnable(true);
-    }
 
 }

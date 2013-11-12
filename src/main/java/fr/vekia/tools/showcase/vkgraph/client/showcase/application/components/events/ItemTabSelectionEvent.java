@@ -22,35 +22,35 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.It
  */
 public class ItemTabSelectionEvent extends GwtEvent<ItemTabSelectionHandler> {
 
-    private static Type<ItemTabSelectionHandler> type;
+	private static Type<ItemTabSelectionHandler> type;
 
-    public static Type<ItemTabSelectionHandler> getType() {
-	if (type == null) {
-	    type = new Type<ItemTabSelectionHandler>();
+	public static Type<ItemTabSelectionHandler> getType() {
+		if (type == null) {
+			type = new Type<ItemTabSelectionHandler>();
+		}
+		return type;
 	}
-	return type;
-    }
 
-    private ItemActionSelection action;
+	private ItemActionSelection action;
 
-    public ItemTabSelectionEvent(ItemActionSelection action) {
-	this.action = action;
-    }
+	public ItemTabSelectionEvent(ItemActionSelection action) {
+		this.action = action;
+	}
 
-    /**
-     * @return the action
-     */
-    public ItemActionSelection getAction() {
-	return action;
-    }
+	/**
+	 * @return the action
+	 */
+	public ItemActionSelection getAction() {
+		return action;
+	}
 
-    @Override
-    protected void dispatch(ItemTabSelectionHandler handler) {
-	handler.onSelection(this);
-    }
+	@Override
+	protected void dispatch(ItemTabSelectionHandler handler) {
+		handler.onSelection(this);
+	}
 
-    @Override
-    public GwtEvent.Type<ItemTabSelectionHandler> getAssociatedType() {
-	return getType();
-    }
+	@Override
+	public GwtEvent.Type<ItemTabSelectionHandler> getAssociatedType() {
+		return getType();
+	}
 }

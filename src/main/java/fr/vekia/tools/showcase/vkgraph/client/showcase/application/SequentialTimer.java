@@ -20,35 +20,35 @@ import com.google.gwt.user.client.Timer;
  *          {@inheritDoc}
  */
 public abstract class SequentialTimer extends Timer implements Command {
-    private int miliseconds;
-    private Command command;
+	private int miliseconds;
+	private Command command;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public SequentialTimer(int miliseconds) {
-	this.miliseconds = miliseconds;
-    }
-
-    @Override
-    public void run() {
-	this.execute();
-	command.execute();
-    }
-
-    /**
+	/**
+	 * Default constructor
 	 * 
 	 */
-    public void start(Command command) {
-	this.command = command;
-	schedule(this.getMiliseconds());
-    }
+	public SequentialTimer(int miliseconds) {
+		this.miliseconds = miliseconds;
+	}
 
-    /**
-     * @return the miliseconds
-     */
-    public int getMiliseconds() {
-	return miliseconds;
-    }
+	@Override
+	public void run() {
+		this.execute();
+		command.execute();
+	}
+
+	/**
+	 * 
+	 */
+	public void start(Command command) {
+		this.command = command;
+		schedule(this.getMiliseconds());
+	}
+
+	/**
+	 * @return the miliseconds
+	 */
+	public int getMiliseconds() {
+		return miliseconds;
+	}
 }

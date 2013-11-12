@@ -24,36 +24,38 @@ import fr.vekia.VkGraph.client.options.SubOption;
  * 
  *          {@inheritDoc}
  */
-public class DualValuesPlotWithOptionsExempleScreen extends AbstractChart<List<DualValue>> {
-    /**
-     * Default constructor
-     * 
-     */
-    public DualValuesPlotWithOptionsExempleScreen() {
+public class DualValuesPlotWithOptionsExempleScreen extends
+		AbstractChart<List<DualValue>> {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public DualValuesPlotWithOptionsExempleScreen() {
 
-	super.setOption(ChartOption.title, "'Exponential Line'");
+		super.setOption(ChartOption.title, "'Exponential Line'");
 
-	List<String> colors = new ArrayList<String>();
-	colors.add("{color:'#5FAB78'}");
-	super.setOption(ChartOption.series, colors);
+		List<String> colors = new ArrayList<String>();
+		colors.add("{color:'#5FAB78'}");
+		super.setOption(ChartOption.series, colors);
 
-	ArrayList<DualValue> valuesLineTwo = new ArrayList<DualValue>();
-	ArrayList<DualValue> valuesLineThree = new ArrayList<DualValue>();
+		ArrayList<DualValue> valuesLineTwo = new ArrayList<DualValue>();
+		ArrayList<DualValue> valuesLineThree = new ArrayList<DualValue>();
 
-	for (float i = 0; i < 5 * Math.PI; i += 0.1) {
-	    valuesLineTwo.add(new DualValue(i, Math.cos(i)));
+		for (float i = 0; i < 5 * Math.PI; i += 0.1) {
+			valuesLineTwo.add(new DualValue(i, Math.cos(i)));
+		}
+
+		for (float i = 0; i < 5 * Math.PI; i += 0.1) {
+			valuesLineThree.add(new DualValue(i, 3 * Math.sin(i) + 1));
+		}
+
+		List<List<DualValue>> values = new ArrayList<List<DualValue>>();
+		values.add(valuesLineTwo);
+		values.add(valuesLineThree);
+
+		setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker,
+				false);
+
+		super.setDatas(values);
 	}
-
-	for (float i = 0; i < 5 * Math.PI; i += 0.1) {
-	    valuesLineThree.add(new DualValue(i, 3 * Math.sin(i) + 1));
-	}
-
-	List<List<DualValue>> values = new ArrayList<List<DualValue>>();
-	values.add(valuesLineTwo);
-	values.add(valuesLineThree);
-
-	setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker, false);
-
-	super.setDatas(values);
-    }
 }

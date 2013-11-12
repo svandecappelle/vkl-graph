@@ -20,42 +20,42 @@ import com.google.gwt.place.shared.PlaceTokenizer;
  *          {@inheritDoc}
  */
 public class MenuPlace extends Place {
-    private String menu;
-    private String item;
+	private String menu;
+	private String item;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public MenuPlace(String categ, String item) {
-	this.menu = categ;
-	this.item = item;
-    }
-
-    /**
-     * @return the menu
-     */
-    public String getMenu() {
-	return menu;
-    }
-
-    /**
-     * @return the item
-     */
-    public String getItem() {
-	return item;
-    }
-
-    public static class Tokenizer implements PlaceTokenizer<MenuPlace> {
-	@Override
-	public String getToken(MenuPlace place) {
-	    return place.getMenu()+"-"+place.getItem();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public MenuPlace(String categ, String item) {
+		this.menu = categ;
+		this.item = item;
 	}
 
-	@Override
-	public MenuPlace getPlace(String token) {
-	    return new MenuPlace(token.split("-")[0], token.split("-")[1]);
+	/**
+	 * @return the menu
+	 */
+	public String getMenu() {
+		return menu;
 	}
-    }
+
+	/**
+	 * @return the item
+	 */
+	public String getItem() {
+		return item;
+	}
+
+	public static class Tokenizer implements PlaceTokenizer<MenuPlace> {
+		@Override
+		public String getToken(MenuPlace place) {
+			return place.getMenu() + "-" + place.getItem();
+		}
+
+		@Override
+		public MenuPlace getPlace(String token) {
+			return new MenuPlace(token.split("-")[0], token.split("-")[1]);
+		}
+	}
 
 }

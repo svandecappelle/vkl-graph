@@ -34,43 +34,47 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.si
  */
 public class AdvancedOptionsPlotTree extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public AdvancedOptionsPlotTree() {
-	super("Advanced options");
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public AdvancedOptionsPlotTree() {
+		super("Advanced options");
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return true;
-    }
+	@Override
+	public boolean hasChildren() {
+		return true;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
-	childrens.add(new SingleValueWithDrawPlotExempleItem("Draw lines plot"));
-	childrens.add(new CalendarExempleItem("Calendar plot"));
-	childrens.add(new DualValuesPlotExempleItem("Dual values plot"));
-	childrens.add(new DualValuesPlotWithOptionsExempleItem("Dual values plot with options"));
-	childrens.add(new AxisRotatedExempleItem("Axis Labels and Rotated Text"));
-	childrens.add(new ConfidanceBandsExempleItem("Error Bands and Confidence Intervals"));
-	childrens.add(new DraggingPointsExempleItem("Dragging plot"));
-	childrens.add(new ThemingPlotExempleItem("Theming plot"));
-	childrens.add(new BuildYoursExempleItem("Build your own"));
-	
-	return childrens;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
+		childrens
+				.add(new SingleValueWithDrawPlotExempleItem("Draw lines plot"));
+		childrens.add(new CalendarExempleItem("Calendar plot"));
+		childrens.add(new DualValuesPlotExempleItem("Dual values plot"));
+		childrens.add(new DualValuesPlotWithOptionsExempleItem(
+				"Dual values plot with options"));
+		childrens
+				.add(new AxisRotatedExempleItem("Axis Labels and Rotated Text"));
+		childrens.add(new ConfidanceBandsExempleItem(
+				"Error Bands and Confidence Intervals"));
+		childrens.add(new DraggingPointsExempleItem("Dragging plot"));
+		childrens.add(new ThemingPlotExempleItem("Theming plot"));
+		childrens.add(new BuildYoursExempleItem("Build your own"));
 
-    @Override
-    public boolean hasScreen() {
-	return false;
-    }
+		return childrens;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return null;
-    }
+	@Override
+	public boolean hasScreen() {
+		return false;
+	}
+
+	@Override
+	public IsWidget getScreen() {
+		return null;
+	}
 
 }

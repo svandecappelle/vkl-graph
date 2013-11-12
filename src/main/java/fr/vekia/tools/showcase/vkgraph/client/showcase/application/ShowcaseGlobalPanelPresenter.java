@@ -41,97 +41,105 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.Show
  *          {@inheritDoc}
  */
 @Singleton
-public class ShowcaseGlobalPanelPresenter extends WidgetPresenter<ShowcaseGlobalPanelPresenter.Display> {
+public class ShowcaseGlobalPanelPresenter extends
+		WidgetPresenter<ShowcaseGlobalPanelPresenter.Display> {
 
-    public interface Display extends WidgetDisplay, AcceptsOneWidget {
+	public interface Display extends WidgetDisplay, AcceptsOneWidget {
 
-	HasClickHandlers getStartAutomatedDemoHandler();
+		HasClickHandlers getStartAutomatedDemoHandler();
 
-	/**
-	 * @return
-	 */
-	HasClickHandlers getReturnLbl();
+		/**
+		 * @return
+		 */
+		HasClickHandlers getReturnLbl();
 
-    }
-
-    /**
-     * Default constructor
-     * 
-     * @param display
-     * @param eventBus
-     */
-    @Inject
-    public ShowcaseGlobalPanelPresenter(Display display, EventBus eventBus) {
-	super(display, eventBus);
-
-	display.getReturnLbl().addClickHandler(new ClickHandler() {
-
-	    @Override
-	    public void onClick(ClickEvent event) {
-		History.back();
-	    }
-	});
-    }
-
-    @Override
-    protected void onBind() {
-
-	registerHandler(display.getStartAutomatedDemoHandler().addClickHandler(new ClickHandler() {
-
-	    @Override
-	    public void onClick(ClickEvent event) {
-		Window.alert("menu view");
-		ShowcaseInjector.Util.getInstance().getEventBus().fireEvent(new StartAutomatedDemoEvent());
-	    }
-	}));
-
-	registerHandler(eventBus.addHandler(SelectionEvent.getType(), new SelectionHandler<AbstractShowcaseTreeMenuItem>() {
-
-	    @Override
-	    public void onSelection(final SelectionEvent<AbstractShowcaseTreeMenuItem> event) {
-		historyHandle(event.getSelectedItem());
-		displayScreen(event.getSelectedItem());
-	    }
-
-	}));
-
-    }
-
-    private void historyHandle(AbstractShowcaseTreeMenuItem selectedItem) {
-
-	if (selectedItem.hasScreen()) {
-	    String categ = "";
-
-	    String screen = selectedItem.getText();
-
-	    while (selectedItem.getParentItem() != null) {
-		categ = selectedItem.getParentItem().getText();
-		selectedItem = (AbstractShowcaseTreeMenuItem) selectedItem.getParentItem();
-	    }
-	    // create the screen and attach to DOM
-	    ShowcaseInjector.Util.getInstance().getPresenter().getPlaceController().goTo(new MenuPlace(categ, screen));
 	}
 
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param display
+	 * @param eventBus
+	 */
+	@Inject
+	public ShowcaseGlobalPanelPresenter(Display display, EventBus eventBus) {
+		super(display, eventBus);
 
-    private final void displayScreen(final AbstractShowcaseTreeMenuItem abstractShowcaseTreeMenuItem) {
-	Scheduler.get().scheduleFinally(new ScheduledCommand() {
+		display.getReturnLbl().addClickHandler(new ClickHandler() {
 
-	    @Override
-	    public void execute() {
+			@Override
+			public void onClick(ClickEvent event) {
+				History.back();
+			}
+		});
+	}
 
-		final IsWidget code = abstractShowcaseTreeMenuItem.getScreen();
-		eventBus.fireEvent(new SelectionCodeEvent(code));
-	    }
-	});
+	@Override
+	protected void onBind() {
 
-    }
+		registerHandler(display.getStartAutomatedDemoHandler().addClickHandler(
+				new ClickHandler() {
 
-    @Override
-    protected void onUnbind() {
-    }
+					@Override
+					public void onClick(ClickEvent event) {
+						Window.alert("menu view");
+						ShowcaseInjector.Util.getInstance().getEventBus()
+								.fireEvent(new StartAutomatedDemoEvent());
+					}
+				}));
 
-    @Override
-    protected void onRevealDisplay() {
-    }
+		registerHandler(eventBus.addHandler(SelectionEvent.getType(),
+				new SelectionHandler<AbstractShowcaseTreeMenuItem>() {
+
+					@Override
+					public void onSelection(
+							final SelectionEvent<AbstractShowcaseTreeMenuItem> event) {
+						historyHandle(event.getSelectedItem());
+						displayScreen(event.getSelectedItem());
+					}
+
+				}));
+
+	}
+
+	private void historyHandle(AbstractShowcaseTreeMenuItem selectedItem) {
+
+		if (selectedItem.hasScreen()) {
+			String categ = "";
+
+			String screen = selectedItem.getText();
+
+			while (selectedItem.getParentItem() != null) {
+				categ = selectedItem.getParentItem().getText();
+				selectedItem = (AbstractShowcaseTreeMenuItem) selectedItem
+						.getParentItem();
+			}
+			// create the screen and attach to DOM
+			ShowcaseInjector.Util.getInstance().getPresenter()
+					.getPlaceController().goTo(new MenuPlace(categ, screen));
+		}
+
+	}
+
+	private final void displayScreen(
+			final AbstractShowcaseTreeMenuItem abstractShowcaseTreeMenuItem) {
+		Scheduler.get().scheduleFinally(new ScheduledCommand() {
+
+			@Override
+			public void execute() {
+
+				final IsWidget code = abstractShowcaseTreeMenuItem.getScreen();
+				eventBus.fireEvent(new SelectionCodeEvent(code));
+			}
+		});
+
+	}
+
+	@Override
+	protected void onUnbind() {
+	}
+
+	@Override
+	protected void onRevealDisplay() {
+	}
 }

@@ -22,38 +22,40 @@ import com.google.gwt.user.client.ui.SimplePanel;
  *          {@inheritDoc}
  */
 public class ProgressBar extends Composite {
-    private SimplePanel progress;
-    private ProgressAnimation animation;
+	private SimplePanel progress;
+	private ProgressAnimation animation;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ProgressBar() {
-	SimplePanel container = new SimplePanel();
-	progress = new SimplePanel();
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ProgressBar() {
+		SimplePanel container = new SimplePanel();
+		progress = new SimplePanel();
 
-	container.setWidget(progress);
-	container.setSize("100%", "16px");
-	container.getElement().getStyle().setBorderColor("rgba(255, 255, 255, 0.5)");
-	container.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
-	container.getElement().getStyle().setBorderWidth(2, Unit.PX);
-	container.getElement().getStyle().setBackgroundColor("rgba(255, 255, 255, 0.3)");
-	
-	
-	progress.setSize("0%", "16px");
-	progress.getElement().getStyle().setBackgroundColor("rgba(128, 0, 0, 0.8)");
-	progress.getElement().getStyle().setBorderColor("rgba(128, 0, 0, 0.8)");
-	progress.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
-	progress.getElement().getStyle().setBorderWidth(2, Unit.PX);
-	progress.getElement().getStyle().setProperty("borderRadius", "0px 5px");
-	progress.getElement().getStyle().setProperty("borderRadius", "0px 5px");
-	
-	animation = new ProgressAnimation(progress);
-	initWidget(container);
-    }
+		container.setWidget(progress);
+		container.setSize("100%", "16px");
+		container.getElement().getStyle()
+				.setBorderColor("rgba(255, 255, 255, 0.5)");
+		container.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
+		container.getElement().getStyle().setBorderWidth(2, Unit.PX);
+		container.getElement().getStyle()
+				.setBackgroundColor("rgba(255, 255, 255, 0.3)");
 
-    public void run(int millisecond) {
-	animation.run(millisecond);
-    }
+		progress.setSize("0%", "16px");
+		progress.getElement().getStyle()
+				.setBackgroundColor("rgba(128, 0, 0, 0.8)");
+		progress.getElement().getStyle().setBorderColor("rgba(128, 0, 0, 0.8)");
+		progress.getElement().getStyle().setBorderStyle(BorderStyle.SOLID);
+		progress.getElement().getStyle().setBorderWidth(2, Unit.PX);
+		progress.getElement().getStyle().setProperty("borderRadius", "0px 5px");
+		progress.getElement().getStyle().setProperty("borderRadius", "0px 5px");
+
+		animation = new ProgressAnimation(progress);
+		initWidget(container);
+	}
+
+	public void run(int millisecond) {
+		animation.run(millisecond);
+	}
 }

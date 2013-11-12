@@ -24,13 +24,13 @@ import fr.vekia.tools.showcase.vkgraph.shared.CodeUrl;
 @RemoteServiceRelativePath("codingServlet")
 public interface CodeService extends RemoteService {
 
-    /**
-     * @param string
-     * @return
-     * @throws Exception
-     */
-    String getCode(String string);
+	/**
+	 * @param string
+	 * @return
+	 * @throws Exception
+	 */
+	String getCode(String string);
 
-    CodeUrl getCodeUrl(String name);
+	CodeUrl getCodeUrl(String name);
 
 }

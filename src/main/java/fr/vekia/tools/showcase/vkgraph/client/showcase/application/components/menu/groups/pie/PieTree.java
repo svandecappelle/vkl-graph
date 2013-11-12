@@ -26,35 +26,35 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.pi
  *          {@inheritDoc}
  */
 public class PieTree extends AbstractShowcaseTreeMenuItem {
-    /**
-     * Default constructor
-     * 
-     */
-    public PieTree() {
-	super("Pies");
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public PieTree() {
+		super("Pies");
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return true;
-    }
+	@Override
+	public boolean hasChildren() {
+		return true;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
-	childrens.add(new GeneralPieExempleItem("Simple pie"));
-	childrens.add(new DonutExempleItem("Donut"));
-	return childrens;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		List<AbstractShowcaseTreeMenuItem> childrens = new ArrayList<AbstractShowcaseTreeMenuItem>();
+		childrens.add(new GeneralPieExempleItem("Simple pie"));
+		childrens.add(new DonutExempleItem("Donut"));
+		return childrens;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return false;
-    }
+	@Override
+	public boolean hasScreen() {
+		return false;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return null;
-    }
+	@Override
+	public IsWidget getScreen() {
+		return null;
+	}
 
 }

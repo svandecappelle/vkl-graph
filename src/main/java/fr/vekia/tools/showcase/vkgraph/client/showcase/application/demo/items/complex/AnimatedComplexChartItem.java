@@ -25,33 +25,33 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.
  */
 public class AnimatedComplexChartItem extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     * 
-     * @param string
-     */
-    public AnimatedComplexChartItem(String string) {
-	super(string);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param string
+	 */
+	public AnimatedComplexChartItem(String string) {
+		super(string);
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return false;
-    }
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	return null;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		return null;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return true;
-    }
+	@Override
+	public boolean hasScreen() {
+		return true;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return new ZoomProxyChartScreen();
-    }
+	@Override
+	public IsWidget getScreen() {
+		return new ZoomProxyChartScreen();
+	}
 
 }

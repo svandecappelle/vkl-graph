@@ -25,6 +25,8 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcasePrese
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ThemeFactory;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ThemeFactory.Theme;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.ShowcaseInjector;
+import fr.vekia.tools.showcase.vkgraph.client.theming.ThemeInjector;
+import fr.vekia.tools.showcase.vkgraph.client.theming.view.ThemeViewImpl;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -39,10 +41,6 @@ public class Showcase implements EntryPoint {
 		ShowcasePresenter presenter = injector.getPresenter();
 		presenter.bind();
 		presenter.revealDisplay();
-
-		// ThemeInjector injectorTheme = ThemeInjector.Util.getInstance();
-		// injectorTheme.getPresenter().bind();
-		// injectorTheme.getPresenter().revealDisplay();
 
 		SimpleEventBus eventBusMap = new SimpleEventBus();
 		PlaceController controller = new PlaceController(eventBusMap);
@@ -65,12 +63,17 @@ public class Showcase implements EntryPoint {
 		historyHandler.register(presenter.getPlaceController(), eventBusMap,
 				defaultPlace);
 
-		// controller.goTo(defaultPlace);
+		//controller.goTo(defaultPlace);
 
 		// Goes to place represented on URL or default place
 		historyHandler.handleCurrentHistory();
 
-		ThemeFactory.setTheme(Theme.CLEAR);
+		ThemeFactory.setTheme(Theme.PRO);
+		ThemeInjector injectorTheme = ThemeInjector.Util.getInstance();
+		injectorTheme.getPresenter().bind();
+		injectorTheme.getPresenter().revealDisplay();
+		
+		// RootLayoutPanel.get().add(ohlc);
 
 		// PilotGraph ohlc = new PilotGraph();
 		//

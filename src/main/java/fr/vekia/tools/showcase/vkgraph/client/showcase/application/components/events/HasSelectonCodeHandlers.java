@@ -21,12 +21,12 @@ import com.google.gwt.event.shared.HasHandlers;
  */
 public interface HasSelectonCodeHandlers extends HasHandlers {
 
-    /**
-     * Adds a {@link ItemTabSelectionEvent} handler.
-     * 
-     * @param handler
-     *            ItemTabSelection handler
-     * @return {@link HandlerRegistration} used to remove this handler
-     */
-    HandlerRegistration addSelectionCodeHandler(SelectionCodeHandler handler);
+	/**
+	 * Adds a {@link ItemTabSelectionEvent} handler.
+	 * 
+	 * @param handler
+	 *            ItemTabSelection handler
+	 * @return {@link HandlerRegistration} used to remove this handler
+	 */
+	HandlerRegistration addSelectionCodeHandler(SelectionCodeHandler handler);
 }

@@ -28,76 +28,76 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.Dialog;
  */
 public class Message extends Dialog {
 
-    private HTML alertMessage;
+	private HTML alertMessage;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public Message(String textToAlert) {
-	this.alertMessage = new HTML(textToAlert);
-	setWidget(alertMessage);
-	setPopupAnimationStartPosition(50, Unit.PCT, 0, Unit.PX);
-    }
-
-    /**
-     * Default constructor
-     * 
-     */
-    public Message() {
-	this("");
-    }
-
-    /**
-     * Default constructor
-     * 
-     */
-    public Message(boolean hasCloseButton) {
-	this("", hasCloseButton);
-    }
-
-    /**
-     * Default constructor
-     * 
-     */
-    public Message(String textToAlert, boolean hasCloseButton) {
-	this.alertMessage = new HTML(textToAlert);
-	if (hasCloseButton) {
-	    VerticalPanel panel = new VerticalPanel();
-
-	    panel.add(alertMessage);
-
-	    Button closeButton = new Button("close");
-	    closeButton.addClickHandler(new ClickHandler() {
-
-		@Override
-		public void onClick(ClickEvent event) {
-		    Message.this.hide();
-		}
-	    });
-	    panel.add(closeButton);
-
-	    setWidget(panel);
-	} else {
-	    setWidget(alertMessage);
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Message(String textToAlert) {
+		this.alertMessage = new HTML(textToAlert);
+		setWidget(alertMessage);
+		setPopupAnimationStartPosition(50, Unit.PCT, 0, Unit.PX);
 	}
-	setPopupAnimationStartPosition(50, Unit.PCT, 0, Unit.PX);
-    }
 
-    /**
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Message() {
+		this("");
+	}
+
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Message(boolean hasCloseButton) {
+		this("", hasCloseButton);
+	}
+
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Message(String textToAlert, boolean hasCloseButton) {
+		this.alertMessage = new HTML(textToAlert);
+		if (hasCloseButton) {
+			VerticalPanel panel = new VerticalPanel();
+
+			panel.add(alertMessage);
+
+			Button closeButton = new Button("close");
+			closeButton.addClickHandler(new ClickHandler() {
+
+				@Override
+				public void onClick(ClickEvent event) {
+					Message.this.hide();
+				}
+			});
+			panel.add(closeButton);
+
+			setWidget(panel);
+		} else {
+			setWidget(alertMessage);
+		}
+		setPopupAnimationStartPosition(50, Unit.PCT, 0, Unit.PX);
+	}
+
+	/**
      * 
      */
-    public void setMessage(String message) {
-	alertMessage.setHTML(message);
-    }
+	public void setMessage(String message) {
+		alertMessage.setHTML(message);
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public Message(IsWidget children) {
-	setWidget(children);
-	setPopupAnimationStartPosition(50, Unit.PCT, 0, Unit.PX);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Message(IsWidget children) {
+		setWidget(children);
+		setPopupAnimationStartPosition(50, Unit.PCT, 0, Unit.PX);
+	}
 
 }

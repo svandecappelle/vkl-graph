@@ -22,30 +22,30 @@ import com.google.gwt.user.client.ui.SimplePanel;
  */
 public class Slider extends Composite {
 
-    private SimplePanel element;
+	private SimplePanel element;
 
-    /**
-     * Default constructor
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public Slider() {
+		element = new SimplePanel();
+		element.getElement().setId(DOM.createUniqueId());
+		initWidget(element);
+	}
+
+	@Override
+	protected void onAttach() {
+		super.onAttach();
+		this.createSlider(element.getElement().getId());
+	}
+
+	/**
      * 
      */
-    public Slider() {
-	element = new SimplePanel();
-	element.getElement().setId(DOM.createUniqueId());
-	initWidget(element);
-    }
-
-    @Override
-    protected void onAttach() {
-	super.onAttach();
-	this.createSlider(element.getElement().getId());
-    }
-
-    /**
-     * 
-     */
-    private native void createSlider(String id) /*-{
-        console.log("slider create");
-	$wnd.jQuery(id).slider();
-    }-*/;
+	private native void createSlider(String id) /*-{
+												console.log("slider create");
+												$wnd.jQuery(id).slider();
+												}-*/;
 
 }

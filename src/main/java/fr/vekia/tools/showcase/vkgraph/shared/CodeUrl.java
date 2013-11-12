@@ -19,56 +19,56 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  *          {@inheritDoc}
  */
 public class CodeUrl implements IsSerializable {
-    private String url;
-    private String className;
+	private String url;
+	private String className;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public CodeUrl() {
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public CodeUrl() {
+	}
 
-    /**
-     * Default constructor
-     * 
-     * @param url
-     * @param className
-     */
-    public CodeUrl(String url, String className) {
-	super();
-	this.url = url;
-	this.className = className;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param url
+	 * @param className
+	 */
+	public CodeUrl(String url, String className) {
+		super();
+		this.url = url;
+		this.className = className;
+	}
 
-    /**
-     * @return the url
-     */
-    public String getUrl() {
-	return url;
-    }
+	/**
+	 * @return the url
+	 */
+	public String getUrl() {
+		return url;
+	}
 
-    /**
-     * @param url
-     *            the url to set
-     */
-    public void setUrl(String url) {
-	this.url = url;
-    }
+	/**
+	 * @param url
+	 *            the url to set
+	 */
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
-    /**
-     * @return the className
-     */
-    public String getClassName() {
-	return className;
-    }
+	/**
+	 * @return the className
+	 */
+	public String getClassName() {
+		return className;
+	}
 
-    /**
-     * @param className
-     *            the className to set
-     */
-    public void setClassName(String className) {
-	this.className = className;
-    }
+	/**
+	 * @param className
+	 *            the className to set
+	 */
+	public void setClassName(String className) {
+		this.className = className;
+	}
 
 }

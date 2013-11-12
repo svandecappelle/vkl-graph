@@ -25,14 +25,14 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.places.Present
  */
 public class MyActivityMapper implements ActivityMapper {
 
-    @Override
-    public Activity getActivity(Place place) {
-	// This is begging for GIN
-	if (place instanceof MenuPlace)
-	    return new MenuActivity((MenuPlace) place);
-	else if (place instanceof PresentationPlace)
-	    return new PresentationActivity(place);
-	return null;
-    }
+	@Override
+	public Activity getActivity(Place place) {
+		// This is begging for GIN
+		if (place instanceof MenuPlace)
+			return new MenuActivity((MenuPlace) place);
+		else if (place instanceof PresentationPlace)
+			return new PresentationActivity(place);
+		return null;
+	}
 
 }

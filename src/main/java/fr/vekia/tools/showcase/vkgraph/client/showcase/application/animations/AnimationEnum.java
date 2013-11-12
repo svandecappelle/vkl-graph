@@ -17,14 +17,5 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations;
  *          {@inheritDoc}
  */
 public enum AnimationEnum {
-    FADE_IN,
-    FADE_OUT,
-    FADE_TOGGLE,
-    EXPLODE,
-    SLIDE_DOWN,
-    SLIDE_TOGGLE,
-    SLIDE_UP,
-    BOUNCE,
-    PULSATE,
-    SCROLLCENTER_BOUNCE;
+	FADE_IN, FADE_OUT, FADE_TOGGLE, EXPLODE, SLIDE_DOWN, SLIDE_TOGGLE, SLIDE_UP, BOUNCE, PULSATE, SCROLLCENTER_BOUNCE;
 }

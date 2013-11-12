@@ -23,30 +23,32 @@ import fr.vekia.tools.showcase.vkgraph.shared.CodeUrl;
  */
 public final class CodeServiceUtil {
 
-    private static final CodeServiceAsync SERVICE_CODING = GWT.create(CodeService.class);
+	private static final CodeServiceAsync SERVICE_CODING = GWT
+			.create(CodeService.class);
 
-    private CodeServiceUtil() {
-    }
+	private CodeServiceUtil() {
+	}
 
-    /**
-     * @return the servicecoding
-     */
-    public static CodeServiceAsync getServicecoding() {
-	return SERVICE_CODING;
-    }
+	/**
+	 * @return the servicecoding
+	 */
+	public static CodeServiceAsync getServicecoding() {
+		return SERVICE_CODING;
+	}
 
-    /**
+	/**
      * 
      */
-    public static void getCode(String className, AsyncCallback<String> callBack) {
-	SERVICE_CODING.getCode(className, callBack);
-    }
+	public static void getCode(String className, AsyncCallback<String> callBack) {
+		SERVICE_CODING.getCode(className, callBack);
+	}
 
-    /**
-     * @param name
-     * @param asyncCallback
-     */
-    public static void getCodeUrl(String name, AsyncCallback<CodeUrl> asyncCallback) {
-	SERVICE_CODING.getCodeUrl(name, asyncCallback);
-    }
+	/**
+	 * @param name
+	 * @param asyncCallback
+	 */
+	public static void getCodeUrl(String name,
+			AsyncCallback<CodeUrl> asyncCallback) {
+		SERVICE_CODING.getCodeUrl(name, asyncCallback);
+	}
 }

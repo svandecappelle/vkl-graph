@@ -26,33 +26,40 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class BarChartExempleScreen extends BarChart<Number> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public BarChartExempleScreen() {
-	super.setOption(ChartOption.seriesDefaults, SubOption.renderer, RenderersEnum.Bar.getValueRenderer());
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public BarChartExempleScreen() {
+		super.setOption(ChartOption.seriesDefaults, SubOption.renderer,
+				RenderersEnum.Bar.getValueRenderer());
 
-	ArrayList<Number> data = new ArrayList<Number>();
-	data.add(1);
-	data.add(3);
-	data.add(5);
-	data.add(7);
-	data.add(5);
+		ArrayList<Number> data = new ArrayList<Number>();
+		data.add(1);
+		data.add(3);
+		data.add(5);
+		data.add(7);
+		data.add(5);
 
-	List<String> ticks = new ArrayList<String>();
-	ticks.add("A");
-	ticks.add("B");
-	ticks.add("C");
-	ticks.add("D");
-	ticks.add("E");
-	super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, RenderersEnum.CategoryAxis.getValueRenderer());
-	super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.ticks, ticks);
-	super.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.min, 0);
-	super.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.max, 10);
-	super.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.tickInterval, 1);
-	super.setBooleanOption(ChartOption.seriesDefaults, SubOption.pointLabels, SubOption.show, false);
-	setListView(true);
-	setDatas(data);
-    }
+		List<String> ticks = new ArrayList<String>();
+		ticks.add("A");
+		ticks.add("B");
+		ticks.add("C");
+		ticks.add("D");
+		ticks.add("E");
+		super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer,
+				RenderersEnum.CategoryAxis.getValueRenderer());
+		super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.ticks,
+				ticks);
+		super.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.min,
+				0);
+		super.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.max,
+				10);
+		super.setNumberOption(ChartOption.axes, SubOption.yaxis,
+				SubOption.tickInterval, 1);
+		super.setBooleanOption(ChartOption.seriesDefaults,
+				SubOption.pointLabels, SubOption.show, false);
+		setListView(true);
+		setDatas(data);
+	}
 }

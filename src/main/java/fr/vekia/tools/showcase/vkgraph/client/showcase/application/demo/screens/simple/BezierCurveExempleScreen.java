@@ -26,54 +26,55 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class BezierCurveExempleScreen extends AbstractChart<List<DualValue>> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public BezierCurveExempleScreen() {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public BezierCurveExempleScreen() {
 
-	List<List<DualValue>> datas = new ArrayList<List<DualValue>>();
+		List<List<DualValue>> datas = new ArrayList<List<DualValue>>();
 
-	List<DualValue> lineOne = new ArrayList<DualValue>();
-	lineOne.add(new DualValue(0, 1));
-	lineOne.add(new DualValue(2, 2));
-	lineOne.add(new DualValue(4, 0.5));
-	lineOne.add(new DualValue(6, 0));
-	datas.add(lineOne);
+		List<DualValue> lineOne = new ArrayList<DualValue>();
+		lineOne.add(new DualValue(0, 1));
+		lineOne.add(new DualValue(2, 2));
+		lineOne.add(new DualValue(4, 0.5));
+		lineOne.add(new DualValue(6, 0));
+		datas.add(lineOne);
 
-	List<DualValue> linetwo = new ArrayList<DualValue>();
-	linetwo.add(new DualValue(0, 5));
-	linetwo.add(new DualValue(2, 6));
-	linetwo.add(new DualValue(4, 1));
-	linetwo.add(new DualValue(6, 0.5));
-	datas.add(linetwo);
+		List<DualValue> linetwo = new ArrayList<DualValue>();
+		linetwo.add(new DualValue(0, 5));
+		linetwo.add(new DualValue(2, 6));
+		linetwo.add(new DualValue(4, 1));
+		linetwo.add(new DualValue(6, 0.5));
+		datas.add(linetwo);
 
-	List<DualValue> linethree = new ArrayList<DualValue>();
-	linethree.add(new DualValue(0, 6));
-	linethree.add(new DualValue(2, 9));
-	linethree.add(new DualValue(4, 8));
-	linethree.add(new DualValue(6, 3));
-	datas.add(linethree);
+		List<DualValue> linethree = new ArrayList<DualValue>();
+		linethree.add(new DualValue(0, 6));
+		linethree.add(new DualValue(2, 9));
+		linethree.add(new DualValue(4, 8));
+		linethree.add(new DualValue(6, 3));
+		datas.add(linethree);
 
-	List<DualValue> lineFour = new ArrayList<DualValue>();
-	lineFour.add(new DualValue(0, 7));
-	lineFour.add(new DualValue(2, 9));
-	lineFour.add(new DualValue(4, 8));
-	lineFour.add(new DualValue(6, 6));
-	datas.add(lineFour);
+		List<DualValue> lineFour = new ArrayList<DualValue>();
+		lineFour.add(new DualValue(0, 7));
+		lineFour.add(new DualValue(2, 9));
+		lineFour.add(new DualValue(4, 8));
+		lineFour.add(new DualValue(6, 6));
+		datas.add(lineFour);
 
-	List<DualValue> lineFive = new ArrayList<DualValue>();
-	lineFive.add(new DualValue(0, 8));
-	lineFive.add(new DualValue(2, 9));
-	lineFive.add(new DualValue(4, 8));
-	lineFive.add(new DualValue(6, 8));
-	datas.add(lineFive);
+		List<DualValue> lineFive = new ArrayList<DualValue>();
+		lineFive.add(new DualValue(0, 8));
+		lineFive.add(new DualValue(2, 9));
+		lineFive.add(new DualValue(4, 8));
+		lineFive.add(new DualValue(6, 8));
+		datas.add(lineFive);
 
-	setOption(ChartOption.seriesDefaults, SubOption.renderer, "$.jqplot.BezierCurveRenderer");
+		setOption(ChartOption.seriesDefaults, SubOption.renderer,
+				"$.jqplot.BezierCurveRenderer");
 
-	setBooleanOption(ChartOption.legend, SubOption.show, true);
+		setBooleanOption(ChartOption.legend, SubOption.show, true);
 
-	setDatas(datas);
-	super.setThemingEnable(true);
-    }
+		setDatas(datas);
+		super.setThemingEnable(true);
+	}
 }

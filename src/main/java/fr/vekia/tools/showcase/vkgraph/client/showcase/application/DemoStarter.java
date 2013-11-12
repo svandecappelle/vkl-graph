@@ -28,165 +28,197 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.ProgressBa
  *          {@inheritDoc}
  */
 public final class DemoStarter {
-    /**
-     * Default constructor
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private DemoStarter() {
+	}
+
+	/**
      * 
      */
-    private DemoStarter() {
-    }
+	public final static void start() {
+		Window.alert("menu view");
 
-    /**
-     * 
-     */
-    public final static void start() {
-	Window.alert("menu view");
-	
-	MouseDemoWidget.getInstance().activate();
+		MouseDemoWidget.getInstance().activate();
 
-	final ProgressBar bar = new ProgressBar();
+		final ProgressBar bar = new ProgressBar();
 
-	bar.getElement().getStyle().setPosition(Position.FIXED);
-	RootLayoutPanel.get().add(bar);
-	RootLayoutPanel.get().setWidgetBottomHeight(bar, 0, Unit.PX, 16, Unit.PX);
-	RootLayoutPanel.get().setWidgetLeftWidth(bar, 0, Unit.PX, 100, Unit.PCT);
+		bar.getElement().getStyle().setPosition(Position.FIXED);
+		RootLayoutPanel.get().add(bar);
+		RootLayoutPanel.get().setWidgetBottomHeight(bar, 0, Unit.PX, 16,
+				Unit.PX);
+		RootLayoutPanel.get()
+				.setWidgetLeftWidth(bar, 0, Unit.PX, 100, Unit.PCT);
 
-	JQueryDialog dialog = new JQueryDialog(true, true);
-	dialog.setSize("150px", "40px");
-	dialog.setWidget(bar);
-	dialog.show();
+		JQueryDialog dialog = new JQueryDialog(true, true);
+		dialog.setSize("150px", "40px");
+		dialog.setWidget(bar);
+		dialog.show();
 
-	SequentialTimerStack timers = new SequentialTimerStack();
-	final Message messageOfChart = new Message(true);
-	messageOfChart.setGlassEnabled(true);
-	messageOfChart.setAnimationHide(AnimationEnum.EXPLODE);
-	messageOfChart.setAnimationShow(AnimationEnum.SCROLLCENTER_BOUNCE);
+		SequentialTimerStack timers = new SequentialTimerStack();
+		final Message messageOfChart = new Message(true);
+		messageOfChart.setGlassEnabled(true);
+		messageOfChart.setAnimationHide(AnimationEnum.EXPLODE);
+		messageOfChart.setAnimationShow(AnimationEnum.SCROLLCENTER_BOUNCE);
 
-	timers.addToStack(new SequentialTimer(10) {
+		timers.addToStack(new SequentialTimer(10) {
 
-	    @Override
-	    public void execute() {
-		ShowcaseInjector.Util.getInstance().getEventBus().fireEvent(new SelectionOnMenuRequiredEvent("Plots", "LineChart plots"));
-	    }
-	});
-	timers.addToStack(new SequentialTimer(2800) {
+			@Override
+			public void execute() {
+				ShowcaseInjector.Util
+						.getInstance()
+						.getEventBus()
+						.fireEvent(
+								new SelectionOnMenuRequiredEvent("Plots",
+										"LineChart plots"));
+			}
+		});
+		timers.addToStack(new SequentialTimer(2800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.setMessage("Here a simple line chart view.");
-		messageOfChart.show();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(4800) {
+			@Override
+			public void execute() {
+				messageOfChart.setMessage("Here a simple line chart view.");
+				messageOfChart.show();
+			}
+		});
+		timers.addToStack(new SequentialTimer(4800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.hide();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(11000) {
+			@Override
+			public void execute() {
+				messageOfChart.hide();
+			}
+		});
+		timers.addToStack(new SequentialTimer(11000) {
 
-	    @Override
-	    public void execute() {
-		ShowcaseInjector.Util.getInstance().getEventBus().fireEvent(new SelectionOnMenuRequiredEvent("Plots", "Pyramid plot"));
-	    }
-	});
-	timers.addToStack(new SequentialTimer(2800) {
+			@Override
+			public void execute() {
+				ShowcaseInjector.Util
+						.getInstance()
+						.getEventBus()
+						.fireEvent(
+								new SelectionOnMenuRequiredEvent("Plots",
+										"Pyramid plot"));
+			}
+		});
+		timers.addToStack(new SequentialTimer(2800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.setMessage("Here a pyramid with mouse over events.");
-		messageOfChart.show();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(4800) {
+			@Override
+			public void execute() {
+				messageOfChart
+						.setMessage("Here a pyramid with mouse over events.");
+				messageOfChart.show();
+			}
+		});
+		timers.addToStack(new SequentialTimer(4800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.hide();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(11000) {
+			@Override
+			public void execute() {
+				messageOfChart.hide();
+			}
+		});
+		timers.addToStack(new SequentialTimer(11000) {
 
-	    @Override
-	    public void execute() {
-		ShowcaseInjector.Util.getInstance().getEventBus().fireEvent(new SelectionOnMenuRequiredEvent("PieChart", "Simple pie"));
-	    }
-	});
-	timers.addToStack(new SequentialTimer(2800) {
+			@Override
+			public void execute() {
+				ShowcaseInjector.Util
+						.getInstance()
+						.getEventBus()
+						.fireEvent(
+								new SelectionOnMenuRequiredEvent("PieChart",
+										"Simple pie"));
+			}
+		});
+		timers.addToStack(new SequentialTimer(2800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.setMessage("Here a simple pie chart showing the different view of the library can produce.");
-		messageOfChart.show();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(4800) {
+			@Override
+			public void execute() {
+				messageOfChart
+						.setMessage("Here a simple pie chart showing the different view of the library can produce.");
+				messageOfChart.show();
+			}
+		});
+		timers.addToStack(new SequentialTimer(4800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.hide();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(11000) {
+			@Override
+			public void execute() {
+				messageOfChart.hide();
+			}
+		});
+		timers.addToStack(new SequentialTimer(11000) {
 
-	    @Override
-	    public void execute() {
-		ShowcaseInjector.Util.getInstance().getEventBus()
-			.fireEvent(new SelectionOnMenuRequiredEvent("Interactive Charts", "Bubble chart with events and drag Options"));
-	    }
-	});
-	timers.addToStack(new SequentialTimer(2800) {
+			@Override
+			public void execute() {
+				ShowcaseInjector.Util
+						.getInstance()
+						.getEventBus()
+						.fireEvent(
+								new SelectionOnMenuRequiredEvent(
+										"Interactive Charts",
+										"Bubble chart with events and drag Options"));
+			}
+		});
+		timers.addToStack(new SequentialTimer(2800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.setMessage("Here a Bubble chart with drag events and resizable chart capacity.");
-		messageOfChart.show();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(4800) {
+			@Override
+			public void execute() {
+				messageOfChart
+						.setMessage("Here a Bubble chart with drag events and resizable chart capacity.");
+				messageOfChart.show();
+			}
+		});
+		timers.addToStack(new SequentialTimer(4800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.hide();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(6000) {
+			@Override
+			public void execute() {
+				messageOfChart.hide();
+			}
+		});
+		timers.addToStack(new SequentialTimer(6000) {
 
-	    @Override
-	    public void execute() {
-		ShowcaseInjector.Util.getInstance().getEventBus()
-			.fireEvent(new SelectionOnMenuRequiredEvent("Complex Charts", "Zoom Proxy - Control one plot from another"));
-	    }
-	});
-	timers.addToStack(new SequentialTimer(2800) {
+			@Override
+			public void execute() {
+				ShowcaseInjector.Util
+						.getInstance()
+						.getEventBus()
+						.fireEvent(
+								new SelectionOnMenuRequiredEvent(
+										"Complex Charts",
+										"Zoom Proxy - Control one plot from another"));
+			}
+		});
+		timers.addToStack(new SequentialTimer(2800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.setMessage("Here an area whart showing a zoom controlled by a second chart.");
-		messageOfChart.show();
-	    }
-	});
-	timers.addToStack(new SequentialTimer(4800) {
+			@Override
+			public void execute() {
+				messageOfChart
+						.setMessage("Here an area whart showing a zoom controlled by a second chart.");
+				messageOfChart.show();
+			}
+		});
+		timers.addToStack(new SequentialTimer(4800) {
 
-	    @Override
-	    public void execute() {
-		messageOfChart.hide();
-	    }
-	});
+			@Override
+			public void execute() {
+				messageOfChart.hide();
+			}
+		});
 
-	timers.addToStack(new SequentialTimer(6000) {
+		timers.addToStack(new SequentialTimer(6000) {
 
-	    @Override
-	    public void execute() {
-		MouseDemoWidget.getInstance().desactivate();
-		messageOfChart.setMessage("Now have fun with this library.");
-		messageOfChart.show();
-		RootLayoutPanel.get().remove(bar);
-	    }
-	});
+			@Override
+			public void execute() {
+				MouseDemoWidget.getInstance().desactivate();
+				messageOfChart.setMessage("Now have fun with this library.");
+				messageOfChart.show();
+				RootLayoutPanel.get().remove(bar);
+			}
+		});
 
-	timers.run();
-	bar.run(10 + 5 * 2800 + 5 * 4800 + 3 * 11000 + 2 * 6000);
-	// ShowcaseInjector.Util.getInstance().getPresenter().getPlaceController().goTo(new MenuPlace("PieChart","Simple pie"));
-    }
+		timers.run();
+		bar.run(10 + 5 * 2800 + 5 * 4800 + 3 * 11000 + 2 * 6000);
+		// ShowcaseInjector.Util.getInstance().getPresenter().getPlaceController().goTo(new
+		// MenuPlace("PieChart","Simple pie"));
+	}
 }

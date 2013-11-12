@@ -20,37 +20,37 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.me
  * @since 22 août 2012. VklGraph version 1.2
  * @version 2.1
  * 
- *	{@inheritDoc}				
+ *          {@inheritDoc}
  */
 public class PyramidChartInteractiveItem extends AbstractShowcaseTreeMenuItem {
 
-    /**
-     * Default constructor
-     *
-     * @param text
-     */
-    public PyramidChartInteractiveItem(String text) {
-	super(text);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param text
+	 */
+	public PyramidChartInteractiveItem(String text) {
+		super(text);
+	}
 
-    @Override
-    public boolean hasChildren() {
-	return false;
-    }
+	@Override
+	public boolean hasChildren() {
+		return false;
+	}
 
-    @Override
-    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-	return null;
-    }
+	@Override
+	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+		return null;
+	}
 
-    @Override
-    public boolean hasScreen() {
-	return true;
-    }
+	@Override
+	public boolean hasScreen() {
+		return true;
+	}
 
-    @Override
-    public IsWidget getScreen() {
-	return new PyramidChartInteractiveWidget();
-    }
+	@Override
+	public IsWidget getScreen() {
+		return new PyramidChartInteractiveWidget();
+	}
 
 }
