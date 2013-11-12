@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<project name="Java2HTML Ant task demo" default="convert">
+
+    <!-- Demonstration of the Java2Html task. Works only when directory layout is as specified -->
+    <!-- Specify/create the necessary directories -->
+
+    <target name="init">
+      <property name="src.dir" value="../src/main/java" />
+      <property name="build.dir" value="build" />
+      <property name="scratch.dir" value="../src/main/webapp/sources" />
+
+      <mkdir dir="${scratch.dir}" />
+      <mkdir dir="${build.dir}" />
+    </target>
+ 
+    <target name="convert" depends="init">
+      <taskdef name="java2html"
+             classname="de.java2html.anttasks.Java2HtmlTask"
+          classpath="${build.dir}/java2html.jar"   
+      />
+      <java2html
+             srcdir="${src.dir}"
+             destdir="${scratch.dir}"
+             includes="**/*.java"
+             outputFormat="html"
+             tabs="2"
+             style="eclipse"
+             showLineNumbers="true"
+             showFileName="true"
+             useShortFileName="true"
+             showTableBorder="true"
+             includeDocumentHeader="true"
+             includeDocumentFooter="true"
+              />
+    </target>
+</project>
