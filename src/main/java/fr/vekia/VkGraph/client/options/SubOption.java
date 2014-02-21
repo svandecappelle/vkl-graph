@@ -9,6 +9,7 @@
  */
 package fr.vekia.VkGraph.client.options;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
  * 
  *          {@inheritDoc} A JqPlot chart Sub option.
  */
-public enum SubOption implements IsOption, HasType {
+public enum SubOption implements IsOption, HasType, Serializable {
     rendererOptions(ChartOption.axesDefaults, ChartOption.seriesDefaults, ChartOption.grid),
     dragable(OptionType.BOOLEAN, ChartOption.series),
     trendline(ChartOption.seriesDefaults),

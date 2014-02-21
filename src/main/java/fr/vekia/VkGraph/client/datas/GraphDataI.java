@@ -9,6 +9,8 @@
  */
 package fr.vekia.VkGraph.client.datas;
 
+import java.io.Serializable;
+
 /**
  * @author svandecappelle
  * @since Jan 14, 2013. VklGraph version 1.2
@@ -16,6 +18,6 @@ package fr.vekia.VkGraph.client.datas;
  * 
  *	{@inheritDoc}				
  */
-public interface GraphDataI {
+public interface GraphDataI extends Serializable{
 
 }

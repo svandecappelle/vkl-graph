@@ -23,6 +23,10 @@ public abstract class ComplexeValue implements GraphDataI{
     private Number x;
     private Number y;
 
+    public ComplexeValue(){
+        super();
+    }
+
     /**
      * Default constructor
      * 

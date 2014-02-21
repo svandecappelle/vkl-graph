@@ -20,6 +20,11 @@ abstract class Line extends OptionSerie {
 
     private boolean dashed = false;
 
+    public Line(){
+        super();
+    }
+
+
     public void setDashed(boolean isDashed) {
 	this.dashed = isDashed;
     }

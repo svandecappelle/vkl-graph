@@ -9,6 +9,7 @@
  */
 package fr.vekia.VkGraph.client.datas;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ import fr.vekia.VkGraph.client.options.SubOption;
  *          {@inheritDoc} A chart specific render. You can specify all options on chart for one data series or more. Then you could create an area /
  *          line chart mixed or any other join.
  */
-public class OptionSerie {
+public class OptionSerie implements Serializable{
     private Map<SubOption, String> optionsMapped;
     private Map<SubOption, Map<SubOption, String>> subSubOptionsMapped;
     private Map<SubOption, Map<SubOption, JSONValue>> subSubOptionsMappedWithJson;

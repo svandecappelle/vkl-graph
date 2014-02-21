@@ -28,6 +28,11 @@ public class PeriodCalendar extends HorizontalLine {
     private static final DateTimeFormat DEFAULT_DATE_FORMAT = DateTimeFormat.getMediumTimeFormat();
 
     private static final int LINE_WIDTH = 10;
+    
+    public PeriodCalendar(){
+        super();
+    }
+
     /**
      * Default constructor
      * 

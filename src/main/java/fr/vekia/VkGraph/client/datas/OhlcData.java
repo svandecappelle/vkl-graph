@@ -21,6 +21,10 @@ public class OhlcData implements GraphDataI {
     private Object category;
     private Object[] data;
 
+    public OhlcData(){
+        super();
+    }
+
     /**
      * Default constructor
      * 

@@ -19,4 +19,7 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class HorizontalLine extends Line {
 
+	public HorizontalLine(){
+		
+	}
 }

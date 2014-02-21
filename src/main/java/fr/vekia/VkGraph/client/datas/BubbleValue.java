@@ -20,6 +20,11 @@ public class BubbleValue extends ComplexeValue {
 
     private Number width;
 
+    public BubbleValue() {
+    super();
+    }
+
+
     /**
      * Default constructor
      * 

@@ -19,4 +19,7 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class VerticalLine extends Line {
 
+	public VerticalLine(){
+
+	}
 }

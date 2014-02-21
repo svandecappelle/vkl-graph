@@ -23,6 +23,10 @@ public class NumberData extends Number implements GraphDataI {
     private static final long serialVersionUID = 1L;
     private Number data;
 
+    public NumberData(){
+        super();
+    }
+
     /**
      * Default constructor
      * 

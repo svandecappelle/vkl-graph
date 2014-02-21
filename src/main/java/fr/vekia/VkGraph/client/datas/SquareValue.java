@@ -18,6 +18,10 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class SquareValue extends ComplexeValue {
 
+    public SquareValue(){
+        super();
+    }
+
     /**
      * Default constructor
      * 

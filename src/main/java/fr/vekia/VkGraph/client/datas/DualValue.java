@@ -34,6 +34,11 @@ public class DualValue implements GraphDataI {
 
     private Number value;
 
+
+    public DualValue(){
+        super();
+    }
+
     /**
      * Default constructor
      * 

@@ -9,6 +9,8 @@
  */
 package fr.vekia.VkGraph.client.options;
 
+import java.io.Serializable;
+
 /**
  * @author svandecappelle
  * @since Nov 26, 2012. VklGraph version 1.2
@@ -16,7 +18,7 @@ package fr.vekia.VkGraph.client.options;
  * 
  *	{@inheritDoc}				
  */
-public interface HasType {
+public interface HasType extends Serializable {
     OptionType getType();
 
     /**

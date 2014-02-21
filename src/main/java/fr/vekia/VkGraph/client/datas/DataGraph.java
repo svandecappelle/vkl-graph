@@ -9,6 +9,7 @@
  */
 package fr.vekia.VkGraph.client.datas;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -18,10 +19,14 @@ import java.util.List;
  * 
  *          {@inheritDoc} An utility class to load data on chart.
  */
-public class DataGraph<T> {
+public class DataGraph<T> implements Serializable {
 
     private List<T> data;
     private boolean multiple;
+
+    public DataGraph(){
+
+    }
 
     /**
      * Set the DataGraph value to convert.

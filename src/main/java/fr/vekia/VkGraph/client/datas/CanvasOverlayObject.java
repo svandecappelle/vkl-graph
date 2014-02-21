@@ -9,6 +9,7 @@
  */
 package fr.vekia.VkGraph.client.datas;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,7 +27,7 @@ import fr.vekia.VkGraph.client.options.SubOption;
  * 
  *          {@inheritDoc}
  */
-public class CanvasOverlayObject {
+public class CanvasOverlayObject implements Serializable{
 
     private List<Line> lines;
 

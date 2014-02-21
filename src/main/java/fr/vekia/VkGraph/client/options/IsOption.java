@@ -9,6 +9,8 @@
  */
 package fr.vekia.VkGraph.client.options;
 
+import java.io.Serializable;
+
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 4 mai 2012. GWTQuery Vekia Showcase
@@ -16,6 +18,6 @@ package fr.vekia.VkGraph.client.options;
  * 
  *          {@inheritDoc} A JqPlot chart option.
  */
-public interface IsOption {
+public interface IsOption extends Serializable{
 
 }

@@ -9,6 +9,8 @@
  */
 package fr.vekia.VkGraph.client.options;
 
+import java.io.Serializable;
+
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 4 mai 2012. GWTQuery Vekia Showcase
@@ -16,7 +18,7 @@ package fr.vekia.VkGraph.client.options;
  * 
  *          {@inheritDoc} The chart available options.
  */
-public enum ChartOption implements IsOption, HasType {
+public enum ChartOption implements IsOption, HasType, Serializable {
     seriesColors,
     stackSeries,
     title,
