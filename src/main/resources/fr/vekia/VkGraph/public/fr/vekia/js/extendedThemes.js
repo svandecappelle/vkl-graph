@@ -144,79 +144,76 @@ Map.prototype.value = function() {
 // smoothing is turned on. Bands will be drawn with the same
 // smoothing as the line.
 // ////
-themeBlue = {
-    series : [ {
-	color : 'rgba(216, 159, 60, 0.4)'
-    }, {
-	color : 'rgba(159, 216, 60, 0.4)'
-    }, {
-	color : 'rgba(60, 159, 216, 0.4)'
-    }, ],
-    grid : {
-	drawBorder : false,
-	shadow : false,
-	backgroundColor : 'rgba(255, 255, 255, 0.0)'
-    },
-    seriesDefaults : {
-	shadow : false,
-	showMarker : false
-    },
-    axes : {
-	xaxis : {
-	    pad : 1.0,
-	    tickOptions : {
-		showGridline : false
-	    }
+
+// VKBASE :
+vkbase = {
+	series : [
+		{color:'#f54f4f'},
+		{color:'#ffd370'},
+		{color:'#34cf6d'},
+		{color:'#58c3f0'},
+		{color:'#f58f54'},
+		{color:'#a8d031'},
+		{color:'#58f0a9'},
+		{color:'#588ef0'},
+		{color:'#ff9ee4'},
+		{color:'#ffad42'},
+		{color:'#63cf32'},
+		{color:'#58f0de'},
+		{color:'#8e8efa'},
+		{color:'#ff99a5'},
+	],
+
+	seriesStyles : {
+		seriesColors : ['#f54f4f','#ffd370', '#34cf6d','#58c3f0','#c68efa','#f58f54','#a8d031','#58f0a9','#588ef0','#ff9ee4','#ffad42','#63cf32','#58f0de','#8e8efa','#ff99a5'],
 	},
-	yaxis : {
-	    pad : 1.05
-	}
-    }
+	grid : {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.0)'
+    },
 };
 
-gabe = {
-    seriesStyles : {
-	seriesColors : [ 'red', 'orange', 'yellow', 'green', 'blue', 'indigo' ],
-	highlightColors : [ 'lightpink', 'lightsalmon', 'lightyellow', 'lightgreen', 'lightblue', 'mediumslateblue' ]
+vkbase_full = {
+	series : [
+		{color:'#f54f4f'},
+		{color:'#ffd370'},
+		{color:'#34cf6d'},
+		{color:'#58c3f0'},
+		{color:'#f58f54'},
+		{color:'#a8d031'},
+		{color:'#58f0a9'},
+		{color:'#588ef0'},
+		{color:'#ff9ee4'},
+		{color:'#ffad42'},
+		{color:'#63cf32'},
+		{color:'#58f0de'},
+		{color:'#8e8efa'},
+		{color:'#ff99a5'},
+	],
+
+	seriesStyles : {
+		seriesColors : ['#f54f4f','#ffd370', '#34cf6d','#58c3f0','#c68efa','#f58f54','#a8d031','#58f0a9','#588ef0','#ff9ee4','#ffad42','#63cf32','#58f0de','#8e8efa','#ff99a5'],
+	},
+	grid : {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.0)'
     },
-    legend : {
-	fontSize : '8pt'
+};
+
+vkbase_pie = {
+	seriesStyles : {
+		seriesColors : ['#f54f4f','#ffd370', '#34cf6d','#58c3f0','#c68efa','#f58f54','#a8d031','#58f0a9','#588ef0','#ff9ee4','#ffad42','#63cf32','#58f0de','#8e8efa','#ff99a5'],
+	},
+	grid : {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.0)'
     },
-    title : {
-	fontSize : '18pt'
-    },
-    grid : {
-	backgroundColor : 'rgb(211, 233, 195)'
-    }
 };
-black = {
-    series : [ {
-	color : 'rgba(216, 159, 60, 0.4)'
-    }, {
-	color : 'rgba(159, 216, 60, 0.4)'
-    }, {
-	color : 'rgba(60, 159, 216, 0.4)'
-    }, ],
-    grid : {
-	backgroundColor : '#000000'
-    }
-};
-area_salmon = {
-    series : [ {
-	color : 'rgba(216, 159, 60, 0.4)'
-    }, {
-	color : 'rgba(159, 216, 60, 0.4)'
-    }, {
-	color : 'rgba(60, 159, 216, 0.4)'
-    }, ],
-    grid : {
-	gridLineColor : '#666666',
-	gridLineWidth : 2,
-	drawBorder : false,
-	shadow : false,
-	backgroundColor : 'rgba(57,57,57,1.0)'
-    }
-};
+
+// OldSchool :
 old_school = {
     target : {
 	backgroundColor : "white"
@@ -277,44 +274,8 @@ old_school_pie = {
 	backgroundColor : 'white'
     }
 };
-modern = {
-    series : [ {
-	color : '#AA4643'
-    }, {
-	color : '#4572A7'
-    }, {
-	color : '#89A54E'
-    }, {
-	color : '#80699B'
-    }, {
-	color : '#3D96AE'
-    }, {
-	color : '#DB843D'
-    }, {
-	color : '#B7B1C7'
-    }, {
-	color : '#E55F23'
-    }, {
-	color : '#686A81'
-    }, {
-	color : '#0F0F0F'
-    }, {
-	color : '#F00FF0'
-    } ],
 
-    grid : {
-	backgroundColor : 'aliceblue'
-    }
-};
-modern_pie = {
-    seriesStyles : {
-	seriesColors : [ '#AA4643', '#4572A7', '#89A54E', '#80699B', '#3D96AE', '#DB843D', '#B7B1C7', '#E55F23', '#686A81', '#0F0F0F', '#F00FF0' ]
-    },
-    grid : {
-	backgroundColor : 'aliceblue'
-    }
-};
-
+// GREY SCALE:
 grey_scale = {
     series : [ {
 	color : '#000000'
@@ -336,25 +297,6 @@ grey_scale = {
 	backgroundColor : 'white'
     }
 };
-// grey_scale_pie = {
-// seriesStyles : {
-// // seriesColors : [ '#000000', '#484848', '#676767', '#8E8E8E',
-// // '#A9A9A9',
-// // '#C3C3C3', '#DEDEDE' ],
-// // seriesColors : [ '#FF4A62', '#FFA500', '#D07AFF', '#008000',
-// // '#7ABAFF',
-// // '#FF4AF6', '#FF0000' ],
-// // highlightColors : []
-// seriesColors : [ '#FF4A62', '#FFA500', '#D07AFF', '#008000', '#7ABAFF',
-// '#4B0082', '#95FF7A', '#DFFC57', '#FFED7A', '#A9FF7A',
-// '#FFA07A', '#7AFFBD', '#0000FF', '#8E7AFF', '#FFFF00',
-// '#FF4AF6', '#FF0000' ],
-// highlightColors : []
-// },
-// grid : {
-// backgroundColor : 'white'
-// }
-// };
 
 grey_scale_pie = {
     seriesStyles : {
@@ -368,13 +310,9 @@ grey_scale_pie = {
 };
 
 var themes = new Map();
-themes.put('gabe', gabe);
-themes.put('blue', themeBlue);
-themes.put('salmon', area_salmon);
 themes.put('old_school', old_school);
 themes.put('old_school_pie', old_school_pie);
-themes.put('modern', modern);
-themes.put('modern_pie', modern_pie);
-themes.put('black', black);
+themes.put('vkbase', vkbase);
+themes.put('vkbase_pie', vkbase_pie);
 themes.put('grey_scale', grey_scale);
 themes.put('grey_scale_pie', grey_scale_pie);

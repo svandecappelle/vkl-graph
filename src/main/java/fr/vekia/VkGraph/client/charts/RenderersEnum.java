@@ -46,7 +46,8 @@ public enum RenderersEnum {
     Marker("$.jqplot.MarkerRenderer"),
     Shape("$.jqplot.shapeRenderer"),
     Shadow("$.jqplot.shadowRenderer"),
-    EnhancedLegendRenderer("$.jqplot.EnhancedLegendRenderer");
+    EnhancedLegendRenderer("$.jqplot.EnhancedLegendRenderer"),
+    DonutLegend("$.jqplot.DonutLegendRenderer");
 
     private String valueRenderer;
 

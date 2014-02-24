@@ -27,7 +27,7 @@ public class Resizer {
      * 
      */
     public Resizer(Chart<?> chart) {
-	this.chart = chart;
+	   this.chart = chart;
     }
 
     /**
@@ -35,33 +35,9 @@ public class Resizer {
      * @param string
      * @param string2
      */
-    public void bind(String resizableElementId) {
-	setResizable(resizableElementId);
+    public void bind() {
+	   setResizable(chart.getChartJavascriptObject(), "#" + chart.getId() + "resizable");
     }
-
-    /**
-     * @param chartJavascriptObject
-     * @param string
-     * @param string2
-     */
-    public void bind(JavaScriptObject javascriptChart) {
-	setResizable(javascriptChart, "#" + chart.getId() + "resizable");
-    }
-
-    /**
-     * JavaScript native method used to bind the resize / reploting chart using JQuery.
-     * 
-     * @param chart
-     * @param chartId
-     * @param resizableElementId
-     */
-    private native void setResizable(String resizableElementId)
-    /*-{
-	$wnd.jQuery(resizableElementId).bind('resize', function(event, ui) {
-	});
-
-	$wnd.jQuery(resizableElementId).resizable({});
-    }-*/;
 
     /**
      * JavaScript native method used to bind the resize / reploting chart using JQuery.
@@ -69,16 +45,14 @@ public class Resizer {
      * @param chart
      * @param resizableElementId
      */
-    private native void setResizable(JavaScriptObject chart, String resizableElementId)
-    /*-{
-	$wnd.jQuery(resizableElementId).bind('resize', function(event, ui) {
-	    chart.replot({
-		resetAxes : true
-	    });
-	});
+    private native void setResizable(final JavaScriptObject chart,final String resizableElementId)/*-{
+    	$wnd.jQuery(resizableElementId).bind('resize', function(event, ui) {
+    	    chart.replot({
+    		  resetAxes : true
+    	    });
+    	});
 
-	$wnd.jQuery(resizableElementId).resizable({});
-
+    	$wnd.jQuery(resizableElementId).resizable({});
     }-*/;
 
 }

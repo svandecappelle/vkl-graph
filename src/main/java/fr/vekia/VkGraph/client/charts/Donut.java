@@ -9,6 +9,9 @@
  */
 package fr.vekia.VkGraph.client.charts;
 
+import fr.vekia.VkGraph.client.options.ChartOption;
+import fr.vekia.VkGraph.client.options.SubOption;
+
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 4 mai 2012. GWTQuery Vekia Showcase
@@ -23,10 +26,12 @@ public class Donut<T> extends PieChart<T> {
      */
     public Donut() {
 	super.setRenderer(RenderersEnum.Donut);
+    super.setOption(ChartOption.legend, SubOption.renderer,
+        RenderersEnum.DonutLegend.getValueRenderer());
     }
 
     @Override
     public void setPluginsEnable(boolean isPluginEnable) {
-	throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
+	throw new UnsupportedOperationException("plugins are not enable to Donut Charts");
     }
 }

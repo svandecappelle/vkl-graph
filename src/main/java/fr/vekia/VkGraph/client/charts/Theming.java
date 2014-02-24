@@ -9,6 +9,10 @@
  */
 package fr.vekia.VkGraph.client.charts;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import fr.vekia.VkGraph.client.charts.RenderersEnum;
 import fr.vekia.VkGraph.client.charts.menus.MenuCommands;
 import fr.vekia.VkGraph.client.charts.menus.RightClickMenuWidget;
 
@@ -20,26 +24,27 @@ import fr.vekia.VkGraph.client.charts.menus.RightClickMenuWidget;
  *          {@inheritDoc} List of currently available themes.
  */
 public enum Theming {
-    BLUE("blue"),
-    BLACK("black"),
     OLD_SCHOOL("old_school"),
-    OLD_SCHOOL_PIE("old_school_pie"),
-    SALMON("salmon"),
-    MODERN("modern"),
-    MODERN_PIE("modern_pie"),
+    OLD_SCHOOL_PIE("old_school_pie", Type.PIE),
     GREY_SCALE("grey_scale"),
-    GREY_SCALE_PIE("grey_scale_pie"),
-    GABE("gabe");
+    GREY_SCALE_PIE("grey_scale_pie", Type.PIE),
+    VKBASE("vkbase"),
+	VKBASE_PIE("vkbase_pie", Type.PIE),
+	VKBASE_FULL("vkbase_full", Type.BOTH);
+    
+	private enum Type{
+		PIE, DEFAULT, BOTH;
+	}
 
     private String theme;
-    private final static int LINE_THEMES_COUNT = 7;
-    private final static int PIE_THEMES_COUNT = 3;
+    private Type chartType;
+    private String themeName;
 
     /**
      * @return the theme name.
      */
     public String getTheme() {
-	return theme;
+		return theme;
     }
 
     /**
@@ -47,14 +52,45 @@ public enum Theming {
      * 
      */
     private Theming(String theme) {
-	this.theme = theme;
+		this.theme = theme;
+		this.chartType = Type.DEFAULT;
+		this.themeName = super.name();
+    }
+
+    /**
+     * Default constructor.
+     * 
+     */
+    private Theming(String theme, Type chartType) {
+		this.theme = theme;
+		this.chartType = chartType;
+		this.themeName = super.name();
+    }
+
+        /**
+     * Default constructor.
+     * 
+     */
+    private Theming(String theme, Type chartType, String name) {
+		this.theme = theme;
+		this.chartType = chartType;
+		this.themeName = name; 
+    }
+
+
+    public String getThemeName(){
+		return themeName;
     }
 
     /**
      * @return get the available themes for chart.
      */
     public static MenuCommands[] getDefault(final Chart<?> chart, final RightClickMenuWidget menu) {
-	return dispach(chart, menu);
+		return dispach(chart, menu);
+    }
+
+    public Type getType(){
+    	return chartType;
     }
 
     /**
@@ -67,123 +103,45 @@ public enum Theming {
      * @return The menu themes selector commands.
      */
     private static MenuCommands[] dispach(Chart<?> chart, RightClickMenuWidget menu) {
-	MenuCommands[] output = null;
-	ThemeActivator activator = new ThemeActivator(chart, menu);
-	switch (chart.getRenderer()) {
-	case Pie:
-	case Donut:
-	    output = getPieDefault(activator);
-	    break;
-	default:
-	    output = getLineDefault(activator);
-	    break;
-	}
-	return output;
+		ThemeActivator activator = new ThemeActivator(chart, menu);
+		List<MenuCommands> themes = new ArrayList<MenuCommands>();
+		boolean isPieThemeRequested = (chart.getRenderer() == RenderersEnum.Pie || chart.getRenderer() == RenderersEnum.Donut);
+
+		for (Theming theme : Theming.values()){
+
+			switch(theme.getType()){
+
+				case PIE:
+					if (isPieThemeRequested){
+						themes.add(buildThemeCommand(theme, activator));
+					}
+				break;
+
+				case DEFAULT:
+					if (!isPieThemeRequested){
+						themes.add(buildThemeCommand(theme, activator));
+					}
+				break;
+
+				case BOTH:
+					themes.add(buildThemeCommand(theme, activator));
+				break;
+
+				default:
+					// NOTHING by default.
+				break;
+			}
+
+		}
+		return themes.toArray(new MenuCommands[themes.size()]);
     }
 
-    /**
-     * Return the available themes for Pie/Donut Chart.
-     * 
-     * @param activator
-     *            the theme activator.
-     * @return The menu themes selector commands.
-     */
-    private static MenuCommands[] getPieDefault(final ThemeActivator activator) {
-	MenuCommands[] themes = new MenuCommands[PIE_THEMES_COUNT];
-	int i = 0;
-	themes[i] = new MenuCommands("old_school") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(OLD_SCHOOL_PIE);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("modern") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(MODERN);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("grey_scale") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(GREY_SCALE);
-	    }
-	};
-	return themes;
+    private static MenuCommands buildThemeCommand(final Theming theme,final ThemeActivator activator){
+    	return new MenuCommands(theme.getThemeName()) {
+				    @Override
+				    public void execute() {
+						activator.activate(theme);
+			    	}
+				};
     }
-
-    /**
-     * Return the available themes for Line Chart.
-     * 
-     * @param activator
-     *            the theme activator.
-     * @return The menu themes selector commands.
-     */
-    private static MenuCommands[] getLineDefault(final ThemeActivator activator) {
-
-	MenuCommands[] themes = new MenuCommands[LINE_THEMES_COUNT];
-	int i = 0;
-	themes[i] = new MenuCommands("blue") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(BLUE);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("black") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(BLACK);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("area_salmon") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(SALMON);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("gabe") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(GABE);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("old_school") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(OLD_SCHOOL);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("modern") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(MODERN);
-	    }
-	};
-	i += 1;
-	themes[i] = new MenuCommands("grey_scale") {
-
-	    @Override
-	    public void execute() {
-		activator.activate(GREY_SCALE);
-	    }
-	};
-	return themes;
-    }
-
 }

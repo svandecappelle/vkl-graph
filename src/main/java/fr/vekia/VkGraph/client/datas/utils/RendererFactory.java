@@ -35,6 +35,11 @@ public final class RendererFactory {
 	return $wnd.jQuery.jqplot.DonutRenderer;
     }-*/;
 
+    private static native JavaScriptObject donutLegend()
+    /*-{
+    return $wnd.jQuery.jqplot.DonutLegendRenderer;
+    }-*/;
+
     private static native JavaScriptObject bar()
     /*-{
 	return $wnd.jQuery.jqplot.BarRenderer;
@@ -193,6 +198,9 @@ public final class RendererFactory {
 	    case Donut:
 		output = donut();
 		break;
+		case DonutLegend:
+		output = donutLegend();
+	    break;
 	    case Funnel:
 		output = funnel();
 		break;
