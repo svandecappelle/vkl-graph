@@ -28,8 +28,8 @@ class ThemeActivator {
      * 
      */
     public ThemeActivator(Chart<?> chart, RightClickMenuWidget menu) {
-	this.chart = chart;
-	this.menu = menu;
+    	this.chart = chart;
+    	this.menu = menu;
     }
 
     /**
@@ -38,9 +38,9 @@ class ThemeActivator {
      * @param theme
      */
     public void activate(Theming theme) {
-	chart.activateTheme(theme.getTheme());
-	chart.replot();
-	menu.hideMenu();
+    	chart.activateTheme(theme.getTheme());
+    	chart.replot();
+    	menu.hideMenu();
     }
 
 }

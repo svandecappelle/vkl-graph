@@ -9,6 +9,8 @@
  */
 package fr.vekia.VkGraph.client.charts;
 
+import fr.vekia.VkGraph.client.charts.RenderersEnum;
+
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 15 juin 2012. GWTQuery Vekia Showcase
@@ -23,6 +25,7 @@ public class LineChart<T> extends AbstractChart<T> {
      * 
      */
     public LineChart() {
-	super();
+		super();
+		super.setRenderer(RenderersEnum.Line);
     }
 }

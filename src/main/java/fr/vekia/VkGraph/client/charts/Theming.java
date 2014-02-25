@@ -24,13 +24,14 @@ import fr.vekia.VkGraph.client.charts.menus.RightClickMenuWidget;
  *          {@inheritDoc} List of currently available themes.
  */
 public enum Theming {
-    OLD_SCHOOL("old_school"),
-    OLD_SCHOOL_PIE("old_school_pie", Type.PIE),
     GREY_SCALE("grey_scale"),
     GREY_SCALE_PIE("grey_scale_pie", Type.PIE),
     VKBASE("vkbase"),
 	VKBASE_PIE("vkbase_pie", Type.PIE),
-	VKBASE_FULL("vkbase_full", Type.BOTH);
+	RAINBOW("rainbow"),
+    RAINBOW_PIE("rainbow_pie", Type.PIE),
+    BLUE("bluealpha"),
+    BLUE_PIE("bluealpha_pie", Type.PIE);
     
 	private enum Type{
 		PIE, DEFAULT, BOTH;
@@ -105,7 +106,8 @@ public enum Theming {
     private static MenuCommands[] dispach(Chart<?> chart, RightClickMenuWidget menu) {
 		ThemeActivator activator = new ThemeActivator(chart, menu);
 		List<MenuCommands> themes = new ArrayList<MenuCommands>();
-		boolean isPieThemeRequested = (chart.getRenderer() == RenderersEnum.Pie || chart.getRenderer() == RenderersEnum.Donut);
+		boolean isPieThemeRequested = (chart.getRenderer() == RenderersEnum.Pie || chart.getRenderer() == RenderersEnum.Donut 
+            || chart.getRenderer() == RenderersEnum.Funnel);
 
 		for (Theming theme : Theming.values()){
 

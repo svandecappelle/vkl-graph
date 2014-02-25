@@ -100,100 +100,94 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * 
      */
     public Chart() {
-	this.chartLayout = new SimplePanel();
-	this.chartContainer = new SimplePanel();
-	
-	
-	
-	this.chartLayout.setSize("100%","100%");
-	this.chartContainer.setSize("100%","100%");
-	
-	this.resizableContainer = new SimplePanel(this.chartContainer);
-	super.setSize("100%", "100%");
-	// charts controllers
+    	this.chartLayout = new SimplePanel();
+    	this.chartContainer = new SimplePanel();
+    	
+    	
+    	
+    	this.chartLayout.setSize("100%","100%");
+    	this.chartContainer.setSize("100%","100%");
+    	
+    	this.resizableContainer = new SimplePanel(this.chartContainer);
+    	super.setSize("100%", "100%");
+    	// charts controllers
 
-	// option controller
-	this.chartOptionner = new ChartOptioner();
-	// data controller
-	this.dataController = new DataController<T>(this);
-	// export to image controller
-	this.exporter = new Exporter(this);
-	// event controller / binder
-	this.eventBinder = new EventBinder(this);
-	// specific resize event controller
-	this.resizer = new Resizer(this);
-	// right click controller
-	this.rightMenuController = new ChartRightMenuController();
+    	// option controller
+    	this.chartOptionner = new ChartOptioner();
+    	// data controller
+    	this.dataController = new DataController<T>(this);
+    	// export to image controller
+    	this.exporter = new Exporter(this);
+    	// event controller / binder
+    	this.eventBinder = new EventBinder(this);
+    	// specific resize event controller
+    	this.resizer = new Resizer(this);
+    	// right click controller
+    	this.rightMenuController = new ChartRightMenuController();
 
-	// set HTML Id
-	this.chartContainer.getElement().setId(id);
-	this.resizableContainer.getElement().setId(id + "resizable");
+    	// set HTML Id
+    	this.chartContainer.getElement().setId(id);
+    	this.resizableContainer.getElement().setId(id + "resizable");
 
-	// Stylish
-    this.resizableContainer.addStyleName("vkl-ChartContainer");
-	
-    // size of graph should have a pixel default defined else 0% will be applied and graph is invisible.
-	this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-	this.resizableContainer.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-	// attach UI
-	this.chartLayout.setWidget(this.resizableContainer);
-	this.setWidget(this.chartLayout);
-	
-	this.addStyleName("Vkl-Graph");
+    	// Stylish
+        this.resizableContainer.addStyleName("vkl-ChartContainer");
+    	
+        // size of graph should have a pixel default defined else 0% will be applied and graph is invisible.
+    	this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    	this.resizableContainer.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
+    	// attach UI
+    	this.chartLayout.setWidget(this.resizableContainer);
+    	this.setWidget(this.chartLayout);
+    	
+    	this.addStyleName("Vkl-Graph");
     }
 
-    private native void activateTheme(JavaScriptObject chart, String themeName)
-    /*-{
-    // theme activated flag
-    var flag = false;
-    try {
-        // try to activate a theme
-        chart.themeEngine.get(themeName);
-        //  insert the theme into the available list of JqPlot themes
-        chart.themeEngine.newTheme(themeName, $wnd.themes.get(themeName));
-    } catch (err) {
-        flag = true;
-    }
-    // activate the theme added
-    chart.activateTheme(themeName);
-    }-*/;
-
-    private native void activateTheme(JavaScriptObject chart, String themeName, JavaScriptObject themeJavascript)
-    /*-{
-    // theme activated flag
-    var flag = false;
-    try {
-        // try to activate a theme
-        if (chart.themeEngine.get(themeName) != null) {
-    	chart.themeEngine.remove(themeName);
+  private native void activateTheme(JavaScriptObject chart, String themeName)/*-{
+        // theme activated flag
+        var flag = false;
+        try {
+            //  insert the theme into the available list of JqPlot themes
+            if (chart.themeEngine.get(themeName) != null) {
+                chart.themeEngine.remove(themeName);
+            }
+            var themes = new $wnd.VklThemes();
+            chart.themeEngine.newTheme(themeName, themes.get(themeName, chart));
+        } catch (err) {
+            flag = true;
         }
-        //  insert the theme into the available list of JqPlot themes
-        chart.themeEngine.newTheme(themeName, themeJavascript);
-    } catch (err) {
-        flag = true;
-    }
-    // activate the theme added
-    chart.activateTheme(themeName);
+        // activate the theme added
+        chart.activateTheme(themeName);
     }-*/;
 
-    private native void addToDefaultThemes(String themeName, JavaScriptObject themeJavascript)
-    /*-{
-    themes.put(themeName, themeJavascript);
+    private native void activateTheme(JavaScriptObject chart, String themeName, JavaScriptObject themeJavascript)/*-{
+        // theme activated flag
+        var flag = false;
+        try {
+            // try to activate a theme
+            if (chart.themeEngine.get(themeName) != null) {
+        	   chart.themeEngine.remove(themeName);
+            }
+            //  insert the theme into the available list of JqPlot themes
+            chart.themeEngine.newTheme(themeName, themeJavascript);
+        } catch (err) {
+            flag = true;
+        }
+        // activate the theme added
+        chart.activateTheme(themeName);
     }-*/;
 
     public void activateTheme(String themeName, JavaScriptObject themeJavascript) {
-	try {
-	    // if chart is already attached to the browser attach the theme to the JavaScript chart. It will be attached onAttach Event else
-	    if (this.chartJavascriptObject != null) {
-		activateTheme(this.chartJavascriptObject, themeName, themeJavascript);
-	    } else {
-		addToDefaultThemes(themeName, themeJavascript);
-		this.theme = themeName;
-	    }
-	} catch (Exception e) {
-	    GWT.log("Activation theme may be with error: " + e.getMessage());
-	    JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
-	}
+    	try {
+    	    // if chart is already attached to the browser attach the theme to the JavaScript chart. It will be attached onAttach Event else
+    	    if (this.chartJavascriptObject != null) {
+    	       activateTheme(this.chartJavascriptObject, themeName, themeJavascript);
+    	    } else {
+        		this.theme = themeName;
+    	    }
+    	} catch (Exception e) {
+    	     GWT.log("Activation theme may be with error: " + e.getMessage());
+    	     JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
+    	}
     }
 
     /**
@@ -203,17 +197,17 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the theme name to activate.
      */
     public void activateTheme(String themeName) {
-	try {
-	    // if chart is already attached to the browser attach the theme to the JavaScript chart. It will be attached onAttach Event else
-	    if (this.chartJavascriptObject != null) {
-		activateTheme(this.chartJavascriptObject, themeName);
-	    } else {
-		this.theme = themeName;
-	    }
-	} catch (Exception e) {
-	    GWT.log("Activation theme may be with error: " + e.getMessage());
-	    JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
-	}
+    	try {
+    	    // if chart is already attached to the browser attach the theme to the JavaScript chart. It will be attached onAttach Event else
+    	    if (this.chartJavascriptObject != null) {
+    		  activateTheme(this.chartJavascriptObject, themeName);
+    	    } else {
+    		  this.theme = themeName;
+    	    }
+    	} catch (Exception e) {
+            GWT.log("Activation theme may be with error: " + e.getMessage());
+            JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
+    	}
     }
 
     /**
@@ -222,18 +216,18 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param command
      */
     public void addToRightClickMenu(MenuCommands command) {
-	this.rightMenuController.activate(this, this.chartLayout);
-	this.rightMenuController.addToMenu(command);
+    	this.rightMenuController.activate(this, this.chartLayout);
+    	this.rightMenuController.addToMenu(command);
     }
 
     /**
      * @param event
      */
     public void bind(JqPlotEvent event) {
-	if (this.bindedEvents == null) {
-	    this.bindedEvents = new ArrayList<JqPlotEvent>();
-	}
-	this.bindedEvents.add(event);
+    	if (this.bindedEvents == null) {
+    	    this.bindedEvents = new ArrayList<JqPlotEvent>();
+    	}
+    	this.bindedEvents.add(event);
     }
 
     /**
@@ -250,9 +244,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * Binds all events.
      */
     private void binds() {
-	if (this.bindedEvents != null) {
-	    this.eventBinder.bind(this.bindedEvents);
-	}
+    	if (this.bindedEvents != null) {
+    	    this.eventBinder.bind(this.bindedEvents);
+    	}
     }
 
     /**
@@ -262,8 +256,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param isPluginEnable
      * @return
      */
-    private native JavaScriptObject callJqPlot(String elementId, JavaScriptObject dataString, JavaScriptObject options, boolean isPluginEnable, String themeName)
-    /*-{
+    private native JavaScriptObject callJqPlot(String elementId, JavaScriptObject dataString, JavaScriptObject options, boolean isPluginEnable, String themeName)/*-{
         // plugins JqPlot
         $wnd.jQuery.jqplot.config.enablePlugins = isPluginEnable;
 
@@ -272,12 +265,13 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 
         // activate theme if any
         if (themeName != null) {
-            try {
-        	chartJavascript.themeEngine.get(themeName);
-        	chartJavascript.themeEngine.newTheme(themeName, $wnd.themes.get(themeName));
-            } catch (err) {
-        	flag = true;
+
+            // try to activate a theme
+            if (chartJavascript.themeEngine.get(themeName) != null) {
+               chartJavascript.themeEngine.remove(themeName);
             }
+            var themes = new $wnd.VklThemes();
+        	chartJavascript.themeEngine.newTheme(themeName, themes.get(themeName, chartJavascript));
             chartJavascript.activateTheme(themeName);
         }
         // plugins JqPlot reset to false prevent any other chart added to DOM.
@@ -287,8 +281,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     }-*/;
 
     public void setZoomProxy(final Chart<?> chartProxy) {
-	this.proxyZoom = new ZoomProxy();
-	this.proxyZoom.setProxy(this, chartProxy);
+    	this.proxyZoom = new ZoomProxy();
+    	this.proxyZoom.setProxy(this, chartProxy);
     }
 
     /**
@@ -296,13 +290,12 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param value
      * @param chart
      */
-    private native void changeProperty(JavaScriptObject optionArray, JavaScriptObject value, JavaScriptObject chart)
-    /*-{
-    var functionVar = chart;
-    for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
-        functionVar = functionVar[optionArray[optionNb]];
-    }
-    functionVar[optionArray[optionArray.length - 1]] = value;
+    private native void changeProperty(JavaScriptObject optionArray, JavaScriptObject value, JavaScriptObject chart)/*-{
+        var functionVar = chart;
+        for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
+            functionVar = functionVar[optionArray[optionNb]];
+        }
+        functionVar[optionArray[optionArray.length - 1]] = value;
     }-*/;
 
     /**
@@ -310,13 +303,12 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param value
      * @param chart
      */
-    private native void changeProperty(JavaScriptObject optionArray, Number value, JavaScriptObject chart)
-    /*-{
-    var functionVar = chart;
-    for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
-        functionVar = functionVar[optionArray[optionNb]];
-    }
-    functionVar[optionArray[optionArray.length - 1]] = value;
+    private native void changeProperty(JavaScriptObject optionArray, Number value, JavaScriptObject chart)/*-{
+        var functionVar = chart;
+        for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
+            functionVar = functionVar[optionArray[optionNb]];
+        }
+        functionVar[optionArray[optionArray.length - 1]] = value;
     }-*/;
 
     /**
@@ -324,13 +316,12 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param value
      * @param chart
      */
-    private native void changeProperty(JavaScriptObject optionArray, String value, JavaScriptObject chart)
-    /*-{
-    var functionVar = chart;
-    for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
-        functionVar = functionVar[optionArray[optionNb]];
-    }
-    functionVar[optionArray[optionArray.length - 1]] = value;
+    private native void changeProperty(JavaScriptObject optionArray, String value, JavaScriptObject chart)/*-{
+        var functionVar = chart;
+        for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
+            functionVar = functionVar[optionArray[optionNb]];
+        }
+        functionVar[optionArray[optionArray.length - 1]] = value;
     }-*/;
 
     /**
@@ -338,9 +329,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param string
      */
     protected void changeProperty(JSONArray arrayData, String... option) {
-	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
-	optionsArray.setData(Arrays.asList(option));
-	changeProperty(optionsArray.getJso().getJavaScriptObject(), arrayData.getJavaScriptObject(), this.chartJavascriptObject);
+    	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
+    	optionsArray.setData(Arrays.asList(option));
+    	changeProperty(optionsArray.getJso().getJavaScriptObject(), arrayData.getJavaScriptObject(), this.chartJavascriptObject);
     }
 
     /**
@@ -348,9 +339,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param string
      */
     protected void changeProperty(JSONObject arrayData, String... option) {
-	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
-	optionsArray.setData(Arrays.asList(option));
-	changeProperty(optionsArray.getJso().getJavaScriptObject(), arrayData.getJavaScriptObject(), this.chartJavascriptObject);
+    	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
+    	optionsArray.setData(Arrays.asList(option));
+    	changeProperty(optionsArray.getJso().getJavaScriptObject(), arrayData.getJavaScriptObject(), this.chartJavascriptObject);
     }
 
     /**
@@ -360,47 +351,46 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param name3
      */
     protected void changeProperty(Number value, String... option) {
-	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
-	optionsArray.setData(Arrays.asList(option));
-	changeProperty(optionsArray.getJso().getJavaScriptObject(), value, this.chartJavascriptObject);
-
+    	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
+    	optionsArray.setData(Arrays.asList(option));
+    	changeProperty(optionsArray.getJso().getJavaScriptObject(), value, this.chartJavascriptObject);
     }
 
     /**
      * @param datasSeries
      */
     protected void changeProperty(String datasSeries, String... option) {
-	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
-	optionsArray.setData(Arrays.asList(option));
-	changeProperty(optionsArray.getJso().getJavaScriptObject(), datasSeries, this.chartJavascriptObject);
+    	ArrayJSONBuilder<String> optionsArray = new ArrayJSONBuilder<String>();
+    	optionsArray.setData(Arrays.asList(option));
+    	changeProperty(optionsArray.getJso().getJavaScriptObject(), datasSeries, this.chartJavascriptObject);
     }
 
     /**
      * @return the chartPanelContainer
      */
     protected SimplePanel getChartPanelContainer() {
-	return this.chartContainer;
+	   return this.chartContainer;
     }
 
     /**
      * @return the id
      */
     public String getId() {
-	return this.id;
+	   return this.id;
     }
 
     /**
      * Call the JavaScript in a deferred command. To insure the browser has attach all depends containers.
      */
     private void inject() {
-	// Inject the code when the navigator is ready to inject with a visible chart.
-	Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+    	// Inject the code when the navigator is ready to inject with a visible chart.
+    	Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
-	    @Override
-	    public void execute() {
-		injectionChart();
-	    }
-	});
+    	    @Override
+    	    public void execute() {
+    		injectionChart();
+    	    }
+    	});
     }
 
     /**
@@ -408,19 +398,19 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * builded by jQplot.
      */
     private void injectionChart() {
-	// the designer panel is used to build the chart into a different part of browser to prevent any GWT Layout which used OffSet Width/Height
-	final AbsolutePanel designerPanel = new AbsolutePanel();
-	designerPanel.getElement().getStyle().setZIndex(-1);
-	designerPanel.add(this.chartContainer);
+    	// the designer panel is used to build the chart into a different part of browser to prevent any GWT Layout which used OffSet Width/Height
+    	final AbsolutePanel designerPanel = new AbsolutePanel();
+    	designerPanel.getElement().getStyle().setZIndex(-1);
+    	designerPanel.add(this.chartContainer);
 
-	// The designer panel should not be visible for the user, and be removed after the chart generation.
-	RootPanel.get().add(designerPanel);
-	RootPanel.get().setWidgetPosition(designerPanel, DESIGNER_PANEL_POSITION, DESIGNER_PANEL_POSITION);
+    	// The designer panel should not be visible for the user, and be removed after the chart generation.
+    	RootPanel.get().add(designerPanel);
+    	RootPanel.get().setWidgetPosition(designerPanel, DESIGNER_PANEL_POSITION, DESIGNER_PANEL_POSITION);
 
-	boolean visible = isVisible();
-	boolean isNotInjected = !this.injected;
-	boolean attached = isAttached();
-	boolean isWidthVisible = Chart.this.getOffsetWidth() > 0;
+    	boolean visible = isVisible();
+    	boolean isNotInjected = !this.injected;
+    	boolean attached = isAttached();
+    	boolean isWidthVisible = Chart.this.getOffsetWidth() > 0;
 
         // if the container is visible and not already injected into DOM the chart could be created
         if (visible && isNotInjected && attached && isWidthVisible) {
@@ -452,56 +442,54 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @return <code>true</code> if the chart is JavaScript called.
      */
     protected boolean isInjected() {
-	return this.injected;
+    	return this.injected;
     }
 
     @Override
     protected void onAttach() {
-	super.onAttach();
-	// inject the chart if not yet injected.
-	this.inject();
-	// binds chart events.
-	this.binds();
+    	super.onAttach();
+    	// inject the chart if not yet injected.
+    	this.inject();
+    	// binds chart events.
+    	this.binds();
     }
 
     /**
      * 
      */
     public void replot() {
-	if (this.chartJavascriptObject != null) {
-	    replot(this.chartJavascriptObject);
-	} else {
-	    inject();
-	}
+    	if (this.chartJavascriptObject != null) {
+    	    replot(this.chartJavascriptObject);
+    	} else {
+    	    inject();
+    	}
     }
 
     public void replotYAxe(int minVal, int maxVal) {
-	this.replotYAxe(minVal, maxVal, 1, this.chartJavascriptObject);
+	   this.replotYAxe(minVal, maxVal, 1, this.chartJavascriptObject);
     }
 
     public void replotXAxe(int minVal, int maxVal) {
-	this.replotXAxe(minVal, maxVal, 1, this.chartJavascriptObject);
+	   this.replotXAxe(minVal, maxVal, 1, this.chartJavascriptObject);
     }
 
     public void replotYAxe(int minVal, int maxVal, int ticksInterval) {
-	this.replotYAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
+	   this.replotYAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
     }
 
     public void replotXAxe(int minVal, int maxVal, int ticksInterval) {
-	this.replotXAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
+	   this.replotXAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
     }
 
     public void replotWithAxe() {
-	this.replotWithAxe(this.chartJavascriptObject);
+	   this.replotWithAxe(this.chartJavascriptObject);
     }
 
-    private native void replotWithAxe(JavaScriptObject chart)
-    /*-{
+    private native void replotWithAxe(JavaScriptObject chart)/*-{
     	 chart.replot( { resetAxes: true } );
     }-*/;
 
-    private native void replotYAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)
-    /*-{
+    private native void replotYAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)/*-{
     	// replot axe y
     	chart.axes.yaxis.max = maxVal;
     	chart.axes.yaxis.min = minVal;
@@ -509,8 +497,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     	chart.replot({resetAxes:['yaxis'], axes:{yaxis:{max:maxVal,min:minVal,tickInterval: ticksInterval}}});
     }-*/;
 
-    private native void replotXAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)
-    /*-{
+    private native void replotXAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)/*-{
     	// replot axe x
     	chart.axes.xaxis.max = maxVal;
     	chart.axes.xaxis.min = minVal;
@@ -521,8 +508,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     /**
      * 
      */
-    private native void replot(JavaScriptObject chart)
-    /*-{
+    private native void replot(JavaScriptObject chart)/*-{
     	chart.replot();
     }-*/;
 
@@ -533,7 +519,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the data of chart needs to be displayed.
      */
     protected void setData(List<T> data) {
-	this.dataController.setData(data);
+	   this.dataController.setData(data);
     }
 
     /**
@@ -543,14 +529,14 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            <code>true</code> to enable export.
      */
     public void setExportEnable(boolean isEnable) {
-	this.rightMenuController.activate(this, this.chartLayout);
-	this.rightMenuController.setExportEnable(this.exporter, isEnable);
+    	this.rightMenuController.activate(this, this.chartLayout);
+    	this.rightMenuController.setExportEnable(this.exporter, isEnable);
     }
 
     @Override
     public void setHeight(String height) {
-	this.chartContainer.setHeight(height);
-	this.resizableContainer.setHeight(height);
+    	this.chartContainer.setHeight(height);
+    	this.resizableContainer.setHeight(height);
     }
 
     /**
@@ -559,7 +545,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @throws ArraysSizesRefreshingInvalidException
      */
     public void setListData(List<List<T>> data) throws ArraysSizesRefreshingInvalidException {
-	this.dataController.setListData(data);
+	   this.dataController.setListData(data);
     }
 
     /**
@@ -567,7 +553,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the isListView to set
      */
     public void setListView(boolean isListView) {
-	this.dataController.setListView(isListView);
+	   this.dataController.setListView(isListView);
     }
 
     /**
@@ -575,11 +561,11 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the optionsMapped to set
      */
     protected void setOptionsMapped(Map<ChartOption, Map<SubOption, String>> optionsMapped) {
-	this.chartOptionner.setOptionsMapped(optionsMapped);
+	   this.chartOptionner.setOptionsMapped(optionsMapped);
     }
 
     public void setPluginsEnable(boolean isPluginEnable) {
-	this.isPluginEnable = isPluginEnable;
+	   this.isPluginEnable = isPluginEnable;
     }
 
     /**
@@ -589,8 +575,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            <code>true</code> to enable refreshing deferred.
      */
     public void setRefreshManuallyEnable(boolean isEnable) {
-	rightMenuController.activate(this, chartLayout);
-	rightMenuController.setRefreshManualEnable(isEnable);
+    	rightMenuController.activate(this, chartLayout);
+    	rightMenuController.setRefreshManualEnable(isEnable);
     }
 
     /**
@@ -598,7 +584,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the renderer to set
      */
     public void setRenderer(RenderersEnum renderer) {
-	this.renderer = renderer;
+	   this.renderer = renderer;
     }
 
     /**
@@ -622,8 +608,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param string
      * @param string2
      */
-    private native void setSeries(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)
-    /*-{
+    private native void setSeries(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)/*-{
     	chart.series[serieId].data = arrayData;
     	chart.resetAxesScale();
     }-*/;
@@ -635,9 +620,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param string2
      */
     public void setSeriesDataAfterInject(int serieId, List<DualValue> datas) {
-	ArrayJSONBuilder<DualValue> datasArray = new ArrayJSONBuilder<DualValue>();
-	datasArray.setData(datas);
-	setSeriesDataAfterInject(serieId, datasArray.getJso().getJavaScriptObject(), this.chartJavascriptObject);
+    	ArrayJSONBuilder<DualValue> datasArray = new ArrayJSONBuilder<DualValue>();
+    	datasArray.setData(datas);
+    	setSeriesDataAfterInject(serieId, datasArray.getJso().getJavaScriptObject(), this.chartJavascriptObject);
     }
 
     /**
@@ -646,8 +631,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param string
      * @param string2
      */
-    private native void setSeriesDataAfterInject(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)
-    /*-{
+    private native void setSeriesDataAfterInject(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)/*-{
     	chart.series[serieId].data = arrayData;
     	chart.replot();
     }-*/;
@@ -657,7 +641,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * @param arrayData
      */
     public void setSeries(int serieId, JSONArray arrayData) {
-	setSeries(serieId, arrayData.getJavaScriptObject(), this.chartJavascriptObject);
+	   setSeries(serieId, arrayData.getJavaScriptObject(), this.chartJavascriptObject);
     }
 
     /**
@@ -665,13 +649,13 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the seriesData to set
      */
     public void setSeriesData(JSONArray seriesData) {
-	this.dataController.setSeriesData(seriesData);
+	   this.dataController.setSeriesData(seriesData);
     }
 
     @Override
     public final void setSize(String width, String height) {
-	this.chartContainer.setSize(width, height);
-	this.resizableContainer.setSize(width, height);
+    	this.chartContainer.setSize(width, height);
+    	this.resizableContainer.setSize(width, height);
     }
 
     /**
@@ -679,7 +663,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the subSubOptionsMapped to set
      */
     protected void setSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped) {
-	this.chartOptionner.setSubSubOptionsMapped(subSubOptionsMapped);
+	   this.chartOptionner.setSubSubOptionsMapped(subSubOptionsMapped);
     }
 
     /**
@@ -687,14 +671,14 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            the subSubSubOptionsMapped to set
      */
     protected void setSubSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped) {
-	this.chartOptionner.setSubSubSubOptionsMapped(subSubSubOptionsMapped);
+	   this.chartOptionner.setSubSubSubOptionsMapped(subSubSubOptionsMapped);
     }
 
     /**
      * @return
      */
     public RenderersEnum getRenderer() {
-	return this.renderer;
+	   return this.renderer;
     }
 
     /**
@@ -704,42 +688,46 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      *            <code>true</code> to enable the theme changing.
      */
     public void setThemingEnable(boolean isEnable) {
-	this.rightMenuController.activate(this, this.chartLayout);
-	this.rightMenuController.setTemingEnable(isEnable);
+    	this.rightMenuController.activate(this, this.chartLayout);
+    	this.rightMenuController.setTemingEnable(isEnable);
+    }
+
+    public void setTheme(Theming theme){
+        this.theme = theme.getTheme();
     }
 
     /**
      * @return the chartJavascriptObject
      */
     protected JavaScriptObject getChartJavascriptObject() {
-	return this.chartJavascriptObject;
+	   return this.chartJavascriptObject;
     }
 
     @Override
     public void setVisible(boolean visible) {
-	super.setVisible(visible);
-	this.inject();
+    	super.setVisible(visible);
+    	this.inject();
     }
 
     @Override
     public void setWidth(String width) {
-	this.chartContainer.setWidth(width);
-	this.resizableContainer.setWidth(width);
+    	this.chartContainer.setWidth(width);
+    	this.resizableContainer.setWidth(width);
     }
 
     @Override
     public HandlerRegistration addAttachedChartHandler(AttachedChartHandler handler) {
-	return this.addHandler(handler, AttachedChartEvent.getType());
+	   return this.addHandler(handler, AttachedChartEvent.getType());
     }
 
     /**
      * @return the chartOptionner
      */
     protected final ChartOptioner getChartOptionner() {
-	return this.chartOptionner;
+	   return this.chartOptionner;
     }
 
     protected final void importOptionner(ChartOptioner chartOptionner) {
-	this.chartOptionner = chartOptionner;
+	   this.chartOptionner = chartOptionner;
     }
 }

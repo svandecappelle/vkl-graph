@@ -140,179 +140,249 @@ Map.prototype.value = function() {
     return this.current.value;
 };
 
-// A default set of reusable plot options. Note that line
-// smoothing is turned on. Bands will be drawn with the same
-// smoothing as the line.
-// ////
+function GreyScalePieTheme(){
+	this.seriesStyles = {
+		seriesColors : ['rgba(7,7,7,0.5)', 'rgba(255,255,255,0.5)', 'rgba(39,39,39,0.5)',
+		'rgba(167,167,167,0.5)','rgba(71,71,71,0.5)','rgba(191,191,191,0.5)','rgba(103,103,103,0.5)','rgba(23,23,23,0.5)',
+		'rgba(143,143,143,0.5)','rgba(79,79,79,0.5)','rgba(183,183,183,0.5)','rgba(119,119,119,0.5)','rgba(223,223,223,0.5)','rgba(55,55,55,0.5)'],
+		highlightColors : ['#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+		'#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF','#FFFFFF',
+		'#FFFFFF','#FFFFFF','#FFFFFF']
+	};
 
-// VKBASE :
-vkbase = {
-	series : [
-		{color:'#f54f4f'},
-		{color:'#ffd370'},
-		{color:'#34cf6d'},
-		{color:'#58c3f0'},
-		{color:'#f58f54'},
-		{color:'#a8d031'},
-		{color:'#58f0a9'},
-		{color:'#588ef0'},
-		{color:'#ff9ee4'},
-		{color:'#ffad42'},
-		{color:'#63cf32'},
-		{color:'#58f0de'},
-		{color:'#8e8efa'},
-		{color:'#ff99a5'},
-	],
-
-	seriesStyles : {
-		seriesColors : ['#f54f4f','#ffd370', '#34cf6d','#58c3f0','#c68efa','#f58f54','#a8d031','#58f0a9','#588ef0','#ff9ee4','#ffad42','#63cf32','#58f0de','#8e8efa','#ff99a5'],
-	},
-	grid : {
+	this.grid = {
 		drawBorder : false,
 		shadow : false,
 		backgroundColor : 'rgba(255, 255, 255, 0.0)'
-    },
-};
+    };
+}
 
-vkbase_full = {
-	series : [
-		{color:'#f54f4f'},
-		{color:'#ffd370'},
-		{color:'#34cf6d'},
-		{color:'#58c3f0'},
-		{color:'#f58f54'},
-		{color:'#a8d031'},
-		{color:'#58f0a9'},
-		{color:'#588ef0'},
-		{color:'#ff9ee4'},
-		{color:'#ffad42'},
-		{color:'#63cf32'},
-		{color:'#58f0de'},
-		{color:'#8e8efa'},
-		{color:'#ff99a5'},
-	],
+GreyScalePieTheme.prototype.clone = function(){
+	return new GreyScalePieTheme();
+}
 
-	seriesStyles : {
-		seriesColors : ['#f54f4f','#ffd370', '#34cf6d','#58c3f0','#c68efa','#f58f54','#a8d031','#58f0a9','#588ef0','#ff9ee4','#ffad42','#63cf32','#58f0de','#8e8efa','#ff99a5'],
-	},
-	grid : {
+function GreyScaleTheme(){
+	this.series = [{color:'rgba(7,7,7,0.5)',highlightColors : []},
+			{color:'rgba(255,255,255,0.5)',highlightColors : []},
+			{color:'rgba(39,39,39,0.5)',highlightColors : []},
+			{color:'rgba(167,167,167,0.5)',highlightColors : []},
+			{color:'rgba(71,71,71,0.5)',highlightColors : []},
+			{color:'rgba(191,191,191,0.5)',highlightColors : []},
+			{color:'rgba(103,103,103,0.5)',highlightColors : []},
+			{color:'rgba(23,23,23,0.5)',highlightColors : []},
+			{color:'rgba(143,143,143,0.5)',highlightColors : []},
+			{color:'rgba(79,79,79,0.5)',highlightColors : []},
+			{color:'rgba(183,183,183,0.5)',highlightColors : []},
+			{color:'rgba(119,119,119,0.5)',highlightColors : []},
+			{color:'rgba(223,223,223,0.5)',highlightColors : []},
+			{color:'rgba(55,55,55,0.5)',highlightColors : []},
+	];
+
+	this.grid = {
 		drawBorder : false,
 		shadow : false,
 		backgroundColor : 'rgba(255, 255, 255, 0.0)'
-    },
-};
+    };
+}
 
-vkbase_pie = {
-	seriesStyles : {
-		seriesColors : ['#f54f4f','#ffd370', '#34cf6d','#58c3f0','#c68efa','#f58f54','#a8d031','#58f0a9','#588ef0','#ff9ee4','#ffad42','#63cf32','#58f0de','#8e8efa','#ff99a5'],
-	},
-	grid : {
+GreyScaleTheme.prototype.clone = function(){
+	return new GreyScaleTheme();
+}
+
+function BlueAlphaTheme(){
+	this.series = [{color:'rgba(215,230,253,0.5)',highlightColors : []},
+			{color:'rgba(176,205,252,0.5)',highlightColors : []},
+			{color:'rgba(132,179,252,0.5)',highlightColors : []},
+			{color:'rgba(90,152,250,0.5)',highlightColors : []},
+			{color:'rgba(55,120,250,0.5)',highlightColors : []},
+			{color:'rgba(49,105,209,0.5)',highlightColors : []},
+			{color:'rgba(38,83,165,0.5)',highlightColors : []},
+			{color:'rgba(28,61,120,0.5)',highlightColors : []},
+			{color:'rgba(20,43,86,0.5)',highlightColors : []},
+			{color:'rgba(15,24,41,0.5)',highlightColors: []}
+	];
+
+	this.grid = {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(0, 0, 255, 0.1)',
+		gridLineColor: 'rgba(0, 135, 255, 0.1)',
+    };
+}
+
+BlueAlphaTheme.prototype.clone = function(){
+	return new BlueAlphaTheme();
+}
+
+function BlueAlphaPieTheme(){
+
+	this.seriesStyles = {
+		seriesColors : ['rgba(215,230,253,0.5)', 'rgba(176,205,252,0.5)',
+		 'rgba(132,179,252,0.5)','rgba(90,152,250,0.5)','rgba(55,120,250,0.5)',
+		 'rgba(49,105,209,0.5)','rgba(38,83,165,0.5)','rgba(28,61,120,0.5)',
+		 'rgba(20,43,86,0.5)','rgba(15,24,41,0.5)'],
+		highlightColors : ['rgba(215,230,253,1)', 'rgba(176,205,252,1)',
+		 'rgba(132,179,252,1)','rgba(90,152,250,1)','rgba(55,120,250,1)',
+		 'rgba(49,105,209,1)','rgba(38,83,165,1)','rgba(28,61,120,1)',
+		 'rgba(20,43,86,1)','rgba(15,24,41,1)']
+	};
+
+	this.grid = {
 		drawBorder : false,
 		shadow : false,
 		backgroundColor : 'rgba(255, 255, 255, 0.0)'
-    },
-};
+    };
+}
 
-// OldSchool :
-old_school = {
-    target : {
-	backgroundColor : "white"
-    },
-    title : {
-	fontFamily : 'Times New Roman',
-	textColor : 'black'
-    },
-    axesStyles : {
-	borderWidth : 0,
-	ticks : {
-	    fontSize : '12pt',
-	    fontFamily : 'Times New Roman',
-	    textColor : 'black'
-	},
-	label : {
-	    fontFamily : 'Times New Roman',
-	    textColor : 'black'
+BlueAlphaPieTheme.prototype.clone = function(){
+	return new BlueAlphaPieTheme();
+}
+
+function RainbowAlphaTheme(){
+	this.series = [{color:'rgba(0,75,255,0.5)',highlightColors : []},
+			{color:'rgba(0,135,255,0.5)',highlightColors : []},
+			{color:'rgba(0,178,255,0.5)',highlightColors : []},
+			{color:'rgba(0,217,255,0.5)',highlightColors : []},
+			{color:'rgba(0,255,255,0.5)',highlightColors : []},
+
+			{color:'rgba(0,255,202,0.5)',highlightColors : []},
+			{color:'rgba(0,255,157,0.5)',highlightColors : []},
+			{color:'rgba(0,255,92,0.5)',highlightColors : []},
+			{color:'rgba(24,255,0,0.5)',highlightColors : []},
+			{color:'rgba(209,255,0,0.5)',highlightColors : []},
+			{color:'rgba(255,238,0,0.5)',highlightColors : []},
+			{color:'rgba(255,170,0,0.5)',highlightColors : []},
+			{color:'rgba(255,77,0,0.5)',highlightColors : []},
+			{color:'rgba(255,0,47,0.5)',highlightColors : []},
+			{color:'rgba(255,0,134,0.5)',highlightColors : []},
+			{color:'rgba(255,0,231,0.5)',highlightColors : []},
+			{color:'rgba(191,0,255,0.5)',highlightColors : []},
+	];
+
+	this.grid = {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.1)',
+    };
+}
+
+RainbowAlphaTheme.prototype.clone = function(){
+	return new RainbowAlphaTheme();
+}
+
+function RainbowAlphaPieTheme(){
+
+	this.seriesStyles = {
+		seriesColors : ['rgba(0,75,255,0.5)', 'rgba(0,135,255,0.5)',
+		 'rgba(0,178,255,0.5)','rgba(0,217,255,0.5)','rgba(0,255,255,0.5)',
+		 'rgba(0,255,202,0.5)','rgba(0,255,157,0.5)','rgba(0,255,92,0.5)',
+		 'rgba(24,255,0,0.5)','rgba(209,255,0,0.5)','rgba(255,238,0,0.5)',
+		 'rgba(255,170,0,0.5)','rgba(255,77,0,0.5)','rgba(255,0,47,0.5)',
+		 'rgba(255,0,134,0.5)','rgba(255,0,231,0.5)','rgba(191,0,255,0.5)'],
+		highlightColors : ['rgba(255,255,255,0.5)','rgba(255,255,255,0.5)',
+		 'rgba(255,255,255,0.5)','rgba(255,255,255,0.5)','rgba(255,255,255,0.5)']
+	};
+
+	this.grid = {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.1)'
+    };
+}
+
+RainbowAlphaPieTheme.prototype.clone = function(){
+	return new RainbowAlphaPieTheme();
+}
+
+function VklThemeTruncator(src){
+	this.src = src;
+}
+
+VklThemeTruncator.prototype.truncate = function(chart){
+	var size = chart.series.length;
+	this.src = this.src.clone();
+	return this.truncateSeries(size);
+}
+
+VklThemeTruncator.prototype.truncateSeries = function(size){
+	if (this.src.series !== undefined){
+		var default_series = this.src.series;
+		this.src.series = [];
+		for (var i = 0; i < size; i++) {	
+			this.src.series[i] = default_series[i];
+		}
 	}
-    },
-    grid : {
-	backgroundColor : 'white',
-	borderWidth : 0,
-	gridLineColor : 'black',
-	gridLineWidth : 2,
-	borderColor : 'black'
-    },
-    series : [
-	    {
-		color : 'red',
-		highlightColors : [ 'aqua', 'black', 'blue', 'fuchsia', 'gray', 'green', 'lime', 'maroon', 'navy', 'olive', 'purple', 'red',
-			'silver', 'teal', 'white', 'yellow' ]
-	    }, {
-		color : 'green',
-		highlightColors : []
-	    }, {
-		color : 'blue',
-		highlightColors : []
-	    }, {
-		color : 'yellow',
-		highlightColors : 'rgb(255, 245, 185)'
-	    } ],
-    legend : {
-	background : 'white',
-	textColor : 'black',
-	fontFamily : 'Times New Roman',
-	border : '1px solid black'
-    }
-};
+	
+	return this.src;
+}
 
-old_school_pie = {
-    seriesStyles : {
-	seriesColors : [ '#FF4A62', '#FFA500', '#D07AFF', '#008000', '#7ABAFF', '#4B0082', '#95FF7A', '#DFFC57', '#FFED7A', '#A9FF7A', '#FFA07A',
-		'#7AFFBD', '#0000FF', '#8E7AFF', '#FFFF00', '#FF4AF6', '#FF0000' ],
-	highlightColors : []
-    },
-    grid : {
-	backgroundColor : 'white'
-    }
-};
+function VKlBasePieTheme(){
+	this.seriesStyles = {
+		seriesColors : ['rgba(245,79,79,1)','rgba(255,211,112,1)',
+		 'rgba(52,207,109,1)','rgba(88,195,240,1)','rgba(245,143,84,1)',
+		 'rgba(168,208,49,1)','rgba(88,240,169,1)','rgba(88,142,240,1)',
+		 'rgba(255,158,228,1)','rgba(255,173,66,1)','rgba(99,207,50,1)',
+		 'rgba(88,240,222,1)','rgba(142,142,250,1)','rgba(255,153,165,1)'],
+		highlightColors : ['rgba(245,149,149,0.5)','rgba(255,230,173,0.5)',
+		 'rgba(139,207,164,0.5)','rgba(166,218,240,0.5)','rgba(245,194,164,0.5)',
+		 'rgba(195,208,158,0.5)','rgba(173,240,209,0.5)','rgba(170,195,240,0.5)',
+		 'rgba(255,222,246,0.5)','rgba(255,220,173,0.5)','rgba(171,207,155,0.5)',
+		 'rgba(194,240,235,0.5)','rgba(212,212,250,0.5)','rgba(255,214,219,0.5)']
+	};
 
-// GREY SCALE:
-grey_scale = {
-    series : [ {
-	color : '#000000'
-    }, {
-	color : '#484848'
-    }, {
-	color : '#676767'
-    }, {
-	color : '#8E8E8E'
-    }, {
-	color : '#A9A9A9'
-    }, {
-	color : '#C3C3C3'
-    }, {
-	color : '#DEDEDE'
-    } ],
+	this.grid = {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.0)'
+    };
+}
+VKlBasePieTheme.prototype.clone = function(){
+	return new VKlBasePieTheme();
+}
 
-    grid : {
-	backgroundColor : 'white'
-    }
-};
+function VKlBaseTheme(){
+	this.series = [{color:'rgba(245,79,79,0.9)',highlightColors : []},
+			{color:'rgba(255,211,112,0.9)',highlightColors : []},
+			{color:'rgba(52,207,109,0.9)',highlightColors : []},
+			{color:'rgba(88,195,240,0.9)',highlightColors : []},
+			{color:'rgba(245,143,84,0.9)',highlightColors : []},
+			{color:'rgba(168,208,49,0.9)',highlightColors : []},
+			{color:'rgba(88,240,169,0.9)',highlightColors : []},
+			{color:'rgba(88,142,240,0.9)',highlightColors : []},
+			{color:'rgba(255,158,228,0.9)',highlightColors : []},
+			{color:'rgba(255,173,66,0.9)',highlightColors : []},
+			{color:'rgba(99,207,50,0.9)',highlightColors : []},
+			{color:'rgba(88,240,222,0.9)',highlightColors : []},
+			{color:'rgba(142,142,250,0.9)',highlightColors : []},
+			{color:'rgba(255,153,165,0.9)',highlightColors : []}
+	];
 
-grey_scale_pie = {
-    seriesStyles : {
-	seriesColors : [ '#FF4A62', '#FFA500', '#D07AFF', '#008000', '#7ABAFF', '#4B0082', '#95FF7A', '#DFFC57', '#FFED7A', '#A9FF7A', '#FFA07A',
-		'#7AFFBD', '#0000FF', '#8E7AFF', '#FFFF00', '#FF4AF6', '#FF0000' ],
-	highlightColors : []
-    },
-    grid : {
-	backgroundColor : 'white'
-    }
-};
+	this.grid = {
+		drawBorder : false,
+		shadow : false,
+		backgroundColor : 'rgba(255, 255, 255, 0.0)'
+    };
+}
 
-var themes = new Map();
-themes.put('old_school', old_school);
-themes.put('old_school_pie', old_school_pie);
-themes.put('vkbase', vkbase);
-themes.put('vkbase_pie', vkbase_pie);
-themes.put('grey_scale', grey_scale);
-themes.put('grey_scale_pie', grey_scale_pie);
+VKlBaseTheme.prototype.clone = function(){
+	return new VKlBaseTheme();
+}
+
+
+function VklThemes(){
+	this.themes = new Map();
+	this.themes.put('vkbase', new VKlBaseTheme());
+	this.themes.put('vkbase_pie', new VKlBasePieTheme());
+	this.themes.put('grey_scale', new GreyScaleTheme());
+	this.themes.put('grey_scale_pie', new GreyScalePieTheme());
+	this.themes.put('rainbow', new RainbowAlphaTheme());
+	this.themes.put('rainbow_pie', new RainbowAlphaPieTheme());
+	this.themes.put('bluealpha', new BlueAlphaTheme());
+	this.themes.put('bluealpha_pie', new BlueAlphaPieTheme());
+}
+
+VklThemes.prototype.get = function(_name, chart){
+	var theme = this.themes.get(_name);
+	var engine = new VklThemeTruncator(theme);
+	return engine.truncate(chart);
+}
