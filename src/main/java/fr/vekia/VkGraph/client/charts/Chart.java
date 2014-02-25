@@ -388,7 +388,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 
     	    @Override
     	    public void execute() {
-    		injectionChart();
+    		  injectionChart();
     	    }
     	});
     }
@@ -402,6 +402,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     	final AbsolutePanel designerPanel = new AbsolutePanel();
     	designerPanel.getElement().getStyle().setZIndex(-1);
     	designerPanel.add(this.chartContainer);
+        
+        
 
     	// The designer panel should not be visible for the user, and be removed after the chart generation.
     	RootPanel.get().add(designerPanel);
@@ -412,28 +414,26 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     	boolean attached = isAttached();
     	boolean isWidthVisible = Chart.this.getOffsetWidth() > 0;
 
+        // The chart is repositioned to his previous position.
+        Chart.this.resizableContainer.setWidget(Chart.this.chartContainer);
+        // remove the designer temporary panel.
+        designerPanel.removeFromParent();
+        // bind resize event if any.
+        Chart.this.bindResize();
+
         // if the container is visible and not already injected into DOM the chart could be created
         if (visible && isNotInjected && attached && isWidthVisible) {
-            Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+            //designerPanel.setSize(Chart.this.getOffsetWidth()+"px",Chart.this.getOffsetHeight()+"px");
+            JsConsole.info(Chart.this.getOffsetWidth()+"px");
+            JsConsole.info(Chart.this.getOffsetHeight()+"px");
+            Chart.this.chartJavascriptObject = Chart.this.callJqPlot(getId(), dataController.getInjectionData(), dataController.getInjectionOptions(), isPluginEnable, theme);
+            JsConsole.info("chart '" + getId() + "' successfully created and added to DOM.");
+            Chart.this.injected = true;
 
-                @Override
-                public void execute() {
-                    Chart.this.chartJavascriptObject = Chart.this.callJqPlot(getId(), dataController.getInjectionData(), dataController.getInjectionOptions(), isPluginEnable, theme);
-                    JsConsole.info("chart '" + getId() + "' successfully created and added to DOM.");
-                    Chart.this.injected = true;
-
-                    // fire an event to prevent children than the chart was injected.
-                    Chart.this.fireEvent(new AttachedChartEvent());
-                    
-                    // The chart is repositioned to his previous position.
-                    Chart.this.resizableContainer.setWidget(Chart.this.chartContainer);
-                    // remove the designer temporary panel.
-                    designerPanel.removeFromParent();
-                    // bind resize event if any.
-                    Chart.this.bindResize();
-                }
-            });
+            // fire an event to prevent children than the chart was injected.
+            Chart.this.fireEvent(new AttachedChartEvent());    
         }
+
     }
 
     /**
