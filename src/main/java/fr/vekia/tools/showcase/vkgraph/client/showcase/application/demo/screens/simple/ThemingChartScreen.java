@@ -35,6 +35,7 @@ import fr.vekia.VkGraph.client.charts.PieChart;
 import fr.vekia.VkGraph.client.datas.DualValue;
 import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
+import fr.vekia.VkGraph.client.charts.Theming;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -66,7 +67,7 @@ public class ThemingChartScreen extends SimplePanel {
 			}
 			values.add(valuesLineOne);
 		}
-		first.setSize("1200px", "800px");
+		first.setSize("100%", "800px");
 
 		first.setDatas(values);
 		first.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.min,
@@ -77,6 +78,9 @@ public class ThemingChartScreen extends SimplePanel {
 				SubOption.rendererOptions, SubOption.showDataLabels, true);
 		first.setTextOption(ChartOption.title, SubOption.text, "Line Chart");
 		first.setBooleanOption(ChartOption.legend, SubOption.show, true);
+
+		// default theme:
+		first.setTheme(Theming.BLUE);
 
 		// SECOND CHART PIE CHART;
 		second = new PieChart<List<DualValue>>();

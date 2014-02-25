@@ -161,9 +161,12 @@ body {
 	overflow: auto !important;
 }
 
-.gwt-ResizableChart {
+.vkl-ResizableChart {
 	border: 1px solid #AAA;
-	padding: 18px;
+}
+
+.vkl-ChartContainer {
+	padding: 5px;
 }
 
 .AutomatedDemo-Focus {

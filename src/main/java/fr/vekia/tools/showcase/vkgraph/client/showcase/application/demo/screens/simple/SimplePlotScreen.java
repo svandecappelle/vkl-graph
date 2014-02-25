@@ -36,7 +36,7 @@ public class SimplePlotScreen extends LineChart<Number> {
 			data.add(Random.nextInt(250));
 		}
 
-		setSize("1400px", "660px");
+		setSize("100%", "660px");
 		setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker,
 				false);
 		super.setDatas(data);
