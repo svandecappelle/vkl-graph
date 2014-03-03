@@ -95,22 +95,29 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     // zoom proxy
     private ZoomProxy proxyZoom;
 
+    // Internationalisaton Right click menu.
+    private I18nFields i18nFields;
+
+    public Chart() {
+        this(null);
+    }
+
     /**
      * Default constructor
      * 
      */
-    public Chart() {
+    public Chart(I18nFields i18nFields) {
     	this.chartLayout = new SimplePanel();
     	this.chartContainer = new SimplePanel();
-    	
-    	
     	
     	this.chartLayout.setSize("100%","100%");
     	this.chartContainer.setSize("100%","100%");
     	
     	this.resizableContainer = new SimplePanel(this.chartContainer);
     	super.setSize("100%", "100%");
-    	// charts controllers
+    	
+
+        // charts controllers
 
     	// option controller
     	this.chartOptionner = new ChartOptioner();
@@ -122,8 +129,13 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     	this.eventBinder = new EventBinder(this);
     	// specific resize event controller
     	this.resizer = new Resizer(this);
-    	// right click controller
-    	this.rightMenuController = new ChartRightMenuController();
+    	
+        // right click controller
+        if(i18nFields !=null ){
+            this.rightMenuController = new ChartRightMenuController(i18nFields);
+        }else{
+            this.rightMenuController = new ChartRightMenuController();
+        }
 
     	// set HTML Id
     	this.chartContainer.getElement().setId(id);

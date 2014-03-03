@@ -28,4 +28,15 @@ public class BubbleChart extends AbstractChart<BubbleValue> {
 	super.setListView(true);
 	super.setRenderer(RenderersEnum.Bubble);
     }
+
+
+ 	/**
+     * Constructor with specifics I18n constants
+     * 
+     */
+    public BubbleChart(I18nFields i18nFields) {
+		super(i18nFields);
+		super.setListView(true);
+		super.setRenderer(RenderersEnum.Bubble);
+    }    
 }

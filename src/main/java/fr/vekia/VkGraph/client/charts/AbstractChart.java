@@ -43,11 +43,19 @@ public class AbstractChart<T> extends Chart<T> {
     }
 
     /**
+     * Constructor with specifics I18n constants.
+     * 
+     */
+    public AbstractChart(I18nFields i18nFields) {
+        super(i18nFields);
+    }
+
+    /**
      * @param option
      * @param value
      */
     public final void setBooleanOption(ChartOption option, boolean value) {
-	setOption(option, Boolean.toString(value));
+	   setOption(option, Boolean.toString(value));
     }
 
     /**
@@ -56,7 +64,7 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setBooleanOption(ChartOption option, SubOption subOption, boolean value) {
-	setOption(option, subOption, Boolean.toString(value));
+    	setOption(option, subOption, Boolean.toString(value));
     }
 
     /**
@@ -66,7 +74,7 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setBooleanOption(ChartOption option, SubOption subOption, SubOption subSubOption, boolean value) {
-	setOption(option, subOption, subSubOption, Boolean.toString(value));
+        setOption(option, subOption, subSubOption, Boolean.toString(value));
     }
 
     /**
@@ -74,9 +82,9 @@ public class AbstractChart<T> extends Chart<T> {
      * @param canvasDrawOption
      */
     public void setCanvasOverlay(CanvasOverlayObject canvasDrawOption) {
-	if (!isInjected()) {
-	    setOption(ChartOption.canvasOverlay, SubOption.objects, canvasDrawOption.getJSON().toString());
-	}
+        if (!isInjected()) {
+            setOption(ChartOption.canvasOverlay, SubOption.objects, canvasDrawOption.getJSON().toString());
+        }
     }
 
     /**
@@ -86,7 +94,7 @@ public class AbstractChart<T> extends Chart<T> {
      *            the series colors data in HEXA, RGB or RGBA.
      */
     public final void setColors(List<String> colors) {
-	this.setOption(ChartOption.seriesColors, JavascriptConvertUtils.optionArrayStringToString(colors));
+        this.setOption(ChartOption.seriesColors, JavascriptConvertUtils.optionArrayStringToString(colors));
     }
 
     /**
@@ -97,11 +105,11 @@ public class AbstractChart<T> extends Chart<T> {
      */
     @SuppressWarnings("unchecked")
     public final void setDataGraph(DataGraph<T> data) {
-	if (data.isMultiple()) {
-	    super.setListData(((List<List<T>>) data.getData()));
-	} else {
-	    setDatasSimpleList((List<T>) data.getData());
-	}
+        if (data.isMultiple()) {
+            super.setListData(((List<List<T>>) data.getData()));
+        } else {
+            setDatasSimpleList((List<T>) data.getData());
+        }
     }
 
     /**
@@ -111,40 +119,40 @@ public class AbstractChart<T> extends Chart<T> {
      *            the chart data.
      */
     public final void setDatas(List<T> datas) {
-	this.setDataGraph(DataModeler.convert(datas));
+        this.setDataGraph(DataModeler.convert(datas));
     }
 
     /**
      * @param data
      */
     private void setDatasSimpleList(List<T> data) {
-	StringBuffer dataBuffer = new StringBuffer("[");
+        StringBuffer dataBuffer = new StringBuffer("[");
 
-	if (data != null && !data.isEmpty()) {
-	    if (!(data.get(0) instanceof DualValue)) {
-		dataBuffer.append("[");
-	    }
-	    int i = 0;
-	    for (T number : data) {
-		if (number instanceof DualValue) {
-		    dataBuffer.append("[" + ((DualValue) number).getKey() + ", " + ((DualValue) number).getValue() + "]");
-		} else {
-		    dataBuffer.append(number.toString());
-		}
+        if (data != null && !data.isEmpty()) {
+            if (!(data.get(0) instanceof DualValue)) {
+                dataBuffer.append("[");
+            }
+            int i = 0;
+            for (T number : data) {
+                if (number instanceof DualValue) {
+                    dataBuffer.append("[" + ((DualValue) number).getKey() + ", " + ((DualValue) number).getValue() + "]");
+                } else {
+                    dataBuffer.append(number.toString());
+                }
 
-		if (i != (data.size() - 1)) {
-		    dataBuffer.append(",");
-		}
-		i += 1;
-	    }
+                if (i != (data.size() - 1)) {
+                    dataBuffer.append(",");
+                }
+                i += 1;
+            }
 
-	    if (!(data.get(0) instanceof DualValue)) {
-		dataBuffer.append("]");
-	    }
-	}
+            if (!(data.get(0) instanceof DualValue)) {
+                dataBuffer.append("]");
+            }
+        }
 
-	dataBuffer.append("]");
-	super.setData(data);
+        dataBuffer.append("]");
+        super.setData(data);
     }
 
     /**
@@ -153,9 +161,9 @@ public class AbstractChart<T> extends Chart<T> {
      * @param javaScriptObject
      */
     public final void setJavascriptOption(ChartOption chartOption, SubOption subOption, JSONValue javaScriptObject) {
-	if (!isInjected()) {
-	    setOption(chartOption, subOption, javaScriptObject.toString());
-	}
+        if (!isInjected()) {
+            setOption(chartOption, subOption, javaScriptObject.toString());
+        }
     }
 
     /**
@@ -163,11 +171,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setNumberOption(ChartOption option, Number value, NumberType typeOfValue) {
-	if (!isInjected()) {
-	    setOption(option, ChartOptioner.getStringNumberValue(value, typeOfValue));
-	} else {
-	    changeProperty(value, option.name());
-	}
+        if (!isInjected()) {
+            setOption(option, ChartOptioner.getStringNumberValue(value, typeOfValue));
+        } else {
+            changeProperty(value, option.name());
+        }
     }
 
     /**
@@ -176,11 +184,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setNumberOption(ChartOption option, SubOption subOption, Number value, NumberType typeOfValue) {
-	if (!isInjected()) {
-	    setOption(option, subOption, ChartOptioner.getStringNumberValue(value, typeOfValue));
-	} else {
-	    changeProperty(value, option.name(), subOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, ChartOptioner.getStringNumberValue(value, typeOfValue));
+        } else {
+            changeProperty(value, option.name(), subOption.name());
+        }
     }
 
     /**
@@ -190,11 +198,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setNumberOption(ChartOption option, SubOption subOption, SubOption subSubOption, Number value, NumberType typeOfValue) {
-	if (!isInjected()) {
-	    setOption(option, subOption, subSubOption, ChartOptioner.getStringNumberValue(value, typeOfValue));
-	} else {
-	    changeProperty(value, option.name(), subOption.name(), subSubOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, subSubOption, ChartOptioner.getStringNumberValue(value, typeOfValue));
+        } else {
+            changeProperty(value, option.name(), subOption.name(), subSubOption.name());
+        }
     }
 
     /**
@@ -202,11 +210,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setNumberOption(ChartOption option, Number value) {
-	if (!isInjected()) {
-	    setOption(option, ChartOptioner.getStringNumberValue(value, NumberType.INT));
-	} else {
-	    changeProperty(value, option.name());
-	}
+        if (!isInjected()) {
+            setOption(option, ChartOptioner.getStringNumberValue(value, NumberType.INT));
+        } else {
+            changeProperty(value, option.name());
+        }
     }
 
     /**
@@ -215,11 +223,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setNumberOption(ChartOption option, SubOption subOption, Number value) {
-	if (!isInjected()) {
-	    setOption(option, subOption, ChartOptioner.getStringNumberValue(value, NumberType.INT));
-	} else {
-	    changeProperty(value, option.name(), subOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, ChartOptioner.getStringNumberValue(value, NumberType.INT));
+        } else {
+            changeProperty(value, option.name(), subOption.name());
+        }
     }
 
     /**
@@ -229,11 +237,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setNumberOption(ChartOption option, SubOption subOption, SubOption subSubOption, Number value) {
-	if (!isInjected()) {
-	    setOption(option, subOption, subSubOption, ChartOptioner.getStringNumberValue(value, NumberType.INT));
-	} else {
-	    changeProperty(value, option.name(), subOption.name(), subSubOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, subSubOption, ChartOptioner.getStringNumberValue(value, NumberType.INT));
+        } else {
+            changeProperty(value, option.name(), subOption.name(), subSubOption.name());
+        }
     }
 
     /**
@@ -241,12 +249,12 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setOption(ChartOption option, List<String> value) {
-	if (!isInjected()) {
-	    setOption(option, JavascriptConvertUtils.optionArrayStringToString(value));
-	} else {
-	    JSONValue array = JSONParser.parseStrict(value.toString());
-	    changeProperty(array.isArray(), option.name());
-	}
+        if (!isInjected()) {
+            setOption(option, JavascriptConvertUtils.optionArrayStringToString(value));
+        } else {
+            JSONValue array = JSONParser.parseStrict(value.toString());
+            changeProperty(array.isArray(), option.name());
+        }
     }
 
     /**
@@ -254,23 +262,23 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setOption(ChartOption option, String value) {
-	if (!isInjected()) {
-	    Map<SubOption, String> optionsSeries;
-	    if (getChartOptionner().getOptionsMapped() == null) {
-		setOptionsMapped(new HashMap<ChartOption, Map<SubOption, String>>());
-	    }
+        if (!isInjected()) {
+            Map<SubOption, String> optionsSeries;
+            if (getChartOptionner().getOptionsMapped() == null) {
+                setOptionsMapped(new HashMap<ChartOption, Map<SubOption, String>>());
+            }
 
-	    if (getChartOptionner().getOptionsMapped().containsKey(option)) {
-		optionsSeries = getChartOptionner().getOptionsMapped().get(option);
-	    } else {
-		optionsSeries = new HashMap<SubOption, String>();
-		getChartOptionner().getOptionsMapped().put(option, optionsSeries);
-	    }
+            if (getChartOptionner().getOptionsMapped().containsKey(option)) {
+                optionsSeries = getChartOptionner().getOptionsMapped().get(option);
+            } else {
+                optionsSeries = new HashMap<SubOption, String>();
+                getChartOptionner().getOptionsMapped().put(option, optionsSeries);
+            }
 
-	    optionsSeries.put(null, value);
-	} else {
-	    changeProperty(value, option.name());
-	}
+            optionsSeries.put(null, value);
+        } else {
+            changeProperty(value, option.name());
+        }
     }
 
     /**
@@ -279,12 +287,12 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setOption(ChartOption option, SubOption subOption, List<String> value) {
-	if (!isInjected()) {
-	    setOption(option, subOption, JavascriptConvertUtils.optionArrayStringToString(value));
-	} else {
-	    JSONValue array = JSONParser.parseStrict(value.toString());
-	    changeProperty(array.isArray(), option.name(), subOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, JavascriptConvertUtils.optionArrayStringToString(value));
+        } else {
+            JSONValue array = JSONParser.parseStrict(value.toString());
+            changeProperty(array.isArray(), option.name(), subOption.name());
+        }
     }
 
     /**
@@ -293,24 +301,24 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setOption(ChartOption option, SubOption subOption, String value) {
-	if (!isInjected()) {
-	    Map<SubOption, String> optionsSeries;
-	    if (getChartOptionner().getOptionsMapped() == null) {
-		setOptionsMapped(new HashMap<ChartOption, Map<SubOption, String>>());
-	    }
+        if (!isInjected()) {
+            Map<SubOption, String> optionsSeries;
+            if (getChartOptionner().getOptionsMapped() == null) {
+                setOptionsMapped(new HashMap<ChartOption, Map<SubOption, String>>());
+            }
 
-	    if (getChartOptionner().getOptionsMapped().containsKey(option)) {
-		optionsSeries = getChartOptionner().getOptionsMapped().get(option);
-	    } else {
-		optionsSeries = new HashMap<SubOption, String>();
-		getChartOptionner().getOptionsMapped().put(option, optionsSeries);
-	    }
+            if (getChartOptionner().getOptionsMapped().containsKey(option)) {
+                optionsSeries = getChartOptionner().getOptionsMapped().get(option);
+            } else {
+                optionsSeries = new HashMap<SubOption, String>();
+                getChartOptionner().getOptionsMapped().put(option, optionsSeries);
+            }
 
-	    // Set the option value.
-	    optionsSeries.put(subOption, value);
-	} else {
-	    changeProperty(value, option.name(), subOption.name());
-	}
+            // Set the option value.
+            optionsSeries.put(subOption, value);
+        } else {
+            changeProperty(value, option.name(), subOption.name());
+        }
     }
 
     /**
@@ -320,12 +328,12 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setOption(ChartOption option, SubOption subOption, SubOption subSubOption, List<?> value) {
-	if (!isInjected()) {
-	    setOption(option, subOption, subSubOption, JavascriptConvertUtils.optionArrayStringToString(value));
-	} else {
-	    JSONValue array = JSONParser.parseStrict(value.toString());
-	    changeProperty(array.isArray(), option.name(), subOption.name(), subSubOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, subSubOption, JavascriptConvertUtils.optionArrayStringToString(value));
+        } else {
+            JSONValue array = JSONParser.parseStrict(value.toString());
+            changeProperty(array.isArray(), option.name(), subOption.name(), subSubOption.name());
+        }
     }
 
     /**
@@ -335,44 +343,44 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setOption(ChartOption option, SubOption subOption, SubOption subSubOption, String value) {
-	if (!isInjected()) {
-	    Map<SubOption, Map<SubOption, String>> optionsSeries;
-	    if (getChartOptionner().getSubSubOptionsMapped() == null) {
-		setSubSubOptionsMapped(new HashMap<ChartOption, Map<SubOption, Map<SubOption, String>>>());
-	    }
+        if (!isInjected()) {
+            Map<SubOption, Map<SubOption, String>> optionsSeries;
+            if (getChartOptionner().getSubSubOptionsMapped() == null) {
+                setSubSubOptionsMapped(new HashMap<ChartOption, Map<SubOption, Map<SubOption, String>>>());
+            }
 
-	    if (getChartOptionner().getSubSubOptionsMapped().containsKey(option)) {
-		optionsSeries = getChartOptionner().getSubSubOptionsMapped().get(option);
+            if (getChartOptionner().getSubSubOptionsMapped().containsKey(option)) {
+                optionsSeries = getChartOptionner().getSubSubOptionsMapped().get(option);
 
-		if (optionsSeries.containsKey(subOption)) {
-		    Map<SubOption, String> subSubOptions = optionsSeries.get(subOption);
-		    subSubOptions.put(subSubOption, value);
-		} else {
-		    Map<SubOption, String> subsubOptionMapCreated = new HashMap<SubOption, String>();
-		    optionsSeries.put(subOption, subsubOptionMapCreated);
-		    subsubOptionMapCreated.put(subSubOption, value);
-		    optionsSeries.put(subOption, subsubOptionMapCreated);
-		}
+                if (optionsSeries.containsKey(subOption)) {
+                    Map<SubOption, String> subSubOptions = optionsSeries.get(subOption);
+                    subSubOptions.put(subSubOption, value);
+                } else {
+                    Map<SubOption, String> subsubOptionMapCreated = new HashMap<SubOption, String>();
+                    optionsSeries.put(subOption, subsubOptionMapCreated);
+                    subsubOptionMapCreated.put(subSubOption, value);
+                    optionsSeries.put(subOption, subsubOptionMapCreated);
+                }
 
-	    } else {
-		optionsSeries = new HashMap<SubOption, Map<SubOption, String>>();
-		getChartOptionner().getSubSubOptionsMapped().put(option, optionsSeries);
+            } else {
+                optionsSeries = new HashMap<SubOption, Map<SubOption, String>>();
+                getChartOptionner().getSubSubOptionsMapped().put(option, optionsSeries);
 
-		Map<SubOption, String> subsubOptionMapCreated = new HashMap<SubOption, String>();
-		subsubOptionMapCreated.put(subSubOption, value);
-		optionsSeries.put(subOption, subsubOptionMapCreated);
-	    }
-	} else {
-	    changeProperty(value, option.name(), subOption.name(), subSubOption.name());
-	}
+                Map<SubOption, String> subsubOptionMapCreated = new HashMap<SubOption, String>();
+                subsubOptionMapCreated.put(subSubOption, value);
+                optionsSeries.put(subOption, subsubOptionMapCreated);
+            }
+        } else {
+        changeProperty(value, option.name(), subOption.name(), subSubOption.name());
+        }
     }
 
     /**
      * @param renderer
      */
     public final void setRenderer(RenderersEnum renderer) {
-	super.setRenderer(renderer);
-	this.setSeriesDefaultOption(SubOption.renderer, renderer.getValueRenderer());
+        super.setRenderer(renderer);
+        this.setSeriesDefaultOption(SubOption.renderer, renderer.getValueRenderer());
     }
 
     /**
@@ -382,14 +390,14 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setSeriesDefaultOption(SubOption option, String value) {
-	setOption(ChartOption.seriesDefaults, option, value);
+        setOption(ChartOption.seriesDefaults, option, value);
     }
 
     /**
      * @param seriesData
      */
     public final void setSeriesOptions(SeriesData seriesData) {
-	super.setSeriesData(JavascriptConvertUtils.convert(seriesData));
+        super.setSeriesData(JavascriptConvertUtils.convert(seriesData));
     }
 
     /**
@@ -397,11 +405,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setTextOption(ChartOption option, String value) {
-	if (!isInjected()) {
-	    setOption(option, value);
-	} else {
-	    changeProperty(value, option.name());
-	}
+        if (!isInjected()) {
+            setOption(option, value);
+        } else {
+            changeProperty(value, option.name());
+        }
     }
 
     /**
@@ -410,11 +418,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setTextOption(ChartOption option, SubOption subOption, String value) {
-	if (!isInjected()) {
-	    setOption(option, subOption, value);
-	} else {
-	    changeProperty(value, option.name(), subOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, value);
+        } else {
+            changeProperty(value, option.name(), subOption.name());
+        }
     }
 
     /**
@@ -424,11 +432,11 @@ public class AbstractChart<T> extends Chart<T> {
      * @param value
      */
     public final void setTextOption(ChartOption option, SubOption subOption, SubOption subSubOption, String value) {
-	if (!isInjected()) {
-	    setOption(option, subOption, subSubOption, value);
-	} else {
-	    changeProperty(value, option.name(), subOption.name(), subSubOption.name());
-	}
+        if (!isInjected()) {
+            setOption(option, subOption, subSubOption, value);
+        } else {
+            changeProperty(value, option.name(), subOption.name(), subSubOption.name());
+        }
     }
 
     /**
@@ -438,7 +446,7 @@ public class AbstractChart<T> extends Chart<T> {
      *            the renderer.
      */
     public void setXaxisRenderer(RenderersEnum renderer) {
-	this.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, renderer.getValueRenderer());
+        this.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, renderer.getValueRenderer());
     }
 
     /**
@@ -448,7 +456,7 @@ public class AbstractChart<T> extends Chart<T> {
      *            the renderer.
      */
     public void setYaxisRenderer(RenderersEnum renderer) {
-	this.setOption(ChartOption.axes, SubOption.yaxis, SubOption.renderer, renderer.getValueRenderer());
+        this.setOption(ChartOption.axes, SubOption.yaxis, SubOption.renderer, renderer.getValueRenderer());
     }
 
 }

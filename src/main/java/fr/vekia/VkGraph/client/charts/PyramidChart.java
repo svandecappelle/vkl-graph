@@ -25,7 +25,17 @@ public class PyramidChart extends AbstractChart<List<Number>> {
      * 
      */
     public PyramidChart() {
-	super.setRenderer(RenderersEnum.Pyramid);
+        super();
+        super.setRenderer(RenderersEnum.Pyramid);
+    }
+
+    /**
+     * Default constructor
+     * 
+     */
+    public PyramidChart(I18nFields i18nFields) {
+        super(i18nFields);
+        super.setRenderer(RenderersEnum.Pyramid);
     }
 
     @Override

@@ -28,4 +28,15 @@ public class BlockChart extends AbstractChart<SquareValue> {
 	super.setListView(true);
 	super.setRenderer(RenderersEnum.Block);
     }
+
+
+    /**
+     * Constructor with specifics I18n constants
+     * 
+     */
+    public BlockChart(I18nFields i18nFields) {
+		super(i18nFields);
+		super.setListView(true);
+		super.setRenderer(RenderersEnum.Block);
+    }
 }

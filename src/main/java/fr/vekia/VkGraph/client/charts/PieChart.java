@@ -22,11 +22,21 @@ public class PieChart<T> extends AbstractChart<T> {
      * 
      */
     public PieChart() {
-	setRenderer(RenderersEnum.Pie);
+        super();
+        setRenderer(RenderersEnum.Pie);
+    }
+
+    /**
+     * Constructor with i18n specifics
+     * 
+     */
+    public PieChart(I18nFields i18nFields) {
+        super(i18nFields);
+        setRenderer(RenderersEnum.Pie);
     }
 
     @Override
     public void setPluginsEnable(boolean isPluginEnable) {
-	throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
+        throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
     }
 }

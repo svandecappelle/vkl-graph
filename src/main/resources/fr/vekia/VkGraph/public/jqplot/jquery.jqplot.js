@@ -9557,14 +9557,21 @@
      
     jsDate.regional.getLocale = function () {
         var l = jsDate.config.defaultLocale;
-        
-        if ( document && document.getElementsByTagName('html') && document.getElementsByTagName('html')[0].lang ) {
+        if (window['__gwt_Locale'] !== undefined){
+            var tmpl =  window['__gwt_Locale'];
+            if(jsDate.regional.hasOwnProperty(tmpl.replace("_","-"))){
+                l =  tmpl.replace("_","-");
+            }else if(jsDate.regional.hasOwnProperty(tmpl.split('_')[0])){
+                l = tmpl.split('_')[0];
+            }
+        }else{
+          if ( document && document.getElementsByTagName('html') && document.getElementsByTagName('html')[0].lang ) {
             l = document.getElementsByTagName('html')[0].lang;
             if (!jsDate.regional.hasOwnProperty(l)) {
                 l = jsDate.config.defaultLocale;
             }
+          }
         }
-        
         return l;
     };
     

@@ -25,13 +25,23 @@ public class Donut<T> extends PieChart<T> {
      * 
      */
     public Donut() {
-	super.setRenderer(RenderersEnum.Donut);
-    super.setOption(ChartOption.legend, SubOption.renderer,
-        RenderersEnum.DonutLegend.getValueRenderer());
+        super();
+        super.setRenderer(RenderersEnum.Donut);
+        super.setOption(ChartOption.legend, SubOption.renderer, RenderersEnum.DonutLegend.getValueRenderer());
+    }
+
+    /**
+     * Constructor with specifics I18n constants
+     * 
+     */
+    public Donut(I18nFields i18nFields) {
+        super(i18nFields);
+        super.setRenderer(RenderersEnum.Donut);
+        super.setOption(ChartOption.legend, SubOption.renderer, RenderersEnum.DonutLegend.getValueRenderer());
     }
 
     @Override
     public void setPluginsEnable(boolean isPluginEnable) {
-	throw new UnsupportedOperationException("plugins are not enable to Donut Charts");
+        throw new UnsupportedOperationException("plugins are not enable to Donut Charts");
     }
 }
