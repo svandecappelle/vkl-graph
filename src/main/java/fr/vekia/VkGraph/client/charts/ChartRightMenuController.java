@@ -98,7 +98,6 @@ public class ChartRightMenuController {
 
 		    @Override
 		    public void execute() {
-			exporter.setExportPopupPositionRelative(chart.getChartPanelContainer());
 			exporter.export();
 			menu.hideMenu();
 		    }
