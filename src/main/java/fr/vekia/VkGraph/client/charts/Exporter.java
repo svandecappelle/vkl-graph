@@ -9,10 +9,8 @@
  */
 package fr.vekia.VkGraph.client.charts;
 
-import com.google.gwt.user.client.ui.DialogBox;
-import com.google.gwt.user.client.ui.Frame;
-import com.google.gwt.user.client.ui.PopupPanel.PositionCallback;
-import com.google.gwt.user.client.ui.UIObject;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -25,13 +23,6 @@ public class Exporter {
 
     private Chart<?> chart;
 
-    private DialogBox exportContainer;
-
-    private UIObject relativeTo;
-
-    // positionate the popup at 20 pixel from the chart position
-    private static final int ABS_POSITION_POPUP_ALEA=20;
-
     /**
      * Default constructor
      * 
@@ -39,12 +30,6 @@ public class Exporter {
      */
     public Exporter(Chart<?> chart) {
 	this.chart = chart;
-	this.exportContainer = new DialogBox();
-	this.exportContainer.getElement().setId(chart.getId() + "-export");
-    }
-
-    public void setExportPopupPositionRelative(UIObject relativeTo) {
-	this.relativeTo = relativeTo;
     }
 
     /**
@@ -52,29 +37,14 @@ public class Exporter {
      * 
      */
     public void export() {
-	Frame frame = new Frame(export(this.chart.getId()));
-	frame.setStylePrimaryName("vkl-ExportPopup");
-	exportContainer.setWidget(frame);
-	exportContainer.setAnimationEnabled(true);
-	exportContainer.setAutoHideEnabled(true);
-	exportContainer.setAutoHideOnHistoryEventsEnabled(true);
-	exportContainer.setPopupPositionAndShow(new PositionCallback() {
-
-	    @Override
-	    public void setPosition(int offsetWidth, int offsetHeight) {
-		if (relativeTo != null) {
-		    exportContainer.setPopupPosition(relativeTo.getAbsoluteLeft() + ABS_POSITION_POPUP_ALEA, relativeTo.getAbsoluteTop() + ABS_POSITION_POPUP_ALEA);
-		} else {
-		    exportContainer.setPopupPosition(chart.getAbsoluteLeft() + ABS_POSITION_POPUP_ALEA, chart.getAbsoluteTop() + ABS_POSITION_POPUP_ALEA);
-		}
-	    }
-	});
-	if (relativeTo != null) {
-	    frame.setSize(relativeTo.getOffsetWidth() + "px", relativeTo.getOffsetHeight() + "px");
-	} else {
-	    frame.setSize(chart.getOffsetWidth() + "px", chart.getOffsetHeight() + "px");
-	}
+	String img = export(this.chart.getId());
+	String url = img.replaceAll("^data:image\\/[^;]", "data:application/octet-stream");
+	Window.open(url, "_self", "");
     }
+
+    private static native void download(JavaScriptObject chart) /*-{
+	chart.jqplotSaveImage();	
+    }-*/;
 
     /**
      * Export a graph with his identifier.
