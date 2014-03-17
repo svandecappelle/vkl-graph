@@ -12,6 +12,7 @@
 
 	<stylesheet src="jqplot/jquery.jqplot.css" />
 	<stylesheet src="jquery/smoothness/jquery-ui-1.8.23.custom.css" />
+	<stylesheet src="fr/vekia/css/fullscreener.css"/>
 
 	<!-- JQuery dependence -->
 	<script src="jqplot/jquery.min.js"></script>
@@ -72,6 +73,7 @@
 
 	<!-- Customization theme -->
 	<script src="fr/vekia/js/extendedThemes.js"></script>
+	<script src="fr/vekia/js/fullscreener.js"></script>
 	<!-- Export PNG -->
 	<script src="fr/vekia/js/exportImg.js"></script>
 

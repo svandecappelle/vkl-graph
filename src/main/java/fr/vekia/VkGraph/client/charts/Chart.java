@@ -25,6 +25,7 @@ import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.FlowPanel;
 
 import fr.vekia.VkGraph.client.charts.events.AttachedChartEvent;
 import fr.vekia.VkGraph.client.charts.events.AttachedChartHandler;
@@ -59,7 +60,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     // ## UIs ##
 
     //
-    private SimplePanel chartLayout;
+    private FlowPanel chartLayout;
+    //
+    private FlowPanel popupLayout;
     // Chart panel DIV container
     private SimplePanel chartContainer;
     // container resized when resize event are binded
@@ -79,6 +82,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     private boolean isPluginEnable;
     // true if the chart should have resize behavior.
     private boolean isResizableChart;
+    // true if the chart can be show on fullscreen popup.
+    private boolean isFullScreenActivated;
 
     // chart Options
     private ChartOptioner chartOptionner;
@@ -107,9 +112,13 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
      * 
      */
     public Chart(I18nFields i18nFields) {
-    	this.chartLayout = new SimplePanel();
+    	this.chartLayout = new FlowPanel();
+        this.popupLayout = new FlowPanel();
     	this.chartContainer = new SimplePanel();
     	
+        SimplePanel overlayPopup = new SimplePanel();
+        overlayPopup.setStylePrimaryName("overlay");
+
     	this.chartLayout.setSize("100%","100%");
     	this.chartContainer.setSize("100%","100%");
     	
@@ -140,7 +149,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     	// set HTML Id
     	this.chartContainer.getElement().setId(id);
     	this.resizableContainer.getElement().setId(id + "resizable");
-
+        this.resizableContainer.addStyleName("resizable");
+        this.chartContainer.addStyleName("chart");
     	// Stylish
         this.resizableContainer.addStyleName("vkl-ChartContainer");
     	
@@ -148,13 +158,32 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     	this.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     	this.resizableContainer.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
     	// attach UI
-    	this.chartLayout.setWidget(this.resizableContainer);
+        this.chartLayout.add(overlayPopup);
+    	this.chartLayout.add(this.popupLayout);
     	this.setWidget(this.chartLayout);
-    	
+        this.popupLayout.add(this.resizableContainer);
+
+        this.popupLayout.addStyleName("popup");
     	this.addStyleName("Vkl-Graph");
+        this.getElement().setId(id+"-VkGraph");
     }
 
-  private native void activateTheme(JavaScriptObject chart, String themeName)/*-{
+    public void toggleFullscreen(){
+        this.toggleFullscreen(this.id, chartJavascriptObject);
+    }
+
+    private native void toggleFullscreen(String id,JavaScriptObject chart)/*-{
+        $wnd.jQuery.jqplot.toggleFullscreen(id+"-VkGraph", chart);
+    }-*/;
+
+    public void activateFullScreenSizer(boolean isFullScreenActivated){
+        this.isFullScreenActivated = isFullScreenActivated;
+    }
+    public boolean isFullScreenActivated(){
+        return this.isFullScreenActivated;
+    }
+
+    private native void activateTheme(JavaScriptObject chart, String themeName)/*-{
         // theme activated flag
         var flag = false;
         try {
@@ -287,7 +316,11 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
             chartJavascript.activateTheme(themeName);
         }
         // plugins JqPlot reset to false prevent any other chart added to DOM.
-        
+        if(this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()){
+            var screener = new Fullscreener(elementId+"-VkGraph", bar);
+            this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()
+            screener.bind();
+        }
         $wnd.jQuery.jqplot.config.enablePlugins = false;
         return chartJavascript;
     }-*/;

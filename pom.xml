@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.vekia.tools</groupId>
 	<artifactId>VkLibs-Graph</artifactId>
-	<version>1.2.3-SNAPSHOT</version>
+	<version>1.2.4-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Vkl-Graph</name>
 	<description>GWT Based graphics librairy</description>
