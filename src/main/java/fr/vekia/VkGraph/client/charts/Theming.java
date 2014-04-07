@@ -90,7 +90,7 @@ public enum Theming {
 		return dispach(chart, menu);
     }
 
-    public Type getType(){
+    private Type getType(){
     	return chartType;
     }
 
