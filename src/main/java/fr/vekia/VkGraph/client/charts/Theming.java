@@ -33,7 +33,7 @@ public enum Theming {
     BLUE("bluealpha"),
     BLUE_PIE("bluealpha_pie", Type.PIE);
     
-	private enum Type{
+	protected enum Type{
 		PIE, DEFAULT, BOTH;
 	}
 
