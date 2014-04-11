@@ -69,7 +69,7 @@
 		<dependency>
 			<groupId>fr.vekia.tools</groupId>
 			<artifactId>VkLibs-Graph</artifactId>
-			<version>1.2.3-SNAPSHOT</version>
+			<version>1.2.4-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.gwt-test-utils</groupId>
@@ -99,7 +99,7 @@
 					<execution>
 						<goals>
 							<goal>compile</goal>
-							<goal>generateAsync</goal>
+							<!--<goal>generateAsync</goal>-->
 						</goals>
 					</execution>
 				</executions>

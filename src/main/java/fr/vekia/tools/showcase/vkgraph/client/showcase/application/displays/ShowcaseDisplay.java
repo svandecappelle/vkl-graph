@@ -30,7 +30,7 @@ public class ShowcaseDisplay implements Display {
 	 * 
 	 */
 	public ShowcaseDisplay() {
-		layout = new SplitLayoutPanel();
+		layout = new SplitLayoutPanel(14);
 	}
 
 	@Override

@@ -9,7 +9,9 @@
  */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application;
 
-import com.google.gwt.dom.client.Style.Position;
+
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
@@ -17,8 +19,6 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.AnimationEnum;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.events.SelectionOnMenuRequiredEvent;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.ShowcaseInjector;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.JQueryDialog;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.ProgressBar;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -39,25 +39,15 @@ public final class DemoStarter {
      * 
      */
 	public final static void start() {
-		Window.alert("menu view");
-
 		MouseDemoWidget.getInstance().activate();
 
-		final ProgressBar bar = new ProgressBar();
+		final Element progress = Document.get().getElementById("loading-bar");
+		final Element progressTitle = Document.get().getElementById(
+				"loading-bar-title");
+		final Element progressBar = Document.get().getElementById(
+				"loading-bar-bar");
 
-		bar.getElement().getStyle().setPosition(Position.FIXED);
-		RootLayoutPanel.get().add(bar);
-		RootLayoutPanel.get().setWidgetBottomHeight(bar, 0, Unit.PX, 16,
-				Unit.PX);
-		RootLayoutPanel.get()
-				.setWidgetLeftWidth(bar, 0, Unit.PX, 100, Unit.PCT);
-
-		JQueryDialog dialog = new JQueryDialog(true, true);
-		dialog.setSize("150px", "40px");
-		dialog.setWidget(bar);
-		dialog.show();
-
-		SequentialTimerStack timers = new SequentialTimerStack();
+		final SequentialTimerStack timers = new SequentialTimerStack();
 		final Message messageOfChart = new Message(true);
 		messageOfChart.setGlassEnabled(true);
 		messageOfChart.setAnimationHide(AnimationEnum.EXPLODE);
@@ -67,6 +57,11 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				RootLayoutPanel.get().getElement().getStyle().setTop(3, Unit.PX);
+				progress.addClassName("visible");
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				ShowcaseInjector.Util
 						.getInstance()
 						.getEventBus()
@@ -79,6 +74,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart.setMessage("Here a simple line chart view.");
 				messageOfChart.show();
 			}
@@ -87,6 +85,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart.hide();
 			}
 		});
@@ -94,6 +95,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				ShowcaseInjector.Util
 						.getInstance()
 						.getEventBus()
@@ -106,6 +110,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart
 						.setMessage("Here a pyramid with mouse over events.");
 				messageOfChart.show();
@@ -115,6 +122,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart.hide();
 			}
 		});
@@ -122,6 +132,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				ShowcaseInjector.Util
 						.getInstance()
 						.getEventBus()
@@ -134,6 +147,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart
 						.setMessage("Here a simple pie chart showing the different view of the library can produce.");
 				messageOfChart.show();
@@ -143,6 +159,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart.hide();
 			}
 		});
@@ -150,6 +169,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				ShowcaseInjector.Util
 						.getInstance()
 						.getEventBus()
@@ -163,6 +185,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart
 						.setMessage("Here a Bubble chart with drag events and resizable chart capacity.");
 				messageOfChart.show();
@@ -172,6 +197,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart.hide();
 			}
 		});
@@ -179,6 +207,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				ShowcaseInjector.Util
 						.getInstance()
 						.getEventBus()
@@ -192,6 +223,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart
 						.setMessage("Here an area whart showing a zoom controlled by a second chart.");
 				messageOfChart.show();
@@ -201,6 +235,9 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				messageOfChart.hide();
 			}
 		});
@@ -209,15 +246,18 @@ public final class DemoStarter {
 
 			@Override
 			public void execute() {
+				progressTitle.setInnerHTML(timers.getCurrentPercent() + "%");
+				progressBar.getStyle().setWidth(timers.getCurrentPercent(),
+						Unit.PCT);
 				MouseDemoWidget.getInstance().desactivate();
 				messageOfChart.setMessage("Now have fun with this library.");
 				messageOfChart.show();
-				RootLayoutPanel.get().remove(bar);
+				progress.removeClassName("visible");
+				RootLayoutPanel.get().getElement().getStyle().setTop(0, Unit.PX);
 			}
 		});
 
 		timers.run();
-		bar.run(10 + 5 * 2800 + 5 * 4800 + 3 * 11000 + 2 * 6000);
 		// ShowcaseInjector.Util.getInstance().getPresenter().getPlaceController().goTo(new
 		// MenuPlace("PieChart","Simple pie"));
 	}

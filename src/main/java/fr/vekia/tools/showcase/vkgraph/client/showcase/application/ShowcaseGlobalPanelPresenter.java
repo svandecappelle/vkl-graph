@@ -21,7 +21,6 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.logical.shared.SelectionEvent;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.user.client.History;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.inject.Inject;
@@ -76,13 +75,11 @@ public class ShowcaseGlobalPanelPresenter extends
 
 	@Override
 	protected void onBind() {
-
 		registerHandler(display.getStartAutomatedDemoHandler().addClickHandler(
 				new ClickHandler() {
 
 					@Override
 					public void onClick(ClickEvent event) {
-						Window.alert("menu view");
 						ShowcaseInjector.Util.getInstance().getEventBus()
 								.fireEvent(new StartAutomatedDemoEvent());
 					}

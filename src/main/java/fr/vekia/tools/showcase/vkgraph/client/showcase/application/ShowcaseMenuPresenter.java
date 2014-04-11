@@ -233,7 +233,6 @@ public class ShowcaseMenuPresenter extends WidgetPresenter<WidgetDisplay> {
 
 					@Override
 					public void onSelection(SelectionOnMenuRequiredEvent event) {
-						Window.alert("menu view");
 						selectCategoryAnimation(event);
 					}
 				});

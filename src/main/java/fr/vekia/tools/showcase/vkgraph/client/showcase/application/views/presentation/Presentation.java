@@ -21,12 +21,11 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.An
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.JqueryAnimation;
 
 public class Presentation extends SimplePanel {
-	private Button startDemoButton;
+	private static final Button startDemoButton = new Button("Start automated presentation...");
 
 	public Presentation() {
 		VerticalPanel introduction = new VerticalPanel();
 		introduction.setWidth("100%");
-		startDemoButton = new Button("Start automated presentation...");
 		startDemoButton.getElement().setId("StartDemo-Button");
 		introduction.getElement().getStyle().setPaddingRight(30, Unit.PX);
 		startDemoButton.setWidth("100%");

@@ -68,15 +68,13 @@ public class Showcase implements EntryPoint {
 		// Goes to place represented on URL or default place
 		historyHandler.handleCurrentHistory();
 
-		ThemeFactory.setTheme(Theme.PRO);
-		ThemeInjector injectorTheme = ThemeInjector.Util.getInstance();
-		injectorTheme.getPresenter().bind();
-		injectorTheme.getPresenter().revealDisplay();
+		// ThemeFactory.setTheme(Theme.PRO);
+		// ThemeInjector injectorTheme = ThemeInjector.Util.getInstance();
+		// injectorTheme.getPresenter().bind();
+		// injectorTheme.getPresenter().revealDisplay();
 		
 		// RootLayoutPanel.get().add(ohlc);
-
 		// PilotGraph ohlc = new PilotGraph();
-		//
 		// RootLayoutPanel.get().add(ohlc);
 
 	}

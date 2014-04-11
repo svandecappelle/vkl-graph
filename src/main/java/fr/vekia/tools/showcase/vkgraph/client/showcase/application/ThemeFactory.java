@@ -89,7 +89,7 @@ public class ThemeFactory {
 					// nothing to remove.
 					if (!href.contains(gwtStyleSheet)
 							&& notAdependencyTheme(href)) {
-						toRemove.add(elem);
+						//toRemove.add(elem);
 					}
 				}
 			}

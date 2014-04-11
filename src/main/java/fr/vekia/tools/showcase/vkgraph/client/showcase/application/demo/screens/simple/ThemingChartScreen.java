@@ -29,7 +29,9 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import fr.vekia.VkGraph.client.charts.ChartRightMenuController;
 import fr.vekia.VkGraph.client.charts.Donut;
+import fr.vekia.VkGraph.client.charts.I18nFields;
 import fr.vekia.VkGraph.client.charts.LineChart;
 import fr.vekia.VkGraph.client.charts.PieChart;
 import fr.vekia.VkGraph.client.datas.DualValue;
@@ -56,8 +58,43 @@ public class ThemingChartScreen extends SimplePanel {
 	 */
 	public ThemingChartScreen() {
 
+		// redefine the default i18n values
+		ChartRightMenuController.setDefaultI18nConstants(new I18nFields(){
+			@Override
+			public String themes() {
+				return "Apply theme";
+			}
+
+			@Override
+			public String refresh() {
+				return "Replot chart";
+			}
+
+			@Override
+			public String export() {
+				return "Export to image";
+			}
+		});
+
 		// FIRST CHART LINE CHART;
-		first = new LineChart<List<DualValue>>();
+		// redefine specific i18n constants
+		first = new LineChart<List<DualValue>>(new I18nFields(){
+			@Override
+			public String themes() {
+				return "Apply a themes";
+			}
+
+			@Override
+			public String refresh() {
+				return "Replot the Chart";
+			}
+
+			@Override
+			public String export() {
+				return "Export to png";
+			}
+		});
+
 		List<List<DualValue>> values = new ArrayList<List<DualValue>>();
 
 		for (int i = 0; i < 10; i++) {
@@ -128,7 +165,6 @@ public class ThemingChartScreen extends SimplePanel {
 		container.add(third);
 
 		setWidget(container);
-
 	}
 
 	private IsWidget getFlexTableThemeCreator() {

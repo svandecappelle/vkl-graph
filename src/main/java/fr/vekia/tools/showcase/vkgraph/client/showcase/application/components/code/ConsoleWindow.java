@@ -38,7 +38,7 @@ public class ConsoleWindow extends Widget implements ResizeHandler,
 		int x = 0;
 		int y = Window.getClientWidth() - width;
 		super.setElement(DOM.getElementById("consoleCode"));
-		super.setTitle("The concole code");
+		super.setTitle("The code");
 
 		super.setSize("450px", "250px");
 		this.create(height, width, x, y);

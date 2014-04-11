@@ -24,6 +24,8 @@ import com.google.gwt.user.client.Timer;
 public class SequentialTimerStack extends Timer {
 
 	private LinkedList<SequentialTimer> timers;
+	private SequentialTimer current;
+	private float totalstackedSize;
 
 	/**
 	 * Default constructor
@@ -39,13 +41,15 @@ public class SequentialTimerStack extends Timer {
 	 */
 	public void addToStack(SequentialTimer timer) {
 		timers.add(timer);
+		totalstackedSize += 1;
 	}
 
 	@Override
 	public void run() {
 		if (!timers.isEmpty()) {
-			SequentialTimer timer = timers.poll();
-			timer.start(new Command() {
+			this.current = timers.poll();
+
+			this.current.start(new Command() {
 
 				@Override
 				public void execute() {
@@ -53,5 +57,12 @@ public class SequentialTimerStack extends Timer {
 				}
 			});
 		}
+	}
+
+	public float getCurrentPercent() {
+		if (!timers.isEmpty()) {
+			return (1f - ((float) this.timers.size() / totalstackedSize)) * 100f;
+		}
+		return 0;
 	}
 }

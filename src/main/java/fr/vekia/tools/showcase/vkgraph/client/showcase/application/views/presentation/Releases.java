@@ -63,15 +63,18 @@ public class Releases extends SimplePanel {
 		releases.setVerticalAlignment(HasVerticalAlignment.ALIGN_TOP);
 
 		releasesContainer.setCellHeight(releaseTitle, "10px");
-
+		releases.setWidth("100%");
 		releasesContainer.add(releases);
 		releasesContainer.getElement().getStyle()
-				.setBackgroundColor("rgba(78, 135, 194, 0.2)");
+				.setBackgroundColor("rgba(19, 1, 5, 0.2)");
 		releasesContainer.getElement().getStyle()
 				.setPropertyPx("borderRadius", 15);
 		releasesContainer.getElement().getStyle().setMarginRight(5, Unit.PX);
 		releasesContainer.setHeight("100%");
+		releasesContainer.setWidth("100%");
+		
 
+		setWidth("100%");
 		setWidget(releasesContainer);
 
 	}

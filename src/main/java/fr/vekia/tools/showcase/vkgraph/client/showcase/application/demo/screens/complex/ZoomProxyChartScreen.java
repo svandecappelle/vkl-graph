@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 import fr.vekia.VkGraph.client.charts.AbstractChart;
@@ -41,7 +44,7 @@ public class ZoomProxyChartScreen extends SimplePanel {
 
 		VerticalPanel content = new VerticalPanel();
 
-		AbstractChart<List<DualValue>> chart1 = new AbstractChart<List<DualValue>>();
+		final AbstractChart<List<DualValue>> chart1 = new AbstractChart<List<DualValue>>();
 		chart1.setBooleanOption(ChartOption.animate, true);
 		chart1.setBooleanOption(ChartOption.animateReplot, true);
 
@@ -129,6 +132,13 @@ public class ZoomProxyChartScreen extends SimplePanel {
 
 		setWidget(content);
 
+		Button fullscreen = new Button("Fullscreen");
+		fullscreen.addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event){
+				chart1.toggleFullscreen();
+			}
+		});
+		content.add(fullscreen);
 	}
 
 }

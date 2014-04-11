@@ -17,8 +17,7 @@ import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.ScrollPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConsoleCodePresenter.Display;
@@ -34,29 +33,22 @@ public class ConsoleCode implements Display {
 
 	private Button buttonShow;
 	private ConsoleWindow box;
-	private ScrollPanel panel;
 	private String codeUrl;
 	private String className;
 	private Button showOtherWindow;
-
+	private FlowPanel container;
+		
 	/**
 	 * Default constructor
 	 * 
 	 */
 	public ConsoleCode() {
-		panel = new ScrollPanel();
-
-		panel.setHeight((Window.getClientHeight() / 3) + "px");
-		panel.setWidth((Window.getClientWidth() / 3) + "px");
-
-		VerticalPanel container = new VerticalPanel();
-		buttonShow = new Button("ShowCode");
-		buttonShow.getElement().setId("idOpener");
+		this.container = new FlowPanel();
 		box = new ConsoleWindow();
-
-		container.add(panel);
-
+		buttonShow = new Button("ShowCode");
 		showOtherWindow = new Button("Show in other window");
+
+		buttonShow.getElement().setId("idOpener");
 		showOtherWindow.addClickHandler(new ClickHandler() {
 
 			@Override
@@ -65,6 +57,11 @@ public class ConsoleCode implements Display {
 						"Code for " + getClassName(), "_new");
 			}
 		});
+
+		container.add(buttonShow);
+		container.add(showOtherWindow);
+
+		container.setStylePrimaryName("Vklgetcode-Container");
 	}
 
 	/**
@@ -122,21 +119,12 @@ public class ConsoleCode implements Display {
 
 	@Override
 	public void insert() {
-		if (buttonShow != null) {
-			RootLayoutPanel.get().add(buttonShow);
-			buttonShow.getElement().getStyle().setZIndex(1);
-			RootLayoutPanel.get().setWidgetTopHeight(buttonShow, 0, Unit.PX,
-					25, Unit.PX);
-			RootLayoutPanel.get().setWidgetRightWidth(buttonShow, 0, Unit.PX,
-					150, Unit.PX);
-
-			RootLayoutPanel.get().add(showOtherWindow);
-			showOtherWindow.getElement().getStyle().setZIndex(1);
-			RootLayoutPanel.get().setWidgetTopHeight(showOtherWindow, 0,
-					Unit.PX, 25, Unit.PX);
-			RootLayoutPanel.get().setWidgetRightWidth(showOtherWindow, 200,
-					Unit.PX, 150, Unit.PX);
-		}
+		RootLayoutPanel.get().add(container);
+		container.getElement().getStyle().setZIndex(1);
+		RootLayoutPanel.get().setWidgetTopHeight(container, 6, Unit.PX,
+				41, Unit.PX);
+		RootLayoutPanel.get().setWidgetRightWidth(container, 10, Unit.PX,
+				316, Unit.PX);
 	}
 
 	@Override

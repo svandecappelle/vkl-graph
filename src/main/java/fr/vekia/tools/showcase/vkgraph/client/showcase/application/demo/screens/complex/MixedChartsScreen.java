@@ -114,52 +114,50 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
 				SubOption.formatString, "%\'d");
 		super.setTextOption(ChartOption.axes, SubOption.y2axis,
 				SubOption.formatString, "%\'d");
-		super.setTextOption(ChartOption.axes, SubOption.y3axis,
-				SubOption.formatString, "%\'d");
-		super.setNumberOption(ChartOption.axes, SubOption.y3axis,
-				SubOption.max, 100);
 
 		super.setOption(ChartOption.seriesColors, colors);
 
-		OptionSerie electionCandidat1Line = new OptionSerie();
-		OptionSerie electionCandidat2Line = new OptionSerie();
-		OptionSerie populationLine = new OptionSerie();
-		OptionSerie chomageLine = new OptionSerie();
+		OptionSerie qtySerie = new OptionSerie();
+		OptionSerie qtyFromSerie = new OptionSerie();
+		OptionSerie qtyPushSerie = new OptionSerie();
+		OptionSerie stockSerie = new OptionSerie();
 
-		electionCandidat1Line.setTextOption(SubOption.renderer,
+		qtySerie.setTextOption(SubOption.renderer,
 				RenderersEnum.Bar.getValueRenderer());
-		electionCandidat1Line.setBooleanOption(SubOption.isDragable, false);
-		electionCandidat1Line.setBooleanOption(SubOption.trendline,
+		qtySerie.setBooleanOption(SubOption.isDragable, false);
+		qtySerie.setBooleanOption(SubOption.trendline,
 				SubOption.show, false);
-		electionCandidat1Line.setTextOption(SubOption.label, "Candidat droite");
+		qtySerie.setTextOption(SubOption.label, "Qty");
 
-		electionCandidat2Line.setTextOption(SubOption.renderer,
+		qtyFromSerie.setTextOption(SubOption.renderer,
 				RenderersEnum.Bar.getValueRenderer());
-		electionCandidat2Line.setBooleanOption(SubOption.isDragable, false);
-		electionCandidat2Line.setBooleanOption(SubOption.trendline,
+		qtyFromSerie.setBooleanOption(SubOption.isDragable, false);
+		qtyFromSerie.setBooleanOption(SubOption.trendline,
 				SubOption.show, false);
-		electionCandidat2Line.setTextOption(SubOption.label, "Candidat gauche");
+		qtyFromSerie.setTextOption(SubOption.label, "QtyFrom");
 
-		chomageLine.setTextOption(SubOption.yaxis, "y3axis");
-		chomageLine.setBooleanOption(SubOption.fill, true);
-		chomageLine.setBooleanOption(SubOption.isDragable, false);
-		chomageLine
+		stockSerie.setTextOption(SubOption.yaxis, "y2axis");
+		stockSerie.setBooleanOption(SubOption.fill, true);
+		stockSerie.setBooleanOption(SubOption.isDragable, false);
+		stockSerie
 				.setBooleanOption(SubOption.trendline, SubOption.show, false);
-		chomageLine.setTextOption(SubOption.label, "Taux de chomage");
+		stockSerie.setTextOption(SubOption.label, "Stock");
+		stockSerie.setBooleanOption(SubOption.trendline,
+				SubOption.show, false);
 
-		populationLine.setTextOption(SubOption.trendline, SubOption.color,
+		qtyPushSerie.setTextOption(SubOption.trendline, SubOption.color,
 				"#cccccc");
-		populationLine.setBooleanOption(SubOption.isDragable, false);
-		populationLine.setBooleanOption(SubOption.trendline, SubOption.show,
-				true);
-		populationLine.setTextOption(SubOption.yaxis, "y2axis");
-		populationLine.setTextOption(SubOption.label, "Population active");
+		qtyPushSerie.setBooleanOption(SubOption.isDragable, false);
+		qtyPushSerie.setBooleanOption(SubOption.trendline, SubOption.show,
+				false);
+		qtyPushSerie.setTextOption(SubOption.renderer, RenderersEnum.Bar.getValueRenderer());
+		qtyPushSerie.setTextOption(SubOption.label, "QtyPush");
 
 		SeriesData seriesDatas = new SeriesData();
-		seriesDatas.set(0, electionCandidat1Line);
-		seriesDatas.set(1, electionCandidat2Line);
-		seriesDatas.set(2, populationLine);
-		seriesDatas.set(3, chomageLine);
+		seriesDatas.set(0, qtySerie);
+		seriesDatas.set(1, qtyFromSerie);
+		seriesDatas.set(2, qtyPushSerie);
+		seriesDatas.set(3, stockSerie);
 
 		super.setSeriesOptions(seriesDatas);
 
@@ -168,75 +166,72 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
 	@SuppressWarnings("deprecation")
 	private final List<List<DualValue>> getValues() {
 		final List<List<DualValue>> dataValues = new ArrayList<List<DualValue>>();
-		List<Date> allDate = new ArrayList<Date>();
-		allDate.add(new Date(1959 - 1900, 0, 8));
-		allDate.add(new Date(1969 - 1900, 3, 28));
-		allDate.add(new Date(1969 - 1900, 5, 20));
-		allDate.add(new Date(1974 - 1900, 3, 2));
-		allDate.add(new Date(1974 - 1900, 4, 27));
-		allDate.add(new Date(1981 - 1900, 4, 21));
-		allDate.add(new Date(1995 - 1900, 4, 17));
-		allDate.add(new Date(2007 - 1900, 4, 16));
-		allDate.add(new Date(2012 - 1900, 4, 15));
-		DateTimeFormat dateTimeFormat = DateTimeFormat.getShortDateFormat();
 		List<String> dates = new ArrayList<String>();
-		for (Date date : allDate) {
-			dates.add(dateTimeFormat.format(date));
-		}
-		final ArrayList<DualValue> presidentielSecondTour1 = new ArrayList<DualValue>();
-		final ArrayList<DualValue> presidentielSecondTour2 = new ArrayList<DualValue>();
-		final ArrayList<DualValue> populationActive = new ArrayList<DualValue>();
-		final ArrayList<DualValue> chomage = new ArrayList<DualValue>();
+		dates.add("T-shirts");
+		dates.add("Pantalon");
+		dates.add("Layette");
+		dates.add("Accessoires");
+		dates.add("Sous-vêtements");
+		dates.add("Chaussures");
+		dates.add("Pulls");
+		dates.add("Blousons");
+		dates.add("Vestes");
+		DateTimeFormat dateTimeFormat = DateTimeFormat.getShortDateFormat();
+		
+		final ArrayList<DualValue> qty = new ArrayList<DualValue>();
+		final ArrayList<DualValue> qtyFrom = new ArrayList<DualValue>();
+		final ArrayList<DualValue> qtyPush = new ArrayList<DualValue>();
+		final ArrayList<DualValue> stock = new ArrayList<DualValue>();
+		
+		qty.add(new DualValue(dates.get(0), 5));
+		qtyFrom.add(new DualValue(dates.get(0), 44));
+		stock.add(new DualValue(dates.get(0), 10));
+		qtyPush.add(new DualValue(dates.get(0), 2.0));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(0), 55.80));
-		presidentielSecondTour2.add(new DualValue(dates.get(0), 44.20));
-		populationActive.add(new DualValue(dates.get(0), 19500000));
-		chomage.add(new DualValue(dates.get(0), 2.0));
+		qty.add(new DualValue(dates.get(1), 5));
+		qtyFrom.add(new DualValue(dates.get(1), 41));
+		stock.add(new DualValue(dates.get(1), 19));
+		qtyPush.add(new DualValue(dates.get(1), 2));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(1), 58.21));
-		presidentielSecondTour2.add(new DualValue(dates.get(1), 41.79));
-		populationActive.add(new DualValue(dates.get(1), 19550000));
-		chomage.add(new DualValue(dates.get(1), 2.1));
+		qty.add(new DualValue(dates.get(2), 6));
+		qtyFrom.add(new DualValue(dates.get(2), 49));
+		stock.add(new DualValue(dates.get(2), 11));
+		qtyPush.add(new DualValue(dates.get(2), 2));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(2), 50.81));
-		presidentielSecondTour2.add(new DualValue(dates.get(2), 49.19));
-		populationActive.add(new DualValue(dates.get(2), 19550000));
-		chomage.add(new DualValue(dates.get(2), 2.1));
+		qty.add(new DualValue(dates.get(3), 4));
+		qtyFrom.add(new DualValue(dates.get(3), 51));
+		stock.add(new DualValue(dates.get(3), 15));
+		qtyPush.add(new DualValue(dates.get(3), 2));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(3), 48.24));
-		presidentielSecondTour2.add(new DualValue(dates.get(3), 51.76));
-		populationActive.add(new DualValue(dates.get(3), 22000000));
-		chomage.add(new DualValue(dates.get(3), 2.8));
+		qty.add(new DualValue(dates.get(4), 4));
+		qtyFrom.add(new DualValue(dates.get(4), 54));
+		stock.add(new DualValue(dates.get(4), 15));
+		qtyPush.add(new DualValue(dates.get(4), 3));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(4), 45.98));
-		presidentielSecondTour2.add(new DualValue(dates.get(4), 54.02));
-		populationActive.add(new DualValue(dates.get(4), 22000000));
-		chomage.add(new DualValue(dates.get(4), 2.8));
+		qty.add(new DualValue(dates.get(5), 5));
+		qtyFrom.add(new DualValue(dates.get(5), 47));
+		stock.add(new DualValue(dates.get(5), 12));
+		qtyPush.add(new DualValue(dates.get(5), 6));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(5), 52.64));
-		presidentielSecondTour2.add(new DualValue(dates.get(5), 47.36));
-		populationActive.add(new DualValue(dates.get(5), 22500000));
-		chomage.add(new DualValue(dates.get(5), 6.1));
+		qty.add(new DualValue(dates.get(6), 8));
+		qtyFrom.add(new DualValue(dates.get(6), 17));
+		stock.add(new DualValue(dates.get(6), 9));
+		qtyPush.add(new DualValue(dates.get(6), 11));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(6), 82.21));
-		presidentielSecondTour2.add(new DualValue(dates.get(6), 17.79));
-		populationActive.add(new DualValue(dates.get(6), 25500000));
-		chomage.add(new DualValue(dates.get(6), 11.5));
+		qty.add(new DualValue(dates.get(7), 5));
+		qtyFrom.add(new DualValue(dates.get(7), 46));
+		stock.add(new DualValue(dates.get(7), 8));
+		qtyPush.add(new DualValue(dates.get(7), 8));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(7), 53.06));
-		presidentielSecondTour2.add(new DualValue(dates.get(7), 46.94));
-		populationActive.add(new DualValue(dates.get(7), 26000000));
-		chomage.add(new DualValue(dates.get(7), 8.5));
+		qty.add(new DualValue(dates.get(8), 4));
+		qtyFrom.add(new DualValue(dates.get(8), 51));
+		stock.add(new DualValue(dates.get(8), 15));
+		qtyPush.add(new DualValue(dates.get(8), 10));
 
-		presidentielSecondTour1.add(new DualValue(dates.get(8), 48.36));
-		presidentielSecondTour2.add(new DualValue(dates.get(8), 51.64));
-		populationActive.add(new DualValue(dates.get(8), 26700000));
-		chomage.add(new DualValue(dates.get(8), 10.0));
-
-		dataValues.add(presidentielSecondTour1);
-		dataValues.add(presidentielSecondTour2);
-		dataValues.add(populationActive);
-		dataValues.add(chomage);
+		dataValues.add(qty);
+		dataValues.add(qtyFrom);
+		dataValues.add(qtyPush);
+		dataValues.add(stock);
 		return dataValues;
 	}
 }
