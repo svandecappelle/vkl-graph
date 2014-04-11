@@ -9,74 +9,55 @@
 	<inherits name='com.google.gwt.junit.JUnit' />
 
 	<!-- CSS files -->
-
-	<stylesheet src="jqplot/jquery.jqplot.css" />
-	<stylesheet src="jquery/smoothness/jquery-ui-1.8.23.custom.css" />
-	<stylesheet src="fr/vekia/css/fullscreener.css"/>
+	<stylesheet src="jqplot/core/jquery.jqplot.min.css" />
 
 	<!-- JQuery dependence -->
-	<script src="jqplot/jquery.min.js"></script>
-	<script src="jqplot/jquery.sideswap.js"></script>
-	<!-- JQplot dependence -->
-	<script src="jqplot/jquery.jqplot.min.js"></script>
-	<script src="jqplot/chartsLoading.js"></script>
-	<!-- JQuery dependence -->
-	<script src="jquery/jquery-ui-1.8.23.custom.min.js"></script>
-
-	<!--[if lt IE 9]><script language="javascript" src="jqplot/excanvas.js"></script><![endif] -->
+	<script src="jqplot/core/jquery.min.js"></script>
+	<script src="jqplot/core/jquery.jqplot.min.js"></script>
 
 	<!-- PLUG-IN JQplot -->
 	<!-- Axes -->
-	<script src="jqplot/plugins/jqplot.dateAxisRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.logAxisRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.categoryAxisRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.canvasAxisTickRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.canvasTextRenderer.min.js"></script>
+	<script src="jqplot/plugins/axis/jqplot.dateAxisRenderer.min.js"></script>
+	<script src="jqplot/plugins/axis/jqplot.logAxisRenderer.min.js"></script>
+	<script src="jqplot/plugins/axis/jqplot.canvasAxisLabelRenderer.min.js"></script>
+	<script src="jqplot/plugins/axis/jqplot.categoryAxisRenderer.min.js"></script>
+	<script src="jqplot/plugins/axis/jqplot.canvasAxisTickRenderer.min.js"></script>
+	<script src="jqplot/plugins/text/jqplot.canvasTextRenderer.min.js"></script>
 
 	<!-- Cursor -->
-	<script src="jqplot/plugins/jqplot.cursor.min.js"></script>
+	<script src="jqplot/plugins/cursor/jqplot.cursor.min.js"></script>
 	<!-- Highlighter -->
-	<script src="jqplot/plugins/jqplot.highlighter.min.js"></script>
+	<script src="jqplot/plugins/highlighter/jqplot.highlighter.min.js"></script>
 	<!-- Drag-drop -->
-	<script src="jqplot/plugins/jqplot.dragable.min.js"></script>
+	<script src="jqplot/plugins/dnd/jqplot.dragable.min.js"></script>
 	<!-- Trendline -->
-	<script src="jqplot/plugins/jqplot.trendline.min.js"></script>
+	<script src="jqplot/plugins/trendline/jqplot.trendline.min.js"></script>
 
 
 	<!-- Charts types -->
 	<!-- Pies -->
-	<script src="jqplot/plugins/jqplot.pieRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.donutRenderer.min.js"></script>
+	<script src="jqplot/plugins/pie/jqplot.pieRenderer.min.js"></script>
+	<script src="jqplot/plugins/donut/jqplot.donutRenderer.min.js"></script>
 	<!-- Block plot -->
-	<script src="jqplot/plugins/jqplot.blockRenderer.min.js"></script>
+	<script src="jqplot/plugins/block/jqplot.blockRenderer.min.js"></script>
 	<!-- Pyramid -->
-	<script src="jqplot/plugins/jqplot.pyramidRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.pyramidAxisRenderer.min.js"></script>
-	<script src="jqplot/plugins/jqplot.pyramidGridRenderer.min.js"></script>
+	<script src="jqplot/plugins/pyramid/jqplot.pyramidRenderer.min.js"></script>
+	<script src="jqplot/plugins/pyramid/jqplot.pyramidAxisRenderer.min.js"></script>
+	<script src="jqplot/plugins/pyramid/jqplot.pyramidGridRenderer.min.js"></script>
 	<!-- Bubble plot -->
-	<script src="jqplot/plugins/jqplot.bubbleRenderer.min.js"></script>
+	<script src="jqplot/plugins/bubble/jqplot.bubbleRenderer.min.js"></script>
 	<!-- OHLC plot -->
-	<script src="jqplot/plugins/jqplot.ohlcRenderer.js"></script>
+	<script src="jqplot/plugins/ohlc/jqplot.ohlcRenderer.js"></script>
 
 	<!-- Bar chart -->
-	<script src="jqplot/plugins/jqplot.barRenderer.min.js"></script>
+	<script src="jqplot/plugins/bar/jqplot.barRenderer.min.js"></script>
 	<!-- Bezier chart -->
-	<script src="jqplot/plugins/jqplot.BezierCurveRenderer.min.js"></script>
+	<script src="jqplot/plugins/bezier/jqplot.BezierCurveRenderer.min.js"></script>
 	<!-- Gauge chart -->
-	<script src="jqplot/plugins/jqplot.meterGaugeRenderer.min.js"></script>
+	<script src="jqplot/plugins/gauge/jqplot.meterGaugeRenderer.min.js"></script>
 
 	<!-- Horizontal / vertical lines -->
-	<script src="jqplot/plugins/jqplot.canvasOverlay.min.js"></script>
+	<script src="jqplot/plugins/overlay/jqplot.canvasOverlay.min.js"></script>
 	<!-- Legend dynamic -->
-	<script src="jqplot/plugins/jqplot.enhancedLegendRenderer.min.js"></script>
-
-	<!-- Customization theme -->
-	<script src="fr/vekia/js/extendedThemes.js"></script>
-	<script src="fr/vekia/js/fullscreener.js"></script>
-	<!-- Export PNG -->
-	<script src="fr/vekia/js/exportImg.js"></script>
-
-	<!-- Slider on showcase presentation page -->
-	<script src="jquery/jquery.lite-content-slider.min.js"></script>
+	<script src="jqplot/plugins/legend/jqplot.enhancedLegendRenderer.min.js"></script>
 </module>

@@ -8,11 +8,10 @@
 	<inherits name="com.google.gwt.json.JSON" />
 	<inherits name='com.google.gwt.junit.JUnit' />
 
+
 	<!-- CSS files -->
-
-	<stylesheet src="jqplot/jquery.jqplot.css" />
-	<stylesheet src="jquery/smoothness/jquery-ui-1.8.23.custom.css" />
-
+	<stylesheet src="jqplot/core/jquery.jqplot.min.css" />
+	
 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/>
 	<add-linker name="xsiframe"/>
 	<set-configuration-property name="devModeRedirectEnabled" value="true"/>
