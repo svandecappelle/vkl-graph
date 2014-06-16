@@ -145,7 +145,8 @@ public enum SubOption implements IsOption, HasType, Serializable {
     highlightColors(rendererOptions),
     bands(rendererOptions),
     showLines(rendererOptions),
-    highlightMouseDown(rendererOptions);
+    highlightMouseDown(rendererOptions),
+    bellowSeries(ChartOption.canvasOverlay);
 
     private IsOption[] parent;
     private OptionType type;
