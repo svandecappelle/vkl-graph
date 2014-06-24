@@ -21,7 +21,11 @@ import fr.vekia.VkGraph.client.charts.derive.DashboardChart;
 import fr.vekia.VkGraph.client.datas.DualValue;
 import fr.vekia.VkGraph.client.datas.OptionSerie;
 import fr.vekia.VkGraph.client.datas.SeriesData;
+import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
+
+import fr.vekia.VkGraph.client.datas.Rectangle;
+import fr.vekia.VkGraph.client.datas.CanvasOverlayObject;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -101,6 +105,24 @@ public class DashboardChartScreen extends DashboardChart<List<DualValue>> {
 		super.drawXGrid(true);
 		super.drawYGrid(true);
 		super.setExportEnable(true);
+
+
+		CanvasOverlayObject objectsCanvas = new CanvasOverlayObject();
+		Rectangle rect  = new Rectangle();
+		rect.setTextOption(SubOption.xmin, "2014-06-27 05:00:00");
+		rect.setTextOption(SubOption.xmax, "2014-07-07 05:00:00");
+
+		rect.setNumberOption(SubOption.ymin, 2);
+		rect.setNumberOption(SubOption.ymax, 15);
+
+		rect.setTextOption(SubOption.color, "rgb(100, 55, 124)");
+		rect.setBooleanOption(SubOption.showTooltip, true);
+		rect.setTextOption(SubOption.tooltipFormatString, "<b><i><span style='color:red;''>Test2</span></i></b>");
+		rect.setTextOption(SubOption.tooltipLocation, "s");
+		rect.setTextOption(SubOption.xformat, "date");
+
+		objectsCanvas.addObject(rect);
+		super.setCanvasOverlay(objectsCanvas);
 	}
 
 }

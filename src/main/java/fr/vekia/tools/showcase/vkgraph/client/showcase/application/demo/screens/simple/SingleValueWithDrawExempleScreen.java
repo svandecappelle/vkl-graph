@@ -69,7 +69,7 @@ public class SingleValueWithDrawExempleScreen extends LineChart<Number> {
 		line.setBooleanOption(SubOption.shadow, false);
 		line.setBooleanOption(SubOption.showTooltip, true);
 		line.setOption(SubOption.tooltipFormatString, "Y=%'d");
-		canvasDrawOption.addLine(line);
+		canvasDrawOption.addObject(line);
 
 		HorizontalLine line2 = new HorizontalLine();
 		line2.setNumberOption(SubOption.xmin, 0);
@@ -81,7 +81,7 @@ public class SingleValueWithDrawExempleScreen extends LineChart<Number> {
 		line2.setBooleanOption(SubOption.shadow, false);
 		line2.setBooleanOption(SubOption.showTooltip, true);
 		line2.setOption(SubOption.tooltipFormatString, "X=%'d");
-		canvasDrawOption.addLine(line2);
+		canvasDrawOption.addObject(line2);
 
 		VerticalLine line3 = new VerticalLine();
 		line3.setDashed(true);
@@ -90,7 +90,7 @@ public class SingleValueWithDrawExempleScreen extends LineChart<Number> {
 		line3.setTextOption(SubOption.name, "bluuu");
 		line3.setTextOption(SubOption.color, "orange");
 		line3.setBooleanOption(SubOption.shadow, true);
-		canvasDrawOption.addLine(line3);
+		canvasDrawOption.addObject(line3);
 
 		setBooleanOption(ChartOption.canvasOverlay, SubOption.show, true);
 		setCanvasOverlay(canvasDrawOption);

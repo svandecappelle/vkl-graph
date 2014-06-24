@@ -24,6 +24,9 @@ import fr.vekia.VkGraph.client.datas.SeriesData;
 import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
 
+import fr.vekia.VkGraph.client.datas.Rectangle;
+import fr.vekia.VkGraph.client.datas.CanvasOverlayObject;
+
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 11 mai 2012. GWTQuery Vekia Showcase
@@ -161,6 +164,20 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
 
 		super.setSeriesOptions(seriesDatas);
 
+		CanvasOverlayObject objectsCanvas = new CanvasOverlayObject();
+		Rectangle rect  = new Rectangle();
+		rect.setNumberOption(SubOption.xmin, 1);
+		rect.setNumberOption(SubOption.xmax, 10);
+
+		rect.setNumberOption(SubOption.ymin, 1);
+		rect.setNumberOption(SubOption.ymax, 5);
+
+		rect.setTextOption(SubOption.color, "rgb(100, 55, 124)");
+
+		objectsCanvas.addObject(rect);
+		super.setCanvasOverlay(objectsCanvas);
+		super.setBooleanOption(ChartOption.canvasOverlay, SubOption.show, true);
+		super.setBooleanOption(ChartOption.canvasOverlay, SubOption.bellowSeries, true);	
 	}
 
 	@SuppressWarnings("deprecation")

@@ -10,6 +10,7 @@
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.complex;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -24,6 +25,12 @@ import fr.vekia.VkGraph.client.datas.OptionSerie;
 import fr.vekia.VkGraph.client.datas.SeriesData;
 import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
+
+import fr.vekia.VkGraph.client.datas.Rectangle;
+import fr.vekia.VkGraph.client.datas.CanvasOverlayObject;
+import fr.vekia.VkGraph.client.charts.RenderersEnum;
+
+import com.google.gwt.user.datepicker.client.CalendarUtil;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -80,36 +87,38 @@ public class ZoomProxyChartScreen extends SimplePanel {
 		chart1.setBooleanOption(ChartOption.seriesDefaults,
 				SubOption.rendererOptions, SubOption.highlightMouseOver, true);
 
+		chart1.setXaxisRenderer(RenderersEnum.DateAxis);
+
 		SeriesData seriesData = new SeriesData();
 		seriesData.set(0, firstDataRendererOptions);
 		seriesData.set(1, barDataRendererOptions);
 
 		List<List<DualValue>> datas = new ArrayList<List<DualValue>>();
 		List<DualValue> lineDataOne = new ArrayList<DualValue>();
-		lineDataOne.add(new DualValue(2002, 112000));
-		lineDataOne.add(new DualValue(2003, 122000));
-		lineDataOne.add(new DualValue(2004, 104000));
-		lineDataOne.add(new DualValue(2005, 99000));
-		lineDataOne.add(new DualValue(2006, 121000));
-		lineDataOne.add(new DualValue(2007, 148000));
-		lineDataOne.add(new DualValue(2008, 114000));
-		lineDataOne.add(new DualValue(2009, 133000));
-		lineDataOne.add(new DualValue(2010, 161000));
-		lineDataOne.add(new DualValue(2011, 173000));
+		lineDataOne.add(new DualValue(this.addYearToNow(0).getTime(), 112000));
+		lineDataOne.add(new DualValue(this.addYearToNow(1).getTime(), 122000));
+		lineDataOne.add(new DualValue(this.addYearToNow(2).getTime(), 104000));
+		lineDataOne.add(new DualValue(this.addYearToNow(3).getTime(), 99000));
+		lineDataOne.add(new DualValue(this.addYearToNow(4).getTime(), 121000));
+		lineDataOne.add(new DualValue(this.addYearToNow(5).getTime(), 148000));
+		lineDataOne.add(new DualValue(this.addYearToNow(6).getTime(), 114000));
+		lineDataOne.add(new DualValue(this.addYearToNow(7).getTime(), 133000));
+		lineDataOne.add(new DualValue(this.addYearToNow(8).getTime(), 161000));
+		lineDataOne.add(new DualValue(this.addYearToNow(9).getTime(), 173000));
 
 		datas.add(lineDataOne);
 
 		List<DualValue> lineDataTwo = new ArrayList<DualValue>();
-		lineDataTwo.add(new DualValue(2002, 10200));
-		lineDataTwo.add(new DualValue(2003, 10800));
-		lineDataTwo.add(new DualValue(2004, 11200));
-		lineDataTwo.add(new DualValue(2005, 11800));
-		lineDataTwo.add(new DualValue(2006, 12400));
-		lineDataTwo.add(new DualValue(2007, 12800));
-		lineDataTwo.add(new DualValue(2008, 13200));
-		lineDataTwo.add(new DualValue(2009, 12600));
-		lineDataTwo.add(new DualValue(2010, 13100));
-		lineDataTwo.add(new DualValue(2011, 13100));
+		lineDataTwo.add(new DualValue(this.addYearToNow(0).getTime(), 10200));
+		lineDataTwo.add(new DualValue(this.addYearToNow(1).getTime(), 10800));
+		lineDataTwo.add(new DualValue(this.addYearToNow(2).getTime(), 11200));
+		lineDataTwo.add(new DualValue(this.addYearToNow(3).getTime(), 11800));
+		lineDataTwo.add(new DualValue(this.addYearToNow(4).getTime(), 12400));
+		lineDataTwo.add(new DualValue(this.addYearToNow(5).getTime(), 12800));
+		lineDataTwo.add(new DualValue(this.addYearToNow(6).getTime(), 13200));
+		lineDataTwo.add(new DualValue(this.addYearToNow(7).getTime(), 12600));	
+		lineDataTwo.add(new DualValue(this.addYearToNow(8).getTime(), 13100));
+		lineDataTwo.add(new DualValue(this.addYearToNow(9).getTime(), 13100));
 		datas.add(lineDataTwo);
 
 		chart1.setDatas(datas);
@@ -128,6 +137,7 @@ public class ZoomProxyChartScreen extends SimplePanel {
 		content.add(chartProxy);
 		chartProxy.setBooleanOption(ChartOption.cursor, SubOption.show, true);
 		chartProxy.setBooleanOption(ChartOption.cursor, SubOption.zoom, true);
+		chartProxy.setXaxisRenderer(RenderersEnum.DateAxis);
 		chart1.setZoomProxy(chartProxy);
 
 		setWidget(content);
@@ -139,6 +149,30 @@ public class ZoomProxyChartScreen extends SimplePanel {
 			}
 		});
 		content.add(fullscreen);
+
+
+		CanvasOverlayObject objectsCanvas = new CanvasOverlayObject();
+		Rectangle rect  = new Rectangle();
+		rect.setTextOption(SubOption.xmin, "2014-09-01 05:00:00");
+		rect.setTextOption(SubOption.xmax, "2016-09-01 05:00:00");
+
+		rect.setNumberOption(SubOption.ymin, 110800);
+		rect.setNumberOption(SubOption.ymax, 120400);
+
+		rect.setTextOption(SubOption.color, "rgb(100, 55, 124)");
+		rect.setTextOption(SubOption.xformat, "date");
+
+		objectsCanvas.addObject(rect);
+		chart1.setCanvasOverlay(objectsCanvas);
+		chart1.setBooleanOption(ChartOption.canvasOverlay, SubOption.show, true);
+		chart1.setBooleanOption(ChartOption.canvasOverlay, SubOption.bellowSeries, true);	
+	}
+
+	public Date addYearToNow(int addYear){
+		// Date xaxis
+		Date date = new Date();
+		CalendarUtil.addDaysToDate(date, 365 * addYear);
+		return date;
 	}
 
 }
