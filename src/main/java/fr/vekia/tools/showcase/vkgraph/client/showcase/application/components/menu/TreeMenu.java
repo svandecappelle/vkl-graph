@@ -12,6 +12,7 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.m
 import com.google.gwt.event.logical.shared.HasSelectionHandlers;
 import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.TreeItem;
 
@@ -56,10 +57,10 @@ public abstract class TreeMenu<T extends TreeItem> extends MenuItem implements
 
 	public static final TreeItem buildTreeItem(String titleGroup,
 			String... items) {
-		TreeItem treeGroup = new TreeItem(titleGroup);
+		TreeItem treeGroup = new TreeItem(SafeHtmlUtils.fromString(titleGroup));
 		treeGroup.setWidth("100%");
 		for (String itemsLabel : items) {
-			TreeItem item = treeGroup.addItem(itemsLabel);
+			TreeItem item = treeGroup.addItem(SafeHtmlUtils.fromString(itemsLabel));
 			item.setWidth("100%");
 		}
 		return treeGroup;
