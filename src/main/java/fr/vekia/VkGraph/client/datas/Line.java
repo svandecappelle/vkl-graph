@@ -12,11 +12,11 @@ package fr.vekia.VkGraph.client.datas;
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 5 sept. 2012. VklGraph version 1.2
- * @version 2.1
+ * @version 1.2.4
  * 
- *          {@inheritDoc}
+ *          A line Canvas object.
  */
-abstract class Line extends OptionSerie {
+abstract class Line extends OptionSerie implements CanvasObject{
 
     private boolean dashed = false;
 
@@ -26,13 +26,14 @@ abstract class Line extends OptionSerie {
 
 
     public void setDashed(boolean isDashed) {
-	this.dashed = isDashed;
+	   this.dashed = isDashed;
     }
 
     /**
      * @return the dashed
      */
     public boolean isDashed() {
-	return dashed;
+	   return dashed;
     }
+
 }

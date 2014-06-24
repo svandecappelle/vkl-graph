@@ -17,6 +17,7 @@ import fr.vekia.VkGraph.client.charts.AbstractChart;
 import fr.vekia.VkGraph.client.charts.LineChart;
 import fr.vekia.VkGraph.client.charts.NumberType;
 import fr.vekia.VkGraph.client.charts.RenderersEnum;
+import fr.vekia.VkGraph.client.datas.CanvasOverlayObject;
 import fr.vekia.VkGraph.client.datas.SeriesData;
 import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
@@ -227,5 +228,15 @@ public class DashboardChart<T> extends Composite {
      */
     public AbstractChart<T> getChart() {
 	return chart;
+    }
+
+    /**
+     * @param canvasoverlay
+     * @param canvasDrawOption
+     */
+    public void setCanvasOverlay(CanvasOverlayObject canvasDrawOption) {
+        chart.setCanvasOverlay(canvasDrawOption);
+        chart.setBooleanOption(ChartOption.canvasOverlay, SubOption.show, true);
+        chart.setBooleanOption(ChartOption.canvasOverlay, SubOption.bellowSeries, true);
     }
 }

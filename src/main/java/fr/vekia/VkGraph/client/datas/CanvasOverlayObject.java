@@ -13,6 +13,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
@@ -29,27 +34,27 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class CanvasOverlayObject implements Serializable{
 
-    private List<Line> lines;
+    private List<CanvasObject> lines;
 
     /**
      * Default constructor
      * 
      */
     public CanvasOverlayObject() {
-	lines = new ArrayList<Line>();
+	lines = new ArrayList<CanvasObject>();
     }
 
     /**
      * 
      */
-    public void addLine(Line line) {
+    public void addObject(CanvasObject line) {
 	lines.add(line);
     }
 
     /**
      * 
      */
-    public void removeLine(Line line) {
+    public void removeObject(CanvasObject line) {
 	lines.remove(line);
     }
 
@@ -59,26 +64,14 @@ public class CanvasOverlayObject implements Serializable{
     public JSONValue getJSON() {
 	JSONArray array = new JSONArray();
 	int i = 0;
-	for (Line linesCanvas : lines) {
+	for (CanvasObject objCanvas : lines) {
 	    MapJSONBuilder builder = new MapJSONBuilder();
-	    builder.putAllOptions(linesCanvas.getOptionsMapped());
-	    builder.putAllSubOptions(linesCanvas.getSubSubOptionsMapped());
+	    builder.putAllOptions(objCanvas.getOptionsMapped());
+	    builder.putAllSubOptions(objCanvas.getSubSubOptionsMapped());
 
 	    JSONObject object = new JSONObject();
-	    if (linesCanvas instanceof HorizontalLine) {
-		if (linesCanvas.isDashed()) {
-		    object.put(SubOption.dashedHorizontalLine.name(), builder.getJso());
-		} else {
-		    object.put(SubOption.horizontalLine.name(), builder.getJso());
-		}
-	    } else {
-		if (linesCanvas.isDashed()) {
-		    object.put(SubOption.dashedVerticalLine.name(), builder.getJso());
-		} else {
-		    object.put(SubOption.verticalLine.name(), builder.getJso());
-		}
+		object.put(objCanvas.getType().name(), builder.getJso());
 
-	    }
 	    array.set(i, object);
 	    i += 1;
 	}

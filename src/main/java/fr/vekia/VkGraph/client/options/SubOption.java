@@ -15,8 +15,8 @@ import java.util.List;
 
 /**
  * @author Steeve Vandecappelle (SVA)
- * @since 4 mai 2012. GWTQuery Vekia Showcase
- * @version 1.0
+ * @since 4 mai 2012. VklGraph
+ * @version 1.2.4
  * 
  *          {@inheritDoc} A JqPlot chart Sub option.
  */
@@ -146,7 +146,10 @@ public enum SubOption implements IsOption, HasType, Serializable {
     bands(rendererOptions),
     showLines(rendererOptions),
     highlightMouseDown(rendererOptions),
-    bellowSeries(ChartOption.canvasOverlay);
+    bellowSeries(ChartOption.canvasOverlay),
+    rectangle(objects),
+    xformat(rectangle),
+    yformat(rectangle);
 
     private IsOption[] parent;
     private OptionType type;

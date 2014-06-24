@@ -95,13 +95,13 @@ public class CalendarChart extends Composite {
 
     public void setPeriodCalendar(List<PeriodCalendar> calendarPeriods) {
 	for (PeriodCalendar period : calendarPeriods) {
-	    canvasDrawOption.addLine(period);
+	    canvasDrawOption.addObject(period);
 	}
 	chart.setCanvasOverlay(canvasDrawOption);
     }
 
     public void addPeriodCalendar(PeriodCalendar period) {
-	canvasDrawOption.addLine(period);
+	canvasDrawOption.addObject(period);
 	chart.setCanvasOverlay(canvasDrawOption);
     }
 
@@ -124,7 +124,7 @@ public class CalendarChart extends Composite {
 	DateTimeFormat format = DateTimeFormat.getMediumTimeFormat();
 	todayLine.setOption(SubOption.tooltipFormatString, "Today" + "<br/> <dd>" + format.format(today) + "</dd>");
 
-	canvasDrawOption.addLine(todayLine);
+	canvasDrawOption.addObject(todayLine);
 	chart.setCanvasOverlay(canvasDrawOption);
     }
 }

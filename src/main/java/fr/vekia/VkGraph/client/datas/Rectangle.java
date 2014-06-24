@@ -1,6 +1,6 @@
 /*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/datas/HorizontalLine.java $
- * $Id: HorizontalLine.java 37 2012-09-07 07:35:08Z steeve.vandecappelle@gmail.com $
+ * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/datas/VerticalLine.java $
+ * $Id: VerticalLine.java 37 2012-09-07 07:35:08Z steeve.vandecappelle@gmail.com $
  * Licence MIT
  *
  * Last change:
@@ -18,17 +18,13 @@ import fr.vekia.VkGraph.client.options.SubOption;
  * 
  *          {@inheritDoc}
  */
-public class HorizontalLine extends Line {
+public class Rectangle extends OptionSerie implements CanvasObject {
 
-	public HorizontalLine(){
-		
+	public Rectangle(){
+
 	}
 
 	public SubOption getType(){
-		if (this.isDashed()){
-			return SubOption.dashedHorizontalLine;
-		}else{
-			return SubOption.horizontalLine;
-		}
+		return SubOption.rectangle;
 	}
 }
