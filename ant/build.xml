@@ -7,7 +7,7 @@
     <target name="init">
       <property name="src.dir" value="../src/main/java" />
       <property name="build.dir" value="build" />
-      <property name="scratch.dir" value="../src/main/webapp/sources" />
+      <property name="scratch.dir" value="../src/main/resources/fr/vekia/tools/showcase/vkgraph/public/sources" />
 
       <mkdir dir="${scratch.dir}" />
       <mkdir dir="${build.dir}" />

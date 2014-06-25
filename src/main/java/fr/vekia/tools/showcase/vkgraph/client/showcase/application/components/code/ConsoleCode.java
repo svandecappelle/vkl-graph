@@ -124,7 +124,7 @@ public class ConsoleCode implements Display {
 		RootLayoutPanel.get().setWidgetTopHeight(container, 6, Unit.PX,
 				41, Unit.PX);
 		RootLayoutPanel.get().setWidgetRightWidth(container, 10, Unit.PX,
-				326, Unit.PX);
+				346, Unit.PX);
 	}
 
 	@Override

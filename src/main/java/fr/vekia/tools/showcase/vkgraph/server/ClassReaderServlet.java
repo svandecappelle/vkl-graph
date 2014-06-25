@@ -44,7 +44,7 @@ public class ClassReaderServlet extends RemoteServiceServlet implements
 		try {	
 
 			String file = className.replaceAll("\\.", "/") + ".html";
-			String completeUrl = "/sources/" + file;
+			String completeUrl = "/showcase/sources/" + file;
 			InputStream inputStream = getServletContext().getResourceAsStream(
 					completeUrl);
 			// LOGGER.info("url Ressource: " + completeUrl);
@@ -77,7 +77,7 @@ public class ClassReaderServlet extends RemoteServiceServlet implements
 	public CodeUrl getCodeUrl(String className) {
 		try {
 			String file = className.replaceAll("\\.", "/") + ".html";
-			String completeUrl = "sources/" + file;
+			String completeUrl = "showcase/sources/" + file;
 			// LOGGER.info(completeUrl);
 			return new CodeUrl(completeUrl, className);
 		} catch (Exception e) {

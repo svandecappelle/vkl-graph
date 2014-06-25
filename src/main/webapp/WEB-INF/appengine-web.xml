@@ -14,7 +14,7 @@
 		<include path="**.nocache.*" expiration="0s" />
 
 		<include path="**.cache.*" expiration="365d" />
-		<include path="**sources" expiration="0s" />
+		<include path="/sources" expiration="0s" />
 		<exclude path="**.gwt.rpc" />
 	</static-files>
 
