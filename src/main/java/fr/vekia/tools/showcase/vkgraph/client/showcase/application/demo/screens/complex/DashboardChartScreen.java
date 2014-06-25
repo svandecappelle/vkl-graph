@@ -119,7 +119,8 @@ public class DashboardChartScreen extends DashboardChart<List<DualValue>> {
 		rect.setBooleanOption(SubOption.showTooltip, true);
 		rect.setTextOption(SubOption.tooltipFormatString, "<b><i><span style='color:red;''>Test2</span></i></b>");
 		rect.setTextOption(SubOption.tooltipLocation, "s");
-		rect.setTextOption(SubOption.xformat, "date");
+		rect.setTextOption(SubOption.xformat, SubOption.type, "date");
+		rect.setTextOption(SubOption.xformat, SubOption.format, "%Y-%m-%d %H:%M:%S");
 
 		objectsCanvas.addObject(rect);
 		super.setCanvasOverlay(objectsCanvas);

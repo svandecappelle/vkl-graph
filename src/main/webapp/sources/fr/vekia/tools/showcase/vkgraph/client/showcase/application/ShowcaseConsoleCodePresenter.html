@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<title></title>
+  <style type="text/css">
+    <!--code { font-family: Courier New, Courier; font-size: 10pt; margin: 0px; }-->
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head><body>
+
+
+<!-- ======================================================== -->
+<!-- = Java Sourcecode to HTML automatically converted code = -->
+<!-- =   Java2Html Converter 5.0 [2006-02-26] by Markus Gebhard  markus@jave.de   = -->
+<!-- =     Further information: http://www.java2html.de     = -->
+<div align="left" class="java">
+<table border="2" cellpadding="3" cellspacing="0" bgcolor="#ffffff">
+  <!-- start headline -->
+   <tr>
+    <td colspan="2">
+     <center><font size="+2">
+      <code><b>
+ShowcaseConsoleCodePresenter.java
+      </b></code>
+     </font></center>
+    </td>
+   </tr>
+  <!-- end headline -->
+   <tr>
+  <!-- start source code -->
+   <td nowrap="nowrap" valign="top" align="left">
+    <code>
+<font color="#808080">001</font>&nbsp;<font color="#3f7f5f">/*</font><br />
+<font color="#808080">002</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;File:&nbsp;$URL:&nbsp;svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/ShowcaseConsoleCodePresenter.java&nbsp;$</font><br />
+<font color="#808080">003</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Id:&nbsp;ShowcaseConsoleCodePresenter.java&nbsp;38&nbsp;2012-08-23&nbsp;16:36:45Z&nbsp;svandecappelle&nbsp;$</font><br />
+<font color="#808080">004</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Licence&nbsp;MIT</font><br />
+<font color="#808080">005</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;</font><br />
+<font color="#808080">006</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Last&nbsp;change:</font><br />
+<font color="#808080">007</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Date:&nbsp;2012-08-23&nbsp;18:36:45&nbsp;+0200&nbsp;(jeu.,&nbsp;23&nbsp;ao&ucirc;t&nbsp;2012)&nbsp;$</font><br />
+<font color="#808080">008</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Author:&nbsp;svandecappelle&nbsp;$</font><br />
+<font color="#808080">009</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
+<font color="#808080">010</font>&nbsp;<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application;</font><br />
+<font color="#808080">011</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">012</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">net.customware.gwt.presenter.client.EventBus;</font><br />
+<font color="#808080">013</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">net.customware.gwt.presenter.client.widget.WidgetDisplay;</font><br />
+<font color="#808080">014</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">net.customware.gwt.presenter.client.widget.WidgetPresenter;</font><br />
+<font color="#808080">015</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">016</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.core.client.GWT;</font><br />
+<font color="#808080">017</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.event.dom.client.ClickEvent;</font><br />
+<font color="#808080">018</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.event.dom.client.ClickHandler;</font><br />
+<font color="#808080">019</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.event.dom.client.HasClickHandlers;</font><br />
+<font color="#808080">020</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.rpc.AsyncCallback;</font><br />
+<font color="#808080">021</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.inject.Inject;</font><br />
+<font color="#808080">022</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.inject.Singleton;</font><br />
+<font color="#808080">023</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">024</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.events.SelectionCodeEvent;</font><br />
+<font color="#808080">025</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.events.SelectionCodeHandler;</font><br />
+<font color="#808080">026</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.services.CodeServiceUtil;</font><br />
+<font color="#808080">027</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.shared.CodeUrl;</font><br />
+<font color="#808080">028</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">029</font>&nbsp;<font color="#3f5fbf">/**</font><br />
+<font color="#808080">030</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Steeve&nbsp;Vandecappelle&nbsp;(SVA)</font><br />
+<font color="#808080">031</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@since&nbsp;</font><font color="#3f5fbf">23&nbsp;avr.&nbsp;2012.&nbsp;GWTQuery&nbsp;Vekia&nbsp;Showcase</font><br />
+<font color="#808080">032</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@version&nbsp;</font><font color="#3f5fbf">1.0</font><br />
+<font color="#808080">033</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">034</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</font><font color="#7f9fbf">@inheritDoc</font><font color="#3f5fbf">}</font><br />
+<font color="#808080">035</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">036</font>&nbsp;<font color="#646464">@Singleton</font><br />
+<font color="#808080">037</font>&nbsp;<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">ShowcaseConsoleCodePresenter&nbsp;</font><font color="#7f0055"><b>extends</b></font><br />
+<font color="#808080">038</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">WidgetPresenter&lt;ShowcaseConsoleCodePresenter.Display&gt;&nbsp;</font><font color="#000000">{</font><br />
+<font color="#808080">039</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">040</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;interface&nbsp;</b></font><font color="#000000">Display&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">WidgetDisplay&nbsp;</font><font color="#000000">{</font><br />
+<font color="#808080">041</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">042</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">043</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">044</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">045</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">show</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">046</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">047</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">048</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">049</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">050</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">hide</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">051</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">052</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">053</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">054</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">055</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">HasClickHandlers&nbsp;getAddShowHandler</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">056</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">057</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">058</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">059</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">060</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">HasClickHandlers&nbsp;getAddHideHandler</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">061</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">062</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">063</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">064</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">065</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setCode</font><font color="#000000">(</font><font color="#000000">String&nbsp;code</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">066</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">067</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">068</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">069</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">070</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">insert</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">071</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">072</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">073</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">className</font><br />
+<font color="#808080">074</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">codeUrl</font><br />
+<font color="#808080">075</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">076</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">setCodeUrl</font><font color="#000000">(</font><font color="#000000">String&nbsp;className,&nbsp;String&nbsp;codeUrl</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">077</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">078</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">079</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">080</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">081</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">showOutBrowser</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">082</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">083</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">084</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">085</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Default&nbsp;constructor</font><br />
+<font color="#808080">086</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">087</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">display</font><br />
+<font color="#808080">088</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">eventBus</font><br />
+<font color="#808080">089</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">090</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Inject</font><br />
+<font color="#808080">091</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">ShowcaseConsoleCodePresenter</font><font color="#000000">(</font><font color="#000000">Display&nbsp;display,&nbsp;EventBus&nbsp;eventBus</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">092</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>super</b></font><font color="#000000">(</font><font color="#000000">display,&nbsp;eventBus</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">093</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">094</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>this</b></font><font color="#000000">.display.getAddShowHandler</font><font color="#000000">()</font><font color="#000000">.addClickHandler</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">ClickHandler</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">095</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">096</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">097</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onClick</font><font color="#000000">(</font><font color="#000000">ClickEvent&nbsp;event</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">098</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseConsoleCodePresenter.</font><font color="#7f0055"><b>this</b></font><font color="#000000">.display.show</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">099</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">100</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">})</font><font color="#000000">;</font><br />
+<font color="#808080">101</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">102</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">103</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">showConsole</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">104</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseConsoleCodePresenter.</font><font color="#7f0055"><b>this</b></font><font color="#000000">.display.show</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">105</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">106</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">107</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">showConsoleOutWindow</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">108</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseConsoleCodePresenter.</font><font color="#7f0055"><b>this</b></font><font color="#000000">.display.showOutBrowser</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">109</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">110</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">111</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">112</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>protected&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onBind</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">113</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">eventBus.addHandler</font><font color="#000000">(</font><font color="#000000">SelectionCodeEvent.getType</font><font color="#000000">()</font><font color="#000000">,</font><br />
+<font color="#808080">114</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">SelectionCodeHandler</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">115</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">116</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">117</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onSelection</font><font color="#000000">(</font><font color="#000000">SelectionCodeEvent&nbsp;event</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">118</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">119</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">CodeServiceUtil.getCode</font><font color="#000000">(</font><font color="#000000">event.getSelectedItem</font><font color="#000000">()</font><br />
+<font color="#808080">120</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">.getClass</font><font color="#000000">()</font><font color="#000000">.getName</font><font color="#000000">()</font><font color="#000000">,</font><br />
+<font color="#808080">121</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">AsyncCallback&lt;String&gt;</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">122</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">123</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">124</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onSuccess</font><font color="#000000">(</font><font color="#000000">String&nbsp;result</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">125</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">display.setCode</font><font color="#000000">(</font><font color="#000000">result</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">126</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">127</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">128</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">129</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onFailure</font><font color="#000000">(</font><font color="#000000">Throwable&nbsp;caught</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">130</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GWT.log</font><font color="#000000">(</font><font color="#2a00ff">&#34;not&nbsp;able&nbsp;to&nbsp;retreive&nbsp;code&nbsp;due&nbsp;to:&nbsp;&#34;</font><font color="#000000">,</font><br />
+<font color="#808080">131</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">caught</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">132</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">display.setCode</font><font color="#000000">(</font><font color="#2a00ff">&#34;no&nbsp;code&nbsp;available&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">133</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">consolejs</font><font color="#000000">(</font><font color="#000000">caught.getMessage</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#808080">134</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">135</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">})</font><font color="#000000">;</font><br />
+<font color="#808080">136</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">137</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">CodeServiceUtil.getCodeUrl</font><font color="#000000">(</font><font color="#000000">event.getSelectedItem</font><font color="#000000">()</font><br />
+<font color="#808080">138</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">.getClass</font><font color="#000000">()</font><font color="#000000">.getName</font><font color="#000000">()</font><font color="#000000">,</font><br />
+<font color="#808080">139</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">AsyncCallback&lt;CodeUrl&gt;</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">140</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">141</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">142</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onSuccess</font><font color="#000000">(</font><font color="#000000">CodeUrl&nbsp;codeUrl</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">143</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GWT.log</font><font color="#000000">(</font><font color="#2a00ff">&#34;Code&nbsp;url:&nbsp;&#34;&nbsp;</font><font color="#000000">+&nbsp;codeUrl.getUrl</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#808080">144</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">display.setCodeUrl</font><font color="#000000">(</font><br />
+<font color="#808080">145</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">codeUrl.getClassName</font><font color="#000000">()</font><font color="#000000">,</font><br />
+<font color="#808080">146</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">codeUrl.getUrl</font><font color="#000000">())</font><font color="#000000">;</font><br />
+<font color="#808080">147</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">148</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">149</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">150</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onFailure</font><font color="#000000">(</font><font color="#000000">Throwable&nbsp;caught</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">151</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">GWT.log</font><font color="#000000">(</font><font color="#2a00ff">&#34;not&nbsp;able&nbsp;to&nbsp;retreive&nbsp;code&nbsp;due&nbsp;to:&nbsp;&#34;</font><font color="#000000">,</font><br />
+<font color="#808080">152</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">caught</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">153</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">display.setCode</font><font color="#000000">(</font><font color="#2a00ff">&#34;no&nbsp;code&nbsp;available&#34;</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">154</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">155</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">})</font><font color="#000000">;</font><br />
+<font color="#808080">156</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">157</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">158</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">})</font><font color="#000000">;</font><br />
+<font color="#808080">159</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">160</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">161</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;native&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">consolejs</font><font color="#000000">(</font><font color="#000000">String&nbsp;message</font><font color="#000000">)&nbsp;</font><font color="#3f7f5f">/*-{</font><br />
+<font color="#808080">162</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">console.log(message);</font><br />
+<font color="#808080">163</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f7f5f">}-*/</font><font color="#000000">;</font><br />
+<font color="#808080">164</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">165</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">166</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>protected&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onUnbind</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">167</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">168</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">169</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">170</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>protected&nbsp;</b></font><font color="#7f0055"><b>void&nbsp;</b></font><font color="#000000">onRevealDisplay</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">171</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">172</font>&nbsp;<font color="#000000">}</font></code>
+    
+   </td>
+  <!-- end source code -->
+   </tr>
+</table>
+</div>
+<!-- =       END of automatically generated HTML code       = -->
+<!-- ======================================================== -->
+
+
+</body></html>

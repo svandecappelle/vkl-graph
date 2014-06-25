@@ -153,14 +153,16 @@ public class ZoomProxyChartScreen extends SimplePanel {
 
 		CanvasOverlayObject objectsCanvas = new CanvasOverlayObject();
 		Rectangle rect  = new Rectangle();
-		rect.setTextOption(SubOption.xmin, "2014-09-01 05:00:00");
-		rect.setTextOption(SubOption.xmax, "2016-09-01 05:00:00");
+		rect.setTextOption(SubOption.xmin, "2014/09/01 05:00:00");
+		rect.setTextOption(SubOption.xmax, "2016/09/01 05:00:00");
 
 		rect.setNumberOption(SubOption.ymin, 110800);
 		rect.setNumberOption(SubOption.ymax, 120400);
 
 		rect.setTextOption(SubOption.color, "rgb(100, 55, 124)");
-		rect.setTextOption(SubOption.xformat, "date");
+		rect.setTextOption(SubOption.xformat, SubOption.type, "date");
+		rect.setTextOption(SubOption.xformat, SubOption.format, "%Y/%m/%d");
+		
 
 		objectsCanvas.addObject(rect);
 		chart1.setCanvasOverlay(objectsCanvas);
