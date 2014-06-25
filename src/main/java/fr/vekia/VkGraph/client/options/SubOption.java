@@ -113,6 +113,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
     dashedHorizontalLine(objects),
     horizontalLine(objects),
     dashedVerticalLine(objects),
+    line(objects),
     x(verticalLine),
     y(horizontalLine),
     showTooltipPrecision(horizontalLine, verticalLine),
@@ -148,11 +149,13 @@ public enum SubOption implements IsOption, HasType, Serializable {
     highlightMouseDown(rendererOptions),
     bellowSeries(ChartOption.canvasOverlay),
     rectangle(objects),
-    xformat(rectangle),
-    yformat(rectangle);
+    xformat(rectangle, verticalLine, dashedVerticalLine, horizontalLine, dashedHorizontalLine, line),
+    yformat(rectangle, verticalLine, dashedVerticalLine, horizontalLine, dashedHorizontalLine, line),
+    type(xformat, yformat),
+    format(xformat, yformat);
 
     private IsOption[] parent;
-    private OptionType type;
+    private OptionType typeOption;
     private boolean hasChildren;
 
     /**
@@ -168,7 +171,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
      * 
      */
     private SubOption(OptionType type, IsOption... parent) {
-	this.type = type;
+	this.typeOption = type;
 	this.parent = parent;
     }
 
@@ -185,7 +188,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
      * @return the type
      */
     public OptionType getType() {
-	return type;
+	return typeOption;
     }
 
     @Override
