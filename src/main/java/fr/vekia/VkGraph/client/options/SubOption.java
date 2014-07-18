@@ -152,7 +152,8 @@ public enum SubOption implements IsOption, HasType, Serializable {
     xformat(rectangle, verticalLine, dashedVerticalLine, horizontalLine, dashedHorizontalLine, line),
     yformat(rectangle, verticalLine, dashedVerticalLine, horizontalLine, dashedHorizontalLine, line),
     type(xformat, yformat),
-    format(xformat, yformat);
+    format(xformat, yformat),
+    linePattern(ChartOption.seriesDefaults);
 
     private IsOption[] parent;
     private OptionType typeOption;
