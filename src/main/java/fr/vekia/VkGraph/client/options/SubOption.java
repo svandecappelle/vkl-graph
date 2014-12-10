@@ -31,6 +31,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
     bandData(rendererOptions),
     barMargin(OptionType.NUMBER, rendererOptions),
     barPadding(OptionType.NUMBER, rendererOptions),
+    border(OptionType.BOOLEAN, ChartOption.legend),
     barWidth(OptionType.NUMBER, rendererOptions),
     bubbleAlpha(OptionType.BOOLEAN, rendererOptions),
     bubbleGradients(OptionType.BOOLEAN, rendererOptions),
