@@ -18,6 +18,7 @@ package fr.vekia.VkGraph.client.charts;
  */
 public enum RenderersEnum {
 
+	Stairs("$.jqplot.StairsRenderer"),
     Pie("$.jqplot.PieRenderer"),
     Donut("$.jqplot.DonutRenderer"),
     Bar("$.jqplot.BarRenderer"),

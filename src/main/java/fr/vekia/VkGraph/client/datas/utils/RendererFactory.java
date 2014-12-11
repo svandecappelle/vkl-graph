@@ -25,6 +25,11 @@ public final class RendererFactory {
 
     }
 
+    private static native JavaScriptObject stairs()
+    /*-{
+	return $wnd.jQuery.jqplot.StairsRenderer;
+    }-*/;
+    
     private static native JavaScriptObject pie()
     /*-{
 	return $wnd.jQuery.jqplot.PieRenderer;

@@ -1,0 +1,33 @@
+{
+	"name"			: "vkl-graph",
+	"version"		: "1.3.0-alpha",
+	"description"	: "Graphs jQPlot binding for GWT",
+	"homepage"		: "http://vekiaopensource.github.io/vkl-graph/",
+	"keywords"		: ["graphs", "gwt", "jQPlot"],
+	"author"		: "Steeve Vandecappelle <me@mizore.fr>",
+
+	"private"		: true,
+
+	"contributors": [
+		{ "name": ""}
+	],
+
+	"dependencies": {
+		"log4js"	: ">=0.6.6",
+		"gift"		: "*",
+		"temp"		: "~0.7.0",
+		"underscore": "*",
+		"ncp"		: "*",
+		"rmdir"		: "*"
+	},
+
+	"bin"	: "./fetch.js",
+	"scripts": {
+		"checkout": "node fetch.js"
+	},
+
+	"repository"	: {
+		"type"	: "git",
+		"url"	: "https://github.com/VekiaOpenSource/vkl-graph.git"
+	}
+}
