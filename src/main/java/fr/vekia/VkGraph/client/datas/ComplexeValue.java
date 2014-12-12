@@ -17,6 +17,11 @@ package fr.vekia.VkGraph.client.datas;
  *          {@inheritDoc}
  */
 public abstract class ComplexeValue implements GraphDataI {
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = -4825532866062247843L;
+
 	private String label;
 
 	private Number x;

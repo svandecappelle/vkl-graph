@@ -13,17 +13,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONValue;
 
 import fr.vekia.VkGraph.client.datas.utils.MapJSONBuilder;
-import fr.vekia.VkGraph.client.options.SubOption;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -34,6 +28,12 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class CanvasOverlayObject implements Serializable {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = -4819397730650698500L;
+
+	
 	private List<CanvasObject> lines;
 
 	/**

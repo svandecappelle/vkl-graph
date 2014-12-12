@@ -20,6 +20,11 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class HorizontalLine extends Line {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = -2486515651251973303L;
+
 	public HorizontalLine() {
 
 	}

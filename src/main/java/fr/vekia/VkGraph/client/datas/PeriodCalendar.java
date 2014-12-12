@@ -24,6 +24,11 @@ import fr.vekia.VkGraph.client.options.SubOption;
  *          {@inheritDoc}
  */
 public class PeriodCalendar extends HorizontalLine {
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = 5718133709782222637L;
+
 	@SuppressWarnings("deprecation")
 	private static final DateTimeFormat DEFAULT_DATE_FORMAT = DateTimeFormat.getMediumTimeFormat();
 

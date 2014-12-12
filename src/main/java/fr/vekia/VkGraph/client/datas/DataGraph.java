@@ -21,6 +21,11 @@ import java.util.List;
  */
 public class DataGraph<T> implements Serializable {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = 1334327499295737663L;
+	
 	private List<T> data;
 	private boolean multiple;
 

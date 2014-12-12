@@ -18,6 +18,11 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class OhlcData implements GraphDataI {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = 3778076121269507834L;
+	
 	private Object category;
 	private Object[] data;
 

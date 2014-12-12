@@ -20,6 +20,11 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class Rectangle extends OptionSerie implements CanvasObject {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = 5428751539176134212L;
+
 	public Rectangle() {
 
 	}

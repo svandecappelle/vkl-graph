@@ -18,6 +18,11 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class SquareValue extends ComplexeValue {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = 4028542916668463390L;
+
 	public SquareValue() {
 		super();
 	}

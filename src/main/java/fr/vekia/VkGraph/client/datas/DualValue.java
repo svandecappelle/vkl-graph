@@ -33,6 +33,11 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class DualValue implements GraphDataI {
 
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = -8431680110005477293L;
+	
 	private Number keyNumber;
 	private String keyString;
 
