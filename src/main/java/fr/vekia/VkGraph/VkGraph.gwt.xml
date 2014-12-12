@@ -46,7 +46,7 @@
 	<!-- Bubble plot -->
 	<script src="jqplot/plugins/bubble/jqplot.bubbleRenderer.min.js"></script>
 	<!-- OHLC plot -->
-	<script src="jqplot/plugins/ohlc/jqplot.ohlcRenderer.js"></script>
+	<script src="jqplot/plugins/ohlc/jqplot.ohlcRenderer.min.js"></script>
 
 	<!-- Bar chart -->
 	<script src="jqplot/plugins/bar/jqplot.barRenderer.min.js"></script>
