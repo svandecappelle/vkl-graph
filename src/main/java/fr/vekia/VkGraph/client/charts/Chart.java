@@ -503,11 +503,18 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		// if the container is visible and not already injected into DOM the
 		// chart could be created
 		if (visible && isNotInjected && attached && isWidthVisible) {
+			// Old version of panel sizing - Check if yet necessary
 			// designerPanel.setSize(Chart.this.getOffsetWidth()+"px",Chart.this.getOffsetHeight()+"px");
-			JsConsole.info(Chart.this.getOffsetWidth() + "px");
-			JsConsole.info(Chart.this.getOffsetHeight() + "px");
+			// Debug log for chart sizing.
+			// JsConsole.info(Chart.this.getOffsetWidth() + "px");
+			// JsConsole.info(Chart.this.getOffsetHeight() + "px");
+			
 			Chart.this.chartJavascriptObject = Chart.this.callJqPlot(getId(), dataController.getInjectionData(), dataController.getInjectionOptions(), isPluginEnable, theme);
-			JsConsole.info("chart '" + getId() + "' successfully created and added to DOM.");
+			
+			// Desactivate debug log in production
+			// JsConsole.info("chart '" + getId() +
+			// "' successfully created and added to DOM.");
+			
 			Chart.this.injected = true;
 
 			// fire an event to prevent children than the chart was injected.
@@ -557,7 +564,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		chart.replot();
 	}-*/;
 	// @formatter:on
-	
+
 	public void replotWithAxe() {
 		this.replotWithAxe(this.chartJavascriptObject);
 	}
@@ -602,7 +609,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		chart.replot({resetAxes:['yaxis'], axes:{yaxis:{max:maxVal,min:minVal,tickInterval: ticksInterval}}});
 	}-*/;
 	// @formatter:on
-	
+
 	/**
 	 * Set the chart data
 	 * 
@@ -804,7 +811,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	public void toggleFullscreen() {
 		this.toggleFullscreen(this.id, chartJavascriptObject);
 	}
-	
+
 	// @formatter:off
 	private native void toggleFullscreen(String id, JavaScriptObject chart)/*-{
 		$wnd.jQuery.jqplot.toggleFullscreen(id+"-VkGraph", chart);
