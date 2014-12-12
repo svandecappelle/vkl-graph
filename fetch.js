@@ -128,18 +128,18 @@ function askForTag(repo){
 	rl.question("Choose a tag ? ", function (tagToSwitch) {
 		rl.close();
 		var tag = tagToSwitch.trim();
-		logger.info("Switching to", tag);
-
 		// check if tag selected
 		if (!tag){
 			tag = 'master';
 		}
 
+		logger.info("Switching to", tag);
+
 		repo.checkout(tag, function (err, output){
 			if(err){
 				logger.error("Error switching tag", err);
 			}
-			logger.info("Switched.");
+			logger.info("Switched to: " + tag);
 			lastCheck();
 		});
 	});
