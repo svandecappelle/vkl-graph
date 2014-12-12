@@ -136,8 +136,10 @@ public class AbstractChart<T> extends Chart<T> {
 			for (T number : data) {
 				if (number instanceof DualValue) {
 					dataBuffer.append("[" + ((DualValue) number).getKey() + ", " + ((DualValue) number).getValue() + "]");
-				} else {
+				} else if (number != null) {
 					dataBuffer.append(number.toString());
+				} else {
+					dataBuffer.append("null");
 				}
 
 				if (i != (data.size() - 1)) {
