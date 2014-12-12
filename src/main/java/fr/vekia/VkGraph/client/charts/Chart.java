@@ -167,70 +167,57 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		this.getElement().setId(id + "-VkGraph");
 	}
 
-	public void toggleFullscreen() {
-		this.toggleFullscreen(this.id, chartJavascriptObject);
-	}
-
-	private native void toggleFullscreen(String id, JavaScriptObject chart)/*-{
-																			$wnd.jQuery.jqplot.toggleFullscreen(id+"-VkGraph", chart);
-																			}-*/;
-
 	public void activateFullScreenSizer(boolean isFullScreenActivated) {
 		this.isFullScreenActivated = isFullScreenActivated;
 	}
 
-	public boolean isFullScreenActivated() {
-		return this.isFullScreenActivated;
-	}
-
+	// @formatter:off
 	private native void activateTheme(JavaScriptObject chart, String themeName)/*-{
-																				// theme activated flag
-																				var flag = false;
-																				try {
-																				//  insert the theme into the available list of JqPlot themes
-																				if (chart.themeEngine.get(themeName) != null) {
-																				chart.themeEngine.remove(themeName);
-																				}
-																				var themes = new $wnd.VklThemes();
-																				chart.themeEngine.newTheme(themeName, themes.get(themeName, chart));
-																				} catch (err) {
-																				flag = true;
-																				}
-																				// activate the theme added
-																				chart.activateTheme(themeName);
-																				}-*/;
-
-	private native void activateTheme(JavaScriptObject chart, String themeName, JavaScriptObject themeJavascript)/*-{
-																													// theme activated flag
-																													var flag = false;
-																													try {
-																													// try to activate a theme
-																													if (chart.themeEngine.get(themeName) != null) {
-																													chart.themeEngine.remove(themeName);
-																													}
-																													//  insert the theme into the available list of JqPlot themes
-																													chart.themeEngine.newTheme(themeName, themeJavascript);
-																													} catch (err) {
-																													flag = true;
-																													}
-																													// activate the theme added
-																													chart.activateTheme(themeName);
-																													}-*/;
-
-	public void activateTheme(String themeName, JavaScriptObject themeJavascript) {
+		
+		// theme activated flag
+		var flag = false;
+		
 		try {
-			// if chart is already attached to the browser attach the theme to
-			// the JavaScript chart. It will be attached onAttach Event else
-			if (this.chartJavascriptObject != null) {
-				activateTheme(this.chartJavascriptObject, themeName, themeJavascript);
-			} else {
-				this.theme = themeName;
+		
+			//  insert the theme into the available list of JqPlot themes
+			if (chart.themeEngine.get(themeName) != null) {
+				chart.themeEngine.remove(themeName);
 			}
-		} catch (Exception e) {
-			GWT.log("Activation theme may be with error: " + e.getMessage());
-			JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
+			var themes = new $wnd.VklThemes();
+			chart.themeEngine.newTheme(themeName, themes.get(themeName, chart));
+
+		} catch (err) {
+			flag = true;
 		}
-	}
+		
+		// activate the theme added
+		chart.activateTheme(themeName);
+		
+	}-*/;
+	// @formatter:on
+
+	// @formatter:off
+	private native void activateTheme(JavaScriptObject chart, String themeName, JavaScriptObject themeJavascript)/*-{
+		
+		// theme activated flag
+		var flag = false;
+		try {
+		
+			// try to activate a theme
+			if (chart.themeEngine.get(themeName) != null) {
+				chart.themeEngine.remove(themeName);
+			}
+			//  insert the theme into the available list of JqPlot themes
+			chart.themeEngine.newTheme(themeName, themeJavascript);
+		
+		} catch (err) {
+			flag = true;
+		}
+		
+		// activate the theme added
+		chart.activateTheme(themeName);
+	}-*/;
+	// @formatter:on
 
 	/**
 	 * Activate a theme with is theme name.
@@ -251,6 +238,26 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 			GWT.log("Activation theme may be with error: " + e.getMessage());
 			JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
 		}
+	}
+
+	public void activateTheme(String themeName, JavaScriptObject themeJavascript) {
+		try {
+			// if chart is already attached to the browser attach the theme to
+			// the JavaScript chart. It will be attached onAttach Event else
+			if (this.chartJavascriptObject != null) {
+				activateTheme(this.chartJavascriptObject, themeName, themeJavascript);
+			} else {
+				this.theme = themeName;
+			}
+		} catch (Exception e) {
+			GWT.log("Activation theme may be with error: " + e.getMessage());
+			JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
+		}
+	}
+
+	@Override
+	public HandlerRegistration addAttachedChartHandler(AttachedChartHandler handler) {
+		return this.addHandler(handler, AttachedChartEvent.getType());
 	}
 
 	/**
@@ -299,40 +306,37 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 * @param isPluginEnable
 	 * @return
 	 */
+	// @formatter:off
 	private native JavaScriptObject callJqPlot(String elementId, JavaScriptObject dataString, JavaScriptObject options, boolean isPluginEnable, String themeName)/*-{
-																																									// plugins JqPlot
-																																									$wnd.jQuery.jqplot.config.enablePlugins = isPluginEnable;
-
-																																									// Chart generated by JqPlot library
-																																									console.log(dataString);
-																																									console.log(options);
-																																									var chartJavascript = $wnd.jQuery.jqplot(elementId, dataString, options);
-
-																																									// activate theme if any
-																																									if (themeName != null) {
-
-																																									// try to activate a theme
-																																									if (chartJavascript.themeEngine.get(themeName) != null) {
-																																									chartJavascript.themeEngine.remove(themeName);
-																																									}
-																																									var themes = new $wnd.VklThemes();
-																																									chartJavascript.themeEngine.newTheme(themeName, themes.get(themeName, chartJavascript));
-																																									chartJavascript.activateTheme(themeName);
-																																									}
-																																									// plugins JqPlot reset to false prevent any other chart added to DOM.
-																																									if(this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()){
-																																									var screener = new Fullscreener(elementId+"-VkGraph", bar);
-																																									this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()
-																																									screener.bind();
-																																									}
-																																									$wnd.jQuery.jqplot.config.enablePlugins = false;
-																																									return chartJavascript;
-																																									}-*/;
-
-	public void setZoomProxy(final Chart<?> chartProxy) {
-		this.proxyZoom = new ZoomProxy();
-		this.proxyZoom.setProxy(this, chartProxy);
-	}
+		// plugins JqPlot
+		$wnd.jQuery.jqplot.config.enablePlugins = isPluginEnable;
+	
+		// Chart generated by JqPlot library
+		console.log(dataString);
+		console.log(options);
+		var chartJavascript = $wnd.jQuery.jqplot(elementId, dataString, options);
+	
+		// activate theme if any
+		if (themeName != null) {
+	
+			// try to activate a theme
+			if (chartJavascript.themeEngine.get(themeName) != null) {
+				chartJavascript.themeEngine.remove(themeName);
+			}
+			
+			var themes = new $wnd.VklThemes();
+			chartJavascript.themeEngine.newTheme(themeName, themes.get(themeName, chartJavascript));
+			chartJavascript.activateTheme(themeName);
+		}
+		// plugins JqPlot reset to false prevent any other chart added to DOM.
+		if(this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()){
+			var screener = new Fullscreener(elementId+"-VkGraph", bar);
+			this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()
+			screener.bind();
+		}
+		$wnd.jQuery.jqplot.config.enablePlugins = false;
+		return chartJavascript;
+	}-*/;
 
 	/**
 	 * @param option
@@ -340,12 +344,12 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 * @param chart
 	 */
 	private native void changeProperty(JavaScriptObject optionArray, JavaScriptObject value, JavaScriptObject chart)/*-{
-																													var functionVar = chart;
-																													for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
-																													functionVar = functionVar[optionArray[optionNb]];
-																													}
-																													functionVar[optionArray[optionArray.length - 1]] = value;
-																													}-*/;
+		var functionVar = chart;
+		for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
+			functionVar = functionVar[optionArray[optionNb]];
+		}
+		functionVar[optionArray[optionArray.length - 1]] = value;
+	}-*/;
 
 	/**
 	 * @param option
@@ -353,12 +357,12 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 * @param chart
 	 */
 	private native void changeProperty(JavaScriptObject optionArray, Number value, JavaScriptObject chart)/*-{
-																											var functionVar = chart;
-																											for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
-																											functionVar = functionVar[optionArray[optionNb]];
-																											}
-																											functionVar[optionArray[optionArray.length - 1]] = value;
-																											}-*/;
+		var functionVar = chart;
+		for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
+			functionVar = functionVar[optionArray[optionNb]];
+		}
+		functionVar[optionArray[optionArray.length - 1]] = value;
+	}-*/;
 
 	/**
 	 * @param option
@@ -366,13 +370,13 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 * @param chart
 	 */
 	private native void changeProperty(JavaScriptObject optionArray, String value, JavaScriptObject chart)/*-{
-																											var functionVar = chart;
-																											for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
-																											functionVar = functionVar[optionArray[optionNb]];
-																											}
-																											functionVar[optionArray[optionArray.length - 1]] = value;
-																											}-*/;
-
+		var functionVar = chart;
+		for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
+			functionVar = functionVar[optionArray[optionNb]];
+		}
+		functionVar[optionArray[optionArray.length - 1]] = value;
+	}-*/;
+	// @formatter:on
 	/**
 	 * @param arrayData
 	 * @param string
@@ -415,6 +419,20 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	}
 
 	/**
+	 * @return the chartJavascriptObject
+	 */
+	protected JavaScriptObject getChartJavascriptObject() {
+		return this.chartJavascriptObject;
+	}
+
+	/**
+	 * @return the chartOptionner
+	 */
+	protected final ChartOptioner getChartOptionner() {
+		return this.chartOptionner;
+	}
+
+	/**
 	 * @return the chartPanelContainer
 	 */
 	protected SimplePanel getChartPanelContainer() {
@@ -426,6 +444,17 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 */
 	public String getId() {
 		return this.id;
+	}
+
+	/**
+	 * @return
+	 */
+	public RenderersEnum getRenderer() {
+		return this.renderer;
+	}
+
+	protected final void importOptionner(ChartOptioner chartOptionner) {
+		this.chartOptionner = chartOptionner;
 	}
 
 	/**
@@ -489,6 +518,10 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 
 	}
 
+	public boolean isFullScreenActivated() {
+		return this.isFullScreenActivated;
+	}
+
 	/**
 	 * 
 	 * 
@@ -518,46 +551,6 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		}
 	}
 
-	public void replotYAxe(int minVal, int maxVal) {
-		this.replotYAxe(minVal, maxVal, 1, this.chartJavascriptObject);
-	}
-
-	public void replotXAxe(int minVal, int maxVal) {
-		this.replotXAxe(minVal, maxVal, 1, this.chartJavascriptObject);
-	}
-
-	public void replotYAxe(int minVal, int maxVal, int ticksInterval) {
-		this.replotYAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
-	}
-
-	public void replotXAxe(int minVal, int maxVal, int ticksInterval) {
-		this.replotXAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
-	}
-
-	public void replotWithAxe() {
-		this.replotWithAxe(this.chartJavascriptObject);
-	}
-
-	private native void replotWithAxe(JavaScriptObject chart)/*-{
-																chart.replot( { resetAxes: true } );
-																}-*/;
-
-	private native void replotYAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)/*-{
-																										// replot axe y
-																										chart.axes.yaxis.max = maxVal;
-																										chart.axes.yaxis.min = minVal;
-																										chart.axes.yaxis.tickInterval = ticksInterval;
-																										chart.replot({resetAxes:['yaxis'], axes:{yaxis:{max:maxVal,min:minVal,tickInterval: ticksInterval}}});
-																										}-*/;
-
-	private native void replotXAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)/*-{
-																										// replot axe x
-																										chart.axes.xaxis.max = maxVal;
-																										chart.axes.xaxis.min = minVal;
-																										chart.axes.xaxis.tickInterval = ticksInterval;
-																										chart.replot({resetAxes:['xaxis'], axes:{xaxis:{max:maxVal,min:minVal,tickInterval: ticksInterval}}});
-																										}-*/;
-
 	/**
      * 
      */
@@ -565,6 +558,50 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 														chart.replot();
 														}-*/;
 
+	public void replotWithAxe() {
+		this.replotWithAxe(this.chartJavascriptObject);
+	}
+
+	// @formatter:off
+	private native void replotWithAxe(JavaScriptObject chart)/*-{
+		chart.replot( { resetAxes: true } );
+	}-*/;
+	
+	// @formatter:on
+	public void replotXAxe(int minVal, int maxVal) {
+		this.replotXAxe(minVal, maxVal, 1, this.chartJavascriptObject);
+	}
+
+	public void replotXAxe(int minVal, int maxVal, int ticksInterval) {
+		this.replotXAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
+	}
+
+	// @formatter:off
+	private native void replotXAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)/*-{
+		// replot axe x
+		chart.axes.xaxis.max = maxVal;
+		chart.axes.xaxis.min = minVal;
+		chart.axes.xaxis.tickInterval = ticksInterval;
+		chart.replot({resetAxes:['xaxis'], axes:{xaxis:{max:maxVal,min:minVal,tickInterval: ticksInterval}}});
+	}-*/;
+	// @formatter:on
+	public void replotYAxe(int minVal, int maxVal) {
+		this.replotYAxe(minVal, maxVal, 1, this.chartJavascriptObject);
+	}
+
+	public void replotYAxe(int minVal, int maxVal, int ticksInterval) {
+		this.replotYAxe(minVal, maxVal, ticksInterval, this.chartJavascriptObject);
+	}
+
+	// @formatter:off
+	private native void replotYAxe(int minVal, int maxVal, int ticksInterval, JavaScriptObject chart)/*-{
+		// replot axe y
+		chart.axes.yaxis.max = maxVal;
+		chart.axes.yaxis.min = minVal;
+		chart.axes.yaxis.tickInterval = ticksInterval;
+		chart.replot({resetAxes:['yaxis'], axes:{yaxis:{max:maxVal,min:minVal,tickInterval: ticksInterval}}});
+	}-*/;
+	// @formatter:on
 	/**
 	 * Set the chart data
 	 * 
@@ -661,33 +698,12 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 * @param string
 	 * @param string2
 	 */
+	// @formatter:off
 	private native void setSeries(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)/*-{
-																									chart.series[serieId].data = arrayData;
-																									chart.resetAxesScale();
-																									}-*/;
-
-	/**
-	 * @param i
-	 * @param arrayData
-	 * @param string
-	 * @param string2
-	 */
-	public void setSeriesDataAfterInject(int serieId, List<DualValue> datas) {
-		ArrayJSONBuilder<DualValue> datasArray = new ArrayJSONBuilder<DualValue>();
-		datasArray.setData(datas);
-		setSeriesDataAfterInject(serieId, datasArray.getJso().getJavaScriptObject(), this.chartJavascriptObject);
-	}
-
-	/**
-	 * @param i
-	 * @param arrayData
-	 * @param string
-	 * @param string2
-	 */
-	private native void setSeriesDataAfterInject(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)/*-{
-																													chart.series[serieId].data = arrayData;
-																													chart.replot();
-																													}-*/;
+		chart.series[serieId].data = arrayData;
+		chart.resetAxesScale();
+	}-*/;
+	// @formatter:on
 
 	/**
 	 * @param i
@@ -703,6 +719,31 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	 */
 	public void setSeriesData(JSONArray seriesData) {
 		this.dataController.setSeriesData(seriesData);
+	}
+
+	/**
+	 * @param i
+	 * @param arrayData
+	 * @param string
+	 * @param string2
+	 */
+	// @formatter:off
+	private native void setSeriesDataAfterInject(int serieId, JavaScriptObject arrayData, JavaScriptObject chart)/*-{
+		chart.series[serieId].data = arrayData;
+		chart.replot();
+	}-*/;
+	// @formatter:on
+
+	/**
+	 * @param i
+	 * @param arrayData
+	 * @param string
+	 * @param string2
+	 */
+	public void setSeriesDataAfterInject(int serieId, List<DualValue> datas) {
+		ArrayJSONBuilder<DualValue> datasArray = new ArrayJSONBuilder<DualValue>();
+		datasArray.setData(datas);
+		setSeriesDataAfterInject(serieId, datasArray.getJso().getJavaScriptObject(), this.chartJavascriptObject);
 	}
 
 	@Override
@@ -727,11 +768,8 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		this.chartOptionner.setSubSubSubOptionsMapped(subSubSubOptionsMapped);
 	}
 
-	/**
-	 * @return
-	 */
-	public RenderersEnum getRenderer() {
-		return this.renderer;
+	public void setTheme(Theming theme) {
+		this.theme = theme.getTheme();
 	}
 
 	/**
@@ -743,17 +781,6 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 	public void setThemingEnable(boolean isEnable) {
 		this.rightMenuController.activate(this, this.chartLayout);
 		this.rightMenuController.setTemingEnable(isEnable);
-	}
-
-	public void setTheme(Theming theme) {
-		this.theme = theme.getTheme();
-	}
-
-	/**
-	 * @return the chartJavascriptObject
-	 */
-	protected JavaScriptObject getChartJavascriptObject() {
-		return this.chartJavascriptObject;
 	}
 
 	@Override
@@ -768,19 +795,18 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		this.resizableContainer.setWidth(width);
 	}
 
-	@Override
-	public HandlerRegistration addAttachedChartHandler(AttachedChartHandler handler) {
-		return this.addHandler(handler, AttachedChartEvent.getType());
+	public void setZoomProxy(final Chart<?> chartProxy) {
+		this.proxyZoom = new ZoomProxy();
+		this.proxyZoom.setProxy(this, chartProxy);
 	}
 
-	/**
-	 * @return the chartOptionner
-	 */
-	protected final ChartOptioner getChartOptionner() {
-		return this.chartOptionner;
+	public void toggleFullscreen() {
+		this.toggleFullscreen(this.id, chartJavascriptObject);
 	}
-
-	protected final void importOptionner(ChartOptioner chartOptionner) {
-		this.chartOptionner = chartOptionner;
-	}
+	
+	// @formatter:off
+	private native void toggleFullscreen(String id, JavaScriptObject chart)/*-{
+		$wnd.jQuery.jqplot.toggleFullscreen(id+"-VkGraph", chart);
+	}-*/;
+	// @formatter:on
 }
