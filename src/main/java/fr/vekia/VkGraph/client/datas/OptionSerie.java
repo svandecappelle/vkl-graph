@@ -20,6 +20,7 @@ import fr.vekia.VkGraph.client.charts.ChartOptioner;
 import fr.vekia.VkGraph.client.charts.NumberType;
 import fr.vekia.VkGraph.client.datas.utils.ArrayJSONBuilder;
 import fr.vekia.VkGraph.client.datas.utils.JavascriptConvertUtils;
+import fr.vekia.VkGraph.client.datas.utils.ProtectText;
 import fr.vekia.VkGraph.client.options.SubOption;
 
 /**
@@ -32,6 +33,11 @@ import fr.vekia.VkGraph.client.options.SubOption;
  *          / line chart mixed or any other join.
  */
 public class OptionSerie implements Serializable {
+	/**
+	 * SerialId For serialize
+	 */
+	private static final long serialVersionUID = -8409601771955698471L;
+	
 	private Map<SubOption, String> optionsMapped;
 	private Map<SubOption, Map<SubOption, String>> subSubOptionsMapped;
 	private Map<SubOption, Map<SubOption, JSONValue>> subSubOptionsMappedWithJson;
@@ -262,7 +268,7 @@ public class OptionSerie implements Serializable {
 	 *            the value of option.
 	 */
 	public void setTextOption(SubOption subOption, String value) {
-		setOption(subOption, value);
+		setOption(subOption, ProtectText.protect(value));
 	}
 
 	/**
@@ -276,6 +282,6 @@ public class OptionSerie implements Serializable {
 	 *            the value of option.
 	 */
 	public void setTextOption(SubOption subOption, SubOption subSubOption, String value) {
-		setOption(subOption, subSubOption, value);
+		setOption(subOption, subSubOption, ProtectText.protect(value));
 	}
 }
