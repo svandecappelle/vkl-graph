@@ -50,38 +50,38 @@ public enum RenderersEnum {
     EnhancedLegendRenderer("$.jqplot.EnhancedLegendRenderer"),
     DonutLegend("$.jqplot.DonutLegendRenderer");
 
-    private String valueRenderer;
+	private String valueRenderer;
 
-    /**
-     * Default constructor
-     * 
-     */
-    private RenderersEnum(String valueRenderer) {
-	this.valueRenderer = valueRenderer;
-    }
-
-    /**
-     * You need to use this method to set a renderer on charts.
-     * 
-     * @return the valueRenderer the renderer JavaScript name Value.
-     */
-    public String getValueRenderer() {
-	return valueRenderer;
-    }
-
-    /**
-     * Get the renderer ENUM by the JavaString name.
-     * 
-     * @param valueOfJsRenderers
-     *            the value of JavaScipt name value.
-     * @return the RenrererEnum.
-     */
-    public static final RenderersEnum getValueWithRenderer(String valueOfJsRenderers) {
-	for (RenderersEnum renderer : RenderersEnum.values()) {
-	    if (renderer.getValueRenderer().equals(valueOfJsRenderers)) {
-		return renderer;
-	    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private RenderersEnum(String valueRenderer) {
+		this.valueRenderer = valueRenderer;
 	}
-	throw new IllegalArgumentException("the renderer " + valueOfJsRenderers + " is not existing or not yet implemented.");
-    }
+
+	/**
+	 * You need to use this method to set a renderer on charts.
+	 * 
+	 * @return the valueRenderer the renderer JavaScript name Value.
+	 */
+	public String getValueRenderer() {
+		return valueRenderer;
+	}
+
+	/**
+	 * Get the renderer ENUM by the JavaString name.
+	 * 
+	 * @param valueOfJsRenderers
+	 *            the value of JavaScipt name value.
+	 * @return the RenrererEnum.
+	 */
+	public static final RenderersEnum getValueWithRenderer(String valueOfJsRenderers) {
+		for (RenderersEnum renderer : RenderersEnum.values()) {
+			if (renderer.getValueRenderer().equals(valueOfJsRenderers)) {
+				return renderer;
+			}
+		}
+		throw new IllegalArgumentException("the renderer " + valueOfJsRenderers + " is not existing or not yet implemented.");
+	}
 }
