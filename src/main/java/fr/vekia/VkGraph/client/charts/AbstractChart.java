@@ -22,6 +22,7 @@ import fr.vekia.VkGraph.client.datas.DualValue;
 import fr.vekia.VkGraph.client.datas.SeriesData;
 import fr.vekia.VkGraph.client.datas.utils.DataModeler;
 import fr.vekia.VkGraph.client.datas.utils.JavascriptConvertUtils;
+import fr.vekia.VkGraph.client.datas.utils.ProtectText;
 import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
 

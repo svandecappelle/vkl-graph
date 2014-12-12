@@ -268,7 +268,7 @@ public class OptionSerie implements Serializable {
 	 *            the value of option.
 	 */
 	public void setTextOption(SubOption subOption, String value) {
-		setOption(subOption, ProtectText.protect(value));
+		setOption(subOption, value);
 	}
 
 	/**
@@ -282,6 +282,6 @@ public class OptionSerie implements Serializable {
 	 *            the value of option.
 	 */
 	public void setTextOption(SubOption subOption, SubOption subSubOption, String value) {
-		setOption(subOption, subSubOption, ProtectText.protect(value));
+		setOption(subOption, subSubOption, value);
 	}
 }
