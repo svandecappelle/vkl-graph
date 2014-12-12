@@ -19,44 +19,45 @@ import java.util.TreeMap;
  * @version 1.0
  * 
  *          {@inheritDoc}<br>
- *          A List of specified series render options. Used to mix graph type (Line/Area etc... ) on the same chart widget.
+ *          A List of specified series render options. Used to mix graph type
+ *          (Line/Area etc... ) on the same chart widget.
  */
 public class SeriesData {
 
-    private Map<Integer, OptionSerie> optionsSeries;
+	private Map<Integer, OptionSerie> optionsSeries;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public SeriesData() {
-	optionsSeries = new TreeMap<Integer, OptionSerie>();
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public SeriesData() {
+		optionsSeries = new TreeMap<Integer, OptionSerie>();
+	}
 
-    /**
-     * Set the serie index render option.
-     */
-    public void set(int indexSerie, OptionSerie options) {
-	optionsSeries.put(indexSerie, options);
-    }
+	/**
+	 * Set the serie index render option.
+	 */
+	public void set(int indexSerie, OptionSerie options) {
+		optionsSeries.put(indexSerie, options);
+	}
 
-    /**
-     * Get the serie index render option.
-     * 
-     * @param indexSerie
-     *            the serie index.
-     * @return the render option.
-     */
-    public OptionSerie getOptionSerie(int indexSerie) {
-	return optionsSeries.get(indexSerie);
-    }
+	/**
+	 * Get the serie index render option.
+	 * 
+	 * @param indexSerie
+	 *            the serie index.
+	 * @return the render option.
+	 */
+	public OptionSerie getOptionSerie(int indexSerie) {
+		return optionsSeries.get(indexSerie);
+	}
 
-    /**
-     * Get the series Linked with a specific Option.
-     * 
-     * @return the series Linked with a specific Option.
-     */
-    public Collection<OptionSerie> getSeriesLinked() {
-	return optionsSeries.values();
-    }
+	/**
+	 * Get the series Linked with a specific Option.
+	 * 
+	 * @return the series Linked with a specific Option.
+	 */
+	public Collection<OptionSerie> getSeriesLinked() {
+		return optionsSeries.values();
+	}
 }

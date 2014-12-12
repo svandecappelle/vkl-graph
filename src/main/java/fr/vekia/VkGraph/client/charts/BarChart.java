@@ -18,21 +18,21 @@ package fr.vekia.VkGraph.client.charts;
  */
 public class BarChart<T> extends AbstractChart<T> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public BarChart() {
-	super.setRenderer(RenderersEnum.Bar);
-    }
- 	
- 	/**
-     * Constructor with specifics I18n constants
-     * 
-     */
-    public BarChart(I18nFields i18nFields) {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public BarChart() {
+		super.setRenderer(RenderersEnum.Bar);
+	}
+
+	/**
+	 * Constructor with specifics I18n constants
+	 * 
+	 */
+	public BarChart(I18nFields i18nFields) {
 		super(i18nFields);
 		super.setRenderer(RenderersEnum.Bar);
-    }
+	}
 
 }

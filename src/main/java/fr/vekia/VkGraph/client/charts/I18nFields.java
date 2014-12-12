@@ -18,9 +18,9 @@ package fr.vekia.VkGraph.client.charts;
  */
 public interface I18nFields {
 
-    String export();
+	String export();
 
-    String refresh();
+	String refresh();
 
-    String themes();
+	String themes();
 }

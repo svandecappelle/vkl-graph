@@ -16,13 +16,13 @@ import java.io.Serializable;
  * @since Nov 26, 2012. VklGraph version 1.2
  * @version 2.1
  * 
- *	{@inheritDoc}				
+ *          {@inheritDoc}
  */
 public interface HasType extends Serializable {
-    OptionType getType();
+	OptionType getType();
 
-    /**
-     * @return
-     */
-    boolean hasChildren();
+	/**
+	 * @return
+	 */
+	boolean hasChildren();
 }

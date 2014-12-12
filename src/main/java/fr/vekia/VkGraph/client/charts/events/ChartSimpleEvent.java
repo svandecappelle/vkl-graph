@@ -18,27 +18,27 @@ package fr.vekia.VkGraph.client.charts.events;
  */
 public abstract class ChartSimpleEvent implements JqPlotEvent {
 
-    /**
-     * Return the event type to bind with.
-     * 
-     * @return the GWT event type.
-     */
-    public abstract EventType getEventType();
+	/**
+	 * Return the event type to bind with.
+	 * 
+	 * @return the GWT event type.
+	 */
+	public abstract EventType getEventType();
 
-    /**
-     * Called method when the event is fired.
-     * 
-     * @param datasOnEvent
-     */
-    public abstract void onEvent(SimpleEventObject datasOnEvent);
+	/**
+	 * Called method when the event is fired.
+	 * 
+	 * @param datasOnEvent
+	 */
+	public abstract void onEvent(SimpleEventObject datasOnEvent);
 
-    @Override
-    public int getEventBindingParams() {
-	return 1;
-    }
+	@Override
+	public int getEventBindingParams() {
+		return 1;
+	}
 
-    @Override
-    public boolean isNative() {
-	return false;
-    }
+	@Override
+	public boolean isNative() {
+		return false;
+	}
 }

@@ -16,24 +16,23 @@ package fr.vekia.VkGraph.client.datas;
  * 
  *          A line Canvas object.
  */
-abstract class Line extends OptionSerie implements CanvasObject{
+abstract class Line extends OptionSerie implements CanvasObject {
 
-    private boolean dashed = false;
+	private boolean dashed = false;
 
-    public Line(){
-        super();
-    }
+	public Line() {
+		super();
+	}
 
+	public void setDashed(boolean isDashed) {
+		this.dashed = isDashed;
+	}
 
-    public void setDashed(boolean isDashed) {
-	   this.dashed = isDashed;
-    }
-
-    /**
-     * @return the dashed
-     */
-    public boolean isDashed() {
-	   return dashed;
-    }
+	/**
+	 * @return the dashed
+	 */
+	public boolean isDashed() {
+		return dashed;
+	}
 
 }

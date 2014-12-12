@@ -21,12 +21,13 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public interface RightClickListener {
 
-    /**
-     * Called method when right click event fired from the widget to the listener.
-     * 
-     * @param sender
-     * @param event
-     */
-    void onRightClick(Widget sender, NativeEvent event);
+	/**
+	 * Called method when right click event fired from the widget to the
+	 * listener.
+	 * 
+	 * @param sender
+	 * @param event
+	 */
+	void onRightClick(Widget sender, NativeEvent event);
 
 }

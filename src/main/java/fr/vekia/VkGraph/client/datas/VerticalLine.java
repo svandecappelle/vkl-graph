@@ -20,14 +20,14 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class VerticalLine extends Line {
 
-	public VerticalLine(){
+	public VerticalLine() {
 
 	}
 
-	public SubOption getType(){
-		if (this.isDashed()){
+	public SubOption getType() {
+		if (this.isDashed()) {
 			return SubOption.dashedVerticalLine;
-		}else{
+		} else {
 			return SubOption.verticalLine;
 		}
 	}

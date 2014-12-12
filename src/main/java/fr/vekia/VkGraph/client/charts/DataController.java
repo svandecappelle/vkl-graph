@@ -28,204 +28,205 @@ import fr.vekia.VkGraph.client.datas.utils.MapJSONBuilder;
  *          {@inheritDoc}
  */
 public class DataController<T> {
-    // ## DATAS ##
-    // series data to inject into the chart. (List<Object>).
-    private List<T> data;
-    // series data to inject into the chart. (List<List<Object>>).
-    private List<List<T>> listData;
-    // Data series injected.
-    private JSONArray seriesData;
-    private boolean listView = false;
+	// ## DATAS ##
+	// series data to inject into the chart. (List<Object>).
+	private List<T> data;
+	// series data to inject into the chart. (List<List<Object>>).
+	private List<List<T>> listData;
+	// Data series injected.
+	private JSONArray seriesData;
+	private boolean listView = false;
 
-    private Chart<T> chart;
+	private Chart<T> chart;
 
-    /**
-     * Default constructor
-     * 
-     * @param chart2
-     * @param chartOptionner
-     */
-    public DataController(Chart<T> chart) {
-	this.chart = chart;
-    }
-
-    /**
-     * Set the data to list of list.
-     * 
-     * @param listData
-     *            the listData to set
-     */
-    public void setListData(List<List<T>> listData) {
-	int sizeDataList = 0;
-	if (this.listData != null) {
-	    sizeDataList = this.listData.size();
+	/**
+	 * Default constructor
+	 * 
+	 * @param chart2
+	 * @param chartOptionner
+	 */
+	public DataController(Chart<T> chart) {
+		this.chart = chart;
 	}
-	this.listData = listData;
 
-	if (this.chart.isInjected()) {
-	    int i = 0;
+	/**
+	 * Set the data to list of list.
+	 * 
+	 * @param listData
+	 *            the listData to set
+	 */
+	public void setListData(List<List<T>> listData) {
+		int sizeDataList = 0;
+		if (this.listData != null) {
+			sizeDataList = this.listData.size();
+		}
+		this.listData = listData;
 
-	    if (sizeDataList < listData.size()) {
-		throw new ArraysSizesRefreshingInvalidException();
-	    }
+		if (this.chart.isInjected()) {
+			int i = 0;
 
-	    for (List<T> list : listData) {
-		JSONArray arrayData;
-		List<DualValue> dataConverted = new ArrayList<DualValue>();
-		if (list.get(0) instanceof DualValue) {
-		    ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
-		    builderData.setData(list);
+			if (sizeDataList < listData.size()) {
+				throw new ArraysSizesRefreshingInvalidException();
+			}
 
-		    arrayData = builderData.getJso();
+			for (List<T> list : listData) {
+				JSONArray arrayData;
+				List<DualValue> dataConverted = new ArrayList<DualValue>();
+				if (list.get(0) instanceof DualValue) {
+					ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
+					builderData.setData(list);
+
+					arrayData = builderData.getJso();
+				} else {
+					int j = 1;
+					for (T dataValue : list) {
+						dataConverted.add(new DualValue(j, (Number) dataValue));
+						j += 1;
+					}
+
+					ArrayJSONBuilder<DualValue> builderData = new ArrayJSONBuilder<DualValue>();
+					builderData.setData(dataConverted);
+					arrayData = builderData.getJso();
+				}
+				this.chart.setSeries(i, arrayData);
+				i += 1;
+			}
+			while (i < sizeDataList) {
+				ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
+				builderData.setData(new ArrayList<T>());
+				JSONArray arrayData;
+				arrayData = builderData.getJso();
+				this.chart.setSeries(i, arrayData);
+				i += 1;
+			}
+		}
+	}
+
+	/**
+	 * set the data to list of T parametrized chart.
+	 * 
+	 * @param data
+	 *            the data to set
+	 */
+	public void setData(List<T> data) {
+		this.data = data;
+		if (this.chart.isInjected()) {
+
+			JSONArray arrayData;
+			if (data.get(0) instanceof DualValue) {
+				ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
+				builderData.setData(data);
+
+				arrayData = builderData.getJso();
+			} else {
+				List<DualValue> dataConverted = new ArrayList<DualValue>();
+
+				int i = 1;
+				for (T dataValue : data) {
+					dataConverted.add(new DualValue(i, (Number) dataValue));
+					i += 1;
+				}
+
+				ArrayJSONBuilder<DualValue> builderData = new ArrayJSONBuilder<DualValue>();
+				builderData.setData(dataConverted);
+				arrayData = builderData.getJso();
+			}
+
+			this.chart.setSeries(0, arrayData);
+		}
+	}
+
+	/**
+	 * Get data in simple view
+	 * 
+	 * @return the chart data
+	 */
+	public List<T> getDatas() {
+		if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
+			throw new IllegalStateException("The data on chart haven't been set.");
+		}
+		return data;
+	}
+
+	/**
+	 * Get the chart data
+	 * 
+	 * Is used when the data are a list representation. (as example if line
+	 * chart and 1 dimension. See JQplot documentation / Showcase to see more
+	 * details.)
+	 * 
+	 * @return the data of chart needs to be displayed.
+	 */
+	public List<List<T>> getListData() {
+		if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
+			throw new IllegalStateException("The data on chart haven't been set.");
+		}
+		return listData;
+	}
+
+	/**
+	 * Get the generated JSON options.
+	 * 
+	 * @return the JSON JavaScript object
+	 */
+	public JavaScriptObject getInjectionOptions() {
+		MapJSONBuilder builder = new MapJSONBuilder();
+		builder.putAllChartOption(this.chart.getChartOptionner().getOptionsMapped());
+		builder.putAllChartSubOption(this.chart.getChartOptionner().getSubSubOptionsMapped());
+		builder.addSeriesData(this.getSeriesData());
+		return builder.getJso().getJavaScriptObject();
+	}
+
+	/**
+	 * Get the generated JSON data.
+	 * 
+	 * @return the JSON JavaScript object
+	 */
+	public JavaScriptObject getInjectionData() {
+		ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
+
+		if (getDatas() != null) {
+			builderData.setData(getDatas());
 		} else {
-		    int j = 1;
-		    for (T dataValue : list) {
-			dataConverted.add(new DualValue(j, (Number) dataValue));
-			j += 1;
-		    }
-
-		    ArrayJSONBuilder<DualValue> builderData = new ArrayJSONBuilder<DualValue>();
-		    builderData.setData(dataConverted);
-		    arrayData = builderData.getJso();
+			builderData.setListData(getListData());
 		}
-		this.chart.setSeries(i, arrayData);
-		i += 1;
-	    }
-	    while (i < sizeDataList) {
-		ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
-		builderData.setData(new ArrayList<T>());
 		JSONArray arrayData;
-		arrayData = builderData.getJso();
-		this.chart.setSeries(i, arrayData);
-		i += 1;
-	    }
-	}
-    }
-
-    /**
-     * set the data to list of T parametrized chart.
-     * 
-     * @param data
-     *            the data to set
-     */
-    public void setData(List<T> data) {
-	this.data = data;
-	if (this.chart.isInjected()) {
-
-	    JSONArray arrayData;
-	    if (data.get(0) instanceof DualValue) {
-		ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
-		builderData.setData(data);
-
-		arrayData = builderData.getJso();
-	    } else {
-		List<DualValue> dataConverted = new ArrayList<DualValue>();
-
-		int i = 1;
-		for (T dataValue : data) {
-		    dataConverted.add(new DualValue(i, (Number) dataValue));
-		    i += 1;
+		if (getListData() == null && this.isListView()) {
+			arrayData = new JSONArray();
+			arrayData.set(0, builderData.getJso());
+		} else {
+			arrayData = builderData.getJso();
 		}
-
-		ArrayJSONBuilder<DualValue> builderData = new ArrayJSONBuilder<DualValue>();
-		builderData.setData(dataConverted);
-		arrayData = builderData.getJso();
-	    }
-
-	    this.chart.setSeries(0, arrayData);
+		return arrayData.getJavaScriptObject();
 	}
-    }
 
-    /**
-     * Get data in simple view
-     * 
-     * @return the chart data
-     */
-    public List<T> getDatas() {
-	if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
-	    throw new IllegalStateException("The data on chart haven't been set.");
+	/**
+	 * 
+	 * 
+	 * @param isListView
+	 */
+	public void setListView(boolean isListView) {
+		this.listView = isListView;
 	}
-	return data;
-    }
 
-    /**
-     * Get the chart data
-     * 
-     * Is used when the data are a list representation. (as example if line chart and 1 dimension. See JQplot documentation / Showcase to see more
-     * details.)
-     * 
-     * @return the data of chart needs to be displayed.
-     */
-    public List<List<T>> getListData() {
-	if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
-	    throw new IllegalStateException("The data on chart haven't been set.");
+	/**
+	 * @return the listView
+	 */
+	public boolean isListView() {
+		return listView;
 	}
-	return listData;
-    }
 
-    /**
-     * Get the generated JSON options.
-     * 
-     * @return the JSON JavaScript object
-     */
-    public JavaScriptObject getInjectionOptions() {
-	MapJSONBuilder builder = new MapJSONBuilder();
-	builder.putAllChartOption(this.chart.getChartOptionner().getOptionsMapped());
-	builder.putAllChartSubOption(this.chart.getChartOptionner().getSubSubOptionsMapped());
-	builder.addSeriesData(this.getSeriesData());
-	return builder.getJso().getJavaScriptObject();
-    }
-
-    /**
-     * Get the generated JSON data.
-     * 
-     * @return the JSON JavaScript object
-     */
-    public JavaScriptObject getInjectionData() {
-	ArrayJSONBuilder<T> builderData = new ArrayJSONBuilder<T>();
-
-	if (getDatas() != null) {
-	    builderData.setData(getDatas());
-	} else {
-	    builderData.setListData(getListData());
+	/**
+	 * @param seriesData
+	 */
+	public void setSeriesData(JSONArray seriesData) {
+		this.seriesData = seriesData;
 	}
-	JSONArray arrayData;
-	if (getListData() == null && this.isListView()) {
-	    arrayData = new JSONArray();
-	    arrayData.set(0, builderData.getJso());
-	} else {
-	    arrayData = builderData.getJso();
+
+	/**
+	 * @return the seriesData
+	 */
+	public JSONArray getSeriesData() {
+		return seriesData;
 	}
-	return arrayData.getJavaScriptObject();
-    }
-
-    /**
-     * 
-     * 
-     * @param isListView
-     */
-    public void setListView(boolean isListView) {
-	this.listView = isListView;
-    }
-
-    /**
-     * @return the listView
-     */
-    public boolean isListView() {
-	return listView;
-    }
-
-    /**
-     * @param seriesData
-     */
-    public void setSeriesData(JSONArray seriesData) {
-	this.seriesData = seriesData;
-    }
-
-    /**
-     * @return the seriesData
-     */
-    public JSONArray getSeriesData() {
-	return seriesData;
-    }
 }

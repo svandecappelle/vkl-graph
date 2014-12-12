@@ -21,38 +21,38 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class Exporter {
 
-    private Chart<?> chart;
+	private Chart<?> chart;
 
-    /**
-     * Default constructor
-     * 
-     * @param chart
-     */
-    public Exporter(Chart<?> chart) {
-	this.chart = chart;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param chart
+	 */
+	public Exporter(Chart<?> chart) {
+		this.chart = chart;
+	}
 
-    /**
-     * Export the graph. Opening a DialogBox.
-     * 
-     */
-    public void export() {
-	String img = export(this.chart.getId());
-	String url = img.replaceAll("^data:image\\/[^;]", "data:application/octet-stream");
-	Window.open(url, "_self", "");
-    }
+	/**
+	 * Export the graph. Opening a DialogBox.
+	 * 
+	 */
+	public void export() {
+		String img = export(this.chart.getId());
+		String url = img.replaceAll("^data:image\\/[^;]", "data:application/octet-stream");
+		Window.open(url, "_self", "");
+	}
 
-    private static native void download(JavaScriptObject chart) /*-{
-	chart.jqplotSaveImage();	
-    }-*/;
+	private static native void download(JavaScriptObject chart) /*-{
+																chart.jqplotSaveImage();	
+																}-*/;
 
-    /**
-     * Export a graph with his identifier.
-     * 
-     * @param id
-     *            graph HTML id
-     */
-    private static native String export(String id) /*-{
-	return parent.jqplotToImg(id);
-    }-*/;
+	/**
+	 * Export a graph with his identifier.
+	 * 
+	 * @param id
+	 *            graph HTML id
+	 */
+	private static native String export(String id) /*-{
+													return parent.jqplotToImg(id);
+													}-*/;
 }

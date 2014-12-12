@@ -17,26 +17,26 @@ package fr.vekia.VkGraph.client.charts;
  *          {@inheritDoc}A pie chart widget.
  */
 public class PieChart<T> extends AbstractChart<T> {
-    /**
-     * Default constructor
-     * 
-     */
-    public PieChart() {
-        super();
-        setRenderer(RenderersEnum.Pie);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public PieChart() {
+		super();
+		setRenderer(RenderersEnum.Pie);
+	}
 
-    /**
-     * Constructor with i18n specifics
-     * 
-     */
-    public PieChart(I18nFields i18nFields) {
-        super(i18nFields);
-        setRenderer(RenderersEnum.Pie);
-    }
+	/**
+	 * Constructor with i18n specifics
+	 * 
+	 */
+	public PieChart(I18nFields i18nFields) {
+		super(i18nFields);
+		setRenderer(RenderersEnum.Pie);
+	}
 
-    @Override
-    public void setPluginsEnable(boolean isPluginEnable) {
-        throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
-    }
+	@Override
+	public void setPluginsEnable(boolean isPluginEnable) {
+		throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
+	}
 }

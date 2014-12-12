@@ -22,174 +22,174 @@ import fr.vekia.VkGraph.client.charts.menus.RightClickMenuWidget;
  *          {@inheritDoc}
  */
 public class ChartRightMenuController {
-    // When export is enable. This button to export is visible.
-    private RightClickMenuWidget menu;
+	// When export is enable. This button to export is visible.
+	private RightClickMenuWidget menu;
 
-    // true if export to PNG is effective (using right click menu).
-    private boolean exportEnable;
-    // true if deferred replot is effective (using right click menu).
-    private boolean refreshManualEnable;
-    // true if theme changing is effective (using right click menu).
-    private boolean changeThemingEnable;
+	// true if export to PNG is effective (using right click menu).
+	private boolean exportEnable;
+	// true if deferred replot is effective (using right click menu).
+	private boolean refreshManualEnable;
+	// true if theme changing is effective (using right click menu).
+	private boolean changeThemingEnable;
 
-    private Chart<?> chart;
+	private Chart<?> chart;
 
-    private Exporter exporter;
-    private MenuCommands exportCommand;
+	private Exporter exporter;
+	private MenuCommands exportCommand;
 
-    private MenuCommands refreshCommand;
+	private MenuCommands refreshCommand;
 
-    private MenuCommands themingCommand;
+	private MenuCommands themingCommand;
 
-    private Widget childToBind;
+	private Widget childToBind;
 
-    private static I18nFields defaultI18nConstants = new I18nFields() {   
-	    @Override
-	    public String themes() {
+	private static I18nFields defaultI18nConstants = new I18nFields() {
+		@Override
+		public String themes() {
 			return "Themes";
-	    }
-	    
-	    @Override
-	    public String refresh() {
-			return "Refresh";
-	    }
-	    
-	    @Override
-	    public String export() {
-			return "Export";
-	    }
-	}; 
+		}
 
-    public static void setDefaultI18nConstants(I18nFields fieldsI18n){
-    	if(fieldsI18n!=null){
-    		defaultI18nConstants = fieldsI18n;
-    	}else{
-    		defaultI18nConstants = new I18nFields() {   
-			    @Override
-			    public String themes() {
+		@Override
+		public String refresh() {
+			return "Refresh";
+		}
+
+		@Override
+		public String export() {
+			return "Export";
+		}
+	};
+
+	public static void setDefaultI18nConstants(I18nFields fieldsI18n) {
+		if (fieldsI18n != null) {
+			defaultI18nConstants = fieldsI18n;
+		} else {
+			defaultI18nConstants = new I18nFields() {
+				@Override
+				public String themes() {
 					return "Themes";
-			    }
-			    
-			    @Override
-			    public String refresh() {
+				}
+
+				@Override
+				public String refresh() {
 					return "Refresh";
-			    }
-			    
-			    @Override
-			    public String export() {
+				}
+
+				@Override
+				public String export() {
 					return "Export";
-			    }
+				}
 			};
 		}
-    }
+	}
 
-    public ChartRightMenuController() {
+	public ChartRightMenuController() {
 		this(defaultI18nConstants);
-    }
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    public ChartRightMenuController(I18nFields fields) {
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ChartRightMenuController(I18nFields fields) {
 		this.menu = new RightClickMenuWidget();
 		// export to PNG.
 		this.exportCommand = new MenuCommands(fields.export()) {
 
-		    @Override
-		    public void execute() {
-			exporter.export();
-			menu.hideMenu();
-		    }
+			@Override
+			public void execute() {
+				exporter.export();
+				menu.hideMenu();
+			}
 		};
 		// refresh by right click only.
 		this.refreshCommand = new MenuCommands(fields.refresh()) {
 
-		    @Override
-		    public void execute() {
-			chart.replot();
-			menu.hideMenu();
-		    }
+			@Override
+			public void execute() {
+				chart.replot();
+				menu.hideMenu();
+			}
 		};
 		// activate the defaults themes.
 		themingCommand = new MenuCommands(fields.themes()) {
 
-		    @Override
-		    public void execute() {
-		    }
+			@Override
+			public void execute() {
+			}
 		};
-    }
+	}
 
-    public void activate(Chart<?> chart, Widget childToBind) {
+	public void activate(Chart<?> chart, Widget childToBind) {
 		this.childToBind = childToBind;
 		this.menu.setWidget(childToBind);
 		this.chart = chart;
 		this.chart.setWidget(this.menu);
 		this.themingCommand.setSubCommands(Theming.getDefault(chart, menu));
-    }
+	}
 
-    /**
-     * @param isEnable
-     */
-    public void setExportEnable(final Exporter exporter, boolean isEnable) {
+	/**
+	 * @param isEnable
+	 */
+	public void setExportEnable(final Exporter exporter, boolean isEnable) {
 		if (isEnable && !this.exportEnable) {
-		    this.exportEnable = isEnable;
-		    this.exporter = exporter;
-		    menu.addToMenu(exportCommand);
+			this.exportEnable = isEnable;
+			this.exporter = exporter;
+			menu.addToMenu(exportCommand);
 		} else if (!isEnable && exportEnable) {
-		    this.menu.removeToMenu(exportCommand);
+			this.menu.removeToMenu(exportCommand);
 		}
 		checkMenu();
-    }
+	}
 
-    /**
-     * @param command
-     */
-    public void addToMenu(MenuCommands command) {
+	/**
+	 * @param command
+	 */
+	public void addToMenu(MenuCommands command) {
 		menu.addToMenu(command);
-    }
+	}
 
-    /**
-     * @param isEnable
-     */
-    public void setRefreshManualEnable(boolean isEnable) {
+	/**
+	 * @param isEnable
+	 */
+	public void setRefreshManualEnable(boolean isEnable) {
 		if (isEnable && !this.refreshManualEnable) {
-		    this.refreshManualEnable = isEnable;
-		    menu.addToMenu(refreshCommand);
+			this.refreshManualEnable = isEnable;
+			menu.addToMenu(refreshCommand);
 		} else if (!isEnable && refreshManualEnable) {
-		    this.menu.removeToMenu(refreshCommand);
+			this.menu.removeToMenu(refreshCommand);
 		}
 		checkMenu();
-    }
+	}
 
-    /**
-     * @param isEnable
-     */
-    public void setTemingEnable(boolean isEnable) {
+	/**
+	 * @param isEnable
+	 */
+	public void setTemingEnable(boolean isEnable) {
 		if (isEnable && !this.changeThemingEnable) {
-		    this.changeThemingEnable = isEnable;
-		    menu.addToMenu(this.themingCommand);
+			this.changeThemingEnable = isEnable;
+			menu.addToMenu(this.themingCommand);
 		} else if (!isEnable && this.changeThemingEnable) {
-		    this.menu.removeToMenu(themingCommand);
+			this.menu.removeToMenu(themingCommand);
 		}
 		checkMenu();
-    }
+	}
 
-    /**
+	/**
      * 
      */
-    private void checkMenu() {
+	private void checkMenu() {
 		if (this.menu.isEmpty()) {
-		    this.desactivate();
+			this.desactivate();
 		}
-    }
+	}
 
-    /**
+	/**
      * 
      */
-    private void desactivate() {
+	private void desactivate() {
 		this.chart.setWidget(childToBind);
 		this.menu.setDefaultBrowserBehaviorEnable(true);
-    }
+	}
 
 }

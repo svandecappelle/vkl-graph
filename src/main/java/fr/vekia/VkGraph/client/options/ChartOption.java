@@ -19,63 +19,46 @@ import java.io.Serializable;
  *          {@inheritDoc} The chart available options.
  */
 public enum ChartOption implements IsOption, HasType, Serializable {
-    seriesColors,
-    stackSeries,
-    title,
-    axesDefaults,
-    axes,
-    seriesDefaults,
-    series,
-    legend,
-    grid,
-    cursor,
-    dragable(OptionType.BOOLEAN, true),
-    highlighter,
-    animate(OptionType.BOOLEAN),
-    animateReplot(OptionType.BOOLEAN),
-    defaultAxisStart,
-    canvasOverlay,
-    fillBetween,
-    captureRightClick;
+	seriesColors, stackSeries, title, axesDefaults, axes, seriesDefaults, series, legend, grid, cursor, dragable(OptionType.BOOLEAN, true), highlighter, animate(OptionType.BOOLEAN), animateReplot(OptionType.BOOLEAN), defaultAxisStart, canvasOverlay, fillBetween, captureRightClick;
 
-    private OptionType type;
-    private boolean hasChildren = false;
+	private OptionType type;
+	private boolean hasChildren = false;
 
-    /**
-     * Default constructor
-     * 
-     */
-    private ChartOption() {
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private ChartOption() {
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    private ChartOption(OptionType type) {
-	this.type = type;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private ChartOption(OptionType type) {
+		this.type = type;
+	}
 
-    /**
-     * Default constructor
-     * 
-     */
-    private ChartOption(OptionType type, boolean hasChildren) {
-	this.type = type;
-	this.hasChildren = hasChildren;
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private ChartOption(OptionType type, boolean hasChildren) {
+		this.type = type;
+		this.hasChildren = hasChildren;
+	}
 
-    /**
-     * @return the type
-     */
-    public OptionType getType() {
-	return type;
-    }
+	/**
+	 * @return the type
+	 */
+	public OptionType getType() {
+		return type;
+	}
 
-    /**
-     * @return the hasChildren
-     */
-    public boolean hasChildren() {
-	return hasChildren;
-    }
+	/**
+	 * @return the hasChildren
+	 */
+	public boolean hasChildren() {
+		return hasChildren;
+	}
 }

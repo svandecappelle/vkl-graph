@@ -32,50 +32,50 @@ import fr.vekia.VkGraph.client.options.SubOption;
  * 
  *          {@inheritDoc}
  */
-public class CanvasOverlayObject implements Serializable{
+public class CanvasOverlayObject implements Serializable {
 
-    private List<CanvasObject> lines;
+	private List<CanvasObject> lines;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public CanvasOverlayObject() {
-	lines = new ArrayList<CanvasObject>();
-    }
-
-    /**
-     * 
-     */
-    public void addObject(CanvasObject line) {
-	lines.add(line);
-    }
-
-    /**
-     * 
-     */
-    public void removeObject(CanvasObject line) {
-	lines.remove(line);
-    }
-
-    /**
-     * @return
-     */
-    public JSONValue getJSON() {
-	JSONArray array = new JSONArray();
-	int i = 0;
-	for (CanvasObject objCanvas : lines) {
-	    MapJSONBuilder builder = new MapJSONBuilder();
-	    builder.putAllOptions(objCanvas.getOptionsMapped());
-	    builder.putAllSubOptions(objCanvas.getSubSubOptionsMapped());
-
-	    JSONObject object = new JSONObject();
-		object.put(objCanvas.getType().name(), builder.getJso());
-
-	    array.set(i, object);
-	    i += 1;
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public CanvasOverlayObject() {
+		lines = new ArrayList<CanvasObject>();
 	}
 
-	return array;
-    }
+	/**
+     * 
+     */
+	public void addObject(CanvasObject line) {
+		lines.add(line);
+	}
+
+	/**
+     * 
+     */
+	public void removeObject(CanvasObject line) {
+		lines.remove(line);
+	}
+
+	/**
+	 * @return
+	 */
+	public JSONValue getJSON() {
+		JSONArray array = new JSONArray();
+		int i = 0;
+		for (CanvasObject objCanvas : lines) {
+			MapJSONBuilder builder = new MapJSONBuilder();
+			builder.putAllOptions(objCanvas.getOptionsMapped());
+			builder.putAllSubOptions(objCanvas.getSubSubOptionsMapped());
+
+			JSONObject object = new JSONObject();
+			object.put(objCanvas.getType().name(), builder.getJso());
+
+			array.set(i, object);
+			i += 1;
+		}
+
+		return array;
+	}
 }

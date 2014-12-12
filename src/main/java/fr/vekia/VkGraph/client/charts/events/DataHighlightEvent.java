@@ -18,43 +18,43 @@ package fr.vekia.VkGraph.client.charts.events;
  */
 public abstract class DataHighlightEvent extends ChartEvent {
 
-    /**
-     * @author Steeve Vandecappelle (SVA)
-     * @since 16 août 2012. VklGraph version 1.2
-     * @version 2.1
-     * 
-     *          {@inheritDoc}
-     */
-    static final class DataHighlightEventType implements EventType {
-
-	private static EventType singleton = new DataHighlightEventType();
-
 	/**
-	 * Default constructor.
+	 * @author Steeve Vandecappelle (SVA)
+	 * @since 16 août 2012. VklGraph version 1.2
+	 * @version 2.1
 	 * 
+	 *          {@inheritDoc}
 	 */
-	private DataHighlightEventType() {
+	static final class DataHighlightEventType implements EventType {
+
+		private static EventType singleton = new DataHighlightEventType();
+
+		/**
+		 * Default constructor.
+		 * 
+		 */
+		private DataHighlightEventType() {
+		}
+
+		@Override
+		public String getName() {
+			return "jqplotDataHighlight";
+		}
+
+		/**
+		 * Return the type of {@link DataHighlightEvent} GWT event.
+		 * 
+		 * @return the GWT event type
+		 */
+		public static EventType getInstance() {
+			return singleton;
+		}
+
 	}
 
 	@Override
-	public String getName() {
-	    return "jqplotDataHighlight";
+	public EventType getEventType() {
+		return DataHighlightEventType.getInstance();
 	}
-
-	/**
-	 * Return the type of {@link DataHighlightEvent} GWT event.
-	 * 
-	 * @return the GWT event type
-	 */
-	public static EventType getInstance() {
-	    return singleton;
-	}
-
-    }
-
-    @Override
-    public EventType getEventType() {
-	return DataHighlightEventType.getInstance();
-    }
 
 }

@@ -18,8 +18,8 @@ package fr.vekia.VkGraph.client.charts.events;
  */
 public interface EventType {
 
-    /**
-     * @return the event JqPlot / Javascript Name.
-     */
-    String getName();
+	/**
+	 * @return the event JqPlot / Javascript Name.
+	 */
+	String getName();
 }

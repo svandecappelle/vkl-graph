@@ -18,26 +18,26 @@ package fr.vekia.VkGraph.client.datas;
  */
 public class SquareValue extends ComplexeValue {
 
-    public SquareValue(){
-        super();
-    }
+	public SquareValue() {
+		super();
+	}
 
-    /**
-     * Default constructor
-     * 
-     * @param label
-     *            the UIwidget label.
-     * @param x
-     *            the X position on chart.
-     * @param y
-     *            the Y position on chart.
-     */
-    public SquareValue(String label, Number x, Number y) {
-	super(label, x, y);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 * @param label
+	 *            the UIwidget label.
+	 * @param x
+	 *            the X position on chart.
+	 * @param y
+	 *            the Y position on chart.
+	 */
+	public SquareValue(String label, Number x, Number y) {
+		super(label, x, y);
+	}
 
-    @Override
-    public String toString() {
-	return "[" + getX() + "," + getY() + "," + "\"" + getLabel() + "\"" + "]";
-    }
+	@Override
+	public String toString() {
+		return "[" + getX() + "," + getY() + "," + "\"" + getLabel() + "\"" + "]";
+	}
 }

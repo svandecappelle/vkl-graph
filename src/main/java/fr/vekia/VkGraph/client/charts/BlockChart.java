@@ -20,23 +20,22 @@ import fr.vekia.VkGraph.client.datas.SquareValue;
  */
 public class BlockChart extends AbstractChart<SquareValue> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public BlockChart() {
-	super.setListView(true);
-	super.setRenderer(RenderersEnum.Block);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public BlockChart() {
+		super.setListView(true);
+		super.setRenderer(RenderersEnum.Block);
+	}
 
-
-    /**
-     * Constructor with specifics I18n constants
-     * 
-     */
-    public BlockChart(I18nFields i18nFields) {
+	/**
+	 * Constructor with specifics I18n constants
+	 * 
+	 */
+	public BlockChart(I18nFields i18nFields) {
 		super(i18nFields);
 		super.setListView(true);
 		super.setRenderer(RenderersEnum.Block);
-    }
+	}
 }

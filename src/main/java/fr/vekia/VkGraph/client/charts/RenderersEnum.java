@@ -18,37 +18,13 @@ package fr.vekia.VkGraph.client.charts;
  */
 public enum RenderersEnum {
 
-	Stairs("$.jqplot.StairsRenderer"),
-    Pie("$.jqplot.PieRenderer"),
-    Donut("$.jqplot.DonutRenderer"),
-    Bar("$.jqplot.BarRenderer"),
-    Line("$.jqplot.LineRenderer"),
-    Bubble("$.jqplot.BubbleRenderer"),
-    BezierCurve("$.jqplot.BezierCurveRenderer"),
-    Block("$.jqplot.BlockRenderer"),
-    Funnel("$.jqplot.FunnelRenderer"),
-    MeterGauge("$.jqplot.MeterGaugeRenderer"),
-    Mekko("$.jqplot.MekkoAxisRenderer"),
-    OHLC("$.jqplot.OHLCRenderer"),
-    Pyramid("$.jqplot.PyramidRenderer"),
-    
-    CanvasAxisLabel("$.jqplot.CanvasAxisLabelRenderer"),
-    CanvasAxisTick("$.jqplot.CanvasAxisTickRenderer"),
-    CategoryAxis("$.jqplot.CategoryAxisRenderer"),
-    DateAxis("$.jqplot.DateAxisRenderer"),
-    LogAxis("$.jqplot.LogAxisRenderer"),
-    MekkoAxis("$.jqplot.MekkoAxisRenderer"),
-    AxisTick("$.jqplot.AxisTickRenderer"),
-    CanvasGrid("$.jqplot.CanvasGridRenderer"),
-    LinearAxis("$.jqplot.LinearAxisRenderer"),
-    AxisLabel("$.jqplot.AxisLabelRenderer"),
+	Stairs("$.jqplot.StairsRenderer"), Pie("$.jqplot.PieRenderer"), Donut("$.jqplot.DonutRenderer"), Bar("$.jqplot.BarRenderer"), Line("$.jqplot.LineRenderer"), Bubble("$.jqplot.BubbleRenderer"), BezierCurve("$.jqplot.BezierCurveRenderer"), Block(
+			"$.jqplot.BlockRenderer"), Funnel("$.jqplot.FunnelRenderer"), MeterGauge("$.jqplot.MeterGaugeRenderer"), Mekko("$.jqplot.MekkoAxisRenderer"), OHLC("$.jqplot.OHLCRenderer"), Pyramid("$.jqplot.PyramidRenderer"),
 
-    DivTitle("$.jqplot.CanvasGridRenderer"),
-    Marker("$.jqplot.MarkerRenderer"),
-    Shape("$.jqplot.shapeRenderer"),
-    Shadow("$.jqplot.shadowRenderer"),
-    EnhancedLegendRenderer("$.jqplot.EnhancedLegendRenderer"),
-    DonutLegend("$.jqplot.DonutLegendRenderer");
+	CanvasAxisLabel("$.jqplot.CanvasAxisLabelRenderer"), CanvasAxisTick("$.jqplot.CanvasAxisTickRenderer"), CategoryAxis("$.jqplot.CategoryAxisRenderer"), DateAxis("$.jqplot.DateAxisRenderer"), LogAxis("$.jqplot.LogAxisRenderer"), MekkoAxis(
+			"$.jqplot.MekkoAxisRenderer"), AxisTick("$.jqplot.AxisTickRenderer"), CanvasGrid("$.jqplot.CanvasGridRenderer"), LinearAxis("$.jqplot.LinearAxisRenderer"), AxisLabel("$.jqplot.AxisLabelRenderer"),
+
+	DivTitle("$.jqplot.CanvasGridRenderer"), Marker("$.jqplot.MarkerRenderer"), Shape("$.jqplot.shapeRenderer"), Shadow("$.jqplot.shadowRenderer"), EnhancedLegendRenderer("$.jqplot.EnhancedLegendRenderer"), DonutLegend("$.jqplot.DonutLegendRenderer");
 
 	private String valueRenderer;
 

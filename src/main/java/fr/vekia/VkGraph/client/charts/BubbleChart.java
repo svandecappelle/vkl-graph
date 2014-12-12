@@ -20,23 +20,22 @@ import fr.vekia.VkGraph.client.datas.BubbleValue;
  */
 public class BubbleChart extends AbstractChart<BubbleValue> {
 
-    /**
-     * Default constructor
-     * 
-     */
-    public BubbleChart() {
-	super.setListView(true);
-	super.setRenderer(RenderersEnum.Bubble);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public BubbleChart() {
+		super.setListView(true);
+		super.setRenderer(RenderersEnum.Bubble);
+	}
 
-
- 	/**
-     * Constructor with specifics I18n constants
-     * 
-     */
-    public BubbleChart(I18nFields i18nFields) {
+	/**
+	 * Constructor with specifics I18n constants
+	 * 
+	 */
+	public BubbleChart(I18nFields i18nFields) {
 		super(i18nFields);
 		super.setListView(true);
 		super.setRenderer(RenderersEnum.Bubble);
-    }    
+	}
 }

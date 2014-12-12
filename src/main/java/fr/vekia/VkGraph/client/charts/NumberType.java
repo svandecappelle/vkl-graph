@@ -17,9 +17,5 @@ package fr.vekia.VkGraph.client.charts;
  *          {@inheritDoc}
  */
 public enum NumberType {
-    FLOAT,
-    INT,
-    DOUBLE,
-    LONG,
-    SHORT;
+	FLOAT, INT, DOUBLE, LONG, SHORT;
 }

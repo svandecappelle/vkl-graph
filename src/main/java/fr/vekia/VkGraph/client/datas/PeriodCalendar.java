@@ -24,32 +24,32 @@ import fr.vekia.VkGraph.client.options.SubOption;
  *          {@inheritDoc}
  */
 public class PeriodCalendar extends HorizontalLine {
-    @SuppressWarnings("deprecation")
-    private static final DateTimeFormat DEFAULT_DATE_FORMAT = DateTimeFormat.getMediumTimeFormat();
+	@SuppressWarnings("deprecation")
+	private static final DateTimeFormat DEFAULT_DATE_FORMAT = DateTimeFormat.getMediumTimeFormat();
 
-    private static final int LINE_WIDTH = 10;
-    
-    public PeriodCalendar(){
-        super();
-    }
+	private static final int LINE_WIDTH = 10;
 
-    /**
-     * Default constructor
-     * 
-     */
-    public PeriodCalendar(float y, Date xmin, Date xmax, String color, String name) {
-	this(y, xmin, xmax, name);
-	super.setTextOption(SubOption.color, color);
-    }
+	public PeriodCalendar() {
+		super();
+	}
 
-    public PeriodCalendar(float y, Date xmin, Date xmax, String name) {
-	super.setNumberOption(SubOption.y, y, NumberType.FLOAT);
-	super.setNumberOption(SubOption.lineWidth, LINE_WIDTH);
-	super.setTextOption(SubOption.name, name);
-	super.setBooleanOption(SubOption.shadow, false);
-	super.setBooleanOption(SubOption.showTooltip, true);
-	super.setOption(SubOption.tooltipFormatString, name + "<br/> <dd> [ " + DEFAULT_DATE_FORMAT.format(xmin) + " - " + DEFAULT_DATE_FORMAT.format(xmax) + "]</dd>");
-	super.setNumberOption(SubOption.xmin, xmin.getTime(), NumberType.LONG);
-	super.setNumberOption(SubOption.xmax, xmax.getTime(), NumberType.LONG);
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public PeriodCalendar(float y, Date xmin, Date xmax, String color, String name) {
+		this(y, xmin, xmax, name);
+		super.setTextOption(SubOption.color, color);
+	}
+
+	public PeriodCalendar(float y, Date xmin, Date xmax, String name) {
+		super.setNumberOption(SubOption.y, y, NumberType.FLOAT);
+		super.setNumberOption(SubOption.lineWidth, LINE_WIDTH);
+		super.setTextOption(SubOption.name, name);
+		super.setBooleanOption(SubOption.shadow, false);
+		super.setBooleanOption(SubOption.showTooltip, true);
+		super.setOption(SubOption.tooltipFormatString, name + "<br/> <dd> [ " + DEFAULT_DATE_FORMAT.format(xmin) + " - " + DEFAULT_DATE_FORMAT.format(xmax) + "]</dd>");
+		super.setNumberOption(SubOption.xmin, xmin.getTime(), NumberType.LONG);
+		super.setNumberOption(SubOption.xmax, xmax.getTime(), NumberType.LONG);
+	}
 }

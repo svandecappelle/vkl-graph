@@ -20,11 +20,11 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class Rectangle extends OptionSerie implements CanvasObject {
 
-	public Rectangle(){
+	public Rectangle() {
 
 	}
 
-	public SubOption getType(){
+	public SubOption getType() {
 		return SubOption.rectangle;
 	}
 }

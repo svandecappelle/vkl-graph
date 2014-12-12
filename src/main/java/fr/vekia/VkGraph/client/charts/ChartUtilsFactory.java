@@ -19,24 +19,24 @@ package fr.vekia.VkGraph.client.charts;
 @SuppressWarnings("rawtypes")
 public class ChartUtilsFactory {
 
-    private Chart chart;
+	private Chart chart;
 
-    /**
-     * Default constructor
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public ChartUtilsFactory(Chart chart) {
+		this.chart = chart;
+	}
+
+	/**
      * 
      */
-    public ChartUtilsFactory(Chart chart) {
-	this.chart = chart;
-    }
+	public void exportOptions() {
+		this.chart.getChartOptionner();
+	}
 
-    /**
-     * 
-     */
-    public void exportOptions() {
-	this.chart.getChartOptionner();
-    }
-
-    public static void cloneOptions(Chart src, Chart dest) {
-	dest.importOptionner(src.getChartOptionner());
-    }
+	public static void cloneOptions(Chart src, Chart dest) {
+		dest.importOptionner(src.getChartOptionner());
+	}
 }

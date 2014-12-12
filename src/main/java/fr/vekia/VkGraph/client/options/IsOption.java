@@ -18,6 +18,6 @@ import java.io.Serializable;
  * 
  *          {@inheritDoc} A JqPlot chart option.
  */
-public interface IsOption extends Serializable{
+public interface IsOption extends Serializable {
 
 }

@@ -17,24 +17,24 @@ package fr.vekia.VkGraph.client.charts;
  *          {@inheritDoc}
  */
 public final class JsConsole {
-    /**
-     * Default constructor
-     * 
-     */
-    private JsConsole() {
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	private JsConsole() {
+	}
 
-    /**
+	/**
      * 
      */
-    public static native void warn(String errorCode, String debugParam, String message) /*-{
-	console.warn("WARNING:" + errorCode + " DebugParam: " + debugParam + " - " + message);
-    }-*/;
+	public static native void warn(String errorCode, String debugParam, String message) /*-{
+																						console.warn("WARNING:" + errorCode + " DebugParam: " + debugParam + " - " + message);
+																						}-*/;
 
-    /**
+	/**
      * 
      */
-    public static native void info(String message) /*-{
-	console.log("LOG:" + message);
-    }-*/;
+	public static native void info(String message) /*-{
+													console.log("LOG:" + message);
+													}-*/;
 }

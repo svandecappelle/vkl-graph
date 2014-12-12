@@ -20,9 +20,9 @@ import com.google.gwt.event.shared.EventHandler;
  */
 public interface AttachedChartHandler extends EventHandler {
 
-    /**
-     * @param itemTabSelectionEvent
-     */
-    void onAttachedChart(AttachedChartEvent itemTabSelectionEvent);
+	/**
+	 * @param itemTabSelectionEvent
+	 */
+	void onAttachedChart(AttachedChartEvent itemTabSelectionEvent);
 
 }

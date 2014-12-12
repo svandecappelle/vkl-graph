@@ -14,23 +14,23 @@ package fr.vekia.VkGraph.client.charts.events;
  * @since 17 août 2012. VklGraph version 1.2
  * @version 2.1
  * 
- *	{@inheritDoc}				
+ *          {@inheritDoc}
  */
 public interface JqPlotEvent {
 
-    /**
-     * @return
-     */
-    int getEventBindingParams();
+	/**
+	 * @return
+	 */
+	int getEventBindingParams();
 
-    /**
-     * @return
-     */
-    EventType getEventType();
+	/**
+	 * @return
+	 */
+	EventType getEventType();
 
-    /**
-     * @return
-     */
-    boolean isNative();
+	/**
+	 * @return
+	 */
+	boolean isNative();
 
 }

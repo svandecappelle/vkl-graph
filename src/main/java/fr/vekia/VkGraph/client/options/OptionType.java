@@ -14,9 +14,9 @@ package fr.vekia.VkGraph.client.options;
  * @since Nov 23, 2012. VklGraph version 1.2
  * @version 2.1
  * 
- *	{@inheritDoc}				
+ *          {@inheritDoc}
  */
 public enum OptionType {
-    BOOLEAN, STRING, NUMBER
+	BOOLEAN, STRING, NUMBER
 
 }

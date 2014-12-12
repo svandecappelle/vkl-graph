@@ -23,83 +23,83 @@ import fr.vekia.VkGraph.client.options.SubOption;
  */
 public class ChartOptioner {
 
-    // options {option: {sub-option : value}}
-    private Map<ChartOption, Map<SubOption, String>> optionsMapped;
-    // options {option: {sub-option : {sub-sub-option: value}}}
-    private Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped;
-    // options {option: {sub-option : {sub-sub-option: value}}}
-    private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped;
+	// options {option: {sub-option : value}}
+	private Map<ChartOption, Map<SubOption, String>> optionsMapped;
+	// options {option: {sub-option : {sub-sub-option: value}}}
+	private Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped;
+	// options {option: {sub-option : {sub-sub-option: value}}}
+	private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped;
 
-    /**
-     * @return the optionsMapped
-     */
-    public Map<ChartOption, Map<SubOption, String>> getOptionsMapped() {
-	return optionsMapped;
-    }
+	/**
+	 * @return the optionsMapped
+	 */
+	public Map<ChartOption, Map<SubOption, String>> getOptionsMapped() {
+		return optionsMapped;
+	}
 
-    /**
-     * @return the subSubOptionsMapped
-     */
-    public Map<ChartOption, Map<SubOption, Map<SubOption, String>>> getSubSubOptionsMapped() {
-	return subSubOptionsMapped;
-    }
+	/**
+	 * @return the subSubOptionsMapped
+	 */
+	public Map<ChartOption, Map<SubOption, Map<SubOption, String>>> getSubSubOptionsMapped() {
+		return subSubOptionsMapped;
+	}
 
-    /**
-     * @return the subSubSubOptionsMapped
-     */
-    public Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> getSubSubSubOptionsMapped() {
-	return subSubSubOptionsMapped;
-    }
+	/**
+	 * @return the subSubSubOptionsMapped
+	 */
+	public Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> getSubSubSubOptionsMapped() {
+		return subSubSubOptionsMapped;
+	}
 
-    /**
-     * @param optionsMapped
-     *            the optionsMapped to set
-     */
-    protected void setOptionsMapped(Map<ChartOption, Map<SubOption, String>> optionsMapped) {
-	this.optionsMapped = optionsMapped;
-    }
+	/**
+	 * @param optionsMapped
+	 *            the optionsMapped to set
+	 */
+	protected void setOptionsMapped(Map<ChartOption, Map<SubOption, String>> optionsMapped) {
+		this.optionsMapped = optionsMapped;
+	}
 
-    /**
-     * @param subSubOptionsMapped
-     *            the subSubOptionsMapped to set
-     */
-    protected void setSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped) {
-	this.subSubOptionsMapped = subSubOptionsMapped;
-    }
+	/**
+	 * @param subSubOptionsMapped
+	 *            the subSubOptionsMapped to set
+	 */
+	protected void setSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped) {
+		this.subSubOptionsMapped = subSubOptionsMapped;
+	}
 
-    /**
-     * @param subSubSubOptionsMapped
-     *            the subSubSubOptionsMapped to set
-     */
-    protected void setSubSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped) {
-	this.subSubSubOptionsMapped = subSubSubOptionsMapped;
-    }
+	/**
+	 * @param subSubSubOptionsMapped
+	 *            the subSubSubOptionsMapped to set
+	 */
+	protected void setSubSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped) {
+		this.subSubSubOptionsMapped = subSubSubOptionsMapped;
+	}
 
-    /**
+	/**
      * 
      */
-    public final static String getStringNumberValue(Number value, NumberType typeOfValue) {
-	String output = null;
-	switch (typeOfValue) {
-	case DOUBLE:
-	    output = Double.toString(value.doubleValue());
-	    break;
-	case INT:
-	    output = Integer.toString(value.intValue());
-	    break;
-	case FLOAT:
-	    output = Float.toString(value.floatValue());
-	    break;
-	case LONG:
-	    output = Long.toString(value.longValue());
-	    break;
-	case SHORT:
-	    output = Short.toString(value.shortValue());
-	    break;
-	default:
-	    break;
+	public final static String getStringNumberValue(Number value, NumberType typeOfValue) {
+		String output = null;
+		switch (typeOfValue) {
+		case DOUBLE:
+			output = Double.toString(value.doubleValue());
+			break;
+		case INT:
+			output = Integer.toString(value.intValue());
+			break;
+		case FLOAT:
+			output = Float.toString(value.floatValue());
+			break;
+		case LONG:
+			output = Long.toString(value.longValue());
+			break;
+		case SHORT:
+			output = Short.toString(value.shortValue());
+			break;
+		default:
+			break;
 
+		}
+		return output;
 	}
-	return output;
-    }
 }

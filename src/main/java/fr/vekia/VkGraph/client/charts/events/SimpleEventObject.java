@@ -17,11 +17,11 @@ package fr.vekia.VkGraph.client.charts.events;
  *          {@inheritDoc}
  */
 public class SimpleEventObject {
-    /**
-     * Default constructor
-     * 
-     */
-    public SimpleEventObject() {
-    }
+	/**
+	 * Default constructor
+	 * 
+	 */
+	public SimpleEventObject() {
+	}
 
 }
