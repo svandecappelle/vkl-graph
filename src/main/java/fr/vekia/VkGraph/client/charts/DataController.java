@@ -143,7 +143,7 @@ public class DataController<T> {
 	 */
 	public List<T> getDatas() {
 		if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
-			throw new IllegalStateException("The data on chart haven't been set.");
+//			throw new IllegalStateException("The data on chart haven't been set.");
 		}
 		return data;
 	}
@@ -159,7 +159,7 @@ public class DataController<T> {
 	 */
 	public List<List<T>> getListData() {
 		if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
-			throw new IllegalStateException("The data on chart haven't been set.");
+//			throw new IllegalStateException("The data on chart haven't been set.");
 		}
 		return listData;
 	}

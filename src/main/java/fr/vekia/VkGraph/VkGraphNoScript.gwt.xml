@@ -9,7 +9,6 @@
 	<inherits name="com.google.gwt.json.JSON" />
 	<inherits name='com.google.gwt.junit.JUnit' />
 
-
 	<!-- CSS files -->
 	<stylesheet src="jqplot/core/jquery.jqplot.min.css" />
 

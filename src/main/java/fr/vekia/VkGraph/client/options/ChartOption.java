@@ -19,7 +19,25 @@ import java.io.Serializable;
  *          {@inheritDoc} The chart available options.
  */
 public enum ChartOption implements IsOption, HasType, Serializable {
-	seriesColors, stackSeries, title, axesDefaults, axes, seriesDefaults, series, legend, grid, cursor, dragable(OptionType.BOOLEAN, true), highlighter, animate(OptionType.BOOLEAN), animateReplot(OptionType.BOOLEAN), defaultAxisStart, canvasOverlay, fillBetween, captureRightClick;
+	seriesColors,
+	stackSeries,
+	title,
+	axesDefaults,
+	axes,
+	seriesDefaults,
+	series,
+	legend,
+	grid,
+	cursor,
+	dragable(OptionType.BOOLEAN, true),
+	highlighter,
+	animate(OptionType.BOOLEAN),
+	animateReplot(OptionType.BOOLEAN),
+	defaultAxisStart,
+	canvasOverlay,
+	fillBetween,
+	captureRightClick,
+	noDataIndicator;
 
 	private OptionType type;
 	private boolean hasChildren = false;
