@@ -142,9 +142,6 @@ public class DataController<T> {
 	 * @return the chart data
 	 */
 	public List<T> getDatas() {
-		if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
-//			throw new IllegalStateException("The data on chart haven't been set.");
-		}
 		return data;
 	}
 
@@ -158,9 +155,6 @@ public class DataController<T> {
 	 * @return the data of chart needs to be displayed.
 	 */
 	public List<List<T>> getListData() {
-		if ((data == null || data.isEmpty()) && (listData == null || listData.isEmpty())) {
-//			throw new IllegalStateException("The data on chart haven't been set.");
-		}
 		return listData;
 	}
 
