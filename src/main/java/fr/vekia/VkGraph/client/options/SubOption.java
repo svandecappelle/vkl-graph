@@ -52,7 +52,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
 	bubbleAlpha(OptionType.BOOLEAN, rendererOptions),
 	bubbleGradients(OptionType.BOOLEAN, rendererOptions),
 	candleStick(rendererOptions),
-	color(OptionType.NUMBER, ChartOption.series),
+	color(OptionType.NUMBER, ChartOption.series, ChartOption.background),
 	constrainTo(OptionType.STRING, SubOption.dragable),
 	constrainZoomTo(ChartOption.cursor),
 	dataLabels(rendererOptions),

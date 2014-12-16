@@ -37,7 +37,8 @@ public enum ChartOption implements IsOption, HasType, Serializable {
 	canvasOverlay,
 	fillBetween,
 	captureRightClick,
-	noDataIndicator;
+	noDataIndicator,
+	background;
 
 	private OptionType type;
 	private boolean hasChildren = false;

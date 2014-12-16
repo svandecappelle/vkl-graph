@@ -148,7 +148,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		this.chartContainer.getElement().setId(id);
 		this.resizableContainer.getElement().setId(id + "resizable");
 		this.resizableContainer.addStyleName("resizable");
-		this.chartContainer.addStyleName("chart");
+		this.chartContainer.addStyleName("vkl-chart");
 		// Stylish
 		this.resizableContainer.addStyleName("vkl-ChartContainer");
 

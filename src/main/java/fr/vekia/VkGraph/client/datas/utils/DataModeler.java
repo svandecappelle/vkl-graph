@@ -37,7 +37,7 @@ public final class DataModeler {
 	 */
 	public static <T> DataGraph<T> convert(List<T> datas) {
 		DataGraph<T> output = new DataGraph<T>();
-		if (!datas.isEmpty()) {
+		if (datas != null && !datas.isEmpty()) {
 			T element = datas.get(0);
 			if (element instanceof List<?>) {
 				output.setMultiple(true);
@@ -57,7 +57,7 @@ public final class DataModeler {
 	 */
 	public static DataGraph<DualValue> convert(Map<Object, Number> datas) {
 		DataGraph<DualValue> output = new DataGraph<DualValue>();
-		if (!datas.isEmpty()) {
+		if (datas != null && !datas.isEmpty()) {
 			output.setValue(convertData(datas));
 		}
 		return output;
@@ -72,14 +72,16 @@ public final class DataModeler {
 	 */
 	private static List<DualValue> convertData(Map<Object, Number> datas) {
 		List<DualValue> output = new ArrayList<DualValue>();
-		for (Entry<Object, Number> dataEntry : datas.entrySet()) {
+		if (datas != null) {
+			for (Entry<Object, Number> dataEntry : datas.entrySet()) {
 
-			if (dataEntry.getKey() instanceof Number) {
-				output.add(new DualValue((Number) dataEntry.getKey(), dataEntry.getValue()));
-			} else if (dataEntry.getKey() != null) {
-				output.add(new DualValue(dataEntry.getKey().toString(), dataEntry.getValue()));
+				if (dataEntry.getKey() instanceof Number) {
+					output.add(new DualValue((Number) dataEntry.getKey(), dataEntry.getValue()));
+				} else if (dataEntry.getKey() != null) {
+					output.add(new DualValue(dataEntry.getKey().toString(), dataEntry.getValue()));
+				}
+
 			}
-
 		}
 		return output;
 	}
