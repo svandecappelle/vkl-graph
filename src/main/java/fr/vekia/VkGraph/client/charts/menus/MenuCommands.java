@@ -21,6 +21,7 @@ import com.google.gwt.user.client.Command;
 public abstract class MenuCommands implements Command {
 	private String label;
 	private MenuCommands[] subCommands;
+	private String className;
 
 	/**
 	 * Default constructor.
@@ -35,6 +36,17 @@ public abstract class MenuCommands implements Command {
 	/**
 	 * Default constructor.
 	 * 
+	 * @param label
+	 *            the menu label.
+	 */
+	public MenuCommands(String label, String className) {
+		this.label = label;
+		this.className = className;
+	}
+
+	/**
+	 * Default constructor.
+	 * 
 	 * @param libelle
 	 *            the menu label
 	 * @param subCommands
@@ -43,6 +55,20 @@ public abstract class MenuCommands implements Command {
 	public MenuCommands(String libelle, MenuCommands... subCommands) {
 		this.label = libelle;
 		this.subCommands = subCommands;
+	}
+
+	/**
+	 * Default constructor.
+	 * 
+	 * @param libelle
+	 *            the menu label
+	 * @param subCommands
+	 *            the list of commands under this menu. If Any.
+	 */
+	public MenuCommands(String libelle, String className, MenuCommands... subCommands) {
+		this.label = libelle;
+		this.subCommands = subCommands;
+		this.className = className;
 	}
 
 	/**
@@ -81,5 +107,13 @@ public abstract class MenuCommands implements Command {
 	 */
 	public final MenuCommands[] getSubCommands() {
 		return subCommands;
+	}
+
+	public boolean hasClass() {
+		return this.className != null;
+	}
+
+	public String getClassname() {
+		return this.className;
 	}
 }

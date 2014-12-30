@@ -94,7 +94,7 @@ public class ChartRightMenuController {
 	public ChartRightMenuController(I18nFields fields) {
 		this.menu = new RightClickMenuWidget();
 		// export to PNG.
-		this.exportCommand = new MenuCommands(fields.export()) {
+		this.exportCommand = new MenuCommands(fields.export(), "export-link") {
 
 			@Override
 			public void execute() {
@@ -103,7 +103,7 @@ public class ChartRightMenuController {
 			}
 		};
 		// refresh by right click only.
-		this.refreshCommand = new MenuCommands(fields.refresh()) {
+		this.refreshCommand = new MenuCommands(fields.refresh(), "refresh-link") {
 
 			@Override
 			public void execute() {

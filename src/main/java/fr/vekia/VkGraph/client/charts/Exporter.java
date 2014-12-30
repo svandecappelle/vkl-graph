@@ -9,13 +9,11 @@
  */
 package fr.vekia.VkGraph.client.charts;
 
-import com.google.gwt.user.client.Window;
-import com.google.gwt.core.client.JavaScriptObject;
 
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 30 août 2012. VklGraph version 1.2
- * @version 2.1
+ * @version 1.3.0
  * 
  *          {@inheritDoc}
  */
@@ -37,22 +35,10 @@ public class Exporter {
 	 * 
 	 */
 	public void export() {
-		String img = export(this.chart.getId());
-		String url = img.replaceAll("^data:image\\/[^;]", "data:application/octet-stream");
-		Window.open(url, "_self", "");
+		this.download(this.chart.getId());
 	}
 
-	private static native void download(JavaScriptObject chart) /*-{
-																chart.jqplotSaveImage();	
-																}-*/;
-
-	/**
-	 * Export a graph with his identifier.
-	 * 
-	 * @param id
-	 *            graph HTML id
-	 */
-	private static native String export(String id) /*-{
-													return parent.jqplotToImg(id);
-													}-*/;
+	private final native void download(String id) /*-{
+		$wnd.jQuery("#".concat(id)).jqplotSaveImage();	
+	}-*/;
 }
