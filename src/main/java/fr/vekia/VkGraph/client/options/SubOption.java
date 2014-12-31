@@ -134,6 +134,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
 	style,
 	synchronizeHighlight(rendererOptions),
 	text(OptionType.STRING, ChartOption.title),
+	textColor(OptionType.STRING, ChartOption.legend),
 	tickInterval(xaxis),
 	tickRenderer(ChartOption.axesDefaults),
 	ticks(ChartOption.axesDefaults),
