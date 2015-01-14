@@ -47,13 +47,15 @@ public class ArrayJSONBuilder<T> {
 						JSONArray array = new JSONArray();
 						if (((DualValue) dataElement).isKeyString()) {
 							array.set(0, new JSONString(((DualValue) dataElement).getKeyString()));
-
 						} else {
 							array.set(0, new JSONNumber(((DualValue) dataElement).getKeyNumber().doubleValue()));
-
 						}
 
-						array.set(1, new JSONNumber(((DualValue) dataElement).getValue().doubleValue()));
+						if (((DualValue) dataElement).getValue() != null) {
+							array.set(1, new JSONNumber(((DualValue) dataElement).getValue().doubleValue()));
+						} else {
+							array.set(1, null);
+						}
 
 						jso.set(i, array);
 					} else if (dataElement instanceof OhlcData) {
