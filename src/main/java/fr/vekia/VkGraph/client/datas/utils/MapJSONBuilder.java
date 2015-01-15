@@ -53,7 +53,21 @@ public class MapJSONBuilder {
 	 * @param value
 	 *            the JSON Value.
 	 */
-	public void store(String key, String value) {
+	public void store(String key, Object value) {
+		if (value instanceof String) {
+			dispatchString(key, (String) value);
+		} else if (value instanceof JavaScriptObject) {
+			dispatchJavascript(key, (JavaScriptObject) value);
+		} else {
+			throw new IllegalArgumentException("Type not yet supported in options");
+		}
+	}
+
+	private void dispatchJavascript(String key, JavaScriptObject value) {
+		jso.put(key, new JSONObject(value));
+	}
+
+	private void dispatchString(String key, String value) {
 		String buildingValue = value;
 
 		if (buildingValue.startsWith(JQPLOT_PATTERN)) {
@@ -243,8 +257,8 @@ public class MapJSONBuilder {
 	 * @param value
 	 *            the JSON SubOption Values map.
 	 */
-	public void putAllOptions(Map<SubOption, String> value) {
-		for (Entry<SubOption, String> entryOptions : value.entrySet()) {
+	public void putAllOptions(Map<SubOption, ?> value) {
+		for (Entry<SubOption, ?> entryOptions : value.entrySet()) {
 			if (entryOptions.getKey() != null && entryOptions.getValue() != null) {
 				store(entryOptions.getKey().name(), entryOptions.getValue());
 			}
@@ -285,6 +299,7 @@ public class MapJSONBuilder {
 
 				if (jso.get(key.name()).isObject().containsKey(subOption.getKey().name())) {
 					for (Entry<SubOption, String> subsubOptions : subOption.getValue().entrySet()) {
+						// TODO Check this test ! Should be subOption test and not subsubOption.
 						if (!jso.get(key.name()).isObject().containsKey(subsubOptions.getKey().name())) {
 							try {
 								jso.get(key.name()).isObject().get(subsubOptions.getKey().name()).isObject().put(subsubOptions.getKey().name(), JSONParser.parseLenient(subsubOptions.getValue()));
@@ -316,11 +331,13 @@ public class MapJSONBuilder {
 	 *            the JSON subSubOption Values map.
 	 */
 	public void putAllSubOptions(Map<SubOption, Map<SubOption, String>> value) {
-		for (Entry<SubOption, Map<SubOption, String>> entryOptions : value.entrySet()) {
-			if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
-				MapJSONBuilder builder = new MapJSONBuilder();
-				builder.putAllOptions(entryOptions.getValue());
-				jso.put(entryOptions.getKey().name(), builder.getJso());
+		if (value != null) {
+			for (Entry<SubOption, Map<SubOption, String>> entryOptions : value.entrySet()) {
+				if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
+					MapJSONBuilder builder = new MapJSONBuilder();
+					builder.putAllOptions(entryOptions.getValue());
+					jso.put(entryOptions.getKey().name(), builder.getJso());
+				}
 			}
 		}
 	}
@@ -333,5 +350,67 @@ public class MapJSONBuilder {
 	 */
 	public void addSeriesData(JSONArray seriesData) {
 		jso.put(ChartOption.series.name(), seriesData);
+	}
+
+	public void putAllChartSubOptionInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> value) {
+		if (value != null) {
+			for (Entry<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> entryOptions : value.entrySet()) {
+					if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
+						storeSubOptionsJavascript(entryOptions.getKey(), entryOptions.getValue());
+					}
+			}
+		}
+	}
+
+	/**
+	 * Store all subSubOption on JSON value.
+	 * 
+	 * @param value
+	 *            the JSON subSubOption Values map.
+	 */
+	public void putAllSubOptionsInJavascript(Map<SubOption, Map<SubOption, JavaScriptObject>> value) {
+		if (value != null) {
+			for (Entry<SubOption, Map<SubOption, JavaScriptObject>> entryOptions : value.entrySet()) {
+				if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
+					MapJSONBuilder builder = new MapJSONBuilder();
+					builder.putAllOptions(entryOptions.getValue());
+					jso.put(entryOptions.getKey().name(), builder.getJso());
+				}
+			}
+		}
+	}
+
+	/**
+	 * Store all chart keys on JSON value.
+	 * 
+	 * @param key
+	 *            the {@link ChartOption} key
+	 * @param value
+	 *            the JSON SubOption Values map.
+	 */
+	private void storeSubOptionsJavascript(ChartOption key, Map<SubOption, Map<SubOption, JavaScriptObject>> value) {
+		MapJSONBuilder builder = new MapJSONBuilder();
+		builder.putAllSubOptionsInJavascript(value);
+		if (!jso.containsKey(key.name())) {
+			jso.put(key.name(), builder.getJso());
+		} else {
+			for (Entry<SubOption, Map<SubOption, JavaScriptObject>> subOption : value.entrySet()) {
+
+				if (jso.get(key.name()).isObject().containsKey(subOption.getKey().name())) {
+					for (Entry<SubOption, JavaScriptObject> subsubOptions : subOption.getValue().entrySet()) {
+						if (!jso.get(key.name()).isObject().get(subOption.getKey().name()).isObject().containsKey(subsubOptions.getKey().name())) {
+							jso.get(key.name()).isObject().get(subOption.getKey().name()).isObject().put(subsubOptions.getKey().name(), new JSONObject(subsubOptions.getValue()));
+						} else {
+							jso.get(key.name()).isObject().put(subsubOptions.getKey().name(), new JSONObject(subsubOptions.getValue()));
+						}
+					}
+				} else {
+					MapJSONBuilder builder2 = new MapJSONBuilder();
+					builder2.putAllOptions(subOption.getValue());
+					jso.get(key.name()).isObject().put(subOption.getKey().name(), builder2.getJso());
+				}
+			}
+
+		}
 	}
 }

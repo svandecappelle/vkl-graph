@@ -1,5 +1,6 @@
 package fr.vekia.VkGraph.client.charts;
 
+
 public class StairsChart<T> extends LineChart<T> {
 
 	/**
@@ -17,4 +18,5 @@ public class StairsChart<T> extends LineChart<T> {
 		super(i18nFields);
 		super.setRenderer(RenderersEnum.Stairs);
 	}
+
 }

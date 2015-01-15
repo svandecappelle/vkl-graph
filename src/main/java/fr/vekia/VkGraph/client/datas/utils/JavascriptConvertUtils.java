@@ -24,6 +24,7 @@ import com.google.gwt.json.client.JSONValue;
 
 import fr.vekia.VkGraph.client.datas.OptionSerie;
 import fr.vekia.VkGraph.client.datas.SeriesData;
+import fr.vekia.VkGraph.client.options.FunctionOption;
 import fr.vekia.VkGraph.client.options.SubOption;
 
 /**
@@ -163,4 +164,16 @@ public final class JavascriptConvertUtils {
 	private static JavaScriptObject eval(String value) {
 		return RendererFactory.getRendererInstance(value);
 	}
+
+	public static JavaScriptObject toFunction(FunctionOption functionOption) {
+		return convertToJavascriptFunction(functionOption);
+	}
+	
+	// @formatter:off
+	public static native JavaScriptObject convertToJavascriptFunction(FunctionOption functionOption)/*-{
+		return function (){
+			return functionOption.@fr.vekia.VkGraph.client.options.FunctionOption::execute([Ljava/lang/Object;)(arguments);
+		};
+	}-*/;
+	// @formatter:on
 }

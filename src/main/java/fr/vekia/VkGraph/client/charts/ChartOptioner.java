@@ -11,6 +11,8 @@ package fr.vekia.VkGraph.client.charts;
 
 import java.util.Map;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 import fr.vekia.VkGraph.client.options.ChartOption;
 import fr.vekia.VkGraph.client.options.SubOption;
 
@@ -29,6 +31,11 @@ public class ChartOptioner {
 	private Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped;
 	// options {option: {sub-option : {sub-sub-option: value}}}
 	private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped;
+
+	// in javascript
+	// options {option: {sub-option : {sub-sub-option: value}}}
+	private Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMappedInJavascript;
+	private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> subSubSubOptionsMappedInJavascript;
 
 	/**
 	 * @return the optionsMapped
@@ -73,6 +80,22 @@ public class ChartOptioner {
 	 */
 	protected void setSubSubSubOptionsMapped(Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped) {
 		this.subSubSubOptionsMapped = subSubSubOptionsMapped;
+	}
+
+	protected void setSubSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> subSubSubOptionsMappedInJavascript) {
+		this.subSubSubOptionsMappedInJavascript = subSubSubOptionsMappedInJavascript;
+	}
+
+	protected Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> getSubSubSubOptionsMappedInJavascript() {
+		return subSubSubOptionsMappedInJavascript;
+	}
+
+	public Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> getSubSubOptionsMappedInJavascript() {
+		return subSubOptionsMappedInJavascript;
+	}
+
+	public void setSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMappedInJavascript) {
+		this.subSubOptionsMappedInJavascript = subSubOptionsMappedInJavascript;
 	}
 
 	/**

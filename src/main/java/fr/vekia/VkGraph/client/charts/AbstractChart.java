@@ -13,6 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 
@@ -23,6 +24,7 @@ import fr.vekia.VkGraph.client.datas.SeriesData;
 import fr.vekia.VkGraph.client.datas.utils.DataModeler;
 import fr.vekia.VkGraph.client.datas.utils.JavascriptConvertUtils;
 import fr.vekia.VkGraph.client.options.ChartOption;
+import fr.vekia.VkGraph.client.options.FunctionOption;
 import fr.vekia.VkGraph.client.options.SubOption;
 
 /**
@@ -340,6 +342,45 @@ public class AbstractChart<T> extends Chart<T> {
 			changeProperty(array.isArray(), option.name(), subOption.name(), subSubOption.name());
 		}
 	}
+	
+	/**
+	 * @param option
+	 * @param subOption
+	 * @param subSubOption
+	 * @param value
+	 */
+	public final void setOption(ChartOption option, SubOption subOption, SubOption subSubOption, JavaScriptObject value) {
+		if (!isInjected()) {
+			Map<SubOption, Map<SubOption, JavaScriptObject>> optionsSeries;
+			if (getChartOptionner().getSubSubOptionsMappedInJavascript() == null) {
+				setSubSubOptionsMappedInJavascript(new HashMap<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>());
+			}
+			
+			if (getChartOptionner().getSubSubOptionsMappedInJavascript().containsKey(option)) {
+				optionsSeries = getChartOptionner().getSubSubOptionsMappedInJavascript().get(option);
+
+				if (optionsSeries.containsKey(subOption)) {
+					Map<SubOption, JavaScriptObject> subSubOptions = optionsSeries.get(subOption);
+					subSubOptions.put(subSubOption, value);
+				} else {
+					Map<SubOption, JavaScriptObject> subsubOptionMapCreated = new HashMap<SubOption, JavaScriptObject>();
+					optionsSeries.put(subOption, subsubOptionMapCreated);
+					subsubOptionMapCreated.put(subSubOption, value);
+					optionsSeries.put(subOption, subsubOptionMapCreated);
+				}
+
+			} else {
+				optionsSeries = new HashMap<SubOption, Map<SubOption, JavaScriptObject>>();
+				getChartOptionner().getSubSubOptionsMappedInJavascript().put(option, optionsSeries);
+
+				Map<SubOption, JavaScriptObject> subsubOptionMapCreated = new HashMap<SubOption, JavaScriptObject>();
+				subsubOptionMapCreated.put(subSubOption, value);
+				optionsSeries.put(subOption, subsubOptionMapCreated);
+			}
+		}else{
+			changeProperty(value, option.name(), subOption.name(), subSubOption.name());
+		}
+	}
 
 	/**
 	 * @param option
@@ -441,6 +482,14 @@ public class AbstractChart<T> extends Chart<T> {
 			setOption(option, subOption, subSubOption, value);
 		} else {
 			changeProperty(value, option.name(), subOption.name(), subSubOption.name());
+		}
+	}
+	
+	public void setFunctionOption(ChartOption option, SubOption subOption, SubOption subSubOption, FunctionOption functionOption) {
+		if (!isInjected()) {
+			setOption(option, subOption, subSubOption, JavascriptConvertUtils.toFunction(functionOption));
+//		} else {
+//			changeProperty(functionOption, option.name(), subOption.name(), subSubOption.name());
 		}
 	}
 

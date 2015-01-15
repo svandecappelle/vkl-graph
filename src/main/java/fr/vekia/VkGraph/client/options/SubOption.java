@@ -68,6 +68,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
 	fontFamily(OptionType.STRING, ChartOption.title),
 	fontSize(OptionType.STRING, ChartOption.title),
 	format(xformat, yformat),
+	formatter(SubOption.xaxis, SubOption.yaxis),
 	formatString(ChartOption.axes),
 	gridLineColor(ChartOption.grid),
 	gridLineWidth(ChartOption.grid),
