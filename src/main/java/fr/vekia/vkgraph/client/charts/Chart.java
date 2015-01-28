@@ -327,9 +327,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 			chartJavascript.activateTheme(themeName);
 		}
 		// plugins JqPlot reset to false prevent any other chart added to DOM.
-		if(this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()){
+		if(this.@fr.vekia.vkgraph.client.charts.Chart::isFullScreenActivated()()){
 			var screener = new Fullscreener(elementId+"-VkGraph", bar);
-			this.@fr.vekia.VkGraph.client.charts.Chart::isFullScreenActivated()()
+			this.@fr.vekia.vkgraph.client.charts.Chart::isFullScreenActivated()()
 			screener.bind();
 		}
 		$wnd.jQuery.jqplot.config.enablePlugins = false;

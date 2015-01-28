@@ -22,13 +22,13 @@ public abstract class FunctionOption {
 	public native Object execute(Object[] arguments)/*-{
 		var argumentsSize = arguments.length;
 		
-		this.@fr.vekia.VkGraph.client.options.FunctionOption::init(I)(argumentsSize);
+		this.@fr.vekia.vkgraph.client.options.FunctionOption::init(I)(argumentsSize);
 		
 		for(var i=0; i<argumentsSize; ++i) {
 	    	var arguement = arguments[i];
-	    	this.@fr.vekia.VkGraph.client.options.FunctionOption::setArgument(ILjava/lang/Object;)(i, arguement);
+	    	this.@fr.vekia.vkgraph.client.options.FunctionOption::setArgument(ILjava/lang/Object;)(i, arguement);
 	    }
-		return this.@fr.vekia.VkGraph.client.options.FunctionOption::dispatcher()();
+		return this.@fr.vekia.vkgraph.client.options.FunctionOption::dispatcher()();
 	}-*/;
 	// @formatter:on
 }

@@ -1,6 +1,5 @@
 package fr.vekia.vkgraph.client.options;
 
-import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,7 +11,7 @@ import java.util.List;
  *          {@inheritDoc} A JqPlot chart Sub option.
  */
 @SuppressWarnings("squid:S00115")
-public enum SubOption implements IsOption, HasType, Serializable {
+public enum SubOption implements IsOption, HasType {
 	rendererOptions(ChartOption.axesDefaults, ChartOption.seriesDefaults, ChartOption.grid),
 	objects(ChartOption.canvasOverlay),
 	dragable(OptionType.BOOLEAN, ChartOption.series),
@@ -159,8 +158,6 @@ public enum SubOption implements IsOption, HasType, Serializable {
 	private boolean hasChildren;
 	private IsOption[] parent;
 	private OptionType typeOption;
-
-	private static final long serialVersionUID = 1905141950251207L;
 
 	/**
 	 * Default constructor. The parameter is only to create on the future a

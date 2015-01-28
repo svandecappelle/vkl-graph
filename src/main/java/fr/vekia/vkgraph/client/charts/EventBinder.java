@@ -64,12 +64,12 @@ public class EventBinder {
 	    	var startedXDrag;
 	    	
 	    	$wnd.jQuery(elementId).bind("jqplotClick", function(ev, gridpos, datapos, neighbor, plot) {
-	      	var eventData = @fr.vekia.VkGraph.client.charts.events.NativeEventObject::new()();
+	      	var eventData = @fr.vekia.vkgraph.client.charts.events.NativeEventObject::new()();
 	      	var yDragStop =  Math.round(datapos.yaxis*Math.pow(10,0))/Math.pow(10,0);
 	      	
-	            eventData.@fr.vekia.VkGraph.client.charts.events.NativeEventObject::setX(I)(startedXDrag);
-	            eventData.@fr.vekia.VkGraph.client.charts.events.NativeEventObject::setY(I)(yDragStop);
-	            event.@fr.vekia.VkGraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/VkGraph/client/charts/events/EventObject;)(eventData); 
+	            eventData.@fr.vekia.vkgraph.client.charts.events.NativeEventObject::setX(I)(startedXDrag);
+	            eventData.@fr.vekia.vkgraph.client.charts.events.NativeEventObject::setY(I)(yDragStop);
+	            event.@fr.vekia.vkgraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/EventObject;)(eventData); 
 	            });
 	            
 	            
@@ -85,10 +85,10 @@ public class EventBinder {
 	
 	
 	$wnd.jQuery(elementId).bind(eventName, function(ev, gridpos, datapos, neighbor, plot) {
-	var eventData = @fr.vekia.VkGraph.client.charts.events.NativeEventObject::new()();
-	    eventData.@fr.vekia.VkGraph.client.charts.events.NativeEventObject::setX(I)(datapos.xaxis);
-	    eventData.@fr.vekia.VkGraph.client.charts.events.NativeEventObject::setY(I)(datapos.yaxis);
-	    event.@fr.vekia.VkGraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/VkGraph/client/charts/events/EventObject;)(eventData); 
+	var eventData = @fr.vekia.vkgraph.client.charts.events.NativeEventObject::new()();
+	    eventData.@fr.vekia.vkgraph.client.charts.events.NativeEventObject::setX(I)(datapos.xaxis);
+	    eventData.@fr.vekia.vkgraph.client.charts.events.NativeEventObject::setY(I)(datapos.yaxis);
+	    event.@fr.vekia.vkgraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/EventObject;)(eventData); 
 	    });
 	    
 	    }
@@ -105,11 +105,11 @@ public class EventBinder {
 	private native void bind5(JqPlotEvent event, String eventName, String elementId)
 	/*-{
 	$wnd.jQuery(elementId).bind(eventName, function(ev, seriesIndex, pointIndex, dataPoint, dataAbstr) {
-	    var eventData = @fr.vekia.VkGraph.client.charts.events.EventObject::new()();
-	    eventData.@fr.vekia.VkGraph.client.charts.events.EventObject::setSeriesIndex(I)(seriesIndex);
-	    eventData.@fr.vekia.VkGraph.client.charts.events.EventObject::setPointIndex(I)(pointIndex);
-	    eventData.@fr.vekia.VkGraph.client.charts.events.EventObject::setValue(Ljava/lang/Object;)(dataPoint);
-	    event.@fr.vekia.VkGraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/VkGraph/client/charts/events/EventObject;)(eventData);
+	    var eventData = @fr.vekia.vkgraph.client.charts.events.EventObject::new()();
+	    eventData.@fr.vekia.vkgraph.client.charts.events.EventObject::setSeriesIndex(I)(seriesIndex);
+	    eventData.@fr.vekia.vkgraph.client.charts.events.EventObject::setPointIndex(I)(pointIndex);
+	    eventData.@fr.vekia.vkgraph.client.charts.events.EventObject::setValue(Ljava/lang/Object;)(dataPoint);
+	    event.@fr.vekia.vkgraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/EventObject;)(eventData);
 	});
 
 	}-*/;
@@ -129,7 +129,7 @@ public class EventBinder {
 		.bind(
 			eventName,
 			function(ev) {
-			   event.@fr.vekia.VkGraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/VkGraph/client/charts/events/EventObject;)(null);
+			   event.@fr.vekia.vkgraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/EventObject;)(null);
 			});
 
 	}-*/;
@@ -149,8 +149,8 @@ public class EventBinder {
 		.bind(
 			eventName,
 			function(ev) {
-			    var eventData = @fr.vekia.VkGraph.client.charts.events.SimpleEventObject::new()();
-			    event.@fr.vekia.VkGraph.client.charts.events.ChartSimpleEvent::onEvent(Lfr/vekia/VkGraph/client/charts/events/SimpleEventObject;)(eventData);
+			    var eventData = @fr.vekia.vkgraph.client.charts.events.SimpleEventObject::new()();
+			    event.@fr.vekia.vkgraph.client.charts.events.ChartSimpleEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/SimpleEventObject;)(eventData);
 			});
 
 	}-*/;
@@ -166,11 +166,11 @@ public class EventBinder {
 	/*-{
 
 	$wnd.jQuery(elementId).bind(eventName, function(ev, seriesIndex, pointIndex, dataPoint) {
-	var eventData = @fr.vekia.VkGraph.client.charts.events.EventObject::new()();
-	    eventData.@fr.vekia.VkGraph.client.charts.events.EventObject::setSeriesIndex(I)(seriesIndex);
-	    eventData.@fr.vekia.VkGraph.client.charts.events.EventObject::setPointIndex(I)(pointIndex);
-	    eventData.@fr.vekia.VkGraph.client.charts.events.EventObject::setValue(Ljava/lang/Object;)(dataPoint);
-	    event.@fr.vekia.VkGraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/VkGraph/client/charts/events/EventObject;)(eventData);
+	var eventData = @fr.vekia.vkgraph.client.charts.events.EventObject::new()();
+	    eventData.@fr.vekia.vkgraph.client.charts.events.EventObject::setSeriesIndex(I)(seriesIndex);
+	    eventData.@fr.vekia.vkgraph.client.charts.events.EventObject::setPointIndex(I)(pointIndex);
+	    eventData.@fr.vekia.vkgraph.client.charts.events.EventObject::setValue(Ljava/lang/Object;)(dataPoint);
+	    event.@fr.vekia.vkgraph.client.charts.events.ChartEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/EventObject;)(eventData);
 	});
 
 	}-*/;

@@ -1,6 +1,5 @@
 package fr.vekia.vkgraph.client.datas;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -11,12 +10,7 @@ import java.util.List;
  *          {@inheritDoc} An utility class to load data on chart.
  */
 @SuppressWarnings("squid:S1948")
-public class DataGraph<T> implements Serializable {
-
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = 1334327499295737663L;
+public class DataGraph<T> {
 
 	private List<T> data;
 	private boolean multiple;
