@@ -18,6 +18,7 @@ import java.io.Serializable;
  * 
  *          {@inheritDoc} The chart available options.
  */
+@SuppressWarnings("squid:S00115")
 public enum ChartOption implements IsOption, HasType, Serializable {
 	seriesColors,
 	stackSeries,

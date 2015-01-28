@@ -16,6 +16,7 @@ package fr.vekia.vkgraph.client.charts;
  * 
  *          {@inheritDoc} The list of the JqPlot available Renderer.
  */
+@SuppressWarnings("squid:S00115")
 public enum RenderersEnum {
 
 	Stairs("$.jqplot.StairsRenderer"),

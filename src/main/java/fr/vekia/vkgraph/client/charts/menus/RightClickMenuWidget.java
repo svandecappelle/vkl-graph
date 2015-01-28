@@ -31,7 +31,7 @@ import com.google.gwt.user.client.ui.Widget;
  * 
  */
 public class RightClickMenuWidget extends SimplePanel implements RightClickListener {
-	private static final int zindex = 9999999;
+	private static final int Z_INDEX = 9999999;
 	private final PopupPanel popupPanel = new PopupPanel(true);
 	private MenuBar popupMenuBar = new MenuBar(true);
 	private RightClickListener listener;
@@ -54,7 +54,7 @@ public class RightClickMenuWidget extends SimplePanel implements RightClickListe
 		this.items = new HashMap<MenuCommands, MenuItem>();
 		this.listener = this;
 		popupPanel.setStylePrimaryName("vkl-RightClicSelectionMenu");
-		popupPanel.getElement().getStyle().setZIndex(zindex);
+		popupPanel.getElement().getStyle().setZIndex(Z_INDEX);
 		popupMenuBar.setAutoOpen(true);
 		sinkEvents(Event.ONCONTEXTMENU);
 	}
