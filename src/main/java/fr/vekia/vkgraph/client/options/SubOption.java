@@ -20,6 +20,7 @@ import java.util.List;
  * 
  *          {@inheritDoc} A JqPlot chart Sub option.
  */
+@SuppressWarnings("squid:S00115")
 public enum SubOption implements IsOption, HasType, Serializable {
 	rendererOptions(ChartOption.axesDefaults, ChartOption.seriesDefaults, ChartOption.grid),
 	objects(ChartOption.canvasOverlay),
