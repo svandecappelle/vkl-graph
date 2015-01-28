@@ -9,7 +9,7 @@ var git = require("gift"),
 
 var repoPath = __dirname.concat('/vkl-graph-deps');
 var repUrl = "https://github.com/svandecappelle/jQPlot";
-var destinationPath = __dirname.concat("/src/main/resources/fr/vekia/VkGraph/public/jqplot/");
+var destinationPath = __dirname.concat("/src/main/resources/fr/vekia/vkgraph/public/jqplot/");
 
 logger.info("Fetching jQplot source repository");
 
