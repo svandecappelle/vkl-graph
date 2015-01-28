@@ -29,6 +29,7 @@ public class HorizontalLine extends Line {
 
 	}
 
+	@Override
 	public SubOption getType() {
 		if (this.isDashed()) {
 			return SubOption.dashedHorizontalLine;

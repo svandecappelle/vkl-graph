@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/options/SubOption.java $
- * $Id: SubOption.java 51 2012-09-27 15:52:22Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-27 17:52:22 +0200 (jeu., 27 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.options;
 
 import java.io.Serializable;
@@ -197,9 +188,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
 		return Arrays.asList(parent);
 	}
 
-	/**
-	 * @return the type
-	 */
+	@Override
 	public OptionType getType() {
 		return typeOption;
 	}

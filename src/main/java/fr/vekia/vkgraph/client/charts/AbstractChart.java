@@ -424,6 +424,7 @@ public class AbstractChart<T> extends Chart<T> {
 	/**
 	 * @param renderer
 	 */
+	@Override
 	public final void setRenderer(RenderersEnum renderer) {
 		super.setRenderer(renderer);
 		this.setSeriesDefaultOption(SubOption.renderer, renderer.getValueRenderer());

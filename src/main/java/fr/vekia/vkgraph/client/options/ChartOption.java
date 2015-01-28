@@ -71,6 +71,7 @@ public enum ChartOption implements IsOption, HasType, Serializable {
 	/**
 	 * @return the type
 	 */
+	@Override
 	public OptionType getType() {
 		return type;
 	}
@@ -78,6 +79,7 @@ public enum ChartOption implements IsOption, HasType, Serializable {
 	/**
 	 * @return the hasChildren
 	 */
+	@Override
 	public boolean hasChildren() {
 		return hasChildren;
 	}

@@ -29,6 +29,7 @@ public class Rectangle extends OptionSerie implements CanvasObject {
 
 	}
 
+	@Override
 	public SubOption getType() {
 		return SubOption.rectangle;
 	}

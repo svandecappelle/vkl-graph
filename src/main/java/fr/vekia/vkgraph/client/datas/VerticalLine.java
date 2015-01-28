@@ -29,6 +29,7 @@ public class VerticalLine extends Line {
 
 	}
 
+	@Override
 	public SubOption getType() {
 		if (this.isDashed()) {
 			return SubOption.dashedVerticalLine;

@@ -23,6 +23,7 @@ public abstract class ChartSimpleEvent implements JqPlotEvent {
 	 * 
 	 * @return the GWT event type.
 	 */
+	@Override
 	public abstract EventType getEventType();
 
 	/**
