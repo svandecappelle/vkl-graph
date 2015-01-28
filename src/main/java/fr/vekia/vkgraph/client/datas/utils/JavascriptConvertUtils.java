@@ -45,9 +45,9 @@ public final class JavascriptConvertUtils {
 			if (optionData instanceof Integer) {
 				arrayData.set(i, new JSONNumber((Integer) optionData));
 			} else if (optionData instanceof Double) {
-				arrayData.set(i, new JSONNumber(((Double) optionData)));
+				arrayData.set(i, new JSONNumber((Double) optionData));
 			} else if (optionData instanceof Float) {
-				arrayData.set(i, new JSONNumber(((Float) optionData)));
+				arrayData.set(i, new JSONNumber((Float) optionData));
 			} else if (optionData instanceof Number) {
 				arrayData.set(i, new JSONNumber(((Number) optionData).doubleValue()));
 			} else {

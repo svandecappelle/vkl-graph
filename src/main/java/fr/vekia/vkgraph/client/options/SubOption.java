@@ -159,6 +159,8 @@ public enum SubOption implements IsOption, HasType, Serializable {
 	private boolean hasChildren;
 	private IsOption[] parent;
 	private OptionType typeOption;
+	
+	private static final long serialVersionUID = 1905141950251207L;
 
 	/**
 	 * Default constructor. The parameter is only to create on the future a

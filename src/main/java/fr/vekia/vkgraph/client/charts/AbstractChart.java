@@ -111,7 +111,7 @@ public class AbstractChart<T> extends Chart<T> {
 	@SuppressWarnings("unchecked")
 	public final void setDataGraph(DataGraph<T> data) {
 		if (data.isMultiple()) {
-			super.setListData(((List<List<T>>) data.getData()));
+			super.setListData((List<List<T>>) data.getData());
 		} else {
 			setDatasSimpleList((List<T>) data.getData());
 		}
@@ -342,7 +342,7 @@ public class AbstractChart<T> extends Chart<T> {
 			changeProperty(array.isArray(), option.name(), subOption.name(), subSubOption.name());
 		}
 	}
-	
+
 	/**
 	 * @param option
 	 * @param subOption
@@ -355,7 +355,7 @@ public class AbstractChart<T> extends Chart<T> {
 			if (getChartOptionner().getSubSubOptionsMappedInJavascript() == null) {
 				setSubSubOptionsMappedInJavascript(new HashMap<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>());
 			}
-			
+
 			if (getChartOptionner().getSubSubOptionsMappedInJavascript().containsKey(option)) {
 				optionsSeries = getChartOptionner().getSubSubOptionsMappedInJavascript().get(option);
 
@@ -377,7 +377,7 @@ public class AbstractChart<T> extends Chart<T> {
 				subsubOptionMapCreated.put(subSubOption, value);
 				optionsSeries.put(subOption, subsubOptionMapCreated);
 			}
-		}else{
+		} else {
 			changeProperty(value, option.name(), subOption.name(), subSubOption.name());
 		}
 	}
@@ -485,12 +485,23 @@ public class AbstractChart<T> extends Chart<T> {
 			changeProperty(value, option.name(), subOption.name(), subSubOption.name());
 		}
 	}
-	
+
+	/**
+	 * Important note: You cannot yet edit the JavaScript function after graph
+	 * is drawing
+	 * 
+	 * @param option
+	 *            Option-Chart
+	 * @param subOption
+	 *            SubOption
+	 * @param subSubOption
+	 *            SubSubOption
+	 * @param functionOption
+	 *            the function to call on property binding.
+	 */
 	public void setFunctionOption(ChartOption option, SubOption subOption, SubOption subSubOption, FunctionOption functionOption) {
 		if (!isInjected()) {
 			setOption(option, subOption, subSubOption, JavascriptConvertUtils.toFunction(functionOption));
-//		} else {
-//			changeProperty(functionOption, option.name(), subOption.name(), subSubOption.name());
 		}
 	}
 

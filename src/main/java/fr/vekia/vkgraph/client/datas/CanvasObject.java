@@ -9,6 +9,7 @@
  */
 package fr.vekia.vkgraph.client.datas;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,7 @@ import fr.vekia.vkgraph.client.options.SubOption;
  * 
  *          {@inheritDoc}
  */
-interface CanvasObject {
+interface CanvasObject extends Serializable{
 
 	/**
 	 * Return the option set on the series Options.

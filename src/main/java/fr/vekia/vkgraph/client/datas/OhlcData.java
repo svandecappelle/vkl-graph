@@ -9,6 +9,7 @@
  */
 package fr.vekia.vkgraph.client.datas;
 
+
 /**
  * @author svandecappelle
  * @since Jan 14, 2013. VklGraph version : 2.1
@@ -22,9 +23,9 @@ public class OhlcData implements GraphDataI {
 	 * SerialId For serialize
 	 */
 	private static final long serialVersionUID = 3778076121269507834L;
-	
-	private Object category;
-	private Object[] data;
+
+	private String category;
+	private Number[] data;
 
 	public OhlcData() {
 		super();
@@ -34,7 +35,7 @@ public class OhlcData implements GraphDataI {
 	 * Default constructor
 	 * 
 	 */
-	public OhlcData(Object key, Object... datas) {
+	public OhlcData(String key, Number... datas) {
 		this.category = key;
 		this.data = datas;
 	}
@@ -58,14 +59,14 @@ public class OhlcData implements GraphDataI {
 	 * @param data
 	 *            the data to set
 	 */
-	public void setData(Object[] data) {
+	public void setData(Number[] data) {
 		this.data = data;
 	}
 
 	/**
 	 * @return the data
 	 */
-	public final Object[] getData() {
+	public final Number[] getData() {
 		return data;
 	}
 

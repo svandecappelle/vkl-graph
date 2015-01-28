@@ -25,16 +25,18 @@ import fr.vekia.vkgraph.client.options.SubOption;
  */
 public class ChartOptioner {
 
-	// options {option: {sub-option : value}}
+	// 1- sub options in form : {option: {sub-option : value}}
 	private Map<ChartOption, Map<SubOption, String>> optionsMapped;
-	// options {option: {sub-option : {sub-sub-option: value}}}
+	// 2- sub-sub options in form : {option: {sub-option : {sub-sub-option: value}}}
 	private Map<ChartOption, Map<SubOption, Map<SubOption, String>>> subSubOptionsMapped;
-	// options {option: {sub-option : {sub-sub-option: value}}}
+	// 3- sub-sub-sub options in form : {option: {sub-option : {sub-sub-option: {sub-sub-sub-option: value}}}}
 	private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped;
 
 	// in javascript
-	// options {option: {sub-option : {sub-sub-option: value}}}
+	// sub-sub options javascript objects in form : {option: {sub-option : {sub-sub-option: value}}}
 	private Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMappedInJavascript;
+
+	// sub-sub-sub options javascript objects in form : {option: {sub-option : {sub-sub-option: {sub-sub-sub-option: value}}}}
 	private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> subSubSubOptionsMappedInJavascript;
 
 	/**

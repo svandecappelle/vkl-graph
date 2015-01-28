@@ -19,6 +19,7 @@ import java.util.List;
  * 
  *          {@inheritDoc} An utility class to load data on chart.
  */
+@SuppressWarnings("squid:S1948")
 public class DataGraph<T> implements Serializable {
 
 	/**

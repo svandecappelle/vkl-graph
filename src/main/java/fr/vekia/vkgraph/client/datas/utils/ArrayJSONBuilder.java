@@ -41,7 +41,7 @@ public class ArrayJSONBuilder<T> {
 					if (dataElement instanceof Number) {
 						jso.set(i, new JSONNumber(((Number) dataElement).doubleValue()));
 					} else if (dataElement instanceof String) {
-						jso.set(i, new JSONString(((String) dataElement)));
+						jso.set(i, new JSONString((String) dataElement));
 					} else if (dataElement instanceof DualValue) {
 
 						JSONArray array = new JSONArray();
@@ -66,8 +66,6 @@ public class ArrayJSONBuilder<T> {
 						array.set(2, new JSONNumber(((Number) ((OhlcData) dataElement).getData()[1]).doubleValue()));
 						array.set(3, new JSONNumber(((Number) ((OhlcData) dataElement).getData()[2]).doubleValue()));
 
-						// jso.set(i,
-						// JSONParser.parseStrict(dataElement.toString()));
 						jso.set(i, array);
 
 					} else {

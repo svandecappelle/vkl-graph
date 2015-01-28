@@ -98,7 +98,7 @@ public enum Theming {
 	private static MenuCommands[] dispach(Chart<?> chart, RightClickMenuWidget menu) {
 		ThemeActivator activator = new ThemeActivator(chart, menu);
 		List<MenuCommands> themes = new ArrayList<MenuCommands>();
-		boolean isPieThemeRequested = (chart.getRenderer() == RenderersEnum.Pie || chart.getRenderer() == RenderersEnum.Donut || chart.getRenderer() == RenderersEnum.Funnel);
+		boolean isPieThemeRequested = chart.getRenderer() == RenderersEnum.Pie || chart.getRenderer() == RenderersEnum.Donut || chart.getRenderer() == RenderersEnum.Funnel;
 
 		for (Theming theme : Theming.values()) {
 
