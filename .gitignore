@@ -3,3 +3,4 @@
 /.classpath
 /.project
 node_modules/
+sonar-project.properties
