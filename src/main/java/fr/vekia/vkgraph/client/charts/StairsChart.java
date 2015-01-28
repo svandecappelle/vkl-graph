@@ -1,6 +1,5 @@
 package fr.vekia.vkgraph.client.charts;
 
-
 public class StairsChart<T> extends LineChart<T> {
 
 	/**

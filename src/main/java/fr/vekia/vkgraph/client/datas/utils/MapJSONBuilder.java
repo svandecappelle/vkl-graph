@@ -25,9 +25,9 @@ import fr.vekia.vkgraph.client.options.SubOption;
  *          {@inheritDoc} A JSON object Builder Utility class.
  */
 public class MapJSONBuilder {
-	
+
 	private static final Logger LOGGER = Logger.getLogger("JSONBuilder");
-	
+
 	private JSONObject jso = new JSONObject();
 
 	private static final String RGB_PATTERN = "rgb";
@@ -148,7 +148,7 @@ public class MapJSONBuilder {
 			return JSONParser.parseLenient("[" + value + "]");
 		} catch (Exception e) {
 			LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
-			
+
 			for (String stringDataValue : value.split(", ")) {
 				try {
 					arrayData.set(i, new JSONNumber(Double.parseDouble(stringDataValue)));
@@ -300,7 +300,8 @@ public class MapJSONBuilder {
 
 				if (jso.get(key.name()).isObject().containsKey(subOption.getKey().name())) {
 					for (Entry<SubOption, String> subsubOptions : subOption.getValue().entrySet()) {
-						// TODO Check this test ! Should be subOption test and not subsubOption.
+						// TODO Check this test ! Should be subOption test and
+						// not subsubOption.
 						if (!jso.get(key.name()).isObject().containsKey(subsubOptions.getKey().name())) {
 							try {
 								jso.get(key.name()).isObject().get(subsubOptions.getKey().name()).isObject().put(subsubOptions.getKey().name(), JSONParser.parseLenient(subsubOptions.getValue()));
@@ -358,9 +359,9 @@ public class MapJSONBuilder {
 	public void putAllChartSubOptionInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> value) {
 		if (value != null) {
 			for (Entry<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> entryOptions : value.entrySet()) {
-					if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
-						storeSubOptionsJavascript(entryOptions.getKey(), entryOptions.getValue());
-					}
+				if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
+					storeSubOptionsJavascript(entryOptions.getKey(), entryOptions.getValue());
+				}
 			}
 		}
 	}

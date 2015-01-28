@@ -1,6 +1,5 @@
 package fr.vekia.vkgraph.client.charts;
 
-
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 30 août 2012. VklGraph version 1.2
@@ -30,6 +29,6 @@ public class Exporter {
 	}
 
 	private final native void download(String id) /*-{
-		$wnd.jQuery("#".concat(id)).jqplotSaveImage();	
-	}-*/;
+													$wnd.jQuery("#".concat(id)).jqplotSaveImage();	
+													}-*/;
 }

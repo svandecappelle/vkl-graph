@@ -13,7 +13,7 @@ abstract class Line extends OptionSerie implements CanvasObject {
 	 * SerialId For serialize
 	 */
 	private static final long serialVersionUID = -3857924215441614165L;
-	
+
 	private boolean dashed = false;
 
 	public Line() {

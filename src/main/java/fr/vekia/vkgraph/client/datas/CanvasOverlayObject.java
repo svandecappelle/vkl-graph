@@ -24,7 +24,6 @@ public class CanvasOverlayObject implements Serializable {
 	 */
 	private static final long serialVersionUID = -4819397730650698500L;
 
-	
 	private List<CanvasObject> lines;
 
 	/**

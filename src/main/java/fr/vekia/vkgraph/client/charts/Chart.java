@@ -42,7 +42,7 @@ import fr.vekia.vkgraph.client.options.SubOption;
 abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHandlers {
 
 	private static final Logger LOGGER = Logger.getLogger("Chart");
-	
+
 	private static final String DEFAULT_HEIGHT = "600px";
 	private static final String DEFAULT_WIDTH = "800px";
 	private static final int DESIGNER_PANEL_POSITION = -10000;

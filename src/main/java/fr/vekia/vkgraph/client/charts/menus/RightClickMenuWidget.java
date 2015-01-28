@@ -141,7 +141,7 @@ public class RightClickMenuWidget extends SimplePanel implements RightClickListe
 		MenuItem item = new MenuItem(command.getLabel(), true, command);
 		items.put(command, item);
 		item.addStyleName("popup-item");
-		if (command.hasClass()){
+		if (command.hasClass()) {
 			item.addStyleName(command.getClassname());
 		}
 		menu.addItem(item);

@@ -16,7 +16,7 @@ import fr.vekia.vkgraph.client.options.SubOption;
  * 
  *          {@inheritDoc}
  */
-interface CanvasObject extends Serializable{
+interface CanvasObject extends Serializable {
 
 	/**
 	 * Return the option set on the series Options.

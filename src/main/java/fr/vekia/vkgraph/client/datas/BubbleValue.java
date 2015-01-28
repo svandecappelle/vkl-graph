@@ -13,7 +13,7 @@ public class BubbleValue extends ComplexeValue {
 	 * SerialId For serialize
 	 */
 	private static final long serialVersionUID = -6116533853962567852L;
-	
+
 	private Number width;
 
 	public BubbleValue() {

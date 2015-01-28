@@ -27,7 +27,7 @@ public class OptionSerie implements Serializable {
 	 * SerialId For serialize
 	 */
 	private static final long serialVersionUID = -8409601771955698471L;
-	
+
 	private Map<SubOption, String> optionsMapped;
 	private Map<SubOption, Map<SubOption, String>> subSubOptionsMapped;
 	private Map<SubOption, Map<SubOption, JSONValue>> subSubOptionsMappedWithJson;

@@ -1,6 +1,5 @@
 package fr.vekia.vkgraph.client.datas;
 
-
 /**
  * @author svandecappelle
  * @since Jan 14, 2013. VklGraph version : 2.1

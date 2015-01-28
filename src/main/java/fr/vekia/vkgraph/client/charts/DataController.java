@@ -158,9 +158,9 @@ public class DataController<T> {
 		MapJSONBuilder builder = new MapJSONBuilder();
 		builder.putAllChartOption(this.chart.getChartOptionner().getOptionsMapped());
 		builder.putAllChartSubOption(this.chart.getChartOptionner().getSubSubOptionsMapped());
-		
+
 		builder.putAllChartSubOptionInJavascript(this.chart.getChartOptionner().getSubSubOptionsMappedInJavascript());
-		
+
 		builder.addSeriesData(this.getSeriesData());
 		return builder.getJso().getJavaScriptObject();
 	}
