@@ -1,17 +1,10 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/datas/utils/JavascriptConvertUtils.java $
- * $Id: JavascriptConvertUtils.java 37 2012-09-07 07:35:08Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-07 09:35:08 +0200 (ven., 07 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.datas.utils;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONArray;
@@ -29,12 +22,11 @@ import fr.vekia.vkgraph.client.options.SubOption;
 
 /**
  * @author Steeve Vandecappelle (SVA)
- * @since 25 mai 2012. GWTQuery Vekia Showcase
- * @version 1.0
  * 
- *          {@inheritDoc}
  */
 public final class JavascriptConvertUtils {
+
+	private static final Logger LOGGER = Logger.getLogger("Chart");
 
 	private JavascriptConvertUtils() {
 	}
@@ -146,6 +138,7 @@ public final class JavascriptConvertUtils {
 				try {
 					valueJso = JSONParser.parseLenient(value);
 				} catch (JSONException e) {
+					LOGGER.log(Level.FINE, "ParseLenient fails. Try with a simple string mapping:", e);
 					valueJso = new JSONString(value);
 				}
 			}
@@ -168,7 +161,7 @@ public final class JavascriptConvertUtils {
 	public static JavaScriptObject toFunction(FunctionOption functionOption) {
 		return convertToJavascriptFunction(functionOption);
 	}
-	
+
 	// @formatter:off
 	public static native JavaScriptObject convertToJavascriptFunction(FunctionOption functionOption)/*-{
 		return function (){

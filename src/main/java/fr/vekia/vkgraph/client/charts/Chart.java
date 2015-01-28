@@ -14,6 +14,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -48,6 +50,8 @@ import fr.vekia.vkgraph.client.options.SubOption;
  */
 abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHandlers {
 
+	private static final Logger LOGGER = Logger.getLogger("Chart");
+	
 	private static final String DEFAULT_HEIGHT = "600px";
 	private static final String DEFAULT_WIDTH = "800px";
 	private static final int DESIGNER_PANEL_POSITION = -10000;
@@ -236,6 +240,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 				this.theme = themeName;
 			}
 		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, "Activating theme: ", e);
 			GWT.log("Activation theme may be with error: " + e.getMessage());
 			JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
 		}
@@ -251,6 +256,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 				this.theme = themeName;
 			}
 		} catch (Exception e) {
+			LOGGER.log(Level.SEVERE, "Activating theme: ", e);
 			GWT.log("Activation theme may be with error: " + e.getMessage());
 			JsConsole.warn("W101TA", themeName, "Activation theme may be with error: " + e.getMessage());
 		}

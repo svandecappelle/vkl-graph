@@ -11,6 +11,8 @@ package fr.vekia.vkgraph.client.datas.utils;
 
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.json.client.JSONArray;
@@ -32,6 +34,9 @@ import fr.vekia.vkgraph.client.options.SubOption;
  *          {@inheritDoc} A JSON object Builder Utility class.
  */
 public class MapJSONBuilder {
+	
+	private static final Logger LOGGER = Logger.getLogger("JSONBuilder");
+	
 	private JSONObject jso = new JSONObject();
 
 	private static final String RGB_PATTERN = "rgb";
@@ -81,6 +86,7 @@ public class MapJSONBuilder {
 				try {
 					jso.put(key, JSONParser.parseStrict(buildingValue));
 				} catch (JSONException e) {
+					LOGGER.log(Level.FINE, "JSONParseStrict not allowed (system try another solution): ", e);
 					buildingValue = buildingValue.replaceFirst("\\[", "");
 					buildingValue = buildingValue.replaceFirst("\\]", "");
 
@@ -101,6 +107,7 @@ public class MapJSONBuilder {
 				try {
 					jso.put(key, JSONParser.parseStrict(buildingValue));
 				} catch (JSONException e) {
+					LOGGER.log(Level.FINE, "JSONParseStrict not allowed (system try another solution): ", e);
 					jso.put(key, new JSONString(buildingValue));
 				}
 			}
@@ -149,6 +156,8 @@ public class MapJSONBuilder {
 		try {
 			return JSONParser.parseLenient("[" + value + "]");
 		} catch (Exception e) {
+			LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
+			
 			for (String stringDataValue : value.split(", ")) {
 				try {
 					arrayData.set(i, new JSONNumber(Double.parseDouble(stringDataValue)));
@@ -242,6 +251,7 @@ public class MapJSONBuilder {
 						try {
 							jso.get(key.name()).isObject().put(entry.getKey().name(), JSONParser.parseLenient(entry.getValue()));
 						} catch (JSONException e) {
+							LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
 							jso.get(key.name()).isObject().put(entry.getKey().name(), new JSONString(entry.getValue()));
 						}
 					}
@@ -304,12 +314,14 @@ public class MapJSONBuilder {
 							try {
 								jso.get(key.name()).isObject().get(subsubOptions.getKey().name()).isObject().put(subsubOptions.getKey().name(), JSONParser.parseLenient(subsubOptions.getValue()));
 							} catch (JSONException e) {
+								LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
 								jso.get(key.name()).isObject().get(subsubOptions.getKey().name()).isObject().put(subsubOptions.getKey().name(), new JSONString(subsubOptions.getValue()));
 							}
 						} else {
 							try {
 								jso.get(key.name()).isObject().put(subsubOptions.getKey().name(), JSONParser.parseLenient(subsubOptions.getValue()));
 							} catch (JSONException e) {
+								LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
 								jso.get(key.name()).isObject().put(subsubOptions.getKey().name(), new JSONString(subsubOptions.getValue()));
 							}
 						}
