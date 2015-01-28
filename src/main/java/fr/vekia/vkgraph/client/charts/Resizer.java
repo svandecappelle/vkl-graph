@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/charts/Resizer.java $
- * $Id: Resizer.java 32 2012-08-30 13:58:24Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- *
- * Last change:
- * $Date: 2012-08-30 15:58:24 +0200 (jeu., 30 août 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.charts;
 
 import com.google.gwt.core.client.JavaScriptObject;

@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/charts/ChartRightMenuController.java $
- * $Id: ChartRightMenuController.java 37 2012-09-07 07:35:08Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- *
- * Last change:
- * $Date: 2012-09-07 09:35:08 +0200 (ven., 07 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.charts;
 
 import com.google.gwt.user.client.ui.Widget;

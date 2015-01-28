@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/options/IsOption.java $
- * $Id: IsOption.java 25 2012-08-16 14:04:01Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- *
- * Last change:
- * $Date: 2012-08-16 16:04:01 +0200 (jeu., 16 août 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.options;
 
 import java.io.Serializable;

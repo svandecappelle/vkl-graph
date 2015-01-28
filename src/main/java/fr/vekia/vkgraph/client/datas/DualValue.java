@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/datas/DualValue.java $
- * $Id: DualValue.java 36 2012-09-05 09:31:37Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-05 11:31:37 +0200 (mer., 05 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.datas;
 
 /**

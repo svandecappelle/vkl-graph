@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/datas/PeriodCalendar.java $
- * $Id: PeriodCalendar.java 52 2012-09-28 09:44:34Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- *
- * Last change:
- * $Date: 2012-09-28 11:44:34 +0200 (ven., 28 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.datas;
 
 import java.util.Date;

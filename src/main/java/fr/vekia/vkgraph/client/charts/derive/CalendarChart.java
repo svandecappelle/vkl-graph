@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/charts/derive/CalendarChart.java $
- * $Id: CalendarChart.java 52 2012-09-28 09:44:34Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- *
- * Last change:
- * $Date: 2012-09-28 11:44:34 +0200 (ven., 28 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.charts.derive;
 
 import java.util.ArrayList;

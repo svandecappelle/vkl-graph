@@ -1,12 +1,3 @@
-/*
- * File: $URL: https://vklgraph.googlecode.com/svn/trunk/src/main/java/fr/vekia/VkGraph/client/datas/OptionSerie.java $
- * $Id: OptionSerie.java 50 2012-09-26 15:52:23Z steeve.vandecappelle@gmail.com $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-26 17:52:23 +0200 (mer., 26 sept. 2012) $
- * $Author: steeve.vandecappelle@gmail.com $
- */
 package fr.vekia.vkgraph.client.datas;
 
 import java.io.Serializable;
@@ -20,7 +11,6 @@ import fr.vekia.vkgraph.client.charts.ChartOptioner;
 import fr.vekia.vkgraph.client.charts.NumberType;
 import fr.vekia.vkgraph.client.datas.utils.ArrayJSONBuilder;
 import fr.vekia.vkgraph.client.datas.utils.JavascriptConvertUtils;
-import fr.vekia.vkgraph.client.datas.utils.ProtectText;
 import fr.vekia.vkgraph.client.options.SubOption;
 
 /**

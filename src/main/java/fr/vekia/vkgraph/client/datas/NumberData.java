@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.vkgraph.client.datas;
 
 /**
