@@ -21,28 +21,35 @@ public abstract class FunctionOption {
         this.arguments[index] = argument;
     }
 
-    private Object dispatcher() {
+    /**
+     * This method is used by execute() JSNI native method to dispatch to java
+     * objects the execution stack.
+     * 
+     * @return the function option return.
+     */
+    protected Object dispatcher() {
+        // this method is used by execute() JSNI native method to dispatch java
+        // call.
         return onExecute(this.arguments);
     }
 
+    /**
+     * On execute function from JavaScript side. Typically a formatter.
+     * 
+     * @param arguments
+     *            arguments executed with.
+     * @return the Object need to return from function.
+     */
     // @formatter:off
-	/**
-	 * On execute function from JavaScript side.
-	 * Typically a formatter.
-	 * 
-	 * @param arguments arguments executed with.
-	 * @return the Object need to return from function.
-	 */
-	public native Object execute(Object[] arguments)/*-{
-		var argumentsSize = arguments.length;
-		
-		this.@fr.vekia.vkgraph.client.options.FunctionOption::init(I)(argumentsSize);
-		
-		for(var i=0; i<argumentsSize; ++i) {
-	    	var arguement = arguments[i];
-	    	this.@fr.vekia.vkgraph.client.options.FunctionOption::setArgument(ILjava/lang/Object;)(i, arguement);
-	    }
-		return this.@fr.vekia.vkgraph.client.options.FunctionOption::dispatcher()();
-	}-*/;
-	// @formatter:on
+    public native Object execute(Object[] arguments)/*-{
+        var argumentsSize = arguments.length;
+        this.@fr.vekia.vkgraph.client.options.FunctionOption::init(I)(argumentsSize);
+        
+        for(var i=0; i<argumentsSize; ++i) {
+            var arguement = arguments[i];
+            this.@fr.vekia.vkgraph.client.options.FunctionOption::setArgument(ILjava/lang/Object;)(i, arguement);
+        }
+        return this.@fr.vekia.vkgraph.client.options.FunctionOption::dispatcher()();
+    }-*/;
+    // @formatter:on
 }

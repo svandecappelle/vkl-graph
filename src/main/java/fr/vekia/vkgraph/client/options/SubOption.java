@@ -1,5 +1,6 @@
 package fr.vekia.vkgraph.client.options;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @version 1.3.0
  */
 @SuppressWarnings("squid:S00115")
-public enum SubOption implements IsOption, HasType {
+public enum SubOption implements IsOption, HasType, Serializable {
     rendererOptions(ChartOption.axesDefaults, ChartOption.seriesDefaults, ChartOption.grid),
     objects(ChartOption.canvasOverlay),
     dragable(OptionType.BOOLEAN, ChartOption.series),

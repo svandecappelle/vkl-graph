@@ -35,6 +35,39 @@ public class ChartOptioner {
     private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> subSubSubOptionsMappedInJavascript;
 
     /**
+     * Get String number value of a numerical java object.
+     * 
+     * @param value
+     *            the value to format.
+     * @param typeOfValue
+     *            the type in which format.
+     * @return the formatted number.
+     */
+    public final static String getStringNumberValue(Number value, NumberType typeOfValue) {
+        String output = null;
+        switch (typeOfValue) {
+        case DOUBLE:
+            output = Double.toString(value.doubleValue());
+            break;
+        case INT:
+            output = Integer.toString(value.intValue());
+            break;
+        case FLOAT:
+            output = Float.toString(value.floatValue());
+            break;
+        case LONG:
+            output = Long.toString(value.longValue());
+            break;
+        case SHORT:
+            output = Short.toString(value.shortValue());
+            break;
+        default:
+            break;
+        }
+        return output;
+    }
+
+    /**
      * @return the optionsMapped
      */
     public Map<ChartOption, Map<SubOption, String>> getOptionsMapped() {
@@ -93,33 +126,5 @@ public class ChartOptioner {
 
     public void setSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMappedInJavascript) {
         this.subSubOptionsMappedInJavascript = subSubOptionsMappedInJavascript;
-    }
-
-    /**
-     * 
-     */
-    public final static String getStringNumberValue(Number value, NumberType typeOfValue) {
-        String output = null;
-        switch (typeOfValue) {
-        case DOUBLE:
-            output = Double.toString(value.doubleValue());
-            break;
-        case INT:
-            output = Integer.toString(value.intValue());
-            break;
-        case FLOAT:
-            output = Float.toString(value.floatValue());
-            break;
-        case LONG:
-            output = Long.toString(value.longValue());
-            break;
-        case SHORT:
-            output = Short.toString(value.shortValue());
-            break;
-        default:
-            break;
-
-        }
-        return output;
     }
 }

@@ -163,10 +163,10 @@ public final class JavascriptConvertUtils {
     }
 
     // @formatter:off
-	public static native JavaScriptObject convertToJavascriptFunction(FunctionOption functionOption)/*-{
-		return function (){
-			return functionOption.@fr.vekia.vkgraph.client.options.FunctionOption::execute([Ljava/lang/Object;)(arguments);
-		};
-	}-*/;
-	// @formatter:on
+    public static native JavaScriptObject convertToJavascriptFunction(FunctionOption functionOption)/*-{
+        return function (){
+            return functionOption.@fr.vekia.vkgraph.client.options.FunctionOption::execute([Ljava/lang/Object;)(arguments);
+        };
+    }-*/;
+    // @formatter:on
 }

@@ -28,7 +28,9 @@ public class Exporter {
         this.download(this.chart.getId());
     }
 
+    // @formatter:off
     private final native void download(String id) /*-{
-                                                  $wnd.jQuery("#".concat(id)).jqplotSaveImage();	
-                                                  }-*/;
+        $wnd.jQuery("#".concat(id)).jqplotSaveImage();
+    }-*/;
+    // @formatter:on
 }

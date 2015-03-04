@@ -53,9 +53,9 @@ public class ArrayJSONBuilder<T> {
                         JSONArray array = new JSONArray();
                         array.set(0, JSONParser.parseStrict(((OhlcData) dataElement).getCategory().toString()));
 
-                        array.set(1, new JSONNumber(((Number) ((OhlcData) dataElement).getData()[0]).doubleValue()));
-                        array.set(2, new JSONNumber(((Number) ((OhlcData) dataElement).getData()[1]).doubleValue()));
-                        array.set(3, new JSONNumber(((Number) ((OhlcData) dataElement).getData()[2]).doubleValue()));
+                        array.set(1, new JSONNumber((((OhlcData) dataElement).getData()[0]).doubleValue()));
+                        array.set(2, new JSONNumber((((OhlcData) dataElement).getData()[1]).doubleValue()));
+                        array.set(3, new JSONNumber((((OhlcData) dataElement).getData()[2]).doubleValue()));
 
                         jso.set(i, array);
 

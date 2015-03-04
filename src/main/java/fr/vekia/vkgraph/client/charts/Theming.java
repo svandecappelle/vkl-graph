@@ -1,9 +1,8 @@
 package fr.vekia.vkgraph.client.charts;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-import fr.vekia.vkgraph.client.charts.RenderersEnum;
 import fr.vekia.vkgraph.client.charts.menus.MenuCommands;
 import fr.vekia.vkgraph.client.charts.menus.RightClickMenuWidget;
 
@@ -50,16 +49,6 @@ public enum Theming {
         this.theme = theme;
         this.chartType = chartType;
         this.themeName = super.name();
-    }
-
-    /**
-     * Default constructor.
-     * 
-     */
-    private Theming(String theme, Type chartType, String name) {
-        this.theme = theme;
-        this.chartType = chartType;
-        this.themeName = name;
     }
 
     public String getThemeName() {

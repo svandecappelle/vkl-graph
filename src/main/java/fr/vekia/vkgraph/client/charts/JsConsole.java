@@ -21,19 +21,19 @@ public final class JsConsole {
      * 
      */
     // @formatter:off
-	public static native void warn(String errorCode, String debugParam, String message) /*-{
-		console.warn("WARNING:" + errorCode + " DebugParam: " + debugParam + " - " + message);
-	}-*/;
-	// @formatter:on
+    public static native void warn(String errorCode, String debugParam, String message) /*-{
+        console.warn("WARNING:" + errorCode + " DebugParam: " + debugParam + " - " + message);
+    }-*/;
+    // @formatter:on
 
     /**
      * 
      */
     // @formatter:off
-	public static native void info(String message) /*-{
-		console.log("LOG:" + message);
-	}-*/;
-	// @formatter:on
+    public static native void info(String message) /*-{
+        console.log("LOG:" + message);
+    }-*/;
+    // @formatter:on
 
     /**
      * Log a javascript object
@@ -41,8 +41,8 @@ public final class JsConsole {
      * @param javaScriptObject
      */
     // @formatter:off
-	public static native void info(JavaScriptObject javaScriptObject) /*-{
-		console.log(javaScriptObject);
-	}-*/;
-	// @formatter:on
+    public static native void info(JavaScriptObject javaScriptObject) /*-{
+        console.log(javaScriptObject);
+    }-*/;
+    // @formatter:on
 }
