@@ -9,20 +9,20 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 	<description>GWT Based graphics librairy</description>
 	<url>https://github.com/svandecappelle/vkl-graph</url>
 
-	<distributionManagement>
-		<repository>
-			<id>ossrh</id>
-			<name>Releases</name>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-		</repository>
-		<snapshotRepository>
-			<id>ossrh</id>
-			<name>Snapshot</name>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>
-	</distributionManagement>
-	
-	<properties>
+    <distributionManagement>
+        <repository>
+            <id>${repo-id}</id>
+            <name>${repo-name}</name>
+            <url>${repo-release-url}</url>
+        </repository>
+        <snapshotRepository>
+            <id>${repo-id}</id>
+            <name>${repo-name}</name>
+            <url>${repo-snapshot-url}</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <properties>
 		<!-- convenience to define GWT version in one place -->
 		<gwt.version>2.5.0</gwt.version>
 		<!-- tell the compiler we can use 1.5 -->
@@ -141,6 +141,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
 		</plugins>
 		<pluginManagement>
 			<plugins>
+                <plugin>
+                     <groupId>org.codehaus.mojo</groupId>
+                     <artifactId>sonar-maven-plugin</artifactId>
+                     <version>2.5</version>
+                 </plugin>
 				<plugin>
 					<!-- compiles for jdk 1.6 -->
 					<groupId>org.apache.maven.plugins</groupId>
