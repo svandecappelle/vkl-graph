@@ -9,26 +9,26 @@ package fr.vekia.vkgraph.client.charts;
  */
 public class Exporter {
 
-	private Chart<?> chart;
+    private Chart<?> chart;
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param chart
-	 */
-	public Exporter(Chart<?> chart) {
-		this.chart = chart;
-	}
+    /**
+     * Default constructor
+     * 
+     * @param chart
+     */
+    public Exporter(Chart<?> chart) {
+        this.chart = chart;
+    }
 
-	/**
-	 * Export the graph. Opening a DialogBox.
-	 * 
-	 */
-	public void export() {
-		this.download(this.chart.getId());
-	}
+    /**
+     * Export the graph. Opening a DialogBox.
+     * 
+     */
+    public void export() {
+        this.download(this.chart.getId());
+    }
 
-	private final native void download(String id) /*-{
-													$wnd.jQuery("#".concat(id)).jqplotSaveImage();	
-													}-*/;
+    private final native void download(String id) /*-{
+                                                  $wnd.jQuery("#".concat(id)).jqplotSaveImage();	
+                                                  }-*/;
 }

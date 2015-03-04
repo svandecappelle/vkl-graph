@@ -9,72 +9,72 @@ package fr.vekia.vkgraph.client.datas;
  */
 public class OhlcData implements GraphDataI {
 
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = 3778076121269507834L;
+    /**
+     * SerialId For serialize
+     */
+    private static final long serialVersionUID = 3778076121269507834L;
 
-	private String category;
-	private Number[] data;
+    private String category;
+    private Number[] data;
 
-	public OhlcData() {
-		super();
-	}
+    public OhlcData() {
+        super();
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public OhlcData(String key, Number... datas) {
-		this.category = key;
-		this.data = datas;
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public OhlcData(String key, Number... datas) {
+        this.category = key;
+        this.data = datas;
+    }
 
-	/**
-	 * @param category
-	 *            the category to set
-	 */
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    /**
+     * @param category
+     *            the category to set
+     */
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
-	/**
-	 * @return the category
-	 */
-	public Object getCategory() {
-		return category;
-	}
+    /**
+     * @return the category
+     */
+    public Object getCategory() {
+        return category;
+    }
 
-	/**
-	 * @param data
-	 *            the data to set
-	 */
-	public void setData(Number[] data) {
-		this.data = data;
-	}
+    /**
+     * @param data
+     *            the data to set
+     */
+    public void setData(Number[] data) {
+        this.data = data;
+    }
 
-	/**
-	 * @return the data
-	 */
-	public final Number[] getData() {
-		return data;
-	}
+    /**
+     * @return the data
+     */
+    public final Number[] getData() {
+        return data;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder dataStr = new StringBuilder();
-		dataStr.append("[");
-		dataStr.append("\"" + category + "\"");
-		dataStr.append(",");
-		for (int i = 0; i < data.length; i++) {
-			Object arrayElement = data[i];
-			if (i == data.length - 1) {
-				dataStr.append(arrayElement);
-			} else {
-				dataStr.append(arrayElement + ",");
-			}
-		}
-		dataStr.append("]");
-		return dataStr.toString();
-	}
+    @Override
+    public String toString() {
+        StringBuilder dataStr = new StringBuilder();
+        dataStr.append("[");
+        dataStr.append("\"" + category + "\"");
+        dataStr.append(",");
+        for (int i = 0; i < data.length; i++) {
+            Object arrayElement = data[i];
+            if (i == data.length - 1) {
+                dataStr.append(arrayElement);
+            } else {
+                dataStr.append(arrayElement + ",");
+            }
+        }
+        dataStr.append("]");
+        return dataStr.toString();
+    }
 }

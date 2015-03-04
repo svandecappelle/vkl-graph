@@ -8,6 +8,6 @@ package fr.vekia.vkgraph.client.options;
  *          {@inheritDoc}
  */
 public enum OptionType {
-	BOOLEAN, STRING, NUMBER
+    BOOLEAN, STRING, NUMBER
 
 }

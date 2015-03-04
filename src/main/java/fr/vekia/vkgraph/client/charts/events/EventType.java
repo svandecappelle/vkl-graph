@@ -9,8 +9,8 @@ package fr.vekia.vkgraph.client.charts.events;
  */
 public interface EventType {
 
-	/**
-	 * @return the event JqPlot / Javascript Name.
-	 */
-	String getName();
+    /**
+     * @return the event JqPlot / Javascript Name.
+     */
+    String getName();
 }

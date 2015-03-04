@@ -24,132 +24,132 @@ package fr.vekia.vkgraph.client.datas;
  */
 public class DualValue implements GraphDataI {
 
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = -8431680110005477293L;
+    /**
+     * SerialId For serialize
+     */
+    private static final long serialVersionUID = -8431680110005477293L;
 
-	private Number keyNumber;
-	private String keyString;
+    private Number keyNumber;
+    private String keyString;
 
-	private Number value;
+    private Number value;
 
-	public DualValue() {
-		super();
-	}
+    public DualValue() {
+        super();
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param key
-	 * @param value
-	 */
-	public DualValue(Number key, Number value) {
-		super();
-		this.keyNumber = key;
-		this.value = value;
-	}
+    /**
+     * Default constructor
+     * 
+     * @param key
+     * @param value
+     */
+    public DualValue(Number key, Number value) {
+        super();
+        this.keyNumber = key;
+        this.value = value;
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param keyString
-	 * @param value
-	 */
-	public DualValue(String keyString, Number value) {
-		super();
-		this.keyString = keyString;
-		this.value = value;
-	}
+    /**
+     * Default constructor
+     * 
+     * @param keyString
+     * @param value
+     */
+    public DualValue(String keyString, Number value) {
+        super();
+        this.keyString = keyString;
+        this.value = value;
+    }
 
-	/**
-	 * @return
-	 */
-	public String getKey() {
-		if (isKeyString()) {
-			return keyString;
-		} else {
-			return keyNumber.toString();
-		}
-	}
+    /**
+     * @return
+     */
+    public String getKey() {
+        if (isKeyString()) {
+            return keyString;
+        } else {
+            return keyNumber.toString();
+        }
+    }
 
-	/**
-	 * Set the {@link Number} key.
-	 * 
-	 * @param key
-	 *            the number key.
-	 */
-	public void setKey(Number key) {
-		this.keyNumber = key;
-	}
+    /**
+     * Set the {@link Number} key.
+     * 
+     * @param key
+     *            the number key.
+     */
+    public void setKey(Number key) {
+        this.keyNumber = key;
+    }
 
-	/**
-	 * Get the Y value.
-	 * 
-	 * @return the Y value.
-	 */
-	public Number getValue() {
-		return value;
-	}
+    /**
+     * Get the Y value.
+     * 
+     * @return the Y value.
+     */
+    public Number getValue() {
+        return value;
+    }
 
-	/**
-	 * Set the Y value.
-	 * 
-	 * @param value
-	 *            the Y value.
-	 */
-	public void setValue(Number value) {
-		this.value = value;
-	}
+    /**
+     * Set the Y value.
+     * 
+     * @param value
+     *            the Y value.
+     */
+    public void setValue(Number value) {
+        this.value = value;
+    }
 
-	/**
-	 * Get the {@link String} key
-	 * 
-	 * @return the keyString.
-	 */
-	public String getKeyString() {
-		return keyString;
-	}
+    /**
+     * Get the {@link String} key
+     * 
+     * @return the keyString.
+     */
+    public String getKeyString() {
+        return keyString;
+    }
 
-	/**
-	 * Set the {@link String} key.
-	 * 
-	 * @param keyString
-	 *            the keyString to set
-	 */
-	public void setKeyString(String keyString) {
-		this.keyString = keyString;
-	}
+    /**
+     * Set the {@link String} key.
+     * 
+     * @param keyString
+     *            the keyString to set
+     */
+    public void setKeyString(String keyString) {
+        this.keyString = keyString;
+    }
 
-	/**
-	 * Get the {@link Number} key.
-	 * 
-	 * @return the keyNumber
-	 */
-	public Number getKeyNumber() {
-		return keyNumber;
-	}
+    /**
+     * Get the {@link Number} key.
+     * 
+     * @return the keyNumber
+     */
+    public Number getKeyNumber() {
+        return keyNumber;
+    }
 
-	/**
-	 * Return <code>true</code> if key is a {@link String}.
-	 */
-	public boolean isKeyString() {
-		return this.keyString != null;
-	}
+    /**
+     * Return <code>true</code> if key is a {@link String}.
+     */
+    public boolean isKeyString() {
+        return this.keyString != null;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder dataStr = new StringBuilder();
-		dataStr.append("[");
-		if (isKeyString()) {
-			dataStr.append("\"" + getKey() + "\"");
-		} else {
-			dataStr.append(getKey());
-		}
-		dataStr.append(",");
-		dataStr.append(getValue());
-		dataStr.append("]");
-		return dataStr.toString();
+    @Override
+    public String toString() {
+        StringBuilder dataStr = new StringBuilder();
+        dataStr.append("[");
+        if (isKeyString()) {
+            dataStr.append("\"" + getKey() + "\"");
+        } else {
+            dataStr.append(getKey());
+        }
+        dataStr.append(",");
+        dataStr.append(getValue());
+        dataStr.append("]");
+        return dataStr.toString();
 
-	}
+    }
 }

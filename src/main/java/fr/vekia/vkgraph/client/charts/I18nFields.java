@@ -9,9 +9,9 @@ package fr.vekia.vkgraph.client.charts;
  */
 public interface I18nFields {
 
-	String export();
+    String export();
 
-	String refresh();
+    String refresh();
 
-	String themes();
+    String themes();
 }

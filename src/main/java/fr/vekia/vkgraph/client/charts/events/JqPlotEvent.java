@@ -9,19 +9,19 @@ package fr.vekia.vkgraph.client.charts.events;
  */
 public interface JqPlotEvent {
 
-	/**
-	 * @return
-	 */
-	int getEventBindingParams();
+    /**
+     * @return
+     */
+    int getEventBindingParams();
 
-	/**
-	 * @return
-	 */
-	EventType getEventType();
+    /**
+     * @return
+     */
+    EventType getEventType();
 
-	/**
-	 * @return
-	 */
-	boolean isNative();
+    /**
+     * @return
+     */
+    boolean isNative();
 
 }

@@ -11,25 +11,25 @@ import com.google.gwt.event.shared.GwtEvent;
  */
 public class AttachedChartEvent extends GwtEvent<AttachedChartHandler> {
 
-	private static Type<AttachedChartHandler> type;
+    private static Type<AttachedChartHandler> type;
 
-	public static Type<AttachedChartHandler> getType() {
-		if (type == null) {
-			type = new Type<AttachedChartHandler>();
-		}
-		return type;
-	}
+    public static Type<AttachedChartHandler> getType() {
+        if (type == null) {
+            type = new Type<AttachedChartHandler>();
+        }
+        return type;
+    }
 
-	public AttachedChartEvent() {
-	}
+    public AttachedChartEvent() {
+    }
 
-	@Override
-	protected void dispatch(AttachedChartHandler handler) {
-		handler.onAttachedChart(this);
-	}
+    @Override
+    protected void dispatch(AttachedChartHandler handler) {
+        handler.onAttachedChart(this);
+    }
 
-	@Override
-	public GwtEvent.Type<AttachedChartHandler> getAssociatedType() {
-		return getType();
-	}
+    @Override
+    public GwtEvent.Type<AttachedChartHandler> getAssociatedType() {
+        return getType();
+    }
 }

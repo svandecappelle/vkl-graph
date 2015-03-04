@@ -13,13 +13,13 @@ package fr.vekia.vkgraph.client.charts.exception;
  */
 public class ArraysSizesRefreshingInvalidException extends IllegalArgumentException {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * Default constructor.
-	 * 
-	 */
-	public ArraysSizesRefreshingInvalidException() {
-		super("The size of arrays data used to refreshing jqplot chart and the series initializations are different. Create a new chart to do this action.");
-	}
+    /**
+     * Default constructor.
+     * 
+     */
+    public ArraysSizesRefreshingInvalidException() {
+        super("The size of arrays data used to refreshing jqplot chart and the series initializations are different. Create a new chart to do this action.");
+    }
 }

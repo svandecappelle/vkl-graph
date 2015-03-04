@@ -9,26 +9,26 @@ package fr.vekia.vkgraph.client.datas;
  */
 abstract class Line extends OptionSerie implements CanvasObject {
 
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = -3857924215441614165L;
+    /**
+     * SerialId For serialize
+     */
+    private static final long serialVersionUID = -3857924215441614165L;
 
-	private boolean dashed = false;
+    private boolean dashed = false;
 
-	public Line() {
-		super();
-	}
+    public Line() {
+        super();
+    }
 
-	public void setDashed(boolean isDashed) {
-		this.dashed = isDashed;
-	}
+    public void setDashed(boolean isDashed) {
+        this.dashed = isDashed;
+    }
 
-	/**
-	 * @return the dashed
-	 */
-	public boolean isDashed() {
-		return dashed;
-	}
+    /**
+     * @return the dashed
+     */
+    public boolean isDashed() {
+        return dashed;
+    }
 
 }

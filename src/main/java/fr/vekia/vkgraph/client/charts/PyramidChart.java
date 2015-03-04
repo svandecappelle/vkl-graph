@@ -11,26 +11,26 @@ import java.util.List;
  */
 public class PyramidChart extends AbstractChart<List<Number>> {
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public PyramidChart() {
-		super();
-		super.setRenderer(RenderersEnum.Pyramid);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public PyramidChart() {
+        super();
+        super.setRenderer(RenderersEnum.Pyramid);
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public PyramidChart(I18nFields i18nFields) {
-		super(i18nFields);
-		super.setRenderer(RenderersEnum.Pyramid);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public PyramidChart(I18nFields i18nFields) {
+        super(i18nFields);
+        super.setRenderer(RenderersEnum.Pyramid);
+    }
 
-	@Override
-	public void setPluginsEnable(boolean isPluginEnable) {
-		throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
-	}
+    @Override
+    public void setPluginsEnable(boolean isPluginEnable) {
+        throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
+    }
 }

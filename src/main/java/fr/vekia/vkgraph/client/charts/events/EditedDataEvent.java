@@ -8,43 +8,43 @@ package fr.vekia.vkgraph.client.charts.events;
  *          {@inheritDoc} Fired event when the data is modified by user.
  */
 public abstract class EditedDataEvent extends ChartEvent {
-	/**
-	 * @author Steeve Vandecappelle (SVA)
-	 * @since 16 août 2012. VklGraph version 1.2
-	 * @version 2.1
-	 * 
-	 *          {@inheritDoc}
-	 */
-	static final class EditedDataEventType implements EventType {
+    /**
+     * @author Steeve Vandecappelle (SVA)
+     * @since 16 août 2012. VklGraph version 1.2
+     * @version 2.1
+     * 
+     *          {@inheritDoc}
+     */
+    static final class EditedDataEventType implements EventType {
 
-		private static EventType singleton = new EditedDataEventType();
+        private static EventType singleton = new EditedDataEventType();
 
-		/**
-		 * Default constructor.
-		 * 
-		 */
-		private EditedDataEventType() {
-		}
+        /**
+         * Default constructor.
+         * 
+         */
+        private EditedDataEventType() {
+        }
 
-		@Override
-		public String getName() {
-			return "jqplotSeriesPointChange";
-		}
+        @Override
+        public String getName() {
+            return "jqplotSeriesPointChange";
+        }
 
-		/**
-		 * Return the type of {@link EditedDataEvent} GWT event.
-		 * 
-		 * @return the GWT event type
-		 */
-		public static EventType getInstance() {
-			return singleton;
-		}
+        /**
+         * Return the type of {@link EditedDataEvent} GWT event.
+         * 
+         * @return the GWT event type
+         */
+        public static EventType getInstance() {
+            return singleton;
+        }
 
-	}
+    }
 
-	@Override
-	public EventType getEventType() {
-		return EditedDataEventType.getInstance();
-	}
+    @Override
+    public EventType getEventType() {
+        return EditedDataEventType.getInstance();
+    }
 
 }

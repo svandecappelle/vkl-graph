@@ -9,70 +9,70 @@ package fr.vekia.vkgraph.client.charts.events;
  */
 public abstract class ChartEvent implements JqPlotEvent {
 
-	private static final Integer DEFAULT_BINDING_PARAMS_VALUE = 5;
-	private int eventBindingParams;
+    private static final Integer DEFAULT_BINDING_PARAMS_VALUE = 5;
+    private int eventBindingParams;
 
-	private boolean nativeE;
+    private boolean nativeE;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public ChartEvent(Integer eventBindingParams) {
-		this.eventBindingParams = eventBindingParams;
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public ChartEvent(Integer eventBindingParams) {
+        this.eventBindingParams = eventBindingParams;
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public ChartEvent(Integer eventBindingParams, boolean isNative) {
-		this.eventBindingParams = eventBindingParams;
-		this.nativeE = isNative;
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public ChartEvent(Integer eventBindingParams, boolean isNative) {
+        this.eventBindingParams = eventBindingParams;
+        this.nativeE = isNative;
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public ChartEvent(boolean isNative) {
-		this.nativeE = isNative;
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public ChartEvent(boolean isNative) {
+        this.nativeE = isNative;
+    }
 
-	@Override
-	public boolean isNative() {
-		return nativeE;
-	}
+    @Override
+    public boolean isNative() {
+        return nativeE;
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public ChartEvent() {
-		this(DEFAULT_BINDING_PARAMS_VALUE);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public ChartEvent() {
+        this(DEFAULT_BINDING_PARAMS_VALUE);
+    }
 
-	/**
-	 * Return the event type to bind with.
-	 * 
-	 * @return the GWT event type.
-	 */
-	@Override
-	public abstract EventType getEventType();
+    /**
+     * Return the event type to bind with.
+     * 
+     * @return the GWT event type.
+     */
+    @Override
+    public abstract EventType getEventType();
 
-	/**
-	 * Called method when the event is fired.
-	 * 
-	 * @param datasOnEvent
-	 */
-	public abstract void onEvent(EventObject datasOnEvent);
+    /**
+     * Called method when the event is fired.
+     * 
+     * @param datasOnEvent
+     */
+    public abstract void onEvent(EventObject datasOnEvent);
 
-	/**
-	 * @return the eventBindingParams
-	 */
-	@Override
-	public int getEventBindingParams() {
-		return eventBindingParams;
-	}
+    /**
+     * @return the eventBindingParams
+     */
+    @Override
+    public int getEventBindingParams() {
+        return eventBindingParams;
+    }
 
 }

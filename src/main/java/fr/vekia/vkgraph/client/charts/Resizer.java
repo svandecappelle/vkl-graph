@@ -10,40 +10,40 @@ import com.google.gwt.core.client.JavaScriptObject;
  *          {@inheritDoc}
  */
 public class Resizer {
-	private Chart<?> chart;
+    private Chart<?> chart;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public Resizer(Chart<?> chart) {
-		this.chart = chart;
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public Resizer(Chart<?> chart) {
+        this.chart = chart;
+    }
 
-	/**
-	 * @param chartJavascriptObject
-	 * @param string
-	 * @param string2
-	 */
-	public void bind() {
-		setResizable(chart.getChartJavascriptObject(), "#" + chart.getId() + "resizable");
-	}
+    /**
+     * @param chartJavascriptObject
+     * @param string
+     * @param string2
+     */
+    public void bind() {
+        setResizable(chart.getChartJavascriptObject(), "#" + chart.getId() + "resizable");
+    }
 
-	/**
-	 * JavaScript native method used to bind the resize / reploting chart using
-	 * JQuery.
-	 * 
-	 * @param chart
-	 * @param resizableElementId
-	 */
-	private native void setResizable(final JavaScriptObject chart, final String resizableElementId)/*-{
-																									$wnd.jQuery(resizableElementId).bind('resize', function(event, ui) {
-																									chart.replot({
-																									resetAxes : true
-																									});
-																									});
+    /**
+     * JavaScript native method used to bind the resize / reploting chart using
+     * JQuery.
+     * 
+     * @param chart
+     * @param resizableElementId
+     */
+    private native void setResizable(final JavaScriptObject chart, final String resizableElementId)/*-{
+                                                                                                   $wnd.jQuery(resizableElementId).bind('resize', function(event, ui) {
+                                                                                                   chart.replot({
+                                                                                                   resetAxes : true
+                                                                                                   });
+                                                                                                   });
 
-																									$wnd.jQuery(resizableElementId).resizable({});
-																									}-*/;
+                                                                                                   $wnd.jQuery(resizableElementId).resizable({});
+                                                                                                   }-*/;
 
 }

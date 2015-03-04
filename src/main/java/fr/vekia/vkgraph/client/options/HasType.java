@@ -7,15 +7,15 @@ import java.io.Serializable;
  * 
  */
 public interface HasType extends Serializable {
-	/**
-	 * Return the object jqplot option type.
-	 * 
-	 * @return the type of object
-	 */
-	OptionType getType();
+    /**
+     * Return the object jqplot option type.
+     * 
+     * @return the type of object
+     */
+    OptionType getType();
 
-	/**
-	 * @return <code>true</code> if object has children
-	 */
-	boolean hasChildren();
+    /**
+     * @return <code>true</code> if object has children
+     */
+    boolean hasChildren();
 }

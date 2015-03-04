@@ -11,17 +11,17 @@ import fr.vekia.vkgraph.client.options.SubOption;
  */
 public class Rectangle extends OptionSerie implements CanvasObject {
 
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = 5428751539176134212L;
+    /**
+     * SerialId For serialize
+     */
+    private static final long serialVersionUID = 5428751539176134212L;
 
-	public Rectangle() {
+    public Rectangle() {
 
-	}
+    }
 
-	@Override
-	public SubOption getType() {
-		return SubOption.rectangle;
-	}
+    @Override
+    public SubOption getType() {
+        return SubOption.rectangle;
+    }
 }

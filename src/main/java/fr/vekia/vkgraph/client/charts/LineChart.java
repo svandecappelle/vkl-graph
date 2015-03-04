@@ -11,21 +11,21 @@ import fr.vekia.vkgraph.client.charts.RenderersEnum;
  */
 public class LineChart<T> extends AbstractChart<T> {
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public LineChart() {
-		super();
-		super.setRenderer(RenderersEnum.Line);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public LineChart() {
+        super();
+        super.setRenderer(RenderersEnum.Line);
+    }
 
-	/**
-	 * Constructor with specifics I18n constants
-	 * 
-	 */
-	public LineChart(I18nFields i18nFields) {
-		super(i18nFields);
-		super.setRenderer(RenderersEnum.Line);
-	}
+    /**
+     * Constructor with specifics I18n constants
+     * 
+     */
+    public LineChart(I18nFields i18nFields) {
+        super(i18nFields);
+        super.setRenderer(RenderersEnum.Line);
+    }
 }

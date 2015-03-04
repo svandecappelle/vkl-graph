@@ -11,21 +11,21 @@ import fr.vekia.vkgraph.client.options.SubOption;
  */
 public class VerticalLine extends Line {
 
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = -7524607666579067428L;
+    /**
+     * SerialId For serialize
+     */
+    private static final long serialVersionUID = -7524607666579067428L;
 
-	public VerticalLine() {
+    public VerticalLine() {
 
-	}
+    }
 
-	@Override
-	public SubOption getType() {
-		if (this.isDashed()) {
-			return SubOption.dashedVerticalLine;
-		} else {
-			return SubOption.verticalLine;
-		}
-	}
+    @Override
+    public SubOption getType() {
+        if (this.isDashed()) {
+            return SubOption.dashedVerticalLine;
+        } else {
+            return SubOption.verticalLine;
+        }
+    }
 }

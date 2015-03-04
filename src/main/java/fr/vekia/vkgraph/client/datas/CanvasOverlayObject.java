@@ -19,53 +19,53 @@ import fr.vekia.vkgraph.client.datas.utils.MapJSONBuilder;
  */
 public class CanvasOverlayObject implements Serializable {
 
-	/**
-	 * SerialId For serialize
-	 */
-	private static final long serialVersionUID = -4819397730650698500L;
+    /**
+     * SerialId For serialize
+     */
+    private static final long serialVersionUID = -4819397730650698500L;
 
-	private List<CanvasObject> lines;
+    private List<CanvasObject> lines;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public CanvasOverlayObject() {
-		lines = new ArrayList<CanvasObject>();
-	}
-
-	/**
+    /**
+     * Default constructor
      * 
      */
-	public void addObject(CanvasObject line) {
-		lines.add(line);
-	}
+    public CanvasOverlayObject() {
+        lines = new ArrayList<CanvasObject>();
+    }
 
-	/**
+    /**
      * 
      */
-	public void removeObject(CanvasObject line) {
-		lines.remove(line);
-	}
+    public void addObject(CanvasObject line) {
+        lines.add(line);
+    }
 
-	/**
-	 * @return
-	 */
-	public JSONValue getJSON() {
-		JSONArray array = new JSONArray();
-		int i = 0;
-		for (CanvasObject objCanvas : lines) {
-			MapJSONBuilder builder = new MapJSONBuilder();
-			builder.putAllOptions(objCanvas.getOptionsMapped());
-			builder.putAllSubOptions(objCanvas.getSubSubOptionsMapped());
+    /**
+     * 
+     */
+    public void removeObject(CanvasObject line) {
+        lines.remove(line);
+    }
 
-			JSONObject object = new JSONObject();
-			object.put(objCanvas.getType().name(), builder.getJso());
+    /**
+     * @return
+     */
+    public JSONValue getJSON() {
+        JSONArray array = new JSONArray();
+        int i = 0;
+        for (CanvasObject objCanvas : lines) {
+            MapJSONBuilder builder = new MapJSONBuilder();
+            builder.putAllOptions(objCanvas.getOptionsMapped());
+            builder.putAllSubOptions(objCanvas.getSubSubOptionsMapped());
 
-			array.set(i, object);
-			i += 1;
-		}
+            JSONObject object = new JSONObject();
+            object.put(objCanvas.getType().name(), builder.getJso());
 
-		return array;
-	}
+            array.set(i, object);
+            i += 1;
+        }
+
+        return array;
+    }
 }

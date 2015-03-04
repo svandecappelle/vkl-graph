@@ -8,53 +8,53 @@ package fr.vekia.vkgraph.client.charts.events;
  *          {@inheritDoc} Data Highlight (mouse hover) event.
  */
 public abstract class DataClickEvent extends ChartEvent {
-	private static final Integer DATA_CLICK_EVENT_BINDING_PARAMS = 4;
+    private static final Integer DATA_CLICK_EVENT_BINDING_PARAMS = 4;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public DataClickEvent() {
-		super(DATA_CLICK_EVENT_BINDING_PARAMS);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public DataClickEvent() {
+        super(DATA_CLICK_EVENT_BINDING_PARAMS);
+    }
 
-	/**
-	 * @author Steeve Vandecappelle (SVA)
-	 * @since 16 août 2012. VklGraph version 1.2
-	 * @version 2.1
-	 * 
-	 *          {@inheritDoc}
-	 */
-	static final class DataClickEventType implements EventType {
+    /**
+     * @author Steeve Vandecappelle (SVA)
+     * @since 16 août 2012. VklGraph version 1.2
+     * @version 2.1
+     * 
+     *          {@inheritDoc}
+     */
+    static final class DataClickEventType implements EventType {
 
-		private static EventType singleton = new DataClickEventType();
+        private static EventType singleton = new DataClickEventType();
 
-		/**
-		 * Default constructor.
-		 * 
-		 */
-		private DataClickEventType() {
-		}
+        /**
+         * Default constructor.
+         * 
+         */
+        private DataClickEventType() {
+        }
 
-		@Override
-		public String getName() {
-			return "jqplotDataClick";
-		}
+        @Override
+        public String getName() {
+            return "jqplotDataClick";
+        }
 
-		/**
-		 * Return the type of {@link DataClickEvent} GWT event.
-		 * 
-		 * @return the GWT event type
-		 */
-		public static EventType getInstance() {
-			return singleton;
-		}
+        /**
+         * Return the type of {@link DataClickEvent} GWT event.
+         * 
+         * @return the GWT event type
+         */
+        public static EventType getInstance() {
+            return singleton;
+        }
 
-	}
+    }
 
-	@Override
-	public EventType getEventType() {
-		return DataClickEventType.getInstance();
-	}
+    @Override
+    public EventType getEventType() {
+        return DataClickEventType.getInstance();
+    }
 
 }

@@ -15,51 +15,51 @@ import com.google.gwt.user.client.ui.Widget;
  */
 public class Gauge implements IsWidget {
 
-	private AbstractChart<Number> gaugeEncapsulatedChart;
+    private AbstractChart<Number> gaugeEncapsulatedChart;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public Gauge() {
-		gaugeEncapsulatedChart = new AbstractChart<Number>() {
-			@Override
-			public void setPluginsEnable(boolean isPluginEnable) {
-				throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
-			}
-		};
-		gaugeEncapsulatedChart.setRenderer(RenderersEnum.MeterGauge);
-		gaugeEncapsulatedChart.setListView(true);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public Gauge() {
+        gaugeEncapsulatedChart = new AbstractChart<Number>() {
+            @Override
+            public void setPluginsEnable(boolean isPluginEnable) {
+                throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
+            }
+        };
+        gaugeEncapsulatedChart.setRenderer(RenderersEnum.MeterGauge);
+        gaugeEncapsulatedChart.setListView(true);
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public Gauge(I18nFields i18nFields) {
-		gaugeEncapsulatedChart = new AbstractChart<Number>(i18nFields) {
-			@Override
-			public void setPluginsEnable(boolean isPluginEnable) {
-				throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
-			}
-		};
-		gaugeEncapsulatedChart.setRenderer(RenderersEnum.MeterGauge);
-		gaugeEncapsulatedChart.setListView(true);
-	}
+    /**
+     * Default constructor
+     * 
+     */
+    public Gauge(I18nFields i18nFields) {
+        gaugeEncapsulatedChart = new AbstractChart<Number>(i18nFields) {
+            @Override
+            public void setPluginsEnable(boolean isPluginEnable) {
+                throw new UnsupportedOperationException("plugins are not enable to Pyramid Charts");
+            }
+        };
+        gaugeEncapsulatedChart.setRenderer(RenderersEnum.MeterGauge);
+        gaugeEncapsulatedChart.setListView(true);
+    }
 
-	@Override
-	public Widget asWidget() {
-		return gaugeEncapsulatedChart;
-	}
+    @Override
+    public Widget asWidget() {
+        return gaugeEncapsulatedChart;
+    }
 
-	public void setData(Number data) {
-		List<Number> number = new ArrayList<Number>();
-		number.add(data);
-		gaugeEncapsulatedChart.setData(number);
-	}
+    public void setData(Number data) {
+        List<Number> number = new ArrayList<Number>();
+        number.add(data);
+        gaugeEncapsulatedChart.setData(number);
+    }
 
-	public AbstractChart<Number> toAbstractChart() {
-		return gaugeEncapsulatedChart;
-	}
+    public AbstractChart<Number> toAbstractChart() {
+        return gaugeEncapsulatedChart;
+    }
 
 }
