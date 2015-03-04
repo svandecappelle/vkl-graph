@@ -153,6 +153,7 @@ public class MapJSONBuilder {
 				try {
 					arrayData.set(i, new JSONNumber(Double.parseDouble(stringDataValue)));
 				} catch (Exception ex) {
+				    LOGGER.log(Level.FINE, "JSONNumber (system try another solution with JSONString): ", e);
 					arrayData.set(i, new JSONString(stringDataValue));
 				}
 				i += 1;

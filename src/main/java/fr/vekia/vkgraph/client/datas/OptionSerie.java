@@ -222,7 +222,7 @@ public class OptionSerie implements Serializable {
 	 *            the value of option.
 	 */
 	public void setOption(SubOption subOption, SubOption subSubOption, List<String> value) {
-		setOption(subOption, JavascriptConvertUtils.optionArrayStringToString(value));
+		setOption(subOption, subSubOption, JavascriptConvertUtils.optionArrayStringToString(value));
 	}
 
 	/**

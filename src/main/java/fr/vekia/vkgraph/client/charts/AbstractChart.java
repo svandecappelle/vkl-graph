@@ -122,7 +122,7 @@ public class AbstractChart<T> extends Chart<T> {
 	 * @param data
 	 */
 	private void setDatasSimpleList(List<T> data) {
-		StringBuffer dataBuffer = new StringBuffer("[");
+		StringBuilder dataBuffer = new StringBuilder("[");
 
 		if (data != null && !data.isEmpty()) {
 			if (!(data.get(0) instanceof DualValue)) {

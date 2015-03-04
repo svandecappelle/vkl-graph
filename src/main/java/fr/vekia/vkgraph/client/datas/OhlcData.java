@@ -64,11 +64,7 @@ public class OhlcData implements GraphDataI {
 	public String toString() {
 		StringBuilder dataStr = new StringBuilder();
 		dataStr.append("[");
-		if (category instanceof String) {
-			dataStr.append("\"" + category + "\"");
-		} else {
-			dataStr.append(category);
-		}
+		dataStr.append("\"" + category + "\"");
 		dataStr.append(",");
 		for (int i = 0; i < data.length; i++) {
 			Object arrayElement = data[i];

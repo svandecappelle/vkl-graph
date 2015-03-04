@@ -2,7 +2,6 @@ package fr.vekia.vkgraph.client.charts;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -17,9 +16,9 @@ import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.FlowPanel;
 
 import fr.vekia.vkgraph.client.charts.events.AttachedChartEvent;
 import fr.vekia.vkgraph.client.charts.events.AttachedChartHandler;
@@ -776,11 +775,11 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
 		this.chartOptionner.setSubSubSubOptionsMapped(subSubSubOptionsMapped);
 	}
 
-	protected void setSubSubSubOptionsMappedInJavascript(HashMap<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> subSubSubOptionsMapped) {
+	protected void setSubSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, JavaScriptObject>>>> subSubSubOptionsMapped) {
 		this.chartOptionner.setSubSubSubOptionsMappedInJavascript(subSubSubOptionsMapped);
 	}
 
-	protected void setSubSubOptionsMappedInJavascript(HashMap<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMapped) {
+	protected void setSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMapped) {
 		this.chartOptionner.setSubSubOptionsMappedInJavascript(subSubOptionsMapped);
 	}
 
