@@ -22,42 +22,20 @@ import fr.vekia.vkgraph.client.options.SubOption;
  *          on chart for one data series or more. Then you could create an area
  *          / line chart mixed or any other join.
  */
-public class OptionSerie implements Serializable {
+public class OptionSerie extends SerieOptionBean implements Serializable {
     /**
      * SerialId For serialize
      */
     private static final long serialVersionUID = -8409601771955698471L;
 
-    private Map<SubOption, String> optionsMapped;
-    private Map<SubOption, Map<SubOption, String>> subSubOptionsMapped;
-    private Map<SubOption, Map<SubOption, JSONValue>> subSubOptionsMappedWithJson;
+    private transient Map<SubOption, Map<SubOption, JSONValue>> subSubOptionsMappedWithJson;
 
     /**
      * Default constructor.
      * 
      */
     public OptionSerie() {
-        optionsMapped = new HashMap<SubOption, String>();
-        subSubOptionsMapped = new HashMap<SubOption, Map<SubOption, String>>();
         subSubOptionsMappedWithJson = new HashMap<SubOption, Map<SubOption, JSONValue>>();
-    }
-
-    /**
-     * Return the option set on the series Options.
-     * 
-     * @return the optionsMapped
-     */
-    public Map<SubOption, String> getOptionsMapped() {
-        return optionsMapped;
-    }
-
-    /**
-     * Return the subOptions set on the series Options.
-     * 
-     * @return the subOptions
-     */
-    public Map<SubOption, Map<SubOption, String>> getSubSubOptionsMapped() {
-        return subSubOptionsMapped;
     }
 
     /**
@@ -176,18 +154,6 @@ public class OptionSerie implements Serializable {
     }
 
     /**
-     * Set a serie String option.
-     * 
-     * @param subOption
-     *            the option.
-     * @param value
-     *            the value of option.
-     */
-    public void setOption(SubOption subOption, String value) {
-        optionsMapped.put(subOption, value);
-    }
-
-    /**
      * Set a serie JSO option.
      * 
      * @param subOption
@@ -226,30 +192,6 @@ public class OptionSerie implements Serializable {
     }
 
     /**
-     * Set a serie option.
-     * 
-     * @param subOption
-     *            the option.
-     * @param subSubOption
-     *            the sub Option.
-     * @param value
-     *            the value of option.
-     */
-    public void setOption(SubOption subOption, SubOption subSubOption, String value) {
-        if (subSubOptionsMapped == null) {
-            subSubOptionsMapped = new HashMap<SubOption, Map<SubOption, String>>();
-        }
-
-        if (subSubOptionsMapped.containsKey(subOption)) {
-            subSubOptionsMapped.get(subOption).put(subSubOption, value);
-        } else {
-            Map<SubOption, String> subsubOptionMapCreated = new HashMap<SubOption, String>();
-            subsubOptionMapCreated.put(subSubOption, value);
-            subSubOptionsMapped.put(subOption, subsubOptionMapCreated);
-        }
-    }
-
-    /**
      * Set a serie text option.
      * 
      * @param subOption
@@ -273,5 +215,14 @@ public class OptionSerie implements Serializable {
      */
     public void setTextOption(SubOption subOption, SubOption subSubOption, String value) {
         setOption(subOption, subSubOption, value);
+    }
+
+    /**
+     * Get options in a serialized context.
+     * 
+     * @return the series options.
+     */
+    public SerializableSeries get() {
+        return new SerializableSeries(this.getOptionsMapped(), this.getSubSubOptionsMapped());
     }
 }

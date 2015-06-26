@@ -46,6 +46,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
     candleStick(rendererOptions),
     color(OptionType.NUMBER, ChartOption.series, ChartOption.background),
     constrainTo(OptionType.STRING, SubOption.dragable),
+    constrainTooltipToScreen(OptionType.BOOLEAN, ChartOption.cursor),
     constrainZoomTo(ChartOption.cursor),
     dataLabels(rendererOptions),
     drawBaseline(ChartOption.axesDefaults),

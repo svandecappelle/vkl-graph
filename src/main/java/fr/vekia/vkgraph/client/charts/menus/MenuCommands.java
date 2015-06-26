@@ -13,6 +13,7 @@ public abstract class MenuCommands implements Command {
     private String label;
     private MenuCommands[] subCommands;
     private String className;
+    private RightClickMenuWidget menu;
 
     /**
      * Default constructor.
@@ -106,5 +107,13 @@ public abstract class MenuCommands implements Command {
 
     public String getClassname() {
         return this.className;
+    }
+
+    public void setMenu(RightClickMenuWidget menu) {
+        this.menu = menu;
+    }
+    
+    protected void hide() {
+        this.menu.hideMenu();
     }
 }
