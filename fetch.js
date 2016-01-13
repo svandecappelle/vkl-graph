@@ -86,7 +86,7 @@ function mergeSources(){
 };
 
 function copySrcs(){
-	ncp.ncp(repoPath.concat('/build/dist/'), destinationPath, function (err){
+	ncp.ncp(repoPath.concat('/dist/'), destinationPath, function (err){
 		if (err){
 			return logger.error("Error merging sources", err);
 		}
