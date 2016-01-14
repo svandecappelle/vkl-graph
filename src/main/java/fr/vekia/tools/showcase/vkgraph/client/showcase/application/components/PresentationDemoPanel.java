@@ -9,9 +9,10 @@
  */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components;
 
+import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.user.client.ui.Composite;
-import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.Contributors;
@@ -33,8 +34,8 @@ public class PresentationDemoPanel extends Composite {
 	 * Default constructor
 	 * 
 	 */
-	public PresentationDemoPanel() {
-		LayoutPanel layout = new LayoutPanel();
+    public PresentationDemoPanel() {
+		SimplePanel layout = new SimplePanel();
 		SplitLayoutPanel dock = new SplitLayoutPanel();
 
 		dock.addWest(new Releases(), 230);
@@ -42,10 +43,11 @@ public class PresentationDemoPanel extends Composite {
 		presentation = new Presentation();
 		dock.addNorth(presentation, 230);
 		dock.add(new ExemplePresentation());
-
+		layout.setSize("100%", "100%");
+		dock.setSize("100%", "100%");
 		layout.add(dock);
+		layout.getElement().getStyle().setPosition(Position.ABSOLUTE);
 		initWidget(layout);
-		setSize("100%", "100%");
 	}
 
 	public HasClickHandlers getStartAutomatedDemoHandler() {

@@ -14,7 +14,7 @@
 	<extend-property name="locale" values="en"/>
 	<set-property-fallback name="locale" value="en"/> 
 
-	<inherits name='fr.vekia.VkGraph.VkGraphNoScript' />
+	<inherits name='fr.vekia.vkgraph.VkGraphNoScript' />
 
 	<inherits name="com.google.gwt.activity.Activity" />
 	<inherits name="com.google.gwt.place.Place" />

@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/components/menu/groups/pie/screens/GeneralPieScreen.java $
- * $Id: GeneralPieScreen.java 22 2012-06-27 16:38:32Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-06-27 18:38:32 +0200 (mer., 27 juin 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.pies;
 
 import java.util.ArrayList;
@@ -14,18 +5,16 @@ import java.util.List;
 
 import com.google.gwt.user.client.Random;
 
-import fr.vekia.VkGraph.client.charts.PieChart;
-import fr.vekia.VkGraph.client.charts.RenderersEnum;
-import fr.vekia.VkGraph.client.datas.DualValue;
-import fr.vekia.VkGraph.client.options.ChartOption;
-import fr.vekia.VkGraph.client.options.SubOption;
+import fr.vekia.vkgraph.client.charts.PieChart;
+import fr.vekia.vkgraph.client.charts.RenderersEnum;
+import fr.vekia.vkgraph.client.datas.DualValue;
+import fr.vekia.vkgraph.client.options.ChartOption;
+import fr.vekia.vkgraph.client.options.SubOption;
 
 /**
  * @author Steeve Vandecappelle (SVA)
  * @since 4 mai 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 public class GeneralPieScreen extends PieChart<List<DualValue>> {
 

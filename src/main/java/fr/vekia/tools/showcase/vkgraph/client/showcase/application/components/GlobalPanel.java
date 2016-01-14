@@ -10,8 +10,8 @@
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components;
 
 import com.google.gwt.dom.client.Style.Overflow;
+import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.DeckLayoutPanel;
 import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
@@ -29,70 +29,68 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseGloba
  */
 public class GlobalPanel implements Display {
 
-	private DeckLayoutPanel tabLayout;
-	private PresentationDemoPanel presentationPanel;
-	private Anchor returnLbl;
+    private DeckLayoutPanel tabLayout;
+    private PresentationDemoPanel presentationPanel;
+    private ReturnAnchor returnAnchor;
 
-	private SimplePanel containerWidget;
+    private SimplePanel containerWidget;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public GlobalPanel() {
-		this.returnLbl = new Anchor("<< Retour");
-		this.returnLbl.setStyleName("vkl-Anchor");
-		this.containerWidget = new SimplePanel();
-		tabLayout = new DeckLayoutPanel();
-		tabLayout.setAnimationDuration(800);
-		tabLayout.addStyleName("vkl-CenterPanel");
-		presentationPanel = new PresentationDemoPanel();
-		this.setWidget(presentationPanel);
-	}
-
-	@Override
-	public Widget asWidget() {
-		return tabLayout;
-	}
-
-	/**
+    /**
+     * Default constructor
      * 
      */
-	public void removeItem(IsWidget item) {
-		tabLayout.remove((Widget) item);
-	}
+    public GlobalPanel() {
+        this.returnAnchor = new ReturnAnchor();
+        this.containerWidget = new SimplePanel();
+        containerWidget.getElement().getStyle().setPosition(Position.RELATIVE);
+        tabLayout = new DeckLayoutPanel();
+        tabLayout.setSize("100%", "100%");
+        tabLayout.setAnimationDuration(800);
+        tabLayout.addStyleName("vkl-CenterPanel");
+        presentationPanel = new PresentationDemoPanel();
+        this.setWidget(presentationPanel);
+    }
 
-	/**
-	 * @return the returnLbl
-	 */
-	@Override
-	public HasClickHandlers getReturnLbl() {
-		return returnLbl;
-	}
+    @Override
+    public Widget asWidget() {
+        return tabLayout;
+    }
 
-	@Override
-	public HasClickHandlers getStartAutomatedDemoHandler() {
-		return presentationPanel.getStartAutomatedDemoHandler();
-	}
+    /**
+     * 
+     */
+    public void removeItem(IsWidget item) {
+        tabLayout.remove((Widget) item);
+    }
 
-	@Override
-	public void setWidget(IsWidget w) {
-		this.containerWidget.setWidget(w);
-		reinitPanel();
-	}
+    /**
+     * @return the returnLbl
+     */
+    @Override
+    public HasClickHandlers getReturnLbl() {
+        return returnAnchor.getAnchor();
+    }
 
-	private final void reinitPanel() {
-		VerticalPanel p = new VerticalPanel();
-		p.setSize("100%", "100%");
+    @Override
+    public HasClickHandlers getStartAutomatedDemoHandler() {
+        return presentationPanel.getStartAutomatedDemoHandler();
+    }
 
-		p.add(returnLbl);
-		p.setCellHeight(returnLbl, "10px");
+    @Override
+    public void setWidget(IsWidget w) {
+        this.containerWidget.setWidget(w);
+        reinitPanel();
+    }
 
-		p.add(this.containerWidget);
-		this.containerWidget.setSize("100%", "100%");
+    private final void reinitPanel() {
+        VerticalPanel p = new VerticalPanel();
+        p.setSize("100%", "100%");
+        p.add(returnAnchor);
+        p.add(this.containerWidget);
+        p.setCellHeight(this.containerWidget, "100%");
+        this.containerWidget.setSize("100%", "100%");
 
-		tabLayout.setWidget(p);
-		p.getElement().getParentElement().getStyle()
-				.setOverflow(Overflow.SCROLL);
-	}
+        tabLayout.setWidget(p);
+        p.getElement().getParentElement().getStyle().setOverflow(Overflow.AUTO);
+    }
 }

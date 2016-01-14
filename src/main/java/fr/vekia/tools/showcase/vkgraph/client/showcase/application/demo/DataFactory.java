@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import fr.vekia.VkGraph.client.datas.DualValue;
+import fr.vekia.vkgraph.client.datas.DualValue;
 
 /**
  * @author Steeve Vandecappelle (SVA)

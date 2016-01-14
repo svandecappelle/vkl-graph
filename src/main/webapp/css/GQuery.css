@@ -1,3 +1,301 @@
 .gwt-ResizableChart{
 	-webkit-user-select:none;
 }
+
+.gwt-SplitLayoutPanel>div:nth-child(3){
+	background: -webkit-linear-gradient(left, #505050, #383838);
+	box-shadow: inset 0 1px 0 #6e6e6e,0 2px 2px rgba(0,0,0,0.4);
+	cursor: ew-resize;
+}
+
+.gwt-SplitLayoutPanel-HDragger{
+	background: rgba(0, 0, 0, 0.73) url("/img/handle-horz.png") no-repeat scroll 50% 50%;
+	cursor: ew-resize;
+}
+
+.gwt-StackLayoutPanel{
+	background: linear-gradient(45deg, rgb(29, 31, 32), rgb(47, 48, 49)) !important;
+}
+
+body{
+	color: rgb(202, 202, 202);
+	font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader{
+	background: transparent linear-gradient(rgba(150, 150, 150, 0.3), transparent) repeat scroll 0% 0%;
+	cursor: pointer;
+	font-weight: bold;
+	padding-top: 6px;
+	text-align: center;
+}
+
+.gwt-StackLayoutPanel .gwt-StackLayoutPanelHeader-hovering{
+	background: linear-gradient(rgba(205, 205, 255, 0.32), rgba(255, 255, 255, 0.2));
+}
+
+.gwt-Tree .gwt-TreeItem-selected{
+	background: rgba(10, 192, 226, 0.58);
+	border-radius: 5px;
+	color: #FFF;
+}
+.gwt-Tree .gwt-TreeItem-selected:hover{
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItem{
+	background: linear-gradient(#505050, #383838);
+	box-shadow: inset 0 1px 0 #6e6e6e,0 2px 2px rgba(0,0,0,0.4);
+}
+
+.gwt-MenuBar-vertical .gwt-MenuItem:hover{
+	color: white;
+}
+
+.gwt-MenuBar .gwt-MenuItem-selected{
+	background: linear-gradient(#505050, #383838);
+	box-shadow: inset 0 1px 0 #6e6e6e,0 2px 2px rgba(0,0,0,0.4);
+	cursor: pointer;
+}
+
+.vkl-CenterPanel{
+	background: #FFF;
+	color: black;
+}
+
+.vkl-releases{
+	background: transparent linear-gradient(45deg, #1D1F20, #2F3031) repeat scroll 0% 0%;
+	color: white;
+}
+
+.gwt-TreeItem{
+	cursor: pointer;
+	margin-left: 16px;
+	padding: 3px;
+}
+
+.chart-item:hover{
+	background-color: rgba(117, 111, 123, 0.36);
+}
+
+.chart-item{
+	cursor: pointer;
+	margin-bottom: 12px;
+	background-repeat: no-repeat;
+	background-image: url('/img/tree/plot-icon-16.png');
+	padding-left: 5px !important;
+	margin-left: 25px !important;
+	margin-right: 5px;
+}
+
+.gwt-StackLayoutPanelContent{
+	overflow: auto;
+}
+
+::-webkit-scrollbar              			{ width: .5em; }
+::-webkit-scrollbar-button       			{ /* 2 */ }
+::-webkit-scrollbar-track        			{ box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.3); background-color: #eee; }
+::-webkit-scrollbar-track-piece  			{ /* 4 */ }
+::-webkit-scrollbar-thumb        			{ background-color: rgba(100, 100, 100, 0.8); box-shadow: inset 0 0 6px 0 rgba(0, 0, 0, 0.5); }
+::-webkit-scrollbar-thumb:window-inactive 	{ background-color: rgba(255, 0, 0, 0.4); }
+::-webkit-scrollbar-corner       			{ /* 6 */ }
+::-webkit-resizer                			{ /* 7 */ }
+
+
+button, input[type="button"], input[type="submit"], input[type="file"], a.button {
+	display: inline-block;
+	white-space: nowrap;
+	background-color: #ccc;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+	background-image: -webkit-linear-gradient(top, #eee, #ccc);
+	background-image: -moz-linear-gradient(top, #eee, #ccc);
+	background-image: -ms-linear-gradient(top, #eee, #ccc);
+	background-image: -o-linear-gradient(top, #eee, #ccc);
+	background-image: linear-gradient(top, #eee, #ccc);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#eeeeee', EndColorStr='#cccccc');
+	border: 1px solid #777;
+	padding: 0 1.5em;
+	margin: 0.5em;
+	font: bold 1em/2em Arial, Helvetica;
+	text-decoration: none;
+	color: #333;
+	text-shadow: 0 1px 0 rgba(255,255,255,.8);
+	-moz-border-radius: .2em;
+	-webkit-border-radius: .2em;
+	border-radius: .2em;
+	-moz-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+	-webkit-box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+	box-shadow: 0 0 1px 1px rgba(255,255,255,.8) inset, 0 1px 0 rgba(0,0,0,.3);
+}
+
+.folder-tree {
+	background-repeat: no-repeat;
+	background-position: 20px 2px;
+	background-image: url('/img/tree/folder-icon-16.png');
+}
+
+
+
+.AutomatedDemo-Focus {
+	border: 3px solid red !important;
+	border-radius: 5px;
+}
+
+.MessagePopup {
+	border: 1px solid black;
+	background: rgba(0, 0, 0, 0.8);
+}
+
+.buttonsWrap {
+	float: right;
+	margin: 11px 19px 0px 0px;
+}
+
+#sliderMain {
+	width: 650px;
+	padding: 10px;
+	border: 5px solid black;
+	margin: 0px auto;
+	border-image: initial;
+}
+/** CSS is optional, but can be used for button styling. The above preview uses this CSS **/
+.buttons,.control {
+	background: #000000;
+	padding: 3px 10px;
+	margin: 5px;
+	line-height: 0px;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.active {
+	background: #00CC66;
+	color: #00FF00;
+}
+
+.buttons:hover,.control:hover {
+	background: #0099FF;
+}
+
+.consoleCode {
+	background: white;
+	overflow: auto;
+	color: black;
+}
+
+.ui-effects-wrapper  {
+	z-index: -1;
+}
+
+.vkl-Anchor {
+	color: grey;
+}
+
+.vkl-Anchor:hover {
+	color: black;
+	cursor: pointer;
+}
+
+.Vklgetcode-Container{
+	background-color: rgba(245, 245, 245, 0.5);
+	border: 1px solid #9C9C9C;
+}
+
+.gwt-DialogBox{
+	background-color: rgba(245, 245, 245, 0.9);
+	border: 1px solid #9C9C9C;
+	color: #AF7F7F;
+}
+
+.bar {
+    width: 100%;
+    height: 3px;
+    color: white;
+    border-radius: 5px;
+    z-index: 100;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+    transition: all 500ms ease; 
+    -webkit-transition: all 500ms ease;
+    position: absolute;
+}
+
+.fixed{
+  position: fixed;
+}
+
+.bar>.progress {
+    position:absolute;
+    display: inline-block;
+    background: rgb(0, 194, 255);
+    height: 100%;
+    box-shadow: 0 0 10px rgb(0, 194, 255), 0 0 5px rgb(0, 194, 255);
+    width: 0px;
+    transition: all 200ms ease; 
+    -webkit-transition: all 200ms ease;
+}
+
+.bar>.title {
+    text-align: right;
+    position: absolute;
+    right: 0px;
+    top: 2px;
+    color: rgb(0, 194, 255);
+}
+
+.bar.visible{
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s linear;
+}
+
+body{
+  background-color: white;
+}
+
+.ui-dialog{
+	box-shadow: 3px 6px 12px black;
+}
+
+.gwt-DataTable{
+	color: black;
+	margin-top: 55px;
+}
+
+.return-anchor{
+	background: transparent linear-gradient(45deg, rgb(47, 48, 48), rgb(47, 48, 49)) repeat scroll 0% 0%;
+	color: white;
+}
+
+.return-anchor a:hover{
+	color: white;
+}
+
+.return-anchor a:visited{
+	color: white;
+}
+
+.return-anchor a:active{
+	color: white;
+}
+
+.gwt-DataTableTitle{
+	font-weight: bold;
+	color: #931558;	
+}
+
+.gwt-ImportantLabel{
+	font-weight: bold;
+}
+
+.ui-widget-content .java>table{
+	margin: auto;
+	color: black;
+}

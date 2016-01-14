@@ -15,14 +15,14 @@ import java.util.List;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 
-import fr.vekia.VkGraph.client.charts.PyramidChart;
-import fr.vekia.VkGraph.client.charts.RenderersEnum;
-import fr.vekia.VkGraph.client.charts.events.DataHighlightEvent;
-import fr.vekia.VkGraph.client.charts.events.EventObject;
-import fr.vekia.VkGraph.client.datas.OptionSerie;
-import fr.vekia.VkGraph.client.datas.SeriesData;
-import fr.vekia.VkGraph.client.options.ChartOption;
-import fr.vekia.VkGraph.client.options.SubOption;
+import fr.vekia.vkgraph.client.charts.PyramidChart;
+import fr.vekia.vkgraph.client.charts.RenderersEnum;
+import fr.vekia.vkgraph.client.charts.events.DataHighlightEvent;
+import fr.vekia.vkgraph.client.charts.events.EventObject;
+import fr.vekia.vkgraph.client.datas.OptionSerie;
+import fr.vekia.vkgraph.client.datas.SeriesData;
+import fr.vekia.vkgraph.client.options.ChartOption;
+import fr.vekia.vkgraph.client.options.SubOption;
 
 /**
  * @author Steeve Vandecappelle (SVA)

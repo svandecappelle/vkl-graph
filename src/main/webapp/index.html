@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="gwt:property" content="locale=en">
+
+<title>Web JQplot GWT integration Showcase project</title>
+
+<!-- HTML Javadoc CSS -->
+<link type="text/css" rel="stylesheet" href="css/doc/documentation.css">
+
+<link rel="stylesheet" href="css/jquery-ui.min.css">
+<!-- Demonstration application CSS -->
+<link type="text/css" rel="stylesheet" href="css/GQuery.css">
+
+<script type="text/javascript" language="javascript" src="showcase/showcase.nocache.js"></script>
+
+
+<!-- Google statistics -->
+<!-- <script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push([ '_setAccount', 'UA-33237900-2' ]);
+	_gaq.push([ '_trackPageview' ]);
+
+	(function() {
+		var ga = document.createElement('script');
+		ga.type = 'text/javascript';
+		ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl'
+				: 'http://www')
+				+ '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(ga, s);
+	})();
+</script> -->
+
+
+<!-- JQuery dependence -->
+<script src="showcase/jqplot/core/jquery.min.js"></script>
+<script src="showcase/jqplot/core/jquery.jqplot.min.js"></script>
+<!-- PLUG-IN JQplot -->
+<!-- Axes -->
+<script src="showcase/jqplot/plugins/axis/jqplot.dateAxisRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/axis/jqplot.logAxisRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/axis/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/axis/jqplot.categoryAxisRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/axis/jqplot.canvasAxisTickRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/text/jqplot.canvasTextRenderer.min.js"></script>
+
+<!-- Cursor -->
+<script src="showcase/jqplot/plugins/cursor/jqplot.cursor.min.js"></script>
+<!-- Highlighter -->
+<script src="showcase/jqplot/plugins/highlighter/jqplot.highlighter.min.js"></script>
+<!-- Drag-drop -->
+<script src="showcase/jqplot/plugins/dnd/jqplot.dragable.min.js"></script>
+<!-- Trendline -->
+<script src="showcase/jqplot/plugins/trendline/jqplot.trendline.min.js"></script>
+
+
+<!-- Charts types -->
+<!-- Pies -->
+<script src="showcase/jqplot/plugins/pie/jqplot.pieRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/donut/jqplot.donutRenderer.min.js"></script>
+<!-- Block plot -->
+<script src="showcase/jqplot/plugins/block/jqplot.blockRenderer.min.js"></script>
+<!-- Pyramid -->
+<script src="showcase/jqplot/plugins/pyramid/jqplot.pyramidRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/pyramid/jqplot.pyramidAxisRenderer.min.js"></script>
+<script src="showcase/jqplot/plugins/pyramid/jqplot.pyramidGridRenderer.min.js"></script>
+<!-- Bubble plot -->
+<script src="showcase/jqplot/plugins/bubble/jqplot.bubbleRenderer.min.js"></script>
+<!-- OHLC plot -->
+<script src="showcase/jqplot/plugins/ohlc/jqplot.ohlcRenderer.min.js"></script>
+
+<!-- Bar chart -->
+<script src="showcase/jqplot/plugins/bar/jqplot.barRenderer.min.js"></script>
+<!-- Bezier chart -->
+<script src="showcase/jqplot/plugins/bezier/jqplot.BezierCurveRenderer.min.js"></script>
+<!-- Gauge chart -->
+<script src="showcase/jqplot/plugins/gauge/jqplot.meterGaugeRenderer.min.js"></script>
+
+<!-- Horizontal / vertical lines -->
+<script src="showcase/jqplot/plugins/overlay/jqplot.canvasOverlay.min.js"></script>
+<!-- Legend dynamic -->
+<script src="showcase/jqplot/plugins/legend/jqplot.enhancedLegendRenderer.min.js"></script>
+
+<!-- Customization theme -->
+<script src="showcase/jqplot/plugins/themes/extendedThemes.min.js"></script>
+<!-- Export PNG -->
+<script src="showcase/jqplot/plugins/export/exportImg.min.js"></script>
+<script src="showcase/jqplot/plugins/fullscreener/fullscreener.min.js"></script>
+<link type="text/css" rel="stylesheet" href="showcase/jqplot/plugins/fullscreener/fullscreener.min.css" />
+
+</head>
+
+<!-- Application body -->
+<body id="my_body">
+
+ <!-- OPTIONAL: include this if you want history support -->
+ <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position: absolute; width: 0; height: 0; border: 0"></iframe>
+
+ <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+ <noscript>
+  <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">Your web browser
+   must have JavaScript enabled in order for this application to display correctly.</div>
+ </noscript>
+
+ <div id="consoleCode">
+  <div id="code" style="overflow: visible"></div>
+ </div>
+
+ <div class="bar fixed" id="loading-bar">
+  <div class="progress" style="width: 0%;" id="loading-bar-bar"></div>
+  <div class="title" id="loading-bar-title">0%</div>
+ </div>
+
+
+
+ <!-- JQuery dependence -->
+ <script src="js/jquery/ui/jquery-ui.min.js"></script>
+
+ <!-- <!-- Slider on showcase presentation page -->
+ <script type="text/javascript" src="js/jquery/jquery.lite-content-slider.min.js"></script>
+</body>
+
+</html>

@@ -1,17 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee                http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
-	<!-- Servlets -->
-	<servlet-mapping>
-		<servlet-name>codingServlet</servlet-name>
-		<url-pattern>/showcase/codingServlet</url-pattern>
-	</servlet-mapping>
-	<servlet>
-		<servlet-name>codingServlet</servlet-name>
-		<servlet-class>fr.vekia.tools.showcase.vkgraph.server.ClassReaderServlet</servlet-class>
-	</servlet>
-
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/showcase/*</url-pattern>
+	</filter-mapping>
+	
+	<listener>
+		<listener-class>fr.vekia.tools.showcase.vkgraph.server.config.ServletConfig</listener-class>
+	</listener>
+	
 	<!-- Default page to serve -->
 	<welcome-file-list>
-		<welcome-file>GQuery.html</welcome-file>
+		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 </web-app>
