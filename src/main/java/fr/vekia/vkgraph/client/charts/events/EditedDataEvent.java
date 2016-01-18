@@ -15,36 +15,10 @@ public abstract class EditedDataEvent extends ChartEvent {
      * 
      *          {@inheritDoc}
      */
-    static final class EditedDataEventType implements EventType {
-
-        private static EventType singleton = new EditedDataEventType();
-
-        /**
-         * Default constructor.
-         * 
-         */
-        private EditedDataEventType() {
-        }
-
-        @Override
-        public String getName() {
-            return "jqplotSeriesPointChange";
-        }
-
-        /**
-         * Return the type of {@link EditedDataEvent} GWT event.
-         * 
-         * @return the GWT event type
-         */
-        public static EventType getInstance() {
-            return singleton;
-        }
-
-    }
 
     @Override
-    public EventType getEventType() {
-        return EditedDataEventType.getInstance();
+    public String getEventType() {
+        return "jqplotSeriesPointChange";
     }
 
 }

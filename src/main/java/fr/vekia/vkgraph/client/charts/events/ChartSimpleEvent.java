@@ -15,7 +15,7 @@ public abstract class ChartSimpleEvent implements JqPlotEvent {
      * @return the GWT event type.
      */
     @Override
-    public abstract EventType getEventType();
+    public abstract String getEventType();
 
     /**
      * Called method when the event is fired.
@@ -32,5 +32,10 @@ public abstract class ChartSimpleEvent implements JqPlotEvent {
     @Override
     public boolean isNative() {
         return false;
+    }
+
+    @Override
+    public boolean isJqplotTarget() {
+        return true;
     }
 }

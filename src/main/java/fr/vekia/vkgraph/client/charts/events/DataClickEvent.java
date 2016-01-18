@@ -18,43 +18,9 @@ public abstract class DataClickEvent extends ChartEvent {
         super(DATA_CLICK_EVENT_BINDING_PARAMS);
     }
 
-    /**
-     * @author Steeve Vandecappelle (SVA)
-     * @since 16 août 2012. VklGraph version 1.2
-     * @version 2.1
-     * 
-     *          {@inheritDoc}
-     */
-    static final class DataClickEventType implements EventType {
-
-        private static EventType singleton = new DataClickEventType();
-
-        /**
-         * Default constructor.
-         * 
-         */
-        private DataClickEventType() {
-        }
-
-        @Override
-        public String getName() {
-            return "jqplotDataClick";
-        }
-
-        /**
-         * Return the type of {@link DataClickEvent} GWT event.
-         * 
-         * @return the GWT event type
-         */
-        public static EventType getInstance() {
-            return singleton;
-        }
-
-    }
-
     @Override
-    public EventType getEventType() {
-        return DataClickEventType.getInstance();
+    public String getEventType() {
+        return "jqplotDataClick";
     }
-
+    
 }

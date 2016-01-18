@@ -58,7 +58,7 @@ public abstract class ChartEvent implements JqPlotEvent {
      * @return the GWT event type.
      */
     @Override
-    public abstract EventType getEventType();
+    public abstract String getEventType();
 
     /**
      * Called method when the event is fired.
@@ -75,4 +75,8 @@ public abstract class ChartEvent implements JqPlotEvent {
         return eventBindingParams;
     }
 
+    @Override
+    public boolean isJqplotTarget() {
+        return false;
+    }
 }

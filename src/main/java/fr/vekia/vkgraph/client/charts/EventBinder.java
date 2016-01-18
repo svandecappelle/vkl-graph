@@ -2,6 +2,8 @@ package fr.vekia.vkgraph.client.charts;
 
 import java.util.List;
 
+import com.google.gwt.core.client.JavaScriptObject;
+
 import fr.vekia.vkgraph.client.charts.events.JqPlotEvent;
 
 /**
@@ -33,24 +35,45 @@ public class EventBinder {
      */
     public void bind(List<JqPlotEvent> bindedEvents) {
         for (JqPlotEvent event : bindedEvents) {
-            if (event.getEventBindingParams() == 1) {
-                this.bindSimple(event, event.getEventType().getName(), "#" + chart.getId());
-            } else if (event.getEventBindingParams() == FOUR_PARAMS_EVENT) {
-                if (event.isNative()) {
-                    this.bind4Native(event, event.getEventType().getName(), "#" + chart.getId());
-                } else {
-                    this.bind4(event, event.getEventType().getName(), "#" + chart.getId());
-                }
-
-            } else if (event.getEventBindingParams() == FIVE_PARAMS_EVENT) {
-                this.bind5(event, event.getEventType().getName(), "#" + chart.getId());
-            } else if (event.getEventBindingParams() == 0) {
-                this.bindWithNoArg(event, event.getEventType().getName(), "#" + chart.getId());
+            if (event.isJqplotTarget()) {
+                this.bindTarget(this.chart.getChartJavascriptObject(), event, event.getEventType());
             } else {
-                JsConsole.warn("[W400CE]", Integer.toString(event.getEventBindingParams()), "The event cannot be binded because of invalid number of event binding params. DebugParam:\nContact a VklGraph commiter by reporting an issue.");
+                if (event.getEventBindingParams() == 1) {
+                    this.bindSimple(event, event.getEventType(), "#" + chart.getId());
+                } else if (event.getEventBindingParams() == FOUR_PARAMS_EVENT) {
+                    if (event.isNative()) {
+                        this.bind4Native(event, event.getEventType(), "#" + chart.getId());
+                    } else {
+                        this.bind4(event, event.getEventType(), "#" + chart.getId());
+                    }
+
+                } else if (event.getEventBindingParams() == FIVE_PARAMS_EVENT) {
+                    this.bind5(event, event.getEventType(), "#" + chart.getId());
+                } else if (event.getEventBindingParams() == 0) {
+                    this.bindWithNoArg(event, event.getEventType(), "#" + chart.getId());
+                } else {
+                    JsConsole.warn("[W400CE]", Integer.toString(event.getEventBindingParams()), "The event cannot be binded because of invalid number of event binding params. DebugParam:\nContact a VklGraph commiter by reporting an issue.");
+                }
             }
         }
     }
+
+    // @formatter:off
+    /**
+     * Bind jqplot native target events.
+     * 
+     * @param chartJavascriptObject jqplot generated js object.
+     * @param eventType eventType to bind.
+     */
+    private native void bindTarget(JavaScriptObject plot, JqPlotEvent event, String eventType) /*-{
+        $wnd.jQuery(plot).on(eventType, function (data){
+            var eventData = @fr.vekia.vkgraph.client.charts.events.SimpleEventObject::new()();
+            eventData.@fr.vekia.vkgraph.client.charts.events.SimpleEventObject::setValue(Ljava/lang/Object;)(data);
+            event.@fr.vekia.vkgraph.client.charts.events.ChartSimpleEvent::onEvent(Lfr/vekia/vkgraph/client/charts/events/SimpleEventObject;)(eventData);
+        });
+        
+    }-*/;
+    // @formatter:on
 
     /**
      * @param event

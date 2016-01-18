@@ -4,8 +4,6 @@ package fr.vekia.vkgraph.client.charts.events;
  * @author Steeve Vandecappelle (SVA)
  * @since 17 août 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
 public interface JqPlotEvent {
 
@@ -17,11 +15,16 @@ public interface JqPlotEvent {
     /**
      * @return
      */
-    EventType getEventType();
+    String getEventType();
 
     /**
      * @return
      */
     boolean isNative();
+
+    /**
+     * @return
+     */
+    boolean isJqplotTarget();
 
 }
