@@ -15,9 +15,9 @@ import java.util.List;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.AbstractShowcaseTreeMenuItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.complex.AnimatedComplexChartItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.complex.AreaChartItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.complex.DashBoardItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.complex.AnimatedComplexChartItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.complex.AreaChartItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.complex.DashBoardItem;
 
 /**
  * @author Steeve Vandecappelle (SVA)

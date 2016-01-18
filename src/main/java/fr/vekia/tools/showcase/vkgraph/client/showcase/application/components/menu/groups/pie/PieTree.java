@@ -15,8 +15,8 @@ import java.util.List;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.AbstractShowcaseTreeMenuItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.pies.DonutExempleItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.pies.GeneralPieExempleItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.pies.DonutExempleItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.pies.GeneralPieExempleItem;
 
 /**
  * @author Steeve Vandecappelle (SVA)

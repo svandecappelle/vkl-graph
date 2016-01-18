@@ -24,11 +24,11 @@ import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.Widget;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.PyramidChartInteractiveWidget;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.interactives.AreaChartInteractiveWidgetScreen;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.screens.simple.SimplePlotScreen;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.services.CodeServiceUtil;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.Slideshow;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.PyramidChartInteractiveWidget;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.interactives.AreaChartInteractiveWidgetScreen;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.simple.SimplePlotScreen;
 
 public class ExemplePresentation extends SimplePanel {
 

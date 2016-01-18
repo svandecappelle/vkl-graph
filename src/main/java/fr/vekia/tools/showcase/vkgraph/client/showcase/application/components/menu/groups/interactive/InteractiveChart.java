@@ -15,13 +15,13 @@ import java.util.List;
 import com.google.gwt.user.client.ui.IsWidget;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.AbstractShowcaseTreeMenuItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.AreaChartInteractiveItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.BarChartInteractiveItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.BubbleChartInteractiveItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.DonutChartInteractiveItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.LineChartInteractiveItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.PieChartInteractiveItem;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.demo.items.interactives.PyramidChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.AreaChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.BarChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.BubbleChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.DonutChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.LineChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.PieChartInteractiveItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.PyramidChartInteractiveItem;
 
 /**
  * @author Steeve Vandecappelle (SVA)
