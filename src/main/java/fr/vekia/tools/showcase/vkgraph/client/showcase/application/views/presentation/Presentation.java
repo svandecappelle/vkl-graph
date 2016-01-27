@@ -17,9 +17,6 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.AnimationEnum;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.animations.JqueryAnimation;
-
 public class Presentation extends SimplePanel {
     private static final Button startDemoButton = new Button("Start automated presentation...");
 
@@ -45,9 +42,4 @@ public class Presentation extends SimplePanel {
         return startDemoButton;
     }
 
-    @Override
-    protected void onAttach() {
-        super.onAttach();
-        JqueryAnimation.animate(AnimationEnum.PULSATE, startDemoButton.getElement(), 150, 2000);
-    }
 }

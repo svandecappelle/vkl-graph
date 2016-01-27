@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/components/GlobalPanel.java $
- * $Id: GlobalPanel.java 52 2012-09-26 15:26:35Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-26 17:26:35 +0200 (mer., 26 sept. 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components;
 
 import com.google.gwt.dom.client.Style.Overflow;
@@ -24,8 +15,6 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseGloba
  * @author Steeve Vandecappelle (SVA)
  * @since 23 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 public class GlobalPanel implements Display {
 

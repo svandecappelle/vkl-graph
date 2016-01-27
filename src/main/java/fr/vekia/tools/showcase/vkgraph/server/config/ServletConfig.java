@@ -27,11 +27,11 @@ public class ServletConfig extends GuiceServletContextListener {
         protected void configureServlets() {
             try {
                 LOGGER.info("Configuring");
-                // Serve
-                serve("/showcase/codingServlet").with(ClassReaderServlet.class);
-
                 // Binding
                 bind(CodeService.class).to(ClassReaderServlet.class);
+                
+                // Serve
+                serve("/showcase/codingServlet").with(ClassReaderServlet.class);
 
             } catch (Exception exception) {
                 LOGGER.error("Error configuring servlets", exception);

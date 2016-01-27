@@ -6,23 +6,23 @@
 	<inherits name='net.customware.gwt.presenter.Presenter' />
 	<inherits name="com.google.gwt.inject.Inject" />
 	<inherits name="com.google.gwt.resources.Resources" />
-	<inherits name="com.google.gwt.i18n.I18N"/>
+	<inherits name="com.google.gwt.i18n.I18N" />
 
 	<!-- French language, independent of country -->
-	<extend-property name="locale" values="fr"/>
+	<extend-property name="locale" values="fr" />
 	<!-- English language, independent of country -->
-	<extend-property name="locale" values="en"/>
-	<set-property-fallback name="locale" value="en"/> 
+	<extend-property name="locale" values="en" />
+	<set-property-fallback name="locale" value="en" />
 
 	<inherits name='fr.vekia.vkgraph.VkGraphNoScript' />
 
 	<inherits name="com.google.gwt.activity.Activity" />
 	<inherits name="com.google.gwt.place.Place" />
 
-<!-- 	<add-linker name="xsiframe" /> -->
-<!-- 	<set-configuration-property name="devModeRedirectEnabled" -->
-<!-- 		value="true" /> -->
-<!-- 	<set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/> -->
+	<!-- <add-linker name="xsiframe" /> -->
+	<!-- <set-configuration-property name="devModeRedirectEnabled" -->
+	<!-- value="true" /> -->
+	<!-- <set-configuration-property name='xsiframe.failIfScriptTag' value='FALSE'/> -->
 	<!-- Specify the app entry point class. -->
 	<entry-point class='fr.vekia.tools.showcase.vkgraph.client.Showcase' />
 

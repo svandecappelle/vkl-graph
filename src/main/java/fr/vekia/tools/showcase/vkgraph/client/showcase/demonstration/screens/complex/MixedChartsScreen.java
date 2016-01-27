@@ -3,9 +3,14 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.co
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.JQueryDialog;
 import fr.vekia.vkgraph.client.charts.AbstractChart;
 import fr.vekia.vkgraph.client.charts.NumberType;
 import fr.vekia.vkgraph.client.charts.RenderersEnum;
@@ -24,62 +29,65 @@ import fr.vekia.vkgraph.client.options.SubOption;
  * @since 11 mai 2012. GWTQuery Vekia Showcase
  * @version 1.0
  */
-public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
+public class MixedChartsScreen extends FlowPanel {
 
     /**
      * Default constructor
      * 
      */
     public MixedChartsScreen() {
+
+        final AbstractChart<List<DualValue>> chart = new AbstractChart<List<DualValue>>();
+
         List<String> colors = new ArrayList<String>();
         colors.add("rgba(78, 135, 194, 0.7)");
         colors.add("rgba(211, 0, 59,0.7)");
         colors.add("rgba(78, 135, 0, 0.7)");
         colors.add("rgba(235, 125, 0, 0.5)");
 
-        super.setDatas(this.getValues());
-        super.setSize("1000px", "600px");
+        chart.setDatas(this.getValues());
+        chart.setSize("1000px", "600px");
 
-        super.setTextOption(ChartOption.title, "Votes");
+        chart.setTextOption(ChartOption.title, "Votes");
 
-        super.setBooleanOption(ChartOption.animate, true);
-        super.setBooleanOption(ChartOption.animateReplot, true);
+        chart.setBooleanOption(ChartOption.animate, true);
+        chart.setBooleanOption(ChartOption.animateReplot, true);
 
-        super.setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker, false);
-        super.setBooleanOption(ChartOption.seriesDefaults, SubOption.pointLabels, SubOption.show, false);
-        super.setBooleanOption(ChartOption.seriesDefaults, SubOption.rendererOptions, SubOption.smooth, true);
+        chart.setBooleanOption(ChartOption.seriesDefaults, SubOption.showMarker, false);
+        chart.setBooleanOption(ChartOption.seriesDefaults, SubOption.pointLabels, SubOption.show, false);
+        chart.setBooleanOption(ChartOption.seriesDefaults, SubOption.rendererOptions, SubOption.smooth, true);
 
-        super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, RenderersEnum.CategoryAxis.getValueRenderer());
-        super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickOptions, "{angle: -30,fontFamily: 'Courier New', fontSize: '9pt'}");
-        super.setOption(ChartOption.axes, SubOption.yaxis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
-        super.setOption(ChartOption.axes, SubOption.y2axis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
-        super.setOption(ChartOption.axes, SubOption.y3axis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
+        chart.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, RenderersEnum.CategoryAxis.getValueRenderer());
+        chart.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickOptions, "{angle: -30,fontFamily: 'Courier New', fontSize: '9pt'}");
+        chart.setOption(ChartOption.axes, SubOption.yaxis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
+        chart.setOption(ChartOption.axes, SubOption.y2axis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
+        chart.setOption(ChartOption.axes, SubOption.y3axis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
 
-        super.setBooleanOption(ChartOption.cursor, SubOption.show, true);
-        super.setTextOption(ChartOption.cursor, SubOption.tooltipLocation, "sw");
+        chart.setBooleanOption(ChartOption.cursor, SubOption.show, true);
+        chart.setTextOption(ChartOption.cursor, SubOption.tooltipLocation, "sw");
 
-        super.setTextOption(ChartOption.legend, SubOption.location, "ne");
-        super.setTextOption(ChartOption.legend, SubOption.rowSpacing, "0px");
-        super.setBooleanOption(ChartOption.legend, SubOption.show, true);
-        super.setOption(ChartOption.legend, SubOption.renderer, RenderersEnum.EnhancedLegendRenderer.getValueRenderer());
-        super.setTextOption(ChartOption.legend, SubOption.placement, "outsideGrid");
+        chart.setTextOption(ChartOption.legend, SubOption.location, "ne");
+        chart.setTextOption(ChartOption.legend, SubOption.rowSpacing, "0px");
+        chart.setBooleanOption(ChartOption.legend, SubOption.show, true);
+        chart.setOption(ChartOption.legend, SubOption.renderer, RenderersEnum.EnhancedLegendRenderer.getValueRenderer());
+        chart.setTextOption(ChartOption.legend, SubOption.placement, "outsideGrid");
 
-        super.setBooleanOption(ChartOption.grid, SubOption.drawBorder, false);
-        super.setBooleanOption(ChartOption.grid, SubOption.shadow, true);
-        super.setTextOption(ChartOption.grid, SubOption.background, "white");
-        super.setTextOption(ChartOption.grid, SubOption.rowSpacing, "0px");
+        chart.setBooleanOption(ChartOption.grid, SubOption.drawBorder, false);
+        chart.setBooleanOption(ChartOption.grid, SubOption.shadow, true);
+        chart.setTextOption(ChartOption.grid, SubOption.background, "white");
+        chart.setTextOption(ChartOption.grid, SubOption.rowSpacing, "0px");
 
-        super.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.pad, 1.05f, NumberType.FLOAT);
-        super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
-        super.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
-        super.setOption(ChartOption.axes, SubOption.yaxis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
-        super.setOption(ChartOption.axes, SubOption.yaxis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
-        super.setOption(ChartOption.axes, SubOption.y2axis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
-        super.setOption(ChartOption.axes, SubOption.y2axis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
-        super.setTextOption(ChartOption.axes, SubOption.yaxis, SubOption.formatString, "%\'d");
-        super.setTextOption(ChartOption.axes, SubOption.y2axis, SubOption.formatString, "%\'d");
+        chart.setNumberOption(ChartOption.axes, SubOption.yaxis, SubOption.pad, 1.05f, NumberType.FLOAT);
+        chart.setOption(ChartOption.axes, SubOption.xaxis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
+        chart.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
+        chart.setOption(ChartOption.axes, SubOption.yaxis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
+        chart.setOption(ChartOption.axes, SubOption.yaxis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
+        chart.setOption(ChartOption.axes, SubOption.y2axis, SubOption.labelRenderer, RenderersEnum.CanvasAxisLabel.getValueRenderer());
+        chart.setOption(ChartOption.axes, SubOption.y2axis, SubOption.tickRenderer, RenderersEnum.CanvasAxisTick.getValueRenderer());
+        chart.setTextOption(ChartOption.axes, SubOption.yaxis, SubOption.formatString, "%\'d");
+        chart.setTextOption(ChartOption.axes, SubOption.y2axis, SubOption.formatString, "%\'d");
 
-        super.setOption(ChartOption.seriesColors, colors);
+        chart.setOption(ChartOption.seriesColors, colors);
 
         OptionSerie qtySerie = new OptionSerie();
         OptionSerie qtyFromSerie = new OptionSerie();
@@ -115,7 +123,7 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
         seriesDatas.set(2, qtyPushSerie);
         seriesDatas.set(3, stockSerie);
 
-        super.setSeriesOptions(seriesDatas);
+        chart.setSeriesOptions(seriesDatas);
 
         CanvasOverlayObject objectsCanvas = new CanvasOverlayObject();
         Rectangle rect = new Rectangle();
@@ -128,15 +136,19 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
         rect.setTextOption(SubOption.color, "rgb(100, 55, 124)");
 
         objectsCanvas.addObject(rect);
-        super.setCanvasOverlay(objectsCanvas);
-        super.setBooleanOption(ChartOption.canvasOverlay, SubOption.show, true);
-        super.setBooleanOption(ChartOption.canvasOverlay, SubOption.bellowSeries, true);
+        chart.setCanvasOverlay(objectsCanvas);
+        chart.setBooleanOption(ChartOption.canvasOverlay, SubOption.show, true);
+        chart.setBooleanOption(ChartOption.canvasOverlay, SubOption.bellowSeries, true);
 
-        super.bind(new ChartSimpleEvent() {
+        chart.bind(new ChartSimpleEvent() {
 
             @Override
             public void onEvent(SimpleEventObject datasOnEvent) {
-                Window.alert("serie showed:" + datasOnEvent.getValues().get("id").toString());
+                JQueryDialog dialog = new JQueryDialog("Event");
+                dialog.setPreferedSize(100, 200);
+                Integer serieShow = Integer.valueOf(datasOnEvent.getValues().get("id").toString());
+                dialog.setContent(new Label("serie showed:" + serieShow));
+                dialog.show();
             }
 
             @Override
@@ -145,11 +157,15 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
             }
         });
 
-        super.bind(new ChartSimpleEvent() {
+        chart.bind(new ChartSimpleEvent() {
 
             @Override
             public void onEvent(SimpleEventObject datasOnEvent) {
-                Window.alert("serie hidden:" + datasOnEvent.getValues().get("id").toString());
+                JQueryDialog dialog = new JQueryDialog("Event");
+                dialog.setPreferedSize(100, 200);
+                Integer serieHide = Integer.valueOf(datasOnEvent.getValues().get("id").toString());
+                dialog.setContent(new Label("serie hidden:" + serieHide));
+                dialog.show();
             }
 
             @Override
@@ -157,6 +173,30 @@ public class MixedChartsScreen extends AbstractChart<List<DualValue>> {
                 return "jqplotSerieHide";
             }
         });
+
+        this.add(chart);
+        final Button buttonHideSerie = new Button("Hide serie 1");
+
+        buttonHideSerie.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                chart.hideSerie(1);
+            }
+        });
+
+        final Button buttonToggleSerie2 = new Button("Toggle serie 2");
+
+        buttonToggleSerie2.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                chart.toggleSerie(2);
+            }
+        });
+
+        this.add(buttonHideSerie);
+        this.add(buttonToggleSerie2);
     }
 
     @SuppressWarnings("deprecation")

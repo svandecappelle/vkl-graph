@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/components/PresentationDemoPanel.java $
- * $Id: PresentationDemoPanel.java 52 2012-09-26 15:26:35Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-26 17:26:35 +0200 (mer., 26 sept. 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components;
 
 import com.google.gwt.dom.client.Style.Position;
@@ -24,33 +15,31 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.present
  * @author Steeve Vandecappelle (SVA)
  * @since 25 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 public class PresentationDemoPanel extends Composite {
-	private Presentation presentation;
+    private Presentation presentation;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
+    /**
+     * Default constructor
+     * 
+     */
     public PresentationDemoPanel() {
-		SimplePanel layout = new SimplePanel();
-		SplitLayoutPanel dock = new SplitLayoutPanel();
+        SimplePanel layout = new SimplePanel();
+        SplitLayoutPanel dock = new SplitLayoutPanel(14);
 
-		dock.addWest(new Releases(), 230);
-		dock.addSouth(new Contributors(), 15);
-		presentation = new Presentation();
-		dock.addNorth(presentation, 230);
-		dock.add(new ExemplePresentation());
-		layout.setSize("100%", "100%");
-		dock.setSize("100%", "100%");
-		layout.add(dock);
-		layout.getElement().getStyle().setPosition(Position.ABSOLUTE);
-		initWidget(layout);
-	}
+        dock.addWest(new Releases(), 230);
+        dock.addSouth(new Contributors(), 15);
+        presentation = new Presentation();
+        dock.addNorth(presentation, 230);
+        dock.add(new ExemplePresentation());
+        layout.setSize("100%", "100%");
+        dock.setSize("100%", "100%");
+        layout.add(dock);
+        layout.getElement().getStyle().setPosition(Position.ABSOLUTE);
+        initWidget(layout);
+    }
 
-	public HasClickHandlers getStartAutomatedDemoHandler() {
-		return presentation.getStartAutomatedDemoHandler();
-	}
+    public HasClickHandlers getStartAutomatedDemoHandler() {
+        return presentation.getStartAutomatedDemoHandler();
+    }
 }

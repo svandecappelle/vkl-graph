@@ -12,6 +12,8 @@
 
 		<!-- convenience to define GWT version in one place -->
 		<gwt.version>2.7.0</gwt.version>
+		<gae.version>1.9.31</gae.version>
+
 		<slf4jVersion>1.7.7</slf4jVersion>
 
 		<!-- tell the compiler we can use 1.5 -->
@@ -40,6 +42,12 @@
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
 			<version>${gwt.version}</version>
+		</dependency>
+		<dependency>
+			<!-- this library provides the core appengine features -->
+			<groupId>com.google.appengine</groupId>
+			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<version>${gae.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.validation</groupId>
@@ -113,6 +121,11 @@
 		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-maven-plugin</artifactId>
+				<version>${gae.version}</version>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
 				<version>${gwt.version}</version>
@@ -167,6 +180,14 @@
 
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>com.google.appengine</groupId>
+					<artifactId>appengine-maven-plugin</artifactId>
+					<version>${gae.version}</version>
+					<configuration>
+						<enableJarSplitting>true</enableJarSplitting>
+					</configuration>
+				</plugin>
 				<plugin>
 					<!-- compiles for jdk 1.6 -->
 					<groupId>org.apache.maven.plugins</groupId>

@@ -47,8 +47,8 @@ public class MenuPlace extends Place {
 	}
 
 	public static class Tokenizer implements PlaceTokenizer<MenuPlace> {
-		@Override
-		public String getToken(MenuPlace place) {
+        @Override
+        public String getToken(MenuPlace place) {
 			return place.getMenu() + "-" + place.getItem();
 		}
 

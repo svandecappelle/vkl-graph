@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/components/menu/groups/plots/AdvancedOptionsPlotTree.java $
- * $Id: AdvancedOptionsPlotTree.java 45 2012-09-07 07:35:41Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-07 09:35:41 +0200 (ven., 07 sept. 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.groups.plots;
 
 import java.util.ArrayList;

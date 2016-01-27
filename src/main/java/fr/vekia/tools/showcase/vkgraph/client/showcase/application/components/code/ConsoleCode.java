@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.Widget;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConsoleCodePresenter.Display;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.JQueryDialog;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -31,7 +32,7 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConso
 public class ConsoleCode implements Display {
 
     private Button buttonShow;
-    private ConsoleWindow box;
+    private JQueryDialog box;
     private String codeUrl;
     private String className;
     private Anchor showOtherWindow;
@@ -43,7 +44,7 @@ public class ConsoleCode implements Display {
      */
     public ConsoleCode() {
         this.container = new FlowPanel();
-        box = new ConsoleWindow();
+        box = new JQueryDialog("The code", false);
         buttonShow = new Button("ShowCode");
         showOtherWindow = new Anchor("Show in other window");
         showOtherWindow.setTarget("_blank");

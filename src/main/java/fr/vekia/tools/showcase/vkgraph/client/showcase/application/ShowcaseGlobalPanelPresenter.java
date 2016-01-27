@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/ShowcaseGlobalPanelPresenter.java $
- * $Id: ShowcaseGlobalPanelPresenter.java 42 2012-08-31 13:58:13Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-08-31 15:58:13 +0200 (ven., 31 août 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application;
 
 import net.customware.gwt.presenter.client.EventBus;
@@ -36,107 +27,97 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.Show
  * @author Steeve Vandecappelle (SVA)
  * @since 23 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 @Singleton
-public class ShowcaseGlobalPanelPresenter extends
-		WidgetPresenter<ShowcaseGlobalPanelPresenter.Display> {
+public class ShowcaseGlobalPanelPresenter extends WidgetPresenter<ShowcaseGlobalPanelPresenter.Display> {
 
-	public interface Display extends WidgetDisplay, AcceptsOneWidget {
+    public interface Display extends WidgetDisplay, AcceptsOneWidget {
 
-		HasClickHandlers getStartAutomatedDemoHandler();
+        HasClickHandlers getStartAutomatedDemoHandler();
 
-		/**
-		 * @return
-		 */
-		HasClickHandlers getReturnLbl();
+        /**
+         * @return
+         */
+        HasClickHandlers getReturnLbl();
 
-	}
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param display
-	 * @param eventBus
-	 */
-	@Inject
-	public ShowcaseGlobalPanelPresenter(Display display, EventBus eventBus) {
-		super(display, eventBus);
+    /**
+     * Default constructor
+     * 
+     * @param display
+     * @param eventBus
+     */
+    @Inject
+    public ShowcaseGlobalPanelPresenter(Display display, EventBus eventBus) {
+        super(display, eventBus);
 
-		display.getReturnLbl().addClickHandler(new ClickHandler() {
+        display.getReturnLbl().addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				History.back();
-			}
-		});
-	}
+            @Override
+            public void onClick(ClickEvent event) {
+                History.back();
+            }
+        });
+    }
 
-	@Override
-	protected void onBind() {
-		registerHandler(display.getStartAutomatedDemoHandler().addClickHandler(
-				new ClickHandler() {
+    @Override
+    protected void onBind() {
+        registerHandler(display.getStartAutomatedDemoHandler().addClickHandler(new ClickHandler() {
 
-					@Override
-					public void onClick(ClickEvent event) {
-						ShowcaseInjector.Util.getInstance().getEventBus()
-								.fireEvent(new StartAutomatedDemoEvent());
-					}
-				}));
+            @Override
+            public void onClick(ClickEvent event) {
+                ShowcaseInjector.Util.getInstance().getEventBus().fireEvent(new StartAutomatedDemoEvent());
+            }
+        }));
 
-		registerHandler(eventBus.addHandler(SelectionEvent.getType(),
-				new SelectionHandler<AbstractShowcaseTreeMenuItem>() {
+        registerHandler(eventBus.addHandler(SelectionEvent.getType(), new SelectionHandler<AbstractShowcaseTreeMenuItem>() {
 
-					@Override
-					public void onSelection(
-							final SelectionEvent<AbstractShowcaseTreeMenuItem> event) {
-						historyHandle(event.getSelectedItem());
-						displayScreen(event.getSelectedItem());
-					}
+            @Override
+            public void onSelection(final SelectionEvent<AbstractShowcaseTreeMenuItem> event) {
+                historyHandle(event.getSelectedItem());
+                displayScreen(event.getSelectedItem());
+            }
 
-				}));
+        }));
 
-	}
+    }
 
-	private void historyHandle(AbstractShowcaseTreeMenuItem selectedItem) {
+    private void historyHandle(AbstractShowcaseTreeMenuItem selectedItem) {
 
-		if (selectedItem.hasScreen()) {
-			String categ = "";
+        if (selectedItem.hasScreen()) {
+            String categ = "";
 
-			String screen = selectedItem.getText();
+            String screen = selectedItem.getText();
 
-			while (selectedItem.getParentItem() != null) {
-				categ = selectedItem.getParentItem().getText();
-				selectedItem = (AbstractShowcaseTreeMenuItem) selectedItem
-						.getParentItem();
-			}
-			// create the screen and attach to DOM
-			ShowcaseInjector.Util.getInstance().getPresenter()
-					.getPlaceController().goTo(new MenuPlace(categ, screen));
-		}
+            while (selectedItem.getParentItem() != null) {
+                categ = selectedItem.getParentItem().getText();
+                selectedItem = (AbstractShowcaseTreeMenuItem) selectedItem.getParentItem();
+            }
+            // create the screen and attach to DOM
+            ShowcaseInjector.Util.getInstance().getPresenter().getPlaceController().goTo(new MenuPlace(categ, screen));
+        }
 
-	}
+    }
 
-	private final void displayScreen(
-			final AbstractShowcaseTreeMenuItem abstractShowcaseTreeMenuItem) {
-		Scheduler.get().scheduleFinally(new ScheduledCommand() {
+    private final void displayScreen(final AbstractShowcaseTreeMenuItem abstractShowcaseTreeMenuItem) {
+        Scheduler.get().scheduleFinally(new ScheduledCommand() {
 
-			@Override
-			public void execute() {
+            @Override
+            public void execute() {
 
-				final IsWidget code = abstractShowcaseTreeMenuItem.getScreen();
-				eventBus.fireEvent(new SelectionCodeEvent(code));
-			}
-		});
+                final IsWidget code = abstractShowcaseTreeMenuItem.getScreen();
+                eventBus.fireEvent(new SelectionCodeEvent(code));
+            }
+        });
 
-	}
+    }
 
-	@Override
-	protected void onUnbind() {
-	}
+    @Override
+    protected void onUnbind() {
+    }
 
-	@Override
-	protected void onRevealDisplay() {
-	}
+    @Override
+    protected void onRevealDisplay() {
+    }
 }

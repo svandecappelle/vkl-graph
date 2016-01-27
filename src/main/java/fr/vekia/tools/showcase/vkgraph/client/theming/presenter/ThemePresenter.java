@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.tools.showcase.vkgraph.client.theming.presenter;
 
 import javax.inject.Singleton;
@@ -27,50 +18,45 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ThemeFactory.
  * @author svandecappelle
  * @since Dec 14, 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
 @Singleton
 public class ThemePresenter extends WidgetPresenter<ThemeView> {
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param display
-	 * @param eventBus
-	 */
-	@Inject
-	public ThemePresenter(ThemeView display, EventBus eventBus) {
-		super(display, eventBus);
-	}
+    /**
+     * Default constructor
+     * 
+     * @param display
+     * @param eventBus
+     */
+    @Inject
+    public ThemePresenter(ThemeView display, EventBus eventBus) {
+        super(display, eventBus);
+    }
 
-	@Override
-	protected void onBind() {
+    @Override
+    protected void onBind() {
 
-		this.display.getChangeThemeHandler().addChangeHandler(
-				new ChangeHandler() {
+        this.display.getChangeThemeHandler().addChangeHandler(new ChangeHandler() {
 
-					@Override
-					public void onChange(ChangeEvent event) {
-						Theme theme = Theme.valueOf(display.getValue());
-						ThemeFactory.setTheme(theme);
-					}
-				});
-	}
+            @Override
+            public void onChange(ChangeEvent event) {
+                Theme theme = Theme.valueOf(display.getValue());
+                ThemeFactory.setTheme(theme);
+            }
+        });
+    }
 
-	@Override
-	protected void onUnbind() {
-		// TODO Auto-generated method stub
+    @Override
+    protected void onUnbind() {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	@Override
-	protected void onRevealDisplay() {
-		RootLayoutPanel.get().add(display.asWidget());
-		RootLayoutPanel.get().setWidgetBottomHeight(display.asWidget(), 0,
-				Unit.PX, 20, Unit.PX);
-		RootLayoutPanel.get().setWidgetRightWidth(display.asWidget(), 0,
-				Unit.PX, 200, Unit.PX);
-	}
+    @Override
+    protected void onRevealDisplay() {
+        RootLayoutPanel.get().add(display.asWidget());
+        RootLayoutPanel.get().setWidgetBottomHeight(display.asWidget(), 0, Unit.PX, 20, Unit.PX);
+        RootLayoutPanel.get().setWidgetRightWidth(display.asWidget(), 0, Unit.PX, 200, Unit.PX);
+    }
 
 }

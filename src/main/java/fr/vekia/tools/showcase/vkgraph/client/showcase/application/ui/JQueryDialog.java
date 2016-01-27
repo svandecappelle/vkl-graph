@@ -9,109 +9,139 @@
  */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui;
 
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
 import com.google.gwt.event.logical.shared.HasResizeHandlers;
 import com.google.gwt.event.logical.shared.ResizeEvent;
 import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author svandecappelle
- * @since Nov 23, 2012. VklGraph version 1.2
+ * @since Nov 22, 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
-public class JQueryDialog extends Widget implements ResizeHandler,
-		HasResizeHandlers {
+public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResizeHandlers {
 
-	private SimplePanel p;
-	private String id;
-	private String idContent;
+    private static final int HEADER_HEIGHT = 35;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public JQueryDialog(boolean isResizable, boolean isDraggable) {
-		this.p = new SimplePanel();
-		this.p.getElement().setId(DOM.createUniqueId());
-		this.id = this.p.getElement().getId();
-		int height = Window.getClientHeight() / 2;
-		int width = Window.getClientWidth() / 3;
+    private SimplePanel innerpopup;
+    private SimplePanel scrollableContent = new SimplePanel();
+    private String id;
 
-		int x = 0;
-		int y = Window.getClientWidth() - width;
-		super.setElement(p.getElement());
-		super.setTitle("The Dialog");
+    private int height;
+    private int width;
 
-		RootLayoutPanel.get().add(p);
+    private boolean autoSize;
 
-		this.create(id, height, width, x, y, isResizable, isDraggable);
+    private boolean sized;
 
-		this.addResizeHandler(this);
-	}
-
-	/**
- * 
- */
-	private native void create(String id, int height, int width, int x, int y,
-			boolean isResizable, boolean isDraggable) /*-{
-														$wnd.jQuery("#" + id).dialog({
-														autoOpen : false,
-														show : "blind",
-														hide : "explode",
-														height : height,
-														width : width,
-														draggable : isDraggable,
-														resizable : isResizable,
-														position : [ x, y ]
-														});
-														}-*/;
-
-	/**
+    /**
+     * Default constructor
      * 
      */
-	public void show() {
-		this.open(id);
-	};
+    public JQueryDialog(String title) {
+        this(title, true);
+    }
 
-	/**
+    /**
+     * Default constructor
      * 
      */
-	private native void open(String id) /*-{
-										$wnd.jQuery("#" + id).dialog("open");
-										}-*/;
+    public JQueryDialog(String title, boolean autoSize) {
+        this.id = DOM.createUniqueId();
+        this.innerpopup = new SimplePanel();
+        this.scrollableContent = new SimplePanel();
 
-	@Override
-	public void onResize(ResizeEvent event) {
-		int height = DOM.getElementById(id).getOffsetHeight();
-		int width = DOM.getElementById(id).getOffsetWidth();
+        this.innerpopup.add(this.scrollableContent);
+        this.innerpopup.setTitle(title);
+        this.innerpopup.getElement().setId(id);
+        this.autoSize = autoSize;
 
-		DOM.getElementById(idContent).getStyle()
-				.setPropertyPx("maxHeight", height);
-		DOM.getElementById(idContent).getStyle()
-				.setPropertyPx("maxWidth", width);
-	}
+        super.add(this.innerpopup);
+    }
 
-	@Override
-	public HandlerRegistration addResizeHandler(ResizeHandler handler) {
-		return addHandler(handler, ResizeEvent.getType());
-	}
+    public void setPreferedSize(int height, int width) {
+        this.sized = true;
+        this.height = height;
+        this.width = width;
+    }
 
-	/**
-	 * @param bar
-	 */
-	public void setWidget(Widget widget) {
-		if (widget.getElement().getId() == null) {
-			widget.getElement().setId(DOM.createUniqueId());
-		}
-		idContent = widget.getElement().getId();
-		p.setWidget(widget);
-	}
+    /**
+     * 
+     */
+    public void show() {
+        RootLayoutPanel.get().insert(this, 0);
+
+        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
+
+            @Override
+            public void execute() {
+                if (!sized) {
+                    if (autoSize) {
+                        height = scrollableContent.getOffsetHeight() + HEADER_HEIGHT;
+                        width = scrollableContent.getOffsetWidth();
+                    } else {
+                        height = Window.getClientHeight() / 2;
+                        width = Window.getClientWidth() / 3;
+                    }
+                }
+                open(id, height, width);
+                RootLayoutPanel.get().remove(JQueryDialog.this);
+            }
+        });
+    };
+
+    /**
+     * 
+     */
+    public void close() {
+        close(id);
+    };
+
+    public void setCode(String code) {
+        this.scrollableContent.getElement().setInnerHTML(code);
+    }
+
+    /**
+     * 
+     */
+    // @formatter:off
+    private native void open(String id, int height, int width) /*-{
+       $wnd.jQuery("#" + id).dialog({
+           show : "slide",
+           hide : "explode",
+           height : height,
+           width : width
+           
+       });
+    }-*/;
+    
+    private native void close(String id) /*-{
+        $wnd.jQuery("#" + id).dialog("close");
+     }-*/;
+    // @formatter:on
+
+    @Override
+    public void onResize(ResizeEvent event) {
+        // this.height = this.innerpopup.getOffsetHeight();
+        // this.width = this.innerpopup.getOffsetWidth();
+        // this.scrollableContent.getElement().getStyle().setPropertyPx("maxHeight", height);
+        // this.scrollableContent.getElement().getStyle().setPropertyPx("maxWidth", width);
+    }
+
+    @Override
+    public HandlerRegistration addResizeHandler(ResizeHandler handler) {
+        return addHandler(handler, ResizeEvent.getType());
+    }
+
+    public void setContent(IsWidget widget) {
+        this.scrollableContent.setWidget(widget);
+    }
 
 }
