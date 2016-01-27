@@ -1,0 +1,4 @@
+[submodule "showcase"]
+	path = showcase
+	url = https://github.com/svandecappelle/vkl-graph.git
+	branch = showcase
