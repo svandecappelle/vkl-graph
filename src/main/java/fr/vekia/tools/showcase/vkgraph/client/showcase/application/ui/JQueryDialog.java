@@ -2,10 +2,6 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui;
 
 import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.core.client.Scheduler.ScheduledCommand;
-import com.google.gwt.event.logical.shared.HasResizeHandlers;
-import com.google.gwt.event.logical.shared.ResizeEvent;
-import com.google.gwt.event.logical.shared.ResizeHandler;
-import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -17,7 +13,7 @@ import com.google.gwt.user.client.ui.SimplePanel;
  * @since Nov 22, 2012. VklGraph version 1.2
  * @version 2.1
  */
-public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResizeHandlers {
+public class JQueryDialog extends SimplePanel {
 
     private static final int HEADER_HEIGHT = 35;
 
@@ -31,6 +27,10 @@ public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResiz
     private boolean autoSize;
 
     private boolean sized;
+
+    private String codeElementId;
+
+    private String javaCode;
 
     /**
      * Default constructor
@@ -46,8 +46,10 @@ public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResiz
      */
     public JQueryDialog(String title, boolean autoSize) {
         this.id = DOM.createUniqueId();
+        this.codeElementId = DOM.createUniqueId();
         this.innerpopup = new SimplePanel();
         this.scrollableContent = new SimplePanel();
+        this.scrollableContent.getElement().setId(codeElementId);
 
         this.innerpopup.add(this.scrollableContent);
         this.innerpopup.setTitle(title);
@@ -84,6 +86,11 @@ public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResiz
                 }
                 open(id, height, width);
                 RootLayoutPanel.get().remove(JQueryDialog.this);
+
+                if (javaCode != null) {
+                    // remove header height + scroll bar bottom
+                    buildCodeMirror(codeElementId, javaCode, height - HEADER_HEIGHT - 20);
+                }
             }
         });
     };
@@ -95,21 +102,46 @@ public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResiz
         close(id);
     };
 
-    public void setCode(String code) {
-        this.scrollableContent.getElement().setInnerHTML(code);
+    public void setCode(String javaCode) {
+        this.javaCode = javaCode;
     }
 
     /**
      * 
      */
     // @formatter:off
+    
+    private native void buildCodeMirror(String idHtml, String javaCode, int height) /*-{
+        $wnd.jQuery("#" + idHtml).empty();
+        var editor = $wnd.CodeMirror($wnd.document.getElementById(idHtml), {
+          value: javaCode,
+          mode: "text/x-java",
+          lineNumbers: true,
+          styleActiveLine: true,
+          matchBrackets: true,
+          mode: "text/x-java",
+          extraKeys: {
+            "F11": function(cm) {
+              cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+            },
+            "Esc": function(cm) {
+              if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+            },
+            "Alt-F": "findPersistent"
+          }
+        });
+        
+        $wnd.jQuery("#" + idHtml + ">.CodeMirror").height(height + "px");;
+    }-*/;
+
+    
     private native void open(String id, int height, int width) /*-{
        $wnd.jQuery("#" + id).dialog({
            show : "slide",
            hide : "explode",
            height : height,
-           width : width
-           
+           width : width,
+           maxHeight : height
        });
     }-*/;
     
@@ -117,19 +149,6 @@ public class JQueryDialog extends SimplePanel implements ResizeHandler, HasResiz
         $wnd.jQuery("#" + id).dialog("close");
      }-*/;
     // @formatter:on
-
-    @Override
-    public void onResize(ResizeEvent event) {
-        // this.height = this.innerpopup.getOffsetHeight();
-        // this.width = this.innerpopup.getOffsetWidth();
-        // this.scrollableContent.getElement().getStyle().setPropertyPx("maxHeight", height);
-        // this.scrollableContent.getElement().getStyle().setPropertyPx("maxWidth", width);
-    }
-
-    @Override
-    public HandlerRegistration addResizeHandler(ResizeHandler handler) {
-        return addHandler(handler, ResizeEvent.getType());
-    }
 
     public void setContent(IsWidget widget) {
         this.scrollableContent.setWidget(widget);
