@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/views/presentation/Releases.java $
- * $Id: Releases.java 42 2012-08-31 13:58:13Z svandecappelle $
- * Licence MIT
- *
- * Last change:
- * $Date: 2012-08-31 15:58:13 +0200 (ven., 31 août 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation;
 
 import java.util.ArrayList;
@@ -19,6 +10,12 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+/**
+ * Version panel on home page.
+ * 
+ * @author svandecappelle
+ * @version 5.0.0
+ */
 public class Releases extends SimplePanel {
 
     private static final List<String> RELEASELABEL;

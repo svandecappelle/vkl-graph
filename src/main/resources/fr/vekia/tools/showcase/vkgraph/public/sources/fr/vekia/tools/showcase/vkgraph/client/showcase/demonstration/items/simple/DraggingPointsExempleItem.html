@@ -29,63 +29,52 @@ DraggingPointsExempleItem.java
   <!-- start source code -->
    <td nowrap="nowrap" valign="top" align="left">
     <code>
-<font color="#808080">01</font>&nbsp;<font color="#3f7f5f">/*</font><br />
-<font color="#808080">02</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;File:&nbsp;$URL:&nbsp;svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/components/menu/groups/plots/items/DraggingPointsExempleItem.java&nbsp;$</font><br />
-<font color="#808080">03</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Id:&nbsp;DraggingPointsExempleItem.java&nbsp;22&nbsp;2012-06-27&nbsp;16:38:32Z&nbsp;svandecappelle&nbsp;$</font><br />
-<font color="#808080">04</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Licence&nbsp;MIT</font><br />
-<font color="#808080">05</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;</font><br />
-<font color="#808080">06</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Last&nbsp;change:</font><br />
-<font color="#808080">07</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Date:&nbsp;2012-06-27&nbsp;18:38:32&nbsp;+0200&nbsp;(mer.,&nbsp;27&nbsp;juin&nbsp;2012)&nbsp;$</font><br />
-<font color="#808080">08</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Author:&nbsp;svandecappelle&nbsp;$</font><br />
-<font color="#808080">09</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
-<font color="#808080">10</font>&nbsp;<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.simple;</font><br />
-<font color="#808080">11</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">12</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
-<font color="#808080">13</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">14</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.IsWidget;</font><br />
-<font color="#808080">15</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">16</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.AbstractShowcaseTreeMenuItem;</font><br />
-<font color="#808080">17</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.simple.DraggingPointExempleScreen;</font><br />
-<font color="#808080">18</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">19</font>&nbsp;<font color="#3f5fbf">/**</font><br />
-<font color="#808080">20</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Steeve&nbsp;Vandecappelle&nbsp;(SVA)</font><br />
-<font color="#808080">21</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@since&nbsp;</font><font color="#3f5fbf">28&nbsp;mai&nbsp;2012.&nbsp;GWTQuery&nbsp;Vekia&nbsp;Showcase</font><br />
-<font color="#808080">22</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@version&nbsp;</font><font color="#3f5fbf">1.0</font><br />
-<font color="#808080">23</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
-<font color="#808080">24</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{</font><font color="#7f9fbf">@inheritDoc</font><font color="#3f5fbf">}</font><br />
-<font color="#808080">25</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
-<font color="#808080">26</font>&nbsp;<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DraggingPointsExempleItem&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">AbstractShowcaseTreeMenuItem&nbsp;</font><font color="#000000">{</font><br />
-<font color="#808080">27</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">28</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
-<font color="#808080">29</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Default&nbsp;constructor</font><br />
-<font color="#808080">30</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
-<font color="#808080">31</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">text</font><br />
-<font color="#808080">32</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
-<font color="#808080">33</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">DraggingPointsExempleItem</font><font color="#000000">(</font><font color="#000000">String&nbsp;text</font><font color="#000000">)&nbsp;{</font><br />
-<font color="#808080">34</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>super</b></font><font color="#000000">(</font><font color="#000000">text</font><font color="#000000">)</font><font color="#000000">;</font><br />
-<font color="#808080">35</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">36</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">37</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
-<font color="#808080">38</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">hasChildren</font><font color="#000000">()&nbsp;{</font><br />
-<font color="#808080">39</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br />
-<font color="#808080">40</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">41</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">42</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
-<font color="#808080">43</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">List&lt;AbstractShowcaseTreeMenuItem&gt;&nbsp;getChildrenItems</font><font color="#000000">()&nbsp;{</font><br />
-<font color="#808080">44</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;null</b></font><font color="#000000">;</font><br />
-<font color="#808080">45</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">46</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">47</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
-<font color="#808080">48</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">hasScreen</font><font color="#000000">()&nbsp;{</font><br />
-<font color="#808080">49</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;true</b></font><font color="#000000">;</font><br />
-<font color="#808080">50</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">51</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">52</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
-<font color="#808080">53</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">IsWidget&nbsp;getScreen</font><font color="#000000">()&nbsp;{</font><br />
-<font color="#808080">54</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;new&nbsp;</b></font><font color="#000000">DraggingPointExempleScreen</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">55</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">56</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">57</font>&nbsp;<font color="#000000">}</font></code>
+<font color="#808080">01</font>&nbsp;<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.simple;</font><br />
+<font color="#808080">02</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">03</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">java.util.List;</font><br />
+<font color="#808080">04</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">05</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.IsWidget;</font><br />
+<font color="#808080">06</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">07</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.AbstractShowcaseTreeMenuItem;</font><br />
+<font color="#808080">08</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.simple.DraggingPointExempleScreen;</font><br />
+<font color="#808080">09</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">10</font>&nbsp;<font color="#3f5fbf">/**</font><br />
+<font color="#808080">11</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Steeve&nbsp;Vandecappelle&nbsp;(SVA)</font><br />
+<font color="#808080">12</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@since&nbsp;</font><font color="#3f5fbf">28&nbsp;mai&nbsp;2012.&nbsp;GWTQuery&nbsp;Vekia&nbsp;Showcase</font><br />
+<font color="#808080">13</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@version&nbsp;</font><font color="#3f5fbf">1.0</font><br />
+<font color="#808080">14</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">15</font>&nbsp;<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">DraggingPointsExempleItem&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">AbstractShowcaseTreeMenuItem&nbsp;</font><font color="#000000">{</font><br />
+<font color="#808080">16</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">17</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">18</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;Default&nbsp;constructor</font><br />
+<font color="#808080">19</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">20</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@param&nbsp;</font><font color="#3f5fbf">text</font><br />
+<font color="#808080">21</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">22</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">DraggingPointsExempleItem</font><font color="#000000">(</font><font color="#000000">String&nbsp;text</font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">23</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>super</b></font><font color="#000000">(</font><font color="#000000">text</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">24</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">25</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">26</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">27</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">hasChildren</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">28</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;false</b></font><font color="#000000">;</font><br />
+<font color="#808080">29</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">30</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">31</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">32</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">List&lt;AbstractShowcaseTreeMenuItem&gt;&nbsp;getChildrenItems</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">33</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;null</b></font><font color="#000000">;</font><br />
+<font color="#808080">34</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">35</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">36</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">37</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#7f0055"><b>boolean&nbsp;</b></font><font color="#000000">hasScreen</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">38</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;true</b></font><font color="#000000">;</font><br />
+<font color="#808080">39</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">40</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">41</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#646464">@Override</font><br />
+<font color="#808080">42</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">IsWidget&nbsp;getScreen</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">43</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;new&nbsp;</b></font><font color="#000000">DraggingPointExempleScreen</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">44</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">45</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">46</font>&nbsp;<font color="#000000">}</font></code>
     
    </td>
   <!-- end source code -->

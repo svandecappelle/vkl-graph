@@ -17,8 +17,6 @@ import fr.vekia.vkgraph.client.datas.SeriesData;
 import fr.vekia.vkgraph.client.options.SubOption;
 
 /**
- * {@inheritDoc}
- * 
  * @author Steeve Vandecappelle (SVA)
  * @since 27 juil. 2012. VklGraph version 1.2
  * @version 2.1

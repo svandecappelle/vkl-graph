@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.simple;
 
 import java.util.List;
@@ -20,38 +11,36 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.sim
  * @author svandecappelle
  * @since Nov 23, 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
 public class BuildYoursExempleItem extends AbstractShowcaseTreeMenuItem {
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param text
-	 */
-	public BuildYoursExempleItem(String text) {
-		super(text);
-	}
+    /**
+     * Default constructor
+     * 
+     * @param text
+     */
+    public BuildYoursExempleItem(String text) {
+        super(text);
+    }
 
-	@Override
-	public boolean hasChildren() {
-		return false;
-	}
+    @Override
+    public boolean hasChildren() {
+        return false;
+    }
 
-	@Override
-	public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
-		return null;
-	}
+    @Override
+    public List<AbstractShowcaseTreeMenuItem> getChildrenItems() {
+        return null;
+    }
 
-	@Override
-	public boolean hasScreen() {
-		return true;
-	}
+    @Override
+    public boolean hasScreen() {
+        return true;
+    }
 
-	@Override
-	public IsWidget getScreen() {
-		return new BuildYoursExempleScreen();
-	}
+    @Override
+    public IsWidget getScreen() {
+        return new BuildYoursExempleScreen();
+    }
 
 }

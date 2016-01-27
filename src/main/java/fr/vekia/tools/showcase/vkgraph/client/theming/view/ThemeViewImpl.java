@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.tools.showcase.vkgraph.client.theming.view;
 
 import com.google.gwt.event.dom.client.HasChangeHandlers;
@@ -22,39 +13,37 @@ import fr.vekia.tools.showcase.vkgraph.client.theming.presenter.ThemeView;
  * @author svandecappelle
  * @since Dec 14, 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
 public class ThemeViewImpl extends Composite implements ThemeView {
 
-	private ListBox b;
+    private ListBox b;
 
-	/**
-	 * Default constructor
-	 * 
-	 */
-	public ThemeViewImpl() {
-		HorizontalPanel panel = new HorizontalPanel();
-		b = new ListBox();
-		b.addItem("Dark", Theme.DARK.name());
-		b.addItem("Clear", Theme.CLEAR.name());
-		b.addItem("Professionnal", Theme.PRO.name());
+    /**
+     * Default constructor
+     * 
+     */
+    public ThemeViewImpl() {
+        HorizontalPanel panel = new HorizontalPanel();
+        b = new ListBox();
+        b.addItem("Dark", Theme.DARK.name());
+        b.addItem("Clear", Theme.CLEAR.name());
+        b.addItem("Professionnal", Theme.PRO.name());
 
-		panel.add(new Label("Theme"));
-		panel.add(b);
+        panel.add(new Label("Theme"));
+        panel.add(b);
 
-		initWidget(panel);
-		panel.getElement().getStyle().setZIndex(1);
-	}
+        initWidget(panel);
+        panel.getElement().getStyle().setZIndex(1);
+    }
 
-	@Override
-	public HasChangeHandlers getChangeThemeHandler() {
-		return b;
-	}
+    @Override
+    public HasChangeHandlers getChangeThemeHandler() {
+        return b;
+    }
 
-	@Override
-	public String getValue() {
-		return b.getValue(b.getSelectedIndex());
-	}
+    @Override
+    public String getValue() {
+        return b.getValue(b.getSelectedIndex());
+    }
 
 }

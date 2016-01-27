@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/ShowcaseConsoleCodePresenter.java $
- * $Id: ShowcaseConsoleCodePresenter.java 38 2012-08-23 16:36:45Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-08-23 18:36:45 +0200 (jeu., 23 août 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application;
 
 import net.customware.gwt.presenter.client.EventBus;
@@ -30,143 +21,131 @@ import fr.vekia.tools.showcase.vkgraph.shared.CodeUrl;
  * @author Steeve Vandecappelle (SVA)
  * @since 23 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 @Singleton
-public class ShowcaseConsoleCodePresenter extends
-		WidgetPresenter<ShowcaseConsoleCodePresenter.Display> {
+public class ShowcaseConsoleCodePresenter extends WidgetPresenter<ShowcaseConsoleCodePresenter.Display> {
 
-	public interface Display extends WidgetDisplay {
+    public interface Display extends WidgetDisplay {
 
-		/**
-	 * 
-	 */
-		void show();
+        /**
+        * 
+        */
+        void show();
 
-		/**
-	 * 
-	 */
-		void hide();
+        /**
+        * 
+        */
+        void hide();
 
-		/**
-	 * 
-	 */
-		HasClickHandlers getAddShowHandler();
+        /**
+        * 
+        */
+        HasClickHandlers getAddShowHandler();
 
-		/**
-	 * 
-	 */
-		HasClickHandlers getAddHideHandler();
+        /**
+        * 
+        */
+        HasClickHandlers getAddHideHandler();
 
-		/**
-	 * 
-	 */
-		void setCode(String code);
+        /**
+        * 
+        */
+        void setCode(String code);
 
-		/**
-	 * 
-	 */
-		void insert();
+        /**
+        * 
+        */
+        void insert();
 
-		/**
-		 * @param className
-		 * @param codeUrl
-		 */
-		void setCodeUrl(String className, String codeUrl);
+        /**
+         * @param className
+         * @param codeUrl
+         */
+        void setCodeUrl(String className, String codeUrl);
 
-		/**
-	 * 
-	 */
-		void showOutBrowser();
-	}
+        /**
+        * 
+        */
+        void showOutBrowser();
+    }
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param display
-	 * @param eventBus
-	 */
-	@Inject
-	public ShowcaseConsoleCodePresenter(Display display, EventBus eventBus) {
-		super(display, eventBus);
+    /**
+     * Default constructor
+     * 
+     * @param display
+     * @param eventBus
+     */
+    @Inject
+    public ShowcaseConsoleCodePresenter(Display display, EventBus eventBus) {
+        super(display, eventBus);
 
-		this.display.getAddShowHandler().addClickHandler(new ClickHandler() {
+        this.display.getAddShowHandler().addClickHandler(new ClickHandler() {
 
-			@Override
-			public void onClick(ClickEvent event) {
-				ShowcaseConsoleCodePresenter.this.display.show();
-			}
-		});
-	}
+            @Override
+            public void onClick(ClickEvent event) {
+                ShowcaseConsoleCodePresenter.this.display.show();
+            }
+        });
+    }
 
-	public void showConsole() {
-		ShowcaseConsoleCodePresenter.this.display.show();
-	}
+    public void showConsole() {
+        ShowcaseConsoleCodePresenter.this.display.show();
+    }
 
-	public void showConsoleOutWindow() {
-		ShowcaseConsoleCodePresenter.this.display.showOutBrowser();
-	}
+    public void showConsoleOutWindow() {
+        ShowcaseConsoleCodePresenter.this.display.showOutBrowser();
+    }
 
-	@Override
-	protected void onBind() {
-		eventBus.addHandler(SelectionCodeEvent.getType(),
-				new SelectionCodeHandler() {
+    @Override
+    protected void onBind() {
+        eventBus.addHandler(SelectionCodeEvent.getType(), new SelectionCodeHandler() {
 
-					@Override
-					public void onSelection(SelectionCodeEvent event) {
+            @Override
+            public void onSelection(SelectionCodeEvent event) {
 
-						CodeServiceUtil.getCode(event.getSelectedItem()
-								.getClass().getName(),
-								new AsyncCallback<String>() {
+                CodeServiceUtil.getCode(event.getSelectedItem().getClass().getName(), new AsyncCallback<String>() {
 
-									@Override
-									public void onSuccess(String result) {
-										display.setCode(result);
-									}
+                    @Override
+                    public void onSuccess(String result) {
+                        display.setCode(result);
+                    }
 
-									@Override
-									public void onFailure(Throwable caught) {
-										GWT.log("not able to retreive code due to: ",
-												caught);
-										display.setCode("no code available");
-										consolejs(caught.getMessage());
-									}
-								});
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        GWT.log("not able to retreive code due to: ", caught);
+                        display.setCode("no code available");
+                        consolejs(caught.getMessage());
+                    }
+                });
 
-						CodeServiceUtil.getCodeUrl(event.getSelectedItem()
-								.getClass().getName(),
-								new AsyncCallback<CodeUrl>() {
+                CodeServiceUtil.getCodeUrl(event.getSelectedItem().getClass().getName(), new AsyncCallback<CodeUrl>() {
 
-									@Override
-									public void onSuccess(CodeUrl codeUrl) {
-										GWT.log("Code url: " + codeUrl.getUrl());
-										display.setCodeUrl(
-												codeUrl.getClassName(),
-												codeUrl.getUrl());
-									}
+                    @Override
+                    public void onSuccess(CodeUrl codeUrl) {
+                        GWT.log("Code url: " + codeUrl.getUrl());
+                        display.setCodeUrl(codeUrl.getClassName(), codeUrl.getUrl());
+                    }
 
-									@Override
-									public void onFailure(Throwable caught) {
-										GWT.log("not able to retreive code due to: ",
-												caught);
-										display.setCode("no code available");
-									}
-								});
+                    @Override
+                    public void onFailure(Throwable caught) {
+                        GWT.log("not able to retreive code due to: ", caught);
+                        display.setCode("no code available");
+                    }
+                });
 
-					}
-				});
-	}
+            }
+        });
+    }
 
-	private native void consolejs(String message) /*-{
-													console.log(message);
-													}-*/;
+    private native void consolejs(String message) /*-{
+                                                  console.log(message);
+                                                  }-*/;
 
-	@Override
-	protected void onUnbind() {
-	}
+    @Override
+    protected void onUnbind() {
+    }
 
-	@Override
-	protected void onRevealDisplay() {
-	}
+    @Override
+    protected void onRevealDisplay() {
+    }
 }

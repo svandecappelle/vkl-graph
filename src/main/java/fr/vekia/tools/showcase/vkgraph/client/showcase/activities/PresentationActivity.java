@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.activities;
 
 import com.google.gwt.activity.shared.AbstractActivity;
@@ -20,26 +11,32 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.Pr
  * @author svandecappelle
  * @since Dec 12, 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
 public class PresentationActivity extends AbstractActivity {
 
-	private Place place;
+    private Place place;
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param place
-	 */
-	public PresentationActivity(Place place) {
-		this.place = place;
-	}
+    /**
+     * Default constructor
+     * 
+     * @param place
+     */
+    public PresentationActivity(Place place) {
+        this.place = place;
+    }
 
-	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		PresentationDemoPanel widget = new PresentationDemoPanel();
-		panel.setWidget(widget);
-	}
+    @Override
+    public void start(AcceptsOneWidget panel, EventBus eventBus) {
+        PresentationDemoPanel widget = new PresentationDemoPanel();
+        panel.setWidget(widget);
+    }
 
+    /**
+     * Get place activity history.
+     * 
+     * @return place activity history.
+     */
+    public Place getPlace() {
+        return place;
+    }
 }

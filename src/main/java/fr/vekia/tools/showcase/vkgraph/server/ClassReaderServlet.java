@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/server/ClassReaderServlet.java $
- * $Id: ClassReaderServlet.java 36 2012-08-20 09:04:30Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-08-20 11:04:30 +0200 (lun., 20 août 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.server;
 
 import java.io.IOException;
@@ -25,8 +16,6 @@ import fr.vekia.tools.showcase.vkgraph.shared.CodeUrl;
  * @author Steeve Vandecappelle (SVA)
  * @since 14 mai 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 @Singleton
 public class ClassReaderServlet extends RemoteServiceServlet implements CodeService {

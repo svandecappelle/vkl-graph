@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui;
 
 import com.google.gwt.core.client.Scheduler;

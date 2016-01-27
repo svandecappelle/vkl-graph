@@ -29,7 +29,7 @@ public class ServletConfig extends GuiceServletContextListener {
                 LOGGER.info("Configuring");
                 // Binding
                 bind(CodeService.class).to(ClassReaderServlet.class);
-                
+
                 // Serve
                 serve("/showcase/codingServlet").with(ClassReaderServlet.class);
 

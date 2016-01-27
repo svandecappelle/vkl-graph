@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/injector/ShowcaseInjector.java $
- * $Id: ShowcaseInjector.java 22 2012-06-27 16:38:32Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-06-27 18:38:32 +0200 (mer., 27 juin 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector;
 
 import net.customware.gwt.presenter.client.EventBus;
@@ -25,39 +16,37 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.modules.Showc
  * @author Steeve Vandecappelle (SVA)
  * @since 23 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 @GinModules(ShowcaseModule.class)
 public interface ShowcaseInjector extends Ginjector {
 
-	final class Util {
+    final class Util {
 
-		private static ShowcaseInjector injector = null;
+        private static ShowcaseInjector injector = null;
 
-		private Util() {
-		}
+        private Util() {
+        }
 
-		/**
-		 * @return the injector
-		 */
-		public static ShowcaseInjector getInstance() {
-			if (injector == null) {
-				injector = GWT.create(ShowcaseInjector.class);
-			}
+        /**
+         * @return the injector
+         */
+        public static ShowcaseInjector getInstance() {
+            if (injector == null) {
+                injector = GWT.create(ShowcaseInjector.class);
+            }
 
-			return injector;
-		}
-	}
+            return injector;
+        }
+    }
 
-	EventBus getEventBus();
+    EventBus getEventBus();
 
-	ShowcasePresenter getPresenter();
+    ShowcasePresenter getPresenter();
 
-	ShowcaseMenuPresenter getMenuPresenter();
+    ShowcaseMenuPresenter getMenuPresenter();
 
-	ShowcaseGlobalPanelPresenter getGlobalPanelPresenter();
+    ShowcaseGlobalPanelPresenter getGlobalPanelPresenter();
 
-	ShowcaseConsoleCodePresenter getConsoleCodePresenter();
+    ShowcaseConsoleCodePresenter getConsoleCodePresenter();
 
 }

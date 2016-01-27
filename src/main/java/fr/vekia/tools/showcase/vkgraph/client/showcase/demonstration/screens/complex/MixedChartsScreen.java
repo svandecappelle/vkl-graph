@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
@@ -199,7 +198,6 @@ public class MixedChartsScreen extends FlowPanel {
         this.add(buttonToggleSerie2);
     }
 
-    @SuppressWarnings("deprecation")
     private final List<List<DualValue>> getValues() {
         final List<List<DualValue>> dataValues = new ArrayList<List<DualValue>>();
         List<String> dates = new ArrayList<String>();
@@ -212,7 +210,6 @@ public class MixedChartsScreen extends FlowPanel {
         dates.add("Pulls");
         dates.add("Blousons");
         dates.add("Vestes");
-        DateTimeFormat dateTimeFormat = DateTimeFormat.getShortDateFormat();
 
         final ArrayList<DualValue> qty = new ArrayList<DualValue>();
         final ArrayList<DualValue> qtyFrom = new ArrayList<DualValue>();

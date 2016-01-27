@@ -29,33 +29,28 @@ Contributors.java
   <!-- start source code -->
    <td nowrap="nowrap" valign="top" align="left">
     <code>
-<font color="#808080">01</font>&nbsp;<font color="#3f7f5f">/*</font><br />
-<font color="#808080">02</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;File:&nbsp;$URL:&nbsp;svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/views/presentation/Contributors.java&nbsp;$</font><br />
-<font color="#808080">03</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Id:&nbsp;Contributors.java&nbsp;42&nbsp;2012-08-31&nbsp;13:58:13Z&nbsp;svandecappelle&nbsp;$</font><br />
-<font color="#808080">04</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Licence&nbsp;MIT</font><br />
-<font color="#808080">05</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*</font><br />
-<font color="#808080">06</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;Last&nbsp;change:</font><br />
-<font color="#808080">07</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Date:&nbsp;2012-08-31&nbsp;15:58:13&nbsp;+0200&nbsp;(ven.,&nbsp;31&nbsp;ao&ucirc;t&nbsp;2012)&nbsp;$</font><br />
-<font color="#808080">08</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*&nbsp;$Author:&nbsp;svandecappelle&nbsp;$</font><br />
-<font color="#808080">09</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f7f5f">*/</font><br />
-<font color="#808080">10</font>&nbsp;<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation;</font><br />
-<font color="#808080">11</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">12</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.Label;</font><br />
-<font color="#808080">13</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.SimplePanel;</font><br />
-<font color="#808080">14</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.VerticalPanel;</font><br />
-<font color="#808080">15</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">16</font>&nbsp;<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">Contributors&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">SimplePanel&nbsp;</font><font color="#000000">{</font><br />
-<font color="#808080">17</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">18</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Contributors</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">01</font>&nbsp;<font color="#7f0055"><b>package&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation;</font><br />
+<font color="#808080">02</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">03</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.Label;</font><br />
+<font color="#808080">04</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.SimplePanel;</font><br />
+<font color="#808080">05</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.user.client.ui.VerticalPanel;</font><br />
+<font color="#808080">06</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">07</font>&nbsp;<font color="#3f5fbf">/**</font><br />
+<font color="#808080">08</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;Contributors&nbsp;home&nbsp;panel.</font><br />
+<font color="#808080">09</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><br />
+<font color="#808080">10</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">svandecappelle</font><br />
+<font color="#808080">11</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@version&nbsp;</font><font color="#3f5fbf">5.0.0</font><br />
+<font color="#808080">12</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">13</font>&nbsp;<font color="#7f0055"><b>public&nbsp;class&nbsp;</b></font><font color="#000000">Contributors&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">SimplePanel&nbsp;</font><font color="#000000">{</font><br />
+<font color="#808080">14</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">15</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;</b></font><font color="#000000">Contributors</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">16</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">17</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">VerticalPanel&nbsp;contributors&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">VerticalPanel</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">18</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contributors.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Label</font><font color="#000000">(</font><font color="#2a00ff">&#34;Particular&nbsp;thank&nbsp;to&nbsp;Vekia's&nbsp;company&nbsp;for&nbsp;it's&nbsp;participation,&nbsp;on&nbsp;working&nbsp;out&nbsp;this&nbsp;project.&nbsp;Web&nbsp;site&nbsp;here&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
 <font color="#808080">19</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">20</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">VerticalPanel&nbsp;contributors&nbsp;=&nbsp;</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">VerticalPanel</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">21</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">contributors</font><br />
-<font color="#808080">22</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">.add</font><font color="#000000">(</font><font color="#7f0055"><b>new&nbsp;</b></font><font color="#000000">Label</font><font color="#000000">(</font><br />
-<font color="#808080">23</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#2a00ff">&#34;Particular&nbsp;thank&nbsp;to&nbsp;Vekia's&nbsp;company&nbsp;for&nbsp;it's&nbsp;participation,&nbsp;on&nbsp;working&nbsp;out&nbsp;this&nbsp;project.&nbsp;Web&nbsp;site&nbsp;here&#34;</font><font color="#000000">))</font><font color="#000000">;</font><br />
-<font color="#808080">24</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">25</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setWidget</font><font color="#000000">(</font><font color="#000000">contributors</font><font color="#000000">)</font><font color="#000000">;</font><br />
-<font color="#808080">26</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">27</font>&nbsp;<font color="#000000">}</font></code>
+<font color="#808080">20</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">setWidget</font><font color="#000000">(</font><font color="#000000">contributors</font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">21</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">22</font>&nbsp;<font color="#000000">}</font></code>
     
    </td>
   <!-- end source code -->

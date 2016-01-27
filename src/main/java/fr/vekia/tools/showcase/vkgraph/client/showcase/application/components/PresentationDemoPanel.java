@@ -7,8 +7,8 @@ import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SplitLayoutPanel;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.Contributors;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.ExemplePresentation;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.Presentation;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.HomeDemoSlider;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.HomePage;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.presentation.Releases;
 
 /**
@@ -17,7 +17,7 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.views.present
  * @version 1.0
  */
 public class PresentationDemoPanel extends Composite {
-    private Presentation presentation;
+    private HomePage presentation;
 
     /**
      * Default constructor
@@ -29,9 +29,9 @@ public class PresentationDemoPanel extends Composite {
 
         dock.addWest(new Releases(), 230);
         dock.addSouth(new Contributors(), 15);
-        presentation = new Presentation();
+        presentation = new HomePage();
         dock.addNorth(presentation, 230);
-        dock.add(new ExemplePresentation());
+        dock.add(new HomeDemoSlider());
         layout.setSize("100%", "100%");
         dock.setSize("100%", "100%");
         layout.add(dock);

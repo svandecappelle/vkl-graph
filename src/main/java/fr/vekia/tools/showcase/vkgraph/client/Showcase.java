@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/GQuery.java $
- * $Id: GQuery.java 22 2012-06-27 16:38:32Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-06-27 18:38:32 +0200 (mer., 27 juin 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client;
 
 import com.google.gwt.activity.shared.ActivityManager;
@@ -51,7 +42,7 @@ public class Showcase implements EntryPoint {
         // Start PlaceHistoryHandler with our PlaceHistoryMapper
         MyPlaceHistoryMapper historyMapper = GWT.create(MyPlaceHistoryMapper.class);
         PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
-        Place defaultPlace = new PresentationPlace("Presentation");
+        Place defaultPlace = new PresentationPlace();
         historyHandler.register(presenter.getPlaceController(), eventBusMap, defaultPlace);
 
         // controller.goTo(defaultPlace);

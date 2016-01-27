@@ -1,12 +1,3 @@
-/*
- * File: $URL$
- * $Id$
- * Copyright: Vekia
- *
- * Last change:
- * $Date$
- * $Author$
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.activities;
 
 import com.google.gwt.activity.shared.AbstractActivity;
@@ -23,42 +14,38 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.Show
  * @author svandecappelle
  * @since Dec 11, 2012. VklGraph version 1.2
  * @version 2.1
- * 
- *          {@inheritDoc}
  */
 public class MenuActivity extends AbstractActivity implements ActivityPresenter {
 
-	private MenuPlace place;
+    private MenuPlace place;
 
-	/**
-	 * Default constructor
-	 * 
-	 * @param place
-	 * 
-	 */
-	public MenuActivity(MenuPlace place) {
-		this.place = place;
-	}
+    /**
+     * Default constructor
+     * 
+     * @param place
+     * 
+     */
+    public MenuActivity(MenuPlace place) {
+        this.place = place;
+    }
 
-	@Override
-	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		try {
-			// add a widget to panel
-			ShowcaseMenuPresenter menuPresenter = ShowcaseInjector.Util
-					.getInstance().getMenuPresenter();
+    @Override
+    public void start(AcceptsOneWidget panel, EventBus eventBus) {
+        try {
+            // add a widget to panel
+            ShowcaseMenuPresenter menuPresenter = ShowcaseInjector.Util.getInstance().getMenuPresenter();
 
-			menuPresenter.getCategories().get(place.getMenu());
-			AbstractShowcaseTreeMenuItem item = menuPresenter.getPlotsScreens()
-					.get(place.getItem());
-			panel.setWidget(item.getScreen());
-		} catch (Exception e) {
-			GWT.log(e.getMessage(), e);
-		}
-	}
+            menuPresenter.getCategories().get(place.getMenu());
+            AbstractShowcaseTreeMenuItem item = menuPresenter.getPlotsScreens().get(place.getItem());
+            panel.setWidget(item.getScreen());
+        } catch (Exception e) {
+            GWT.log(e.getMessage(), e);
+        }
+    }
 
-	@Override
-	public void gotTo(MenuPlace menuPlace) {
-		ShowcaseInjector.Util.getInstance().getPresenter().gotTo(menuPlace);
-	}
+    @Override
+    public void gotTo(MenuPlace menuPlace) {
+        ShowcaseInjector.Util.getInstance().getPresenter().gotTo(menuPlace);
+    }
 
 }

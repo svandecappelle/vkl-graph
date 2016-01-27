@@ -1,12 +1,3 @@
-/*
- * File: $URL: svn+ssh://chimay/home/svn/VkGraph-showcase/VkGraph-showcase/src/main/java/fr.vekia.tools.showcase.vkgraph/client/showcase/application/components/code/ConsoleCode.java $
- * $Id: ConsoleCode.java 52 2012-09-26 15:26:35Z svandecappelle $
- * Licence MIT
- * 
- * Last change:
- * $Date: 2012-09-26 17:26:35 +0200 (mer., 26 sept. 2012) $
- * $Author: svandecappelle $
- */
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.code;
 
 import com.google.gwt.core.client.GWT;
@@ -26,8 +17,6 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.JQueryDial
  * @author Steeve Vandecappelle (SVA)
  * @since 23 avr. 2012. GWTQuery Vekia Showcase
  * @version 1.0
- * 
- *          {@inheritDoc}
  */
 public class ConsoleCode implements Display {
 
