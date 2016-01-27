@@ -378,7 +378,63 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
         }
         functionVar[optionArray[optionArray.length - 1]] = value;
     }-*/;
+    
+    /**
+     * Toggle chart serie visible.
+     * 
+     * @param serieIndex serie index.
+     * @param chart Chart generated javascript.
+     */
+    private native void toggleSerieVisible(int serieIndex, JavaScriptObject chart)/*-{
+        chart.series[serieIndex].toggleDisplay();
+    }-*/;
+    
+    /**
+     * Toggle chart serie visible.
+     * 
+     * @param serieIndex serie index.
+     * @param chart Chart generated javascript.
+     */
+    private native void setSerieVisible(int serieIndex, boolean visible, JavaScriptObject chart)/*-{
+        if (visible) {
+            chart.series[serieIndex].setVisible();
+        } else {
+            chart.series[serieIndex].setHidden();
+        }
+    }-*/;
+    
     // @formatter:on
+
+    /**
+     * Show serie data on chart.
+     * 
+     * @param serieIndex
+     *            the serie index.
+     */
+    public void showSerie(int serieIndex) {
+        this.setSerieVisible(serieIndex, true, this.chartJavascriptObject);
+    }
+
+    /**
+     * Hide serie data on chart.
+     * 
+     * @param serieIndex
+     *            the serie index.
+     */
+    public void hideSerie(int serieIndex) {
+        this.setSerieVisible(serieIndex, false, this.chartJavascriptObject);
+    }
+
+    /**
+     * Toggle serie visible data on chart.
+     * 
+     * @param serieIndex
+     *            the serie index.
+     */
+    public void toggleSerie(int serieIndex) {
+        this.toggleSerieVisible(serieIndex, this.chartJavascriptObject);
+    }
+
     /**
      * @param arrayData
      * @param string
