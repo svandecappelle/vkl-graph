@@ -108,16 +108,6 @@
 
 	</dependencies>
 	<build>
-		<!-- <resources> -->
-		<!-- <resource> -->
-		<!-- <targetPath>doc</targetPath> -->
-		<!-- <directory>${basedir}/war/doc</directory> -->
-		<!-- <includes> -->
-		<!-- <include>**/*</include> -->
-		<!-- </includes> -->
-		<!-- </resource> -->
-		<!-- </resources> -->
-
 		<outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>

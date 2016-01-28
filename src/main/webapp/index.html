@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="gwt:property" content="locale=en">
     <title>Web JQplot GWT integration Showcase project</title>
     
@@ -11,7 +12,7 @@
     
     <!-- Demonstration application CSS -->
     <link type="text/css" rel="stylesheet" href="css/GQuery.css">
-    <script type="text/javascript" language="javascript" src="showcase/showcase.nocache.js"></script>
+    <script type="text/javascript" src="showcase/showcase.nocache.js"></script>
 
     <!-- JQuery dependence -->
     <script src="showcase/jqplot/core/jquery.min.js"></script>
@@ -86,6 +87,56 @@
     <script src="dependencies/codemirror-5.11/addon/search/matchesonscrollbar.js"></script>
     <script src="dependencies/codemirror-5.11/mode/meta.js"></script>
     <script src="dependencies/codemirror-5.11/mode/clike/clike.js"></script>
+    
+    <script type="text/javascript" src="dependencies/slider/jssor.slider.min.js"></script>
+    <link rel="stylesheet" href="dependencies/slider/jssor.slider.css">
+    
+    <script>
+           function loadSlider(){
+             var jssor_1_SlideoTransitions = [
+               [{b:0,d:600,x: 0, y:135,e:{y:27}}],
+               ];
+             
+             var jssor_1_options = {
+               $AutoPlay: false,
+               $Idle: 2000,
+               $CaptionSliderOptions: {
+                 $Class: $JssorCaptionSlideo$,
+                 $Transitions: jssor_1_SlideoTransitions,
+                 $Breaks: [
+                   [{d:2000,b:1000}]
+                 ]
+               },
+               $ArrowNavigatorOptions: {
+                 $Class: $JssorArrowNavigator$
+               },
+               $BulletNavigatorOptions: {
+                 $Class: $JssorBulletNavigator$
+               }
+             };
+             
+             var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+             
+             //responsive code begin
+             //you can remove responsive code if you don't want the slider scales while window resizing
+             /*function ScaleSlider() {
+                 var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+                 if (refSize) {
+                     refSize = Math.min(refSize, 600);
+                     jssor_1_slider.$ScaleWidth(refSize);
+                 }
+                 else {
+                     window.setTimeout(ScaleSlider, 30);
+                 }
+             }
+             ScaleSlider();
+             $(window).bind("load", ScaleSlider);
+             $(window).bind("resize", ScaleSlider);
+             $(window).bind("orientationchange", ScaleSlider);
+             //responsive code end
+             */
+          }
+    </script>
     
   </head>
   <!-- Application body -->

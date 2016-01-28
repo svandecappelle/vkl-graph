@@ -1,5 +1,7 @@
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.home.display;
 
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IsWidget;
@@ -29,18 +31,29 @@ public class ConsoleSlideshowCallBack implements AsyncCallback<String> {
     }
 
     @Override
-    public void onSuccess(String code) {
-        SimplePanel codingWidget = new SimplePanel();
-        codingWidget.setHeight("100%");
-        codingWidget.getElement().setId(DOM.createUniqueId());
+    public void onSuccess(final String code) {
+        final String id = DOM.createUniqueId();
+        SimplePanel codingWidget = new SimplePanel() {
+            @Override
+            protected void onAttach() {
+                super.onAttach();
+                buildCodeMirror(id, code);
+            }
+        };
+        codingWidget.setSize(Slides.WIDTH + "px", Slides.HEIGHT + "px");
+        codingWidget.getElement().getStyle().setPosition(Position.ABSOLUTE);
+        codingWidget.getElement().getStyle().setLeft(0, Unit.PX);
+        codingWidget.getElement().getStyle().setTop(0, Unit.PX);
+        codingWidget.getElement().setId(id);
         this.controller.pop(codingWidget);
-        
-        buildCodeMirror(codingWidget.getElement().getId(), code);
     }
 
     // @formatter:off
     private native void buildCodeMirror(String idHtml, String javaCode) /*-{
         $wnd.jQuery("#" + idHtml).empty();
+        var height = $wnd.jQuery("#jssor_1").innerHeight();
+        var width = $wnd.jQuery("#jssor_1").innerWidth();
+        
         var editor = $wnd.CodeMirror($wnd.document.getElementById(idHtml), {
           value: javaCode,
           mode: "text/x-java",
@@ -59,7 +72,9 @@ public class ConsoleSlideshowCallBack implements AsyncCallback<String> {
           }
         });
         
-        $wnd.jQuery("#" + idHtml + ">.CodeMirror").height($wnd.jQuery("#" + idHtml).innerHeight() + "px");
+        $wnd.jQuery("#" + idHtml + ">.CodeMirror").height(height + "px");
+        $wnd.jQuery("#" + idHtml + ">.CodeMirror").width(width + "px");
+        
     }-*/;
     
 }

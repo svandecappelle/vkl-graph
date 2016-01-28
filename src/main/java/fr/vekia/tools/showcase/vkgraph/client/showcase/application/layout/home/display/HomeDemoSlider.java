@@ -1,24 +1,14 @@
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.home.display;
 
-import java.util.List;
-
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.resources.client.ClientBundle;
-import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.resources.client.ImageResource.ImageOptions;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.core.client.Scheduler;
+import com.google.gwt.core.client.Scheduler.ScheduledCommand;
+import com.google.gwt.dom.client.Style.Position;
+import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
-import com.google.gwt.user.client.ui.IsWidget;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.google.inject.Singleton;
-
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.widgets.Slideshow;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.items.interactives.PyramidChartInteractiveWidget;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.interactives.AreaChartInteractiveWidgetScreen;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.simple.SimplePlotScreen;
 
 /**
  * Image slider demo for home page.
@@ -27,68 +17,44 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.sim
  * @version 5.0.0
  */
 @Singleton
-public class HomeDemoSlider extends SimplePanel {
-
-    interface ImgRessource extends ClientBundle {
-        @ImageOptions(width = 1000, height = 650)
-        ImageResource screenshotOne();
-
-        @ImageOptions(width = 1000, height = 650)
-        ImageResource screenshotTwo();
-
-        final static class Util {
-            private static ImgRessource instance;
-
-            /**
-             * Default constructor
-             * 
-             */
-            private Util() {
-            }
-
-            static final ImgRessource getInstance() {
-                if (instance == null) {
-                    instance = GWT.create(ImgRessource.class);
-                }
-                return instance;
-            }
-        }
-    }
+public class HomeDemoSlider extends FlowPanel {
 
     @Inject
-    public HomeDemoSlider(Provider<CodingGetShowcaseSlideshowCommand> commandSlideshowProvider) {
-        final Slideshow slideshow = new Slideshow(Window.getClientWidth() / 2, Window.getClientHeight() / 2);
-        Image screenshotOne = new Image(ImgRessource.Util.getInstance().screenshotOne());
-        Image screenshotTwo = new Image(ImgRessource.Util.getInstance().screenshotTwo());
+    public HomeDemoSlider(Provider<CodingGetShowcaseSlideshowCommand> commandSlideshowProvider, HomeScreenShots screenshots) {
+        getElement().setId("jssor_1");
 
-        slideshow.add(screenshotOne);
-        slideshow.add(screenshotTwo);
+        this.getElement().getStyle().setWidth(Slides.WIDTH, Unit.PX);
+        this.getElement().getStyle().setHeight(Slides.HEIGHT, Unit.PX);
 
-        setWidget(slideshow);
+        this.getElement().getStyle().setPosition(Position.RELATIVE);
+        this.getElement().getStyle().setLeft(0, Unit.PX);
+        this.getElement().getStyle().setTop(0, Unit.PX);
 
-        CallbackEventController<ConsoleSlideshowCallBack, IsWidget> callBackEventController = new CallbackEventController<ConsoleSlideshowCallBack, IsWidget>() {
+        Image screenshotOne = new Image(screenshots.one());
+        Image screenshotTwo = new Image(screenshots.two());
+
+        final Slides slides = new Slides();
+        slides.add(new Slide("Image 1", screenshotOne));
+        slides.add(new Slide("Image 2", screenshotTwo));
+
+        this.add(new SliderLoader());
+        this.add(slides);
+        this.add(new BulletNavigator());
+        this.add(new ButtonNavigator());
+
+        Scheduler.get().scheduleDeferred(new ScheduledCommand() {
 
             @Override
-            public void onSuccess(List<IsWidget> result) {
-                for (IsWidget isWidget : result) {
-                    slideshow.add((Widget) isWidget);
-                }
+            public void execute() {
+                launchSlider();
             }
+        });
 
-            @Override
-            public void onFailure(Throwable caught) {
-                GWT.log("not able to retreive code due to: ", caught);
-            }
-        };
-
-        final ConsoleSlideshowCallBack generalPlot = new ConsoleSlideshowCallBack(callBackEventController);
-        final ConsoleSlideshowCallBack areaPlot = new ConsoleSlideshowCallBack(callBackEventController);
-        final ConsoleSlideshowCallBack pyramidPlot = new ConsoleSlideshowCallBack(callBackEventController);
-
-        callBackEventController.addTraitment(commandSlideshowProvider.get().configure(generalPlot, SimplePlotScreen.class));
-        callBackEventController.addTraitment(commandSlideshowProvider.get().configure(areaPlot, AreaChartInteractiveWidgetScreen.class));
-        callBackEventController.addTraitment(commandSlideshowProvider.get().configure(pyramidPlot, PyramidChartInteractiveWidget.class));
-
-        callBackEventController.execute();
     }
+
+    // @formatter:off
+    private native void launchSlider()/*-{
+        $wnd.loadSlider();
+    }-*/;
+    // @formatter:on
 }

@@ -146,7 +146,6 @@ public class JQueryDialog extends SimplePanel {
             "Alt-F": "findPersistent"
           }
         });
-        
         $wnd.jQuery("#" + idHtml + ">.CodeMirror").height(height + "px");
     }-*/;
 
