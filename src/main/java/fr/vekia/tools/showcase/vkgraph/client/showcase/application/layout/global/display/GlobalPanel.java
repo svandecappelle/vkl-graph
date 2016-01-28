@@ -22,7 +22,7 @@ public class GlobalPanel implements GlobalDisplay {
 
     private DeckLayoutPanel tabLayout;
     private PresentationDemoPanel presentationPanel;
-    private ReturnAnchor returnAnchor;
+    private ReturnsAnchors returnAnchor;
 
     private SimplePanel containerWidget;
 
@@ -32,7 +32,7 @@ public class GlobalPanel implements GlobalDisplay {
      */
     @Inject
     public GlobalPanel(PresentationDemoPanel presentationPanel) {
-        this.returnAnchor = new ReturnAnchor();
+        this.returnAnchor = new ReturnsAnchors();
         this.containerWidget = new SimplePanel();
         containerWidget.getElement().getStyle().setPosition(Position.RELATIVE);
         tabLayout = new DeckLayoutPanel();
@@ -60,7 +60,7 @@ public class GlobalPanel implements GlobalDisplay {
      */
     @Override
     public HasClickHandlers getReturnLbl() {
-        return returnAnchor.getAnchor();
+        return returnAnchor.getReturnAnchor();
     }
 
     @Override

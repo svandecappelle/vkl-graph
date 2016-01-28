@@ -136,11 +136,8 @@ button, input[type="button"], input[type="submit"], input[type="file"], a.button
 	background-image: url('/img/tree/folder-icon-16.png');
 }
 
-
-
 .AutomatedDemo-Focus {
-	border: 3px solid red !important;
-	border-radius: 5px;
+	border: 3px solid #97D870 !important;
 }
 
 .MessagePopup {
@@ -190,11 +187,11 @@ button, input[type="button"], input[type="submit"], input[type="file"], a.button
 }
 
 .vkl-Anchor {
-	color: grey;
-}
-
-.vkl-Anchor:hover {
-	color: black;
+	font-size: 11pt;
+	color: #D1D1D1;
+	padding-left: 5px;
+	text-decoration: none;
+	font-weight: bold;
 	cursor: pointer;
 }
 
