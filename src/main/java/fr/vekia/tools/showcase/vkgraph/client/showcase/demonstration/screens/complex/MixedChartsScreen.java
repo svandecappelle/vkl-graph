@@ -9,7 +9,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.JQueryDialog;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.widgets.JQueryDialog;
 import fr.vekia.vkgraph.client.charts.AbstractChart;
 import fr.vekia.vkgraph.client.charts.NumberType;
 import fr.vekia.vkgraph.client.charts.RenderersEnum;

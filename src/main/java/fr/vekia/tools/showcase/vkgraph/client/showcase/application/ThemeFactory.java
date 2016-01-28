@@ -12,6 +12,7 @@ import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.RootPanel;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.ShowcaseInjector;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.main.ShowcasePresenter;
 
 /**
  * @author svandecappelle
@@ -166,20 +167,6 @@ public class ThemeFactory {
             gwtRef += "-rtl";
         }
         return gwtRef;
-    }
-
-    /**
-     * 
-     * @return
-     */
-    @Deprecated
-    public static int getHeaderSizes() {
-        // because deprecated
-        if (CUR_THEME == Theme.PRO.getThemeName()) {
-            return 30;
-        }
-
-        return 30;
     }
 
 }

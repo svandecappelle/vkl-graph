@@ -6,10 +6,11 @@ import com.google.gwt.core.client.GWT;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConsoleCodePresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseGlobalPanelPresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseMenuPresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcasePresenter;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.code.presenter.ShowcaseConsoleCodePresenter;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.global.presenter.ShowcaseGlobalPanelPresenter;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.home.display.PresentationDemoPanel;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.main.ShowcasePresenter;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.menu.presenter.ShowcaseMenuPresenter;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.modules.ShowcaseModule;
 
 /**
@@ -48,5 +49,7 @@ public interface ShowcaseInjector extends Ginjector {
     ShowcaseGlobalPanelPresenter getGlobalPanelPresenter();
 
     ShowcaseConsoleCodePresenter getConsoleCodePresenter();
+
+    PresentationDemoPanel getPresentation();
 
 }

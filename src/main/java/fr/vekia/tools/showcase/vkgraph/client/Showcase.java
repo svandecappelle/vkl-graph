@@ -13,8 +13,8 @@ import com.google.web.bindery.event.shared.EventBus;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.MyActivityMapper;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.hitory.MyPlaceHistoryMapper;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.places.PresentationPlace;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcasePresenter;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.ShowcaseInjector;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.main.ShowcasePresenter;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.

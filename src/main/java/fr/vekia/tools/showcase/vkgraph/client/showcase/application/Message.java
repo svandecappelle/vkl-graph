@@ -2,7 +2,7 @@ package fr.vekia.tools.showcase.vkgraph.client.showcase.application;
 
 import com.google.gwt.user.client.ui.HTML;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ui.JQueryDialog;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.widgets.JQueryDialog;
 
 /**
  * @author Steeve Vandecappelle (SVA)
