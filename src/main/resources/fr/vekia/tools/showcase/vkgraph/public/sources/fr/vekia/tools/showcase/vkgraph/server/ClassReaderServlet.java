@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.util.Scanner;
-import java.util.logging.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Singleton;
@@ -20,7 +22,7 @@ import fr.vekia.tools.showcase.vkgraph.shared.CodeUrl;
 @Singleton
 public class ClassReaderServlet extends RemoteServiceServlet implements CodeService {
 
-    private static final Logger LOGGER = Logger.getLogger(ClassReaderServlet.class.getName());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ClassReaderServlet.class);
     private static final long serialVersionUID = 1L;
 
     /**
@@ -30,18 +32,19 @@ public class ClassReaderServlet extends RemoteServiceServlet implements CodeServ
         // LOGGER.info("get Code :::::::::::: " + className);
         // LOGGER.info("url ROOT/ " + new
         // File(".").getAbsolutePath());
+
+        LOGGER.info("GET: " + className);
         try {
 
-            String file = className;
+            String file = className.replaceAll("\\.", "/") + ".java";
             String completeUrl = "/showcase/sources/" + file;
             InputStream inputStream = getServletContext().getResourceAsStream(completeUrl);
             // LOGGER.info("url Ressource: " + completeUrl);
             return read(inputStream).toString();
         } catch (MalformedURLException e) {
-            e.printStackTrace();
-            LOGGER.severe(className + "; message except: " + e.getMessage());
+            LOGGER.error(className + "; message except: ", e);
         } catch (IOException e) {
-            LOGGER.severe(className + "; message except: " + e.getMessage());
+            LOGGER.error(className + "; message except: ", e);
         }
         return "Code not available yet";
     }

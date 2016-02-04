@@ -11,10 +11,9 @@
 
       <mkdir dir="${scratch.dir}" />
       <mkdir dir="${build.dir}" />
-      <copydir src="${src.dir}"
-           dest="${scratch.dir}"
-           includes="**/*.java"
-      />
+      <copy todir="${scratch.dir}">
+          <fileset dir="${src.dir}" includes="**/*.java"/>
+      </copy>
     </target>
  
     <target name="convert" depends="init">

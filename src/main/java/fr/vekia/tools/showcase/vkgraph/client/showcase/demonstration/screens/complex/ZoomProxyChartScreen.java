@@ -4,24 +4,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.datepicker.client.CalendarUtil;
 
 import fr.vekia.vkgraph.client.charts.AbstractChart;
+import fr.vekia.vkgraph.client.charts.RenderersEnum;
+import fr.vekia.vkgraph.client.datas.CanvasOverlayObject;
 import fr.vekia.vkgraph.client.datas.DualValue;
 import fr.vekia.vkgraph.client.datas.OptionSerie;
+import fr.vekia.vkgraph.client.datas.Rectangle;
 import fr.vekia.vkgraph.client.datas.SeriesData;
 import fr.vekia.vkgraph.client.options.ChartOption;
 import fr.vekia.vkgraph.client.options.SubOption;
-
-import fr.vekia.vkgraph.client.datas.Rectangle;
-import fr.vekia.vkgraph.client.datas.CanvasOverlayObject;
-import fr.vekia.vkgraph.client.charts.RenderersEnum;
-
-import com.google.gwt.user.datepicker.client.CalendarUtil;
 
 /**
  * @author Steeve Vandecappelle (SVA)

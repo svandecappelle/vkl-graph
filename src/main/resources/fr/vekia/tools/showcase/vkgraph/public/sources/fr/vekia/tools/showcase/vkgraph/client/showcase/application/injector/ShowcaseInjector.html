@@ -37,50 +37,53 @@ ShowcaseInjector.java
 <font color="#808080">06</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.inject.client.GinModules;</font><br />
 <font color="#808080">07</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">com.google.gwt.inject.client.Ginjector;</font><br />
 <font color="#808080">08</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">09</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConsoleCodePresenter;</font><br />
-<font color="#808080">10</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseGlobalPanelPresenter;</font><br />
-<font color="#808080">11</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseMenuPresenter;</font><br />
-<font color="#808080">12</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcasePresenter;</font><br />
-<font color="#808080">13</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.modules.ShowcaseModule;</font><br />
-<font color="#808080">14</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">15</font>&nbsp;<font color="#3f5fbf">/**</font><br />
-<font color="#808080">16</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Steeve&nbsp;Vandecappelle&nbsp;(SVA)</font><br />
-<font color="#808080">17</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@since&nbsp;</font><font color="#3f5fbf">23&nbsp;avr.&nbsp;2012.&nbsp;GWTQuery&nbsp;Vekia&nbsp;Showcase</font><br />
-<font color="#808080">18</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@version&nbsp;</font><font color="#3f5fbf">1.0</font><br />
-<font color="#808080">19</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
-<font color="#808080">20</font>&nbsp;<font color="#646464">@GinModules</font><font color="#000000">(</font><font color="#000000">ShowcaseModule.</font><font color="#7f0055"><b>class</b></font><font color="#000000">)</font><br />
-<font color="#808080">21</font>&nbsp;<font color="#7f0055"><b>public&nbsp;interface&nbsp;</b></font><font color="#000000">ShowcaseInjector&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">Ginjector&nbsp;</font><font color="#000000">{</font><br />
-<font color="#808080">22</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">23</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>final&nbsp;class&nbsp;</b></font><font color="#000000">Util&nbsp;</font><font color="#000000">{</font><br />
-<font color="#808080">24</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">25</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#000000">ShowcaseInjector&nbsp;injector&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
-<font color="#808080">26</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">27</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Util</font><font color="#000000">()&nbsp;{</font><br />
-<font color="#808080">28</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">29</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">30</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
-<font color="#808080">31</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">the&nbsp;injector</font><br />
-<font color="#808080">32</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
-<font color="#808080">33</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">ShowcaseInjector&nbsp;getInstance</font><font color="#000000">()&nbsp;{</font><br />
-<font color="#808080">34</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">injector&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
-<font color="#808080">35</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">injector&nbsp;=&nbsp;GWT.create</font><font color="#000000">(</font><font color="#000000">ShowcaseInjector.</font><font color="#7f0055"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
-<font color="#808080">36</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">37</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">38</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">injector;</font><br />
-<font color="#808080">39</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">40</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
-<font color="#808080">41</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">42</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">EventBus&nbsp;getEventBus</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">43</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">44</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcasePresenter&nbsp;getPresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">45</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">46</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseMenuPresenter&nbsp;getMenuPresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">47</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">48</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseGlobalPanelPresenter&nbsp;getGlobalPanelPresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">49</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">50</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseConsoleCodePresenter&nbsp;getConsoleCodePresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
-<font color="#808080">51</font>&nbsp;<font color="#ffffff"></font><br />
-<font color="#808080">52</font>&nbsp;<font color="#000000">}</font></code>
+<font color="#808080">09</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.code.presenter.ShowcaseConsoleCodePresenter;</font><br />
+<font color="#808080">10</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.global.presenter.ShowcaseGlobalPanelPresenter;</font><br />
+<font color="#808080">11</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.home.display.PresentationDemoPanel;</font><br />
+<font color="#808080">12</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.main.ShowcasePresenter;</font><br />
+<font color="#808080">13</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.menu.presenter.ShowcaseMenuPresenter;</font><br />
+<font color="#808080">14</font>&nbsp;<font color="#7f0055"><b>import&nbsp;</b></font><font color="#000000">fr.vekia.tools.showcase.vkgraph.client.showcase.application.modules.ShowcaseModule;</font><br />
+<font color="#808080">15</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">16</font>&nbsp;<font color="#3f5fbf">/**</font><br />
+<font color="#808080">17</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@author&nbsp;</font><font color="#3f5fbf">Steeve&nbsp;Vandecappelle&nbsp;(SVA)</font><br />
+<font color="#808080">18</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@since&nbsp;</font><font color="#3f5fbf">23&nbsp;avr.&nbsp;2012.&nbsp;GWTQuery&nbsp;Vekia&nbsp;Showcase</font><br />
+<font color="#808080">19</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@version&nbsp;</font><font color="#3f5fbf">1.0</font><br />
+<font color="#808080">20</font>&nbsp;<font color="#ffffff">&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">21</font>&nbsp;<font color="#646464">@GinModules</font><font color="#000000">(</font><font color="#000000">ShowcaseModule.</font><font color="#7f0055"><b>class</b></font><font color="#000000">)</font><br />
+<font color="#808080">22</font>&nbsp;<font color="#7f0055"><b>public&nbsp;interface&nbsp;</b></font><font color="#000000">ShowcaseInjector&nbsp;</font><font color="#7f0055"><b>extends&nbsp;</b></font><font color="#000000">Ginjector&nbsp;</font><font color="#000000">{</font><br />
+<font color="#808080">23</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">24</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>final&nbsp;class&nbsp;</b></font><font color="#000000">Util&nbsp;</font><font color="#000000">{</font><br />
+<font color="#808080">25</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">26</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;static&nbsp;</b></font><font color="#000000">ShowcaseInjector&nbsp;injector&nbsp;=&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">;</font><br />
+<font color="#808080">27</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">28</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>private&nbsp;</b></font><font color="#000000">Util</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">29</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">30</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">31</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">/**</font><br />
+<font color="#808080">32</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*&nbsp;</font><font color="#7f9fbf">@return&nbsp;</font><font color="#3f5fbf">the&nbsp;injector</font><br />
+<font color="#808080">33</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#3f5fbf">*/</font><br />
+<font color="#808080">34</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>public&nbsp;static&nbsp;</b></font><font color="#000000">ShowcaseInjector&nbsp;getInstance</font><font color="#000000">()&nbsp;{</font><br />
+<font color="#808080">35</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>if&nbsp;</b></font><font color="#000000">(</font><font color="#000000">injector&nbsp;==&nbsp;</font><font color="#7f0055"><b>null</b></font><font color="#000000">)&nbsp;{</font><br />
+<font color="#808080">36</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">injector&nbsp;=&nbsp;GWT.create</font><font color="#000000">(</font><font color="#000000">ShowcaseInjector.</font><font color="#7f0055"><b>class</b></font><font color="#000000">)</font><font color="#000000">;</font><br />
+<font color="#808080">37</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">38</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">39</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#7f0055"><b>return&nbsp;</b></font><font color="#000000">injector;</font><br />
+<font color="#808080">40</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">41</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">}</font><br />
+<font color="#808080">42</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">43</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">EventBus&nbsp;getEventBus</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">44</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">45</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcasePresenter&nbsp;getPresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">46</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">47</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseMenuPresenter&nbsp;getMenuPresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">48</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">49</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseGlobalPanelPresenter&nbsp;getGlobalPanelPresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">50</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">51</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">ShowcaseConsoleCodePresenter&nbsp;getConsoleCodePresenter</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">52</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">53</font>&nbsp;<font color="#ffffff">&nbsp;&nbsp;&nbsp;&nbsp;</font><font color="#000000">PresentationDemoPanel&nbsp;getPresentation</font><font color="#000000">()</font><font color="#000000">;</font><br />
+<font color="#808080">54</font>&nbsp;<font color="#ffffff"></font><br />
+<font color="#808080">55</font>&nbsp;<font color="#000000">}</font></code>
     
    </td>
   <!-- end source code -->

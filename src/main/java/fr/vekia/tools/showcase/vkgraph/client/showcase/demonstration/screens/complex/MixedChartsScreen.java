@@ -1,6 +1,7 @@
 package fr.vekia.tools.showcase.vkgraph.client.showcase.demonstration.screens.complex;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -13,6 +14,8 @@ import fr.vekia.tools.showcase.vkgraph.client.showcase.application.widgets.JQuer
 import fr.vekia.vkgraph.client.charts.AbstractChart;
 import fr.vekia.vkgraph.client.charts.NumberType;
 import fr.vekia.vkgraph.client.charts.RenderersEnum;
+import fr.vekia.vkgraph.client.charts.events.AttachedChartEvent;
+import fr.vekia.vkgraph.client.charts.events.AttachedChartHandler;
 import fr.vekia.vkgraph.client.charts.events.ChartSimpleEvent;
 import fr.vekia.vkgraph.client.charts.events.SimpleEventObject;
 import fr.vekia.vkgraph.client.datas.CanvasOverlayObject;
@@ -21,6 +24,7 @@ import fr.vekia.vkgraph.client.datas.OptionSerie;
 import fr.vekia.vkgraph.client.datas.Rectangle;
 import fr.vekia.vkgraph.client.datas.SeriesData;
 import fr.vekia.vkgraph.client.options.ChartOption;
+import fr.vekia.vkgraph.client.options.FunctionOption;
 import fr.vekia.vkgraph.client.options.SubOption;
 
 /**
@@ -56,7 +60,7 @@ public class MixedChartsScreen extends FlowPanel {
         chart.setBooleanOption(ChartOption.seriesDefaults, SubOption.pointLabels, SubOption.show, false);
         chart.setBooleanOption(ChartOption.seriesDefaults, SubOption.rendererOptions, SubOption.smooth, true);
 
-        chart.setOption(ChartOption.axes, SubOption.xaxis, SubOption.renderer, RenderersEnum.CategoryAxis.getValueRenderer());
+        chart.setXaxisRenderer(RenderersEnum.CategoryAxis);
         chart.setOption(ChartOption.axes, SubOption.xaxis, SubOption.tickOptions, "{angle: -30,fontFamily: 'Courier New', fontSize: '9pt'}");
         chart.setOption(ChartOption.axes, SubOption.yaxis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
         chart.setOption(ChartOption.axes, SubOption.y2axis, SubOption.tickOptions, "{fontFamily: 'Courier New', fontSize: '9pt'}");
@@ -64,6 +68,39 @@ public class MixedChartsScreen extends FlowPanel {
 
         chart.setBooleanOption(ChartOption.cursor, SubOption.show, true);
         chart.setTextOption(ChartOption.cursor, SubOption.tooltipLocation, "sw");
+        chart.setBooleanOption(ChartOption.cursor, SubOption.showTooltipDataPosition, true);
+        chart.setBooleanOption(ChartOption.cursor, SubOption.useSeriesColor, true);
+        chart.setBooleanOption(ChartOption.cursor, SubOption.useAxesFormatters, true);
+        chart.setBooleanOption(ChartOption.cursor, SubOption.followMouse, true);
+        chart.setFunctionOption(ChartOption.cursor, SubOption.yaxis, SubOption.formatter, new FunctionOption() {
+
+            @Override
+            public Object onExecute(Object... arguments) {
+                Object dataX = arguments[1];
+                return dataX + "<br/>";
+            }
+        });
+        chart.setTextOption(ChartOption.cursor, SubOption.tooltipFormatString, "%s %n %s");
+        chart.setFunctionOption(ChartOption.cursor, SubOption.xaxis, SubOption.formatter, new FunctionOption() {
+
+            @Override
+            public Object onExecute(Object... arguments) {
+                Object dataXCateg = arguments[3];
+                return dataXCateg;
+            }
+        });
+        chart.setBooleanOption(ChartOption.cursor, SubOption.insertHead, true);
+        chart.setFunctionOption(ChartOption.cursor, SubOption.headTooltipFormatter, new FunctionOption() {
+
+            @Override
+            public Object onExecute(Object... arguments) {
+                if (arguments[1] != "undefined") {
+                    return "Category: " + arguments[1];
+                } else {
+                    return "In stock";
+                }
+            }
+        });
 
         chart.setTextOption(ChartOption.legend, SubOption.location, "ne");
         chart.setTextOption(ChartOption.legend, SubOption.rowSpacing, "0px");
@@ -160,11 +197,15 @@ public class MixedChartsScreen extends FlowPanel {
 
             @Override
             public void onEvent(SimpleEventObject datasOnEvent) {
-                JQueryDialog dialog = new JQueryDialog("Event");
-                dialog.setPreferedSize(100, 200);
                 Integer serieHide = Integer.valueOf(datasOnEvent.getValues().get("id").toString());
-                dialog.setContent(new Label("serie hidden:" + serieHide));
-                dialog.show();
+
+                if (serieHide != 3) {
+                    JQueryDialog dialog = new JQueryDialog("Event");
+                    dialog.setPreferedSize(100, 200);
+
+                    dialog.setContent(new Label("serie hidden:" + serieHide));
+                    dialog.show();
+                }
             }
 
             @Override
@@ -191,6 +232,14 @@ public class MixedChartsScreen extends FlowPanel {
             @Override
             public void onClick(ClickEvent event) {
                 chart.toggleSerie(2);
+            }
+        });
+
+        chart.addAttachedChartHandler(new AttachedChartHandler() {
+
+            @Override
+            public void onAttachedChart(AttachedChartEvent itemTabSelectionEvent) {
+                chart.hideSerie(3);
             }
         });
 

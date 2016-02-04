@@ -5,7 +5,8 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.PresentationDemoPanel;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.ShowcaseInjector;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.home.display.PresentationDemoPanel;
 
 /**
  * @author svandecappelle
@@ -27,7 +28,7 @@ public class PresentationActivity extends AbstractActivity {
 
     @Override
     public void start(AcceptsOneWidget panel, EventBus eventBus) {
-        PresentationDemoPanel widget = new PresentationDemoPanel();
+        PresentationDemoPanel widget = ShowcaseInjector.Util.getInstance().getPresentation();
         panel.setWidget(widget);
     }
 

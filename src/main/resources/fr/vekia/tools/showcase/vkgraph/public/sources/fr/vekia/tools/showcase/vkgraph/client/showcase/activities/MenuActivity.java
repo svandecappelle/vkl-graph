@@ -6,9 +6,9 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 
 import fr.vekia.tools.showcase.vkgraph.client.showcase.activities.places.MenuPlace;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseMenuPresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.menu.AbstractShowcaseTreeMenuItem;
 import fr.vekia.tools.showcase.vkgraph.client.showcase.application.injector.ShowcaseInjector;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.menu.AbstractShowcaseTreeMenuItem;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.menu.presenter.ShowcaseMenuPresenter;
 
 /**
  * @author svandecappelle
@@ -37,6 +37,7 @@ public class MenuActivity extends AbstractActivity implements ActivityPresenter 
 
             menuPresenter.getCategories().get(place.getMenu());
             AbstractShowcaseTreeMenuItem item = menuPresenter.getPlotsScreens().get(place.getItem());
+            menuPresenter.select(item);
             panel.setWidget(item.getScreen());
         } catch (Exception e) {
             GWT.log(e.getMessage(), e);

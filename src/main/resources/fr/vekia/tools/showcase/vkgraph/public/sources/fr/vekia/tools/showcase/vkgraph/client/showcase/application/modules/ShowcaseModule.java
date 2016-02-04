@@ -1,18 +1,17 @@
 package fr.vekia.tools.showcase.vkgraph.client.showcase.application.modules;
 
-import net.customware.gwt.presenter.client.DefaultEventBus;
-import net.customware.gwt.presenter.client.EventBus;
-
 import com.google.gwt.inject.client.AbstractGinModule;
 
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseConsoleCodePresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseGlobalPanelPresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcaseMenuPresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.ShowcasePresenter;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.GlobalPanel;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.Menu;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.components.code.ConsoleCode;
-import fr.vekia.tools.showcase.vkgraph.client.showcase.application.displays.ShowcaseDisplay;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.code.display.ConsoleCode;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.code.interfaces.ShowcaseConsoleCodeDisplay;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.global.display.GlobalPanel;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.global.interfaces.GlobalDisplay;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.main.display.ShowcaseDisplay;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.main.interfaces.ShowcaseMainLayoutDisplay;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.menu.display.Menu;
+import fr.vekia.tools.showcase.vkgraph.client.showcase.application.layout.menu.interfaces.ShowcaseMenuDisplay;
+import net.customware.gwt.presenter.client.DefaultEventBus;
+import net.customware.gwt.presenter.client.EventBus;
 
 /**
  * @author Steeve Vandecappelle (SVA)
@@ -23,10 +22,10 @@ public class ShowcaseModule extends AbstractGinModule {
 
     @Override
     protected void configure() {
-        bind(ShowcasePresenter.Display.class).to(ShowcaseDisplay.class);
-        bind(ShowcaseMenuPresenter.Display.class).to(Menu.class);
-        bind(ShowcaseGlobalPanelPresenter.Display.class).to(GlobalPanel.class);
-        bind(ShowcaseConsoleCodePresenter.Display.class).to(ConsoleCode.class);
+        bind(ShowcaseMainLayoutDisplay.class).to(ShowcaseDisplay.class);
+        bind(ShowcaseMenuDisplay.class).to(Menu.class);
+        bind(GlobalDisplay.class).to(GlobalPanel.class);
+        bind(ShowcaseConsoleCodeDisplay.class).to(ConsoleCode.class);
         bind(EventBus.class).to(DefaultEventBus.class);
     }
 
