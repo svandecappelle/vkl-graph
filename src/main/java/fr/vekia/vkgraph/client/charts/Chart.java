@@ -838,6 +838,11 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     protected void setSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMapped) {
         this.chartOptionner.setSubSubOptionsMappedInJavascript(subSubOptionsMapped);
     }
+    
+
+    protected void setSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, JavaScriptObject>> subSubOptionsMapped) {
+        this.chartOptionner.setSubOptionsMappedInJavascript(subSubOptionsMapped);
+    }
 
     public void setTheme(Theming theme) {
         this.theme = theme.getTheme();

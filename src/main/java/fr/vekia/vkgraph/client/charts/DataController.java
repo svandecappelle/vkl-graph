@@ -160,6 +160,7 @@ public class DataController<T> {
         builder.putAllChartSubOption(this.chart.getChartOptionner().getSubSubOptionsMapped());
 
         builder.putAllChartSubOptionInJavascript(this.chart.getChartOptionner().getSubSubOptionsMappedInJavascript());
+        builder.putAllChartOptionInJavascript(this.chart.getChartOptionner().getSubOptionsMappedInJavascript());
 
         builder.addSeriesData(this.getSeriesData());
         return builder.getJso().getJavaScriptObject();

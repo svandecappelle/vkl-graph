@@ -26,6 +26,8 @@ public class ChartOptioner {
     private Map<ChartOption, Map<SubOption, Map<SubOption, Map<SubOption, String>>>> subSubSubOptionsMapped;
 
     // in javascript
+    private Map<ChartOption, Map<SubOption, JavaScriptObject>> subOptionsMappedInJavascript;
+
     // sub-sub options javascript objects in form:
     // option(sub-option(sub-sub-option(value)))
     private Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMappedInJavascript;
@@ -126,5 +128,13 @@ public class ChartOptioner {
 
     public void setSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMappedInJavascript) {
         this.subSubOptionsMappedInJavascript = subSubOptionsMappedInJavascript;
+    }
+
+    public Map<ChartOption, Map<SubOption, JavaScriptObject>> getSubOptionsMappedInJavascript() {
+        return subOptionsMappedInJavascript;
+    }
+
+    public void setSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, JavaScriptObject>> subOptionsMappedInJavascript) {
+        this.subOptionsMappedInJavascript = subOptionsMappedInJavascript;
     }
 }

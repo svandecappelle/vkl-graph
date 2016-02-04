@@ -167,8 +167,7 @@ public class MapJSONBuilder {
      * 
      * @param value
      *            the renderer String valueRenderer
-     *            {@link fr.vekia.vkgraph.client.charts.RenderersEnum#getValueRenderer()}
-     *            .
+     *            {@link fr.vekia.vkgraph.client.charts.RenderersEnum#getValueRenderer()} .
      * @return the {@link JavaScriptObject} of the renderer.
      */
     private JavaScriptObject eval(String value) {
@@ -418,4 +417,48 @@ public class MapJSONBuilder {
 
         }
     }
+
+    public void putAllChartOptionInJavascript(Map<ChartOption, Map<SubOption, JavaScriptObject>> value) {
+        if (value != null) {
+            for (Entry<ChartOption, Map<SubOption, JavaScriptObject>> entryOptions : value.entrySet()) {
+                if (entryOptions.getValue() != null && !entryOptions.getValue().isEmpty()) {
+                    storeOptionsJavascript(entryOptions.getKey(), entryOptions.getValue());
+                }
+            }
+        }
+    }
+
+    /**
+     * Store all subSubOption on JSON value.
+     * 
+     * @param value
+     *            the JSON subSubOption Values map.
+     */
+    public void putAllOptionsInJavascript(Map<SubOption, JavaScriptObject> value) {
+        if (value != null) {
+            MapJSONBuilder builder = new MapJSONBuilder();
+            builder.putAllOptions(value);
+        }
+    }
+
+    /**
+     * Store all chart keys on JSON value.
+     * 
+     * @param key
+     *            the {@link ChartOption} key
+     * @param value
+     *            the JSON SubOption Values map.
+     */
+    private void storeOptionsJavascript(ChartOption key, Map<SubOption, JavaScriptObject> value) {
+        MapJSONBuilder builder = new MapJSONBuilder();
+        builder.putAllOptionsInJavascript(value);
+        if (!jso.containsKey(key.name())) {
+            jso.put(key.name(), builder.getJso());
+        } else {
+            for (Entry<SubOption, JavaScriptObject> subOption : value.entrySet()) {
+                jso.get(key.name()).isObject().put(subOption.getKey().name(), new JSONObject(subOption.getValue()));
+            }
+        }
+    }
+
 }

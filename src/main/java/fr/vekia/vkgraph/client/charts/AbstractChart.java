@@ -374,6 +374,34 @@ public class AbstractChart<T> extends Chart<T> {
     }
 
     /**
+     * Set option JavaScript native object.
+     * 
+     * @param option
+     * @param subOption
+     * @param subSubOption
+     * @param value
+     */
+    public final void setOption(ChartOption option, SubOption subOption, JavaScriptObject value) {
+        if (!isInjected()) {
+            Map<SubOption, JavaScriptObject> optionsSeries;
+            if (getChartOptionner().getSubOptionsMappedInJavascript() == null) {
+                setSubOptionsMappedInJavascript(new HashMap<ChartOption, Map<SubOption, JavaScriptObject>>());
+            }
+
+            if (getChartOptionner().getSubOptionsMappedInJavascript().containsKey(option)) {
+                optionsSeries = getChartOptionner().getSubOptionsMappedInJavascript().get(option);
+            } else {
+                optionsSeries = new HashMap<SubOption, JavaScriptObject>();
+                getChartOptionner().getSubOptionsMappedInJavascript().put(option, optionsSeries);
+            }
+            optionsSeries.put(subOption, value);
+
+        } else {
+            changeProperty(value, option.name(), subOption.name());
+        }
+    }
+
+    /**
      * @param option
      * @param subOption
      * @param subSubOption
@@ -478,8 +506,23 @@ public class AbstractChart<T> extends Chart<T> {
     }
 
     /**
-     * Important note: You cannot yet edit the JavaScript function after graph
-     * is drawing
+     * Important note: You cannot yet edit the JavaScript function after graph is drawing
+     * 
+     * @param option
+     *            Option-Chart
+     * @param subOption
+     *            SubOption
+     * @param functionOption
+     *            the function to call on property binding.
+     */
+    public void setFunctionOption(ChartOption option, SubOption subOption, FunctionOption functionOption) {
+        if (!isInjected()) {
+            setOption(option, subOption, JavascriptConvertUtils.toFunction(functionOption));
+        }
+    }
+
+    /**
+     * Important note: You cannot yet edit the JavaScript function after graph is drawing
      * 
      * @param option
      *            Option-Chart
