@@ -19,4 +19,6 @@
 		value="true" />
 	<!-- enable source maps -->
 	<set-property name="compiler.useSourceMaps" value="true" />
+	
+	<entry-point class='fr.vekia.vkgraph.client.VkGraph' />
 </module>

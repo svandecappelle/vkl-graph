@@ -350,7 +350,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
         for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
             functionVar = functionVar[optionArray[optionNb]];
         }
-        functionVar[optionArray[optionArray.length - 1]] = value;
+        functionVar = value;
     }-*/;
 
     /**
@@ -363,9 +363,9 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
         for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
             functionVar = functionVar[optionArray[optionNb]];
         }
-        functionVar[optionArray[optionArray.length - 1]] = value;
+        functionVar = value;
     }-*/;
-
+    
     /**
      * @param option
      * @param value
@@ -376,7 +376,7 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
         for ( var optionNb = 0; optionNb < optionArray.length - 1; optionNb++) {
             functionVar = functionVar[optionArray[optionNb]];
         }
-        functionVar[optionArray[optionArray.length - 1]] = value;
+        functionVar = value;
     }-*/;
     
     /**
@@ -777,6 +777,26 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     }
 
     /**
+     * @param i
+     * @param arrayData
+     */
+    public void setSerieRenderer(int serieId, RenderersEnum renderer) {
+        setSerieRenderer(serieId, renderer.getValueRenderer(), this.chartJavascriptObject);
+    }
+
+    /**
+     * @param i
+     * @param arrayData
+     * @param string
+     * @param string2
+     */
+    // @formatter:off
+    private native void setSerieRenderer(int serieId, String renderer, JavaScriptObject chart)/*-{
+        chart.series[serieId].renderer = eval(renderer.replace("$", "$wnd.jQuery"));
+    }-*/;
+    // @formatter:on
+
+    /**
      * @param seriesData
      *            the seriesData to set
      */
@@ -838,7 +858,6 @@ abstract class Chart<T> extends SimplePanel implements HasAttachedChartEventHand
     protected void setSubSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, Map<SubOption, JavaScriptObject>>> subSubOptionsMapped) {
         this.chartOptionner.setSubSubOptionsMappedInJavascript(subSubOptionsMapped);
     }
-    
 
     protected void setSubOptionsMappedInJavascript(Map<ChartOption, Map<SubOption, JavaScriptObject>> subSubOptionsMapped) {
         this.chartOptionner.setSubOptionsMappedInJavascript(subSubOptionsMapped);
