@@ -33,6 +33,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
     background(OptionType.STRING, ChartOption.grid),
     bandData(rendererOptions),
     bands(rendererOptions),
+    barDirection(OptionType.STRING, rendererOptions),
     barMargin(OptionType.NUMBER, rendererOptions),
     barPadding(OptionType.NUMBER, rendererOptions),
     barWidth(OptionType.NUMBER, rendererOptions),
@@ -131,6 +132,7 @@ public enum SubOption implements IsOption, HasType, Serializable {
     sizeAdjust(ChartOption.highlighter),
     sliceMargin(rendererOptions),
     smooth(OptionType.BOOLEAN, rendererOptions),
+    stackedValue(OptionType.BOOLEAN, SubOption.pointLabels),
     startAngle(rendererOptions),
     style,
     synchronizeHighlight(rendererOptions),
@@ -169,8 +171,8 @@ public enum SubOption implements IsOption, HasType, Serializable {
     private OptionType typeOption;
 
     /**
-     * Default constructor. The parameter is only to create on the future a
-     * dynamic use-case documentation and throws the not accessible options.
+     * Default constructor. The parameter is only to create on the future a dynamic use-case documentation and throws
+     * the not accessible options.
      * 
      */
     private SubOption(IsOption... parent) {
@@ -178,8 +180,8 @@ public enum SubOption implements IsOption, HasType, Serializable {
     }
 
     /**
-     * Default constructor. The parameter is only to create on the future a
-     * dynamic use-case documentation and throws the not accessible options.
+     * Default constructor. The parameter is only to create on the future a dynamic use-case documentation and throws
+     * the not accessible options.
      * 
      */
     private SubOption(OptionType type, IsOption... parent) {

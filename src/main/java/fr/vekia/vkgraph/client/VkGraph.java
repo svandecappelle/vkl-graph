@@ -48,16 +48,11 @@ public class VkGraph implements EntryPoint {
         deps.add("jqplot/plugins/axis/jqplot.canvasAxisTickRenderer.min.js");
         deps.add("jqplot/plugins/text/jqplot.canvasTextRenderer.min.js");
 
-        // <!-- Cursor -->
+        deps.add("jqplot/plugins/points/jqplot.pointLabels.min.js");
         deps.add("jqplot/plugins/cursor/jqplot.cursor.min.js");
-        // <!-- Highlighter -->
         deps.add("jqplot/plugins/highlighter/jqplot.highlighter.min.js");
-        // <!-- Drag-drop -->
         deps.add("jqplot/plugins/dnd/jqplot.dragable.min.js");
-        // <!-- Trendline -->
         deps.add("jqplot/plugins/trendline/jqplot.trendline.min.js");
-
-        // <!-- Charts types -->
         // <!-- Pies -->
         deps.add("jqplot/plugins/pie/jqplot.pieRenderer.min.js");
         deps.add("jqplot/plugins/donut/jqplot.donutRenderer.min.js");
@@ -71,19 +66,16 @@ public class VkGraph implements EntryPoint {
         deps.add("jqplot/plugins/bubble/jqplot.bubbleRenderer.min.js");
         // <!-- OHLC plot -->
         deps.add("jqplot/plugins/ohlc/jqplot.ohlcRenderer.min.js");
-
         // <!-- Bar chart -->
         deps.add("jqplot/plugins/bar/jqplot.barRenderer.min.js");
         // <!-- Bezier chart -->
         deps.add("jqplot/plugins/bezier/jqplot.BezierCurveRenderer.min.js");
         // <!-- Gauge chart -->
         deps.add("jqplot/plugins/gauge/jqplot.meterGaugeRenderer.min.js");
-
         // <!-- Horizontal / vertical lines -->
         deps.add("jqplot/plugins/overlay/jqplot.canvasOverlay.min.js");
         // <!-- Legend dynamic -->
         deps.add("jqplot/plugins/legend/jqplot.enhancedLegendRenderer.min.js");
-
         // <!-- Customization theme -->
         deps.add("jqplot/plugins/themes/extendedThemes.min.js");
         // <!-- Export PNG -->
