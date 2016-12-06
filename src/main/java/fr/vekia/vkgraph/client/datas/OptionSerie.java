@@ -18,9 +18,8 @@ import fr.vekia.vkgraph.client.options.SubOption;
  * @since 25 mai 2012. GWTQuery Vekia Showcase
  * @version 1.0
  * 
- *          {@inheritDoc} A chart specific render. You can specify all options
- *          on chart for one data series or more. Then you could create an area
- *          / line chart mixed or any other join.
+ *          {@inheritDoc} A chart specific render. You can specify all options on chart for one data series or more.
+ *          Then you could create an area / line chart mixed or any other join.
  */
 public class OptionSerie extends SerieOptionBean implements Serializable {
     /**
@@ -28,6 +27,7 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
      */
     private static final long serialVersionUID = -8409601771955698471L;
 
+    private transient Map<SubOption, JSONValue> subOptionsMappedWithJson;
     private transient Map<SubOption, Map<SubOption, JSONValue>> subSubOptionsMappedWithJson;
 
     /**
@@ -35,6 +35,7 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
      * 
      */
     public OptionSerie() {
+        subOptionsMappedWithJson = new HashMap<SubOption, JSONValue>();
         subSubOptionsMappedWithJson = new HashMap<SubOption, Map<SubOption, JSONValue>>();
     }
 
@@ -74,8 +75,7 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
     }
 
     /**
-     * Set a confidence interval for the serie. <b>IMPORTANT NOTE:<i> the value
-     * is a DualValue list>list with <br>
+     * Set a confidence interval for the serie. <b>IMPORTANT NOTE:<i> the value is a DualValue list>list with <br>
      * list(0) = bandTop <br>
      * list(1) = bandBottom.</i></b>
      * 
@@ -150,7 +150,7 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
      *            the value of option.
      */
     public void setOption(SubOption subOption, List<String> value) {
-        setOption(subOption, JavascriptConvertUtils.optionArrayStringToString(value));
+        setOption(subOption, JavascriptConvertUtils.optionArray(value));
     }
 
     /**
@@ -163,7 +163,7 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
      * @param jso
      *            the value of JSO option.
      */
-    private void setOption(SubOption subOption, SubOption subSubOption, JSONValue jso) {
+    private <T extends JSONValue> void setOption(SubOption subOption, SubOption subSubOption, T jso) {
         if (subSubOptionsMappedWithJson == null) {
             subSubOptionsMappedWithJson = new HashMap<SubOption, Map<SubOption, JSONValue>>();
         }
@@ -178,6 +178,23 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
     }
 
     /**
+     * Set a serie JSO option.
+     * 
+     * @param subOption
+     *            the option.
+     * @param subSubOption
+     *            the sub Option.
+     * @param jso
+     *            the value of JSO option.
+     */
+    private <T extends JSONValue> void setOption(SubOption subOption, T jso) {
+        if (subSubOptionsMappedWithJson == null) {
+            subSubOptionsMappedWithJson = new HashMap<SubOption, Map<SubOption, JSONValue>>();
+        }
+        subOptionsMappedWithJson.put(subOption, jso);
+    }
+
+    /**
      * Set a serie array option.
      * 
      * @param subOption
@@ -188,7 +205,7 @@ public class OptionSerie extends SerieOptionBean implements Serializable {
      *            the value of option.
      */
     public void setOption(SubOption subOption, SubOption subSubOption, List<String> value) {
-        setOption(subOption, subSubOption, JavascriptConvertUtils.optionArrayStringToString(value));
+        setOption(subOption, subSubOption, JavascriptConvertUtils.optionArray(value));
     }
 
     /**

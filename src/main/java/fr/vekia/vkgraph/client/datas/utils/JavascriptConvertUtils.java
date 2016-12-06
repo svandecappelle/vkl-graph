@@ -38,7 +38,7 @@ public final class JavascriptConvertUtils {
      *            the list of options.
      * @return a JSON cast string value.
      */
-    public static String optionArrayStringToString(List<?> arg) {
+    public static JSONArray optionArray(List<?> arg) {
         JSONArray arrayData = new JSONArray();
         int i = 0;
         for (Object optionData : arg) {
@@ -55,7 +55,7 @@ public final class JavascriptConvertUtils {
             }
             i += 1;
         }
-        return arg.toString();
+        return arrayData;
     }
 
     /**

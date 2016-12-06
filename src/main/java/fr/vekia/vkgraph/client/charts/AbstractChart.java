@@ -90,7 +90,7 @@ public class AbstractChart<T> extends Chart<T> {
      *            the series colors data in HEXA, RGB or RGBA.
      */
     public final void setColors(List<String> colors) {
-        this.setOption(ChartOption.seriesColors, JavascriptConvertUtils.optionArrayStringToString(colors));
+        this.setJsonOption(ChartOption.seriesColors, JavascriptConvertUtils.optionArray(colors));
     }
 
     /**
@@ -158,9 +158,31 @@ public class AbstractChart<T> extends Chart<T> {
      * @param objects
      * @param javaScriptObject
      */
-    public final void setJavascriptOption(ChartOption chartOption, SubOption subOption, JSONValue javaScriptObject) {
+    public final <J extends JSONValue> void setJsonOption(ChartOption chartOption, J javaScriptObject) {
+        if (!isInjected()) {
+            setOption(chartOption, javaScriptObject.toString());
+        }
+    }
+
+    /**
+     * @param canvasoverlay
+     * @param objects
+     * @param javaScriptObject
+     */
+    public final <J extends JSONValue> void setJsonOption(ChartOption chartOption, SubOption subOption, J javaScriptObject) {
         if (!isInjected()) {
             setOption(chartOption, subOption, javaScriptObject.toString());
+        }
+    }
+
+    /**
+     * @param canvasoverlay
+     * @param objects
+     * @param javaScriptObject
+     */
+    public final <J extends JSONValue> void setJsonOption(ChartOption chartOption, SubOption subOption, SubOption subSubOption, J javaScriptObject) {
+        if (!isInjected()) {
+            setOption(chartOption, subOption, subSubOption, javaScriptObject.toString());
         }
     }
 
@@ -248,7 +270,7 @@ public class AbstractChart<T> extends Chart<T> {
      */
     public final void setOption(ChartOption option, List<String> value) {
         if (!isInjected()) {
-            setOption(option, JavascriptConvertUtils.optionArrayStringToString(value));
+            setJsonOption(option, (JSONValue) JavascriptConvertUtils.optionArray(value));
         } else {
             JSONValue array = JSONParser.parseStrict(value.toString());
             changeProperty(array.isArray(), option.name());
@@ -286,7 +308,7 @@ public class AbstractChart<T> extends Chart<T> {
      */
     public final void setOption(ChartOption option, SubOption subOption, List<String> value) {
         if (!isInjected()) {
-            setOption(option, subOption, JavascriptConvertUtils.optionArrayStringToString(value));
+            setJsonOption(option, subOption, JavascriptConvertUtils.optionArray(value));
         } else {
             JSONValue array = JSONParser.parseStrict(value.toString());
             changeProperty(array.isArray(), option.name(), subOption.name());
@@ -327,7 +349,7 @@ public class AbstractChart<T> extends Chart<T> {
      */
     public final void setOption(ChartOption option, SubOption subOption, SubOption subSubOption, List<?> value) {
         if (!isInjected()) {
-            setOption(option, subOption, subSubOption, JavascriptConvertUtils.optionArrayStringToString(value));
+            setJsonOption(option, subOption, subSubOption, JavascriptConvertUtils.optionArray(value));
         } else {
             JSONValue array = JSONParser.parseStrict(value.toString());
             changeProperty(array.isArray(), option.name(), subOption.name(), subSubOption.name());

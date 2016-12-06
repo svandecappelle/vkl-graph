@@ -98,7 +98,6 @@ public class MapJSONBuilder {
                 try {
                     jso.put(key, JSONParser.parseStrict(buildingValue));
                 } catch (JSONException e) {
-                    LOGGER.log(Level.FINE, "JSONParseStrict not allowed (system try another solution): ", e);
                     jso.put(key, new JSONString(buildingValue));
                 }
             }
@@ -147,13 +146,10 @@ public class MapJSONBuilder {
         try {
             return JSONParser.parseLenient("[" + value + "]");
         } catch (Exception e) {
-            LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
-
             for (String stringDataValue : value.split(", ")) {
                 try {
                     arrayData.set(i, new JSONNumber(Double.parseDouble(stringDataValue)));
                 } catch (Exception ex) {
-                    LOGGER.log(Level.FINE, "JSONNumber (system try another solution with JSONString): ", ex);
                     arrayData.set(i, new JSONString(stringDataValue));
                 }
                 i += 1;
@@ -242,7 +238,6 @@ public class MapJSONBuilder {
                         try {
                             jso.get(key.name()).isObject().put(entry.getKey().name(), JSONParser.parseLenient(entry.getValue()));
                         } catch (JSONException e) {
-                            LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
                             jso.get(key.name()).isObject().put(entry.getKey().name(), new JSONString(entry.getValue()));
                         }
                     }
@@ -306,14 +301,12 @@ public class MapJSONBuilder {
                             try {
                                 jso.get(key.name()).isObject().get(subsubOptions.getKey().name()).isObject().put(subsubOptions.getKey().name(), JSONParser.parseLenient(subsubOptions.getValue()));
                             } catch (JSONException e) {
-                                LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
                                 jso.get(key.name()).isObject().get(subsubOptions.getKey().name()).isObject().put(subsubOptions.getKey().name(), new JSONString(subsubOptions.getValue()));
                             }
                         } else {
                             try {
                                 jso.get(key.name()).isObject().put(subsubOptions.getKey().name(), JSONParser.parseLenient(subsubOptions.getValue()));
                             } catch (JSONException e) {
-                                LOGGER.log(Level.FINE, "JSONParseLenient not allowed (system try another solution): ", e);
                                 jso.get(key.name()).isObject().put(subsubOptions.getKey().name(), new JSONString(subsubOptions.getValue()));
                             }
                         }
