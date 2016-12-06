@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/svandecappelle/vkl-graph.svg?branch=master)](https://travis-ci.org/svandecappelle/vkl-graph)
+
 Copyright (c) 2013
 
 vkl-graph
